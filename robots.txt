@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aiharryone.github.io/old-photo-alive/sitemap.xml
