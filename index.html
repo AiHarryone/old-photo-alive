@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="msvalidate.01" content="E62785F51D89A3BD3AFBB2BC2BB07BF9">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OldPhoto Alive – Animate Old Photos in Your Browser (Free)</title>
+<meta name="description" content="Turn old photos into gentle, living motion — push-in, pan and fade effects, right in your browser. No upload, no signup. Free to try.">
+<link rel="canonical" href="https://aiharryone.github.io/old-photo-alive/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is animating my old photo free?","acceptedAnswer":{"@type":"Answer","text":"Yes — upload a photo and try 2 classic effects free with a small watermark. Unlock all effects and clean 720p export for a one-time fee."}},
+{"@type":"Question","name":"Is my photo uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Everything runs in your browser. Your photo never leaves your device."}},
+{"@type":"Question","name":"What effects can I apply to an old photo?","acceptedAnswer":{"@type":"Answer","text":"Slow push-in, slow pull-back, horizontal pan, vertical pan and a gentle fade-in. Great for memorials, family history and memory videos."}}
+]}
+</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:Georgia,'Times New Roman',serif;background:#f7efe3;color:#5c4a3a;line-height:1.6;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px;}
+  header{background:linear-gradient(135deg,#e9d5b0,#f6e8cd);padding:24px 0;}
+  nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+  .logo{font-weight:bold;font-size:20px;color:#7a5c36;}
+  .logo a{color:#7a5c36;text-decoration:none;}
+  .btn{display:inline-block;background:#b0703a;color:#fff;text-decoration:none;padding:12px 24px;border-radius:30px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;transition:.2s;border:none;cursor:pointer;font-size:15px;}
+  .btn:hover{background:#985c2d;}
+  .btn.ghost{background:#fff;color:#8a6a3f;border:2px solid #d8b98a;}
+  .btn.green{background:#8a7a3a;}
+  .btn.green:hover{background:#71662f;}
+  .btn:disabled{opacity:.5;cursor:not-allowed;}
+  .hero{text-align:center;padding:46px 0 26px;}
+  .hero h1{font-size:34px;color:#6e4f2a;margin-bottom:12px;}
+  .hero p{font-size:18px;color:#7d6a52;max-width:620px;margin:0 auto;}
+  section{padding:24px 0;}
+  h2{color:#6e4f2a;margin-bottom:14px;font-size:24px;}
+  .tool{background:#fff;border-radius:16px;padding:26px;box-shadow:0 4px 14px rgba(120,90,50,.12);}
+  .drop{background:#fdf6ea;border:2px dashed #d8b98a;border-radius:14px;padding:34px 20px;text-align:center;cursor:pointer;transition:.2s;}
+  .drop:hover{border-color:#b0703a;background:#fbf0dc;}
+  .drop.dragover{background:#f5e6c8;border-color:#b0703a;}
+  .drop b{color:#7a5c36;font-size:17px;}
+  .drop p{color:#a08a6a;font-size:14px;margin-top:6px;}
+  .effects{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;}
+  .eff{flex:1;min-width:120px;background:#faf3e6;border:2px solid #e6d3b0;border-radius:12px;padding:12px;text-align:center;cursor:pointer;font-weight:bold;color:#8a6a3f;font-family:Helvetica,Arial,sans-serif;transition:.15s;}
+  .eff:hover{border-color:#b0703a;}
+  .eff.active{background:#b0703a;color:#fff;border-color:#b0703a;}
+  .eff.locked{opacity:.55;background:#efe6d2;}
+  .eff.locked::after{content:" 🔒";}
+  .eff.locked.active{opacity:1;}
+  .preview-wrap{margin-top:20px;text-align:center;}
+  #preview{max-width:100%;background:#000;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.15);}
+  .controls{margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .hint{font-size:13px;color:#a08a6a;margin-top:10px;text-align:center;}
+  .note{font-size:13px;color:#a08a6a;margin-top:14px;}
+  .pro{background:linear-gradient(135deg,#fdf6ea,#f3e2c2);border:2px solid #d8b98a;border-radius:16px;padding:26px;margin-top:26px;text-align:center;}
+  .pro h3{color:#6e4f2a;font-size:22px;margin-bottom:8px;}
+  .pro p{color:#7d6a52;margin-bottom:16px;}
+  .pro .price{font-size:26px;font-weight:bold;color:#b0703a;font-family:Helvetica,Arial,sans-serif;}
+  .pro .once{font-size:13px;color:#a08a6a;}
+  .key-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+  #licenseKey{padding:11px 14px;border:2px solid #d8b98a;border-radius:10px;font-size:15px;min-width:240px;font-family:Helvetica,Arial,sans-serif;}
+  #unlockMsg{font-size:14px;margin-top:10px;font-weight:bold;}
+  #unlockMsg.ok{color:#6a8a3a;}
+  #unlockMsg.err{color:#b04a3a;}
+  .faq p{margin-bottom:10px;background:#fff;border-radius:10px;padding:14px 18px;}
+  .faq b{color:#6e4f2a;}
+  .related{margin-top:36px;background:#fff;border-radius:14px;box-shadow:0 4px 14px rgba(120,90,50,.12);padding:24px;}
+  .related a{display:inline-block;background:#fdf6ea;color:#8a6a3f;border:1px solid #e6d3b0;border-radius:20px;padding:6px 14px;margin:4px 6px 0 0;text-decoration:none;font-size:14px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;}
+  .related a:hover{background:#f5e6c8;}
+  footer{background:#e9d5b0;padding:22px 0;text-align:center;font-size:14px;color:#7d6a52;}
+  footer a{color:#6e4f2a;}
+  #status{font-size:14px;color:#7d6a52;margin-top:12px;font-family:Helvetica,Arial,sans-serif;}
+  @media(max-width:600px){.hero h1{font-size:27px;}.btn{display:block;margin:8px 0;text-align:center;}.eff{min-width:100%;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="logo"><a href="index.html">OldPhoto Alive</a></div>
+    <div>
+      <a href="#tool" style="color:#8a6a3f;margin-right:16px;font-weight:bold;text-decoration:none;font-family:Helvetica,Arial,sans-serif;">Try Free</a>
+      <a class="btn" href="#unlock">Unlock All – $9.99</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>Bring an Old Photo Back to Life</h1>
+    <p>A slow push-in. A gentle pan. The quiet motion of a memory — made in your browser, nothing uploaded, no account needed.</p>
+  </div>
+
+  <section id="tool">
+    <div class="tool">
+      <div class="drop" id="drop">
+        <b>Click to upload a photo</b>
+        <p>or drag it here · JPG / PNG · stays on your device</p>
+      </div>
+      <input type="file" id="fileInput" accept="image/*" style="display:none;">
+
+      <div class="effects" id="effects">
+        <div class="eff active" data-eff="pushin">Push-in</div>
+        <div class="eff" data-eff="pushout">Pull-back</div>
+        <div class="eff locked" data-eff="panx">Pan across 🔒</div>
+        <div class="eff locked" data-eff="pany">Pan up 🔒</div>
+        <div class="eff locked" data-eff="fade">Fade in 🔒</div>
+      </div>
+
+      <div class="preview-wrap" style="display:none;" id="previewWrap">
+        <canvas id="preview" width="480" height="640"></canvas>
+        <div class="controls">
+          <button class="btn green" id="exportBtn">Export GIF</button>
+          <button class="btn ghost" id="resetBtn">New photo</button>
+        </div>
+        <div class="hint" id="status">Pick an effect and hit Export.</div>
+      </div>
+
+      <div class="note" id="freeNote">Free: push-in &amp; pull-back, with a small watermark. Unlock all 5 effects + clean 720p export below.</div>
+    </div>
+  </section>
+
+  <section class="pro" id="unlock">
+    <h3>Unlock the Full Set</h3>
+    <p>All 5 effects · clean 720p export · no watermark · no subscription, ever</p>
+    <div class="price">$9.99 <span class="once">one-time</span></div>
+    <div class="controls">
+      <a class="btn" id="payBtn" href="#unlock">Get Unlimited Access</a>
+    </div>
+    <div class="key-form">
+      <input type="text" id="licenseKey" placeholder="Already bought? Paste your license key">
+      <button class="btn ghost" id="unlockBtn">Unlock</button>
+    </div>
+    <div id="unlockMsg"></div>
+  </section>
+
+  <section class="faq">
+    <h2>FAQ</h2>
+    <p><b>Is my photo uploaded anywhere?</b> No. Everything runs in your browser. Your photo never leaves your device.</p>
+    <p><b>What effects can I use?</b> Slow push-in, slow pull-back, pan across, pan up and a gentle fade-in — perfect for memorials, family history and memory videos.</p>
+    <p><b>Is it free?</b> Try push-in and pull-back free with a small watermark. Unlock everything for a one-time $9.99 — no subscription.</p>
+  </section>
+
+  <div class="related">
+    <h2>More Free Tools for Self-Publishers</h2>
+    <a href="https://aiharryone.github.io/kdp-launch-kit/">KDP Launch Kit</a>
+    <a href="https://aiharryone.github.io/kdp-launch-kit/royalty-calculator.html">Royalty Calculator</a>
+    <a href="https://aiharryone.github.io/kdp-launch-kit/kdp-cover-calculator.html">Cover Calculator</a>
+    <a href="https://aiharryone.github.io/kdp-launch-kit/isbn-converter.html">ISBN Converter</a>
+  </div>
+</div>
+
+<footer>
+  Made for the memories that deserve to move. Questions? Ai_harryone@outlook.com · <a href="index.html">OldPhoto Alive</a> · <a href="https://aiharryone.github.io/kdp-launch-kit/terms.html">Terms</a> · <a href="https://aiharryone.github.io/kdp-launch-kit/privacy.html">Privacy</a>
+</footer>
+
+<script src="vendor/omggif.js"></script>
+<script>
+(function(){
+  // ---- Config (filled in during launch, milestone 3) ----
+  var PAYMENT_LINK = null;                 // Creem product link (set at launch)
+  var UNLOCK_API   = null;                 // Cloudflare Worker base URL (set at launch)
+  var FREE_EFFECTS = ['pushin','pushout']; // effects unlocked on free tier
+  var UNLOCKED_KEY = 'oldphoto_unlocked';
+
+  // ---- State ----
+  var img = null;            // loaded image element
+  var effect = 'pushin';
+  var unlocked = false;
+  try { unlocked = localStorage.getItem(UNLOCKED_KEY) === '1'; } catch(e){}
+
+  // ---- DOM ----
+  var $drop = document.getElementById('drop');
+  var $file = document.getElementById('fileInput');
+  var $wrap = document.getElementById('previewWrap');
+  var $canvas = document.getElementById('preview');
+  var $status = document.getElementById('status');
+  var $freeNote = document.getElementById('freeNote');
+  var ctx = $canvas.getContext('2d');
+  var $payBtn = document.getElementById('payBtn');
+  var $license = document.getElementById('licenseKey');
+  var $unlockBtn = document.getElementById('unlockBtn');
+  var $unlockMsg = document.getElementById('unlockMsg');
+
+  function lockedEffs(){ return effectLocked(effect); }
+  function effectLocked(e){ return !unlocked && FREE_EFFECTS.indexOf(e) === -1; }
+
+  function paintEffects(){
+    document.querySelectorAll('.eff').forEach(function(el){
+      var e = el.getAttribute('data-eff');
+      el.classList.toggle('locked', effectLocked(e));
+      el.classList.toggle('active', e === effect);
+    });
+  }
+
+  // ---- Effect selection ----
+  document.querySelectorAll('.eff').forEach(function(el){
+    el.addEventListener('click', function(){
+      var e = el.getAttribute('data-eff');
+      if(effectLocked(e)){
+        $status.textContent = 'This effect is part of the full set. Unlock all 5 for $9.99 below.';
+        return;
+      }
+      effect = e;
+      paintEffects();
+    });
+  });
+
+  // ---- Upload ----
+  $drop.addEventListener('click', function(){ $file.click(); });
+  $drop.addEventListener('dragover', function(ev){ ev.preventDefault(); $drop.classList.add('dragover'); });
+  $drop.addEventListener('dragleave', function(){ $drop.classList.remove('dragover'); });
+  $drop.addEventListener('drop', function(ev){
+    ev.preventDefault(); $drop.classList.remove('dragover');
+    if(ev.dataTransfer.files && ev.dataTransfer.files[0]) loadFile(ev.dataTransfer.files[0]);
+  });
+  $file.addEventListener('change', function(){
+    if($file.files && $file.files[0]) loadFile($file.files[0]);
+  });
+
+  function loadFile(f){
+    if(!f.type.match(/^image\//)){ $status.textContent = 'Please choose an image file.'; return; }
+    var reader = new FileReader();
+    reader.onload = function(ev){
+      var im = new Image();
+      im.onload = function(){
+        img = im;
+        $drop.style.display = 'none';
+        $wrap.style.display = 'block';
+        paintEffects();
+        animate();
+      };
+      im.src = ev.target.result;
+    };
+    reader.readAsDataURL(f);
+  }
+
+  document.getElementById('resetBtn').addEventListener('click', function(){
+    img = null;
+    $wrap.style.display = 'none';
+    $drop.style.display = 'block';
+    $status.textContent = 'Pick an effect and hit Export.';
+  });
+
+  // ---- Animation math ----
+  // cover = min scale so the image fully fills the canvas
+  function coverScale(iw, ih, W, H){
+    return Math.max(W/iw, H/ih);
+  }
+  // Returns source window (sx,sy,sw,sh) mapping to full canvas at time t (0..1)
+  function srcRect(iw, ih, W, H, eff, t){
+    var cover = coverScale(iw, ih, W, H);
+    var s = cover, cx = 0.5, cy = 0.5;
+    if(eff === 'pushin'){  s = cover * (1 + 0.15*t); }
+    else if(eff === 'pushout'){ s = cover * (1.15 - 0.15*t); }
+    else if(eff === 'panx'){  s = cover * 1.2; cx = t; }
+    else if(eff === 'pany'){  s = cover * 1.2; cy = t; }
+    else if(eff === 'fade'){  s = cover * (1 + 0.05*t); }
+    var sw = W/s, sh = H/s;
+    var sx = (iw - sw) * cx;
+    var sy = (ih - sh) * cy;
+    return {sx:sx, sy:sy, sw:sw, sh:sh, fade: (eff==='fade' ? t : 1)};
+  }
+
+  function drawFrame(c, W, H, eff, t, withWatermark){
+    c.fillStyle = '#fff8f0';
+    c.fillRect(0, 0, W, H);
+    if(!img) return;
+    var r = srcRect(img.width, img.height, W, H, eff, t);
+    c.drawImage(img, r.sx, r.sy, r.sw, r.sh, 0, 0, W, H);
+    if(r.fade < 1){
+      c.fillStyle = 'rgba(255,248,240,' + (1 - r.fade) + ')';
+      c.fillRect(0, 0, W, H);
+    }
+    if(withWatermark){
+      c.font = 'bold ' + Math.max(13, W*0.022) + 'px Helvetica, Arial, sans-serif';
+      c.textAlign = 'right';
+      c.fillStyle = 'rgba(255,255,255,0.75)';
+      c.shadowColor = 'rgba(0,0,0,0.6)';
+      c.shadowBlur = 4;
+      c.fillText('OldPhotoAlive · Free', W - 12, H - 14);
+      c.shadowBlur = 0;
+    }
+  }
+
+  // ---- Live preview loop ----
+  var DUR = 3000, rafId = null, startT = 0;
+  function animate(){
+    if(rafId) cancelAnimationFrame(rafId);
+    startT = performance.now();
+    var PREV_W = 480, PREV_H = 640;
+    function loop(now){
+      var t = ((now - startT) % DUR) / DUR;
+      drawFrame(ctx, PREV_W, PREV_H, effect, t, !unlocked);
+      rafId = requestAnimationFrame(loop);
+    }
+    rafId = requestAnimationFrame(loop);
+  }
+
+  // ---- GIF encoding (pure-JS omggif + median-cut quantizer) ----
+
+  // Popcount-based color quantization -> palette (RGB ints) + indexed pixels.
+  // Bucket colors by 5-bit-per-channel; keep the 255 most-popular buckets as
+  // the palette (GIF allows up to 256), then map every pixel to its nearest.
+  function quantize(rgba, w, h){
+    var BUCKETS = 32; // 5 bits per channel
+    var pop = new Uint32Array(BUCKETS * BUCKETS * BUCKETS);
+    var avg = new Float64Array(BUCKETS * BUCKETS * BUCKETS * 3);
+    var idxOf = function(r, g, b){ return (r >> 3) * BUCKETS * BUCKETS + (g >> 3) * BUCKETS + (b >> 3); };
+    var i, p, N = w * h;
+    for(i = 0; i < N; i++){
+      var r = rgba[i*4], g = rgba[i*4+1], b = rgba[i*4+2];
+      var k = idxOf(r, g, b);
+      pop[k]++;
+      avg[k*3] += r; avg[k*3+1] += g; avg[k*3+2] += b;
+    }
+    // collect populated buckets
+    var buckets = [];
+    for(i = 0; i < pop.length; i++){
+      if(pop[i] > 0) buckets.push(i);
+    }
+    buckets.sort(function(a, b){ return pop[b] - pop[a]; });
+    // palette = top 255 buckets
+    var MAX = 255;
+    if(buckets.length > MAX) buckets.length = MAX;
+    var palette = [];
+    var map = new Int32Array(pop.length).fill(-1);
+    for(i = 0; i < buckets.length; i++){
+      var k = buckets[i];
+      var n = pop[k];
+      map[k] = i;
+      palette.push((Math.round(avg[k*3]/n) << 16) | (Math.round(avg[k*3+1]/n) << 8) | Math.round(avg[k*3+2]/n));
+    }
+    // ensure power-of-two count for GIF (add a white entry as filler)
+    var target = 2;
+    while(target < palette.length) target <<= 1;
+    if(target > 256) target = 256;
+    while(palette.length < target) palette.push(0xffffff); // white filler
+    // map pixels to nearest palette colour
+    var indexed = new Uint8Array(N);
+    for(i = 0; i < N; i++){
+      var k = idxOf(rgba[i*4], rgba[i*4+1], rgba[i*4+2]);
+      var direct = map[k];
+      if(direct !== -1){ indexed[i] = direct; continue; }
+      var c = (rgba[i*4] << 16) | (rgba[i*4+1] << 8) | rgba[i*4+2];
+      var bd = Infinity, bi = 0;
+      for(p = 0; p < buckets.length; p++){
+        var pc = palette[p];
+        var dr = ((c>>16)&255)-((pc>>16)&255), dg = ((c>>8)&255)-((pc>>8)&255), db = (c&255)-(pc&255);
+        var d = dr*dr + dg*dg + db*db;
+        if(d < bd){ bd = d; bi = p; }
+      }
+      indexed[i] = bi;
+    }
+    return {palette: palette, indexed: indexed};
+  }
+
+  $exportBtn = document.getElementById('exportBtn');
+  $exportBtn.addEventListener('click', function(){
+    if(!img){ $status.textContent = 'Upload a photo first.'; return; }
+    var W = unlocked ? 1280 : 640;   // paid: 720p-ish · free: 360p
+    var H = Math.round(W * (640/480)); // 4:3 to match preview
+    var FPS = 12, SECONDS = 3, FRAMES = FPS * SECONDS;
+    $status.textContent = 'Rendering ' + FRAMES + ' frames… please wait.';
+    $exportBtn.disabled = true;
+
+    var off = document.createElement('canvas');
+    off.width = W; off.height = H;
+    var octx = off.getContext('2d', {willReadFrequently: true});
+
+    // draw all frames to offscreen, collect RGBA
+    var frameBuffers = [];
+    for(var i = 0; i < FRAMES; i++){
+      var t = i / (FRAMES - 1);
+      drawFrame(octx, W, H, effect, t, !unlocked);
+      frameBuffers.push(octx.getImageData(0, 0, W, H).data.slice());
+    }
+
+    // estimate buffer size: GIF header + per-frame (GCE+descriptor+LZW). 6 bytes/px is generous.
+    var est = 1024 + FRAMES * (W * H * 6);
+    var buf = new Uint8Array(est);
+
+    // Map an RGBA buffer onto a fixed palette, returning indexed pixels.
+    function mapToPalette(rgba, palette){
+      var indexed = new Uint8Array(W * H);
+      for(var p = 0; p < W * H; p++){
+        var c = (rgba[p*4] << 16) | (rgba[p*4+1] << 8) | rgba[p*4+2];
+        var bd = Infinity, bi = 0;
+        for(var g = 0; g < palette.length; g++){
+          var gc = palette[g];
+          var dr = ((c>>16)&255)-((gc>>16)&255), dg = ((c>>8)&255)-((gc>>8)&255), db = (c&255)-(gc&255);
+          var d = dr*dr + dg*dg + db*db;
+          if(d < bd){ bd = d; bi = g; }
+        }
+        indexed[p] = bi;
+      }
+      return indexed;
+    }
+
+    // Shared global palette (median-cut over the first frame) for colour consistency.
+    var q0 = quantize(frameBuffers[0], W, H);
+    var global = q0.palette;
+    var gif = new GifWriter(buf, W, H, {loop: 0, palette: global});
+
+    for(var i = 0; i < FRAMES; i++){
+      var indexed = (i === 0) ? q0.indexed : mapToPalette(frameBuffers[i], global);
+      gif.addFrame(0, 0, W, H, indexed, {
+        palette: global,
+        delay: Math.round(100 / FPS)  // 1/100 s
+      });
+      $status.textContent = 'Rendering ' + (i+1) + '/' + FRAMES + '…';
+    }
+    var len = gif.end();
+
+    var blob = new Blob([buf.subarray(0, len)], {type: 'image/gif'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'old-photo-alive.gif';
+    a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 4000);
+    $status.textContent = 'GIF saved ✅ Happy memory-keeping!';
+    $exportBtn.disabled = false;
+  });
+
+  // ---- Payment / unlock ----
+  function setUnlocked(){
+    unlocked = true;
+    try{ localStorage.setItem(UNLOCKED_KEY, '1'); }catch(e){}
+    $unlockMsg.className = 'ok';
+    $unlockMsg.textContent = 'Unlocked ✅ All effects and clean export are yours.';
+    $freeNote.textContent = 'Full set unlocked — all 5 effects, clean 720p export, no watermark.';
+    paintEffects();
+  }
+
+  if(PAYMENT_LINK){
+    $payBtn.href = PAYMENT_LINK;
+  } else {
+    $payBtn.addEventListener('click', function(ev){
+      ev.preventDefault();
+      $unlockMsg.className = 'err';
+      $unlockMsg.textContent = 'Payment link is being prepared — check back shortly.';
+    });
+  }
+
+  $unlockBtn.addEventListener('click', function(){
+    var key = $license.value.trim();
+    if(!key){ $unlockMsg.className = 'err'; $unlockMsg.textContent = 'Paste your license key first.'; return; }
+    if(!UNLOCK_API){
+      $unlockMsg.className = 'err';
+      $unlockMsg.textContent = 'Unlock service not ready yet — please wait a moment.';
+      return;
+    }
+    $unlockMsg.textContent = 'Checking…';
+    fetch(UNLOCK_API + '/unlock', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({key: key, product: 'old-photo-alive'})
+    }).then(function(r){
+      if(!r.ok) throw new Error('bad key');
+      return r.json();
+    }).then(function(j){
+      if(j && j.valid){ setUnlocked(); }
+      else { $unlockMsg.className = 'err'; $unlockMsg.textContent = 'That key did not validate. Please double-check it.'; }
+    }).catch(function(){
+      $unlockMsg.className = 'err';
+      $unlockMsg.textContent = 'Could not reach the unlock service. Check your connection and try again.';
+    });
+  });
+
+  paintEffects();
+})();
+</script>
+</body>
+</html>
