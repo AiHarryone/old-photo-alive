@@ -100,6 +100,7 @@
       <div class="effects" id="effects">
         <div class="eff active" data-eff="pushin">Push-in</div>
         <div class="eff" data-eff="pushout">Pull-back</div>
+        <div class="eff" data-eff="alive" data-face="1" style="display:none;">Alive ✨</div>
         <div class="eff locked" data-eff="panx">Pan across 🔒</div>
         <div class="eff locked" data-eff="pany">Pan up 🔒</div>
         <div class="eff locked" data-eff="fade">Fade in 🔒</div>
@@ -153,6 +154,7 @@
 </footer>
 
 <script src="vendor/omggif.js"></script>
+<script src="vendor/delaunator.js"></script>
 <script>
 (function(){
   // ---- Config (filled in during launch, milestone 3) ----
@@ -166,6 +168,12 @@
   var effect = 'pushin';
   var unlocked = false;
   try { unlocked = localStorage.getItem(UNLOCKED_KEY) === '1'; } catch(e){}
+  // ---- Face / Alive state ----
+  var faceLandmarks = null;   // array of {x,y} normalized (0..1) once detected
+  var faceMesh = null;        // { points, tris }
+  var morph = null;           // module ref (set via dynamic import)
+  var faceDetecting = false;
+  var MP_READY = false;       // MediaPipe loaded?
 
   // ---- DOM ----
   var $drop = document.getElementById('drop');
@@ -181,14 +189,26 @@
   var $unlockMsg = document.getElementById('unlockMsg');
 
   function lockedEffs(){ return effectLocked(effect); }
-  function effectLocked(e){ return !unlocked && FREE_EFFECTS.indexOf(e) === -1; }
+  function effectLocked(e){
+    if(e === 'alive'){ return !unlocked || !faceLandmarks; } // paid + needs a face
+    return !unlocked && FREE_EFFECTS.indexOf(e) === -1;
+  }
 
   function paintEffects(){
     document.querySelectorAll('.eff').forEach(function(el){
       var e = el.getAttribute('data-eff');
+      if(e === 'alive'){
+        // show only when a face is detected; locked when not paid
+        el.style.display = faceLandmarks ? '' : 'none';
+        el.classList.toggle('locked', effectLocked(e));
+        el.classList.toggle('active', e === effect);
+        return;
+      }
       el.classList.toggle('locked', effectLocked(e));
       el.classList.toggle('active', e === effect);
     });
+    // if the current effect is alive but no longer valid, fall back to pushin
+    if(effect === 'alive' && (!faceLandmarks || !unlocked)){ effect = 'pushin'; paintEffects(); }
   }
 
   // ---- Effect selection ----
@@ -196,7 +216,11 @@
     el.addEventListener('click', function(){
       var e = el.getAttribute('data-eff');
       if(effectLocked(e)){
-        $status.textContent = 'This effect is part of the full set. Unlock all 5 for $9.99 below.';
+        if(e === 'alive' && !unlocked){
+          $status.textContent = 'Alive is part of the full set. Unlock all 5 for $9.99 below.';
+        } else {
+          $status.textContent = 'This effect is part of the full set. Unlock all 5 for $9.99 below.';
+        }
         return;
       }
       effect = e;
@@ -218,6 +242,8 @@
 
   function loadFile(f){
     if(!f.type.match(/^image\//)){ $status.textContent = 'Please choose an image file.'; return; }
+    // reset face state for new photo
+    faceLandmarks = null; faceMesh = null;
     var reader = new FileReader();
     reader.onload = function(ev){
       var im = new Image();
@@ -227,10 +253,74 @@
         $wrap.style.display = 'block';
         paintEffects();
         animate();
+        detectFace(); // async: tries to enable "Alive ✨"
       };
       im.src = ev.target.result;
     };
     reader.readAsDataURL(f);
+  }
+
+  // ---- Alive: load morph + MediaPipe, detect face ----
+  window.__detectLog = window.__detectLog || [];
+  function dlog(m){ try{ window.__detectLog.push(m); }catch(e){} console.log('[detect]', m); }
+  function detectFace(){
+    if(faceDetecting) return;
+    faceDetecting = true;
+    dlog('detectFace start, hasImg=' + !!img);
+    // ensure morph module loaded
+    var loadMorph = Promise.resolve();
+    if(!morph){
+      loadMorph = import(new URL('./vendor/morph.js', window.location.href).href).then(function(m){ morph = m; });
+    }
+    loadMorph.then(function(){
+      dlog('morph loaded');
+      return ensureMediaPipe();
+    }).then(function(lm){
+      dlog('mediapipe ready');
+      if(!img) return;
+      // downscale to a working canvas for detection speed
+      var c = document.createElement('canvas');
+      var MAX = 512;
+      var s = Math.min(1, MAX / Math.max(img.width, img.height));
+      c.width = Math.max(1, Math.round(img.width * s));
+      c.height = Math.max(1, Math.round(img.height * s));
+      var g = c.getContext('2d', { willReadFrequently: true });
+      g.drawImage(img, 0, 0, c.width, c.height);
+      var res = lm.detect(c);
+      dlog('detect done, faces=' + (res && res.faceLandmarks ? res.faceLandmarks.length : 'null'));
+      if(res && res.faceLandmarks && res.faceLandmarks.length){
+        var face = res.faceLandmarks[0];
+        // convert normalized coords (relative to c) to image coords (same ratio, so same norm)
+        faceLandmarks = face.map(function(p){ return { x: p.x, y: p.y }; });
+        // build mesh once
+        faceMesh = morph.buildFaceMesh(faceLandmarks);
+        window.__landmarks = faceLandmarks;
+        window.__mesh = faceMesh;
+        window.__morph = morph;
+        dlog('face set, tris=' + (faceMesh.tris.length));
+      }
+    }).catch(function(e){ dlog('detect error: ' + (e && e.message) + ' | name=' + (e && e.name) + ' | ' + (e && e.stack || '').split('\n').slice(0,3).join(' ')); })
+    .finally(function(){
+      faceDetecting = false;
+      paintEffects();
+    });
+  }
+
+  function ensureMediaPipe(){
+    if(MP_READY) return MP_READY;
+    var base = new URL('./vendor/mediapipe/wasm/', window.location.href).href.replace(/\/$/, '');
+    var bundleUrl = new URL('./vendor/mediapipe/vision_bundle.mjs', window.location.href).href;
+    dlog('bundle url: ' + bundleUrl);
+    return import(bundleUrl).then(function(mod){
+      dlog('bundle imported');
+      return mod.FilesetResolver.forVisionTasks(base).then(function(vision){
+        dlog('vision resolver ready');
+        return mod.FaceLandmarker.createFromOptions(vision, {
+          baseOptions: { modelAssetPath: new URL('./vendor/mediapipe/face_landmarker.task', window.location.href).href, delegate: 'CPU' },
+          runningMode: 'IMAGE', numFaces: 1
+        });
+      });
+    }).then(function(lm){ MP_READY = lm; dlog('landmarker ready'); return lm; });
   }
 
   document.getElementById('resetBtn').addEventListener('click', function(){
@@ -260,12 +350,55 @@
     return {sx:sx, sy:sy, sw:sw, sh:sh, fade: (eff==='fade' ? t : 1)};
   }
 
+  // ---- Alive support: morph the source image per frame ----
+  // Returns a canvas with the source image face-morphed at time t (0..1).
+  // Combines blink + smile + subtle breathe. Cached by t for preview (coarse),
+  // but export (targetW large) always recomputes so every GIF frame is unique.
+  var warpCacheKey = '', warpCacheCanvas = null;
+  function warpedSource(t, targetW){
+    if(!morph || !faceLandmarks || !faceMesh){ return img; }
+    var isPreview = (targetW || 480) <= 720;
+    if(isPreview){
+      // coarse cache for preview: ~15 updates/sec, low CPU
+      var key = Math.round(t * 45);
+      if(warpCacheKey === key) return warpCacheCanvas || img;
+    }
+    // compose displacement: blink(t) + smile(t) + breathe(t)
+    var displaced = faceLandmarks;
+    if(morph.displaceBlink){ displaced = morph.displaceBlink(displaced, (t * 2) % 1); }
+    if(morph.displaceSmile){ displaced = morph.displaceSmile(displaced, t); }
+    if(morph.displaceBreathe){ displaced = morph.displaceBreathe(displaced, t); }
+    // warp at working resolution (preview ~480w, export ~720w)
+    var MW = Math.min(targetW || 480, img.width, 720);
+    var MH = Math.round(MW * img.height / img.width);
+    var src = document.createElement('canvas');
+    src.width = img.width; src.height = img.height;
+    src.getContext('2d').drawImage(img, 0, 0);
+    try {
+      var out = morph.warpFaceToCanvas(src, MW, MH, faceLandmarks, displaced, faceMesh.tris);
+      if(isPreview){ warpCacheKey = key; warpCacheCanvas = out; }
+      return out;
+    } catch(e){ return img; }
+  }
+
   function drawFrame(c, W, H, eff, t, withWatermark){
     c.fillStyle = '#fff8f0';
     c.fillRect(0, 0, W, H);
     if(!img) return;
     var r = srcRect(img.width, img.height, W, H, eff, t);
-    c.drawImage(img, r.sx, r.sy, r.sw, r.sh, 0, 0, W, H);
+    if(eff === 'alive' && faceLandmarks && morph){
+      // use warped source, keep srcRect window for framing
+      var srcW = warpedSource(t, W);
+      // srcRect window is in original image coords; warped canvas is same aspect, scaled.
+      // Map r (in img px) to warped canvas coords:
+      var sxr = r.sx / img.width * srcW.width;
+      var syr = r.sy / img.height * srcW.height;
+      var swr = r.sw / img.width * srcW.width;
+      var shr = r.sh / img.height * srcW.height;
+      c.drawImage(srcW, sxr, syr, swr, shr, 0, 0, W, H);
+    } else {
+      c.drawImage(img, r.sx, r.sy, r.sw, r.sh, 0, 0, W, H);
+    }
     if(r.fade < 1){
       c.fillStyle = 'rgba(255,248,240,' + (1 - r.fade) + ')';
       c.fillRect(0, 0, W, H);
@@ -356,6 +489,7 @@
   $exportBtn = document.getElementById('exportBtn');
   $exportBtn.addEventListener('click', function(){
     if(!img){ $status.textContent = 'Upload a photo first.'; return; }
+    if(rafId){ cancelAnimationFrame(rafId); rafId = null; } // pause preview so export has the main thread
     var W = unlocked ? 1280 : 640;   // paid: 720p-ish · free: 360p
     var H = Math.round(W * (640/480)); // 4:3 to match preview
     var FPS = 12, SECONDS = 3, FRAMES = FPS * SECONDS;
@@ -379,10 +513,16 @@
     var buf = new Uint8Array(est);
 
     // Map an RGBA buffer onto a fixed palette, returning indexed pixels.
+    // Uses a per-frame colour cache (old photos have few distinct colours) to avoid
+    // re-scanning the full palette for every pixel — 10-30x faster.
     function mapToPalette(rgba, palette){
       var indexed = new Uint8Array(W * H);
-      for(var p = 0; p < W * H; p++){
+      var cache = new Map();
+      var N = W * H;
+      for(var p = 0; p < N; p++){
         var c = (rgba[p*4] << 16) | (rgba[p*4+1] << 8) | rgba[p*4+2];
+        var hit = cache.get(c);
+        if(hit !== undefined){ indexed[p] = hit; continue; }
         var bd = Infinity, bi = 0;
         for(var g = 0; g < palette.length; g++){
           var gc = palette[g];
@@ -390,6 +530,7 @@
           var d = dr*dr + dg*dg + db*db;
           if(d < bd){ bd = d; bi = g; }
         }
+        cache.set(c, bi);
         indexed[p] = bi;
       }
       return indexed;
@@ -418,6 +559,7 @@
     setTimeout(function(){ URL.revokeObjectURL(a.href); }, 4000);
     $status.textContent = 'GIF saved ✅ Happy memory-keeping!';
     $exportBtn.disabled = false;
+    animate(); // resume preview
   });
 
   // ---- Payment / unlock ----
