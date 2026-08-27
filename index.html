@@ -452,12 +452,12 @@
     fetch(UNLOCK_API + '/unlock', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({key: key, product: 'old-photo-alive'})
+      body: JSON.stringify({key: key, product: 'old-photo-alive', instanceName: 'web-browser'})
     }).then(function(r){
       if(!r.ok) throw new Error('bad key');
       return r.json();
     }).then(function(j){
-      if(j && j.valid){ setUnlocked(); }
+      if(j && (j.valid || j.ok)){ setUnlocked(); }
       else { $unlockMsg.className = 'err'; $unlockMsg.textContent = 'That key did not validate. Please double-check it.'; }
     }).catch(function(){
       $unlockMsg.className = 'err';
