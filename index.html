@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://aiharryone.github.io/old-photo-alive/">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Is animating my old photo free?","acceptedAnswer":{"@type":"Answer","text":"Yes — upload a photo and try 2 classic effects free with a small watermark. Unlock all effects and clean 720p export for a one-time fee."}},
+{"@type":"Question","name":"Is animating my old photo free?","acceptedAnswer":{"@type":"Answer","text":"Yes — all 5 motion effects are free with a small watermark, and you can try the Alive face animation once for free. Unlimited Alive plus watermark-free 720p export is a one-time $9.99, no subscription."}},
 {"@type":"Question","name":"Is my photo uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Everything runs in your browser. Your photo never leaves your device."}},
 {"@type":"Question","name":"What effects can I apply to an old photo?","acceptedAnswer":{"@type":"Answer","text":"Slow push-in, slow pull-back, horizontal pan, vertical pan and a gentle fade-in. Great for memorials, family history and memory videos."}}
 ]}
@@ -101,9 +101,9 @@
         <div class="eff active" data-eff="pushin">Push-in</div>
         <div class="eff" data-eff="pushout">Pull-back</div>
         <div class="eff" data-eff="alive" data-face="1" style="display:none;">Alive ✨</div>
-        <div class="eff locked" data-eff="panx">Pan across 🔒</div>
-        <div class="eff locked" data-eff="pany">Pan up 🔒</div>
-        <div class="eff locked" data-eff="fade">Fade in 🔒</div>
+        <div class="eff" data-eff="panx">Pan across</div>
+        <div class="eff" data-eff="pany">Pan up</div>
+        <div class="eff" data-eff="fade">Fade in</div>
       </div>
 
       <div class="preview-wrap" style="display:none;" id="previewWrap">
@@ -115,16 +115,16 @@
         <div class="hint" id="status">Pick an effect and hit Export.</div>
       </div>
 
-      <div class="note" id="freeNote">Free: push-in &amp; pull-back, with a small watermark. Unlock all 5 effects + clean 720p export below.</div>
+      <div class="note" id="freeNote">All 5 motion effects are free. Try Alive once free — then unlock unlimited Alive + clean 720p export below.</div>
     </div>
   </section>
 
   <section class="pro" id="unlock">
-    <h3>Unlock the Full Set</h3>
-    <p>All 5 effects · clean 720p export · no watermark · no subscription, ever</p>
+    <h3>Unlock Unlimited Alive</h3>
+    <p>Unlimited Alive animations · clean 720p export · no watermark · no subscription, ever</p>
     <div class="price">$9.99 <span class="once">one-time</span></div>
     <div class="controls">
-      <a class="btn" id="payBtn" href="#unlock">Get Unlimited Access</a>
+      <a class="btn" id="payBtn" href="#unlock">Get Unlimited Alive</a>
     </div>
     <div class="key-form">
       <input type="text" id="licenseKey" placeholder="Already bought? Paste your license key">
@@ -137,7 +137,7 @@
     <h2>FAQ</h2>
     <p><b>Is my photo uploaded anywhere?</b> No. Everything runs in your browser. Your photo never leaves your device.</p>
     <p><b>What effects can I use?</b> Slow push-in, slow pull-back, pan across, pan up and a gentle fade-in — perfect for memorials, family history and memory videos.</p>
-    <p><b>Is it free?</b> Try push-in and pull-back free with a small watermark. Unlock everything for a one-time $9.99 — no subscription.</p>
+    <p><b>Is it free?</b> Yes — all 5 motion effects are free with a small watermark. You can also try Alive (face animation) once for free. Unlimited Alive + watermark-free 720p export is a one-time $9.99 — no subscription.</p>
   </section>
 
   <div class="related">
@@ -160,7 +160,9 @@
   // ---- Config (filled in during launch, milestone 3) ----
   var PAYMENT_LINK = 'https://creem.io/product/prod_1R4Hz0sKVv8p5c5TgWl20H';  // Creem product link
   var UNLOCK_API   = 'https://old-photo-unlock.aiharryone.workers.dev';  // Cloudflare Worker base URL
-  var FREE_EFFECTS = ['pushin','pushout']; // effects unlocked on free tier
+  var FREE_EFFECTS = ['pushin','pushout','panx','pany','fade']; // all Ken Burns effects free
+  var ALIVE_FREE_TRIES_KEY = 'oldphoto_alive_tries'; // how many Alive exports the user has done
+  var ALIVE_FREE_TRIES = 1;                            // first Alive use is free
   var UNLOCKED_KEY = 'oldphoto_unlocked';
 
   // ---- State ----
@@ -189,9 +191,20 @@
   var $unlockMsg = document.getElementById('unlockMsg');
 
   function lockedEffs(){ return effectLocked(effect); }
+  function aliveFreeUsed(){
+    // How many Alive exports the user has already done this browser.
+    var n = 0;
+    try { n = parseInt(localStorage.getItem(ALIVE_FREE_TRIES_KEY), 10) || 0; } catch(e){}
+    return n;
+  }
   function effectLocked(e){
-    if(e === 'alive'){ return !unlocked || !faceLandmarks; } // paid + needs a face
-    return !unlocked && FREE_EFFECTS.indexOf(e) === -1;
+    if(e === 'alive'){
+      // needs a face, and if not unlocked, free tries are exhausted
+      if(!faceLandmarks) return true;
+      if(unlocked) return false;
+      return aliveFreeUsed() >= ALIVE_FREE_TRIES; // locked once the 1 free try is used
+    }
+    return false; // all Ken Burns effects are free
   }
 
   function paintEffects(){
@@ -207,8 +220,8 @@
       el.classList.toggle('locked', effectLocked(e));
       el.classList.toggle('active', e === effect);
     });
-    // if the current effect is alive but no longer valid, fall back to pushin
-    if(effect === 'alive' && (!faceLandmarks || !unlocked)){ effect = 'pushin'; paintEffects(); }
+    // if the current effect is alive but no longer selectable, fall back to pushin
+    if(effect === 'alive' && effectLocked('alive')){ effect = 'pushin'; paintEffects(); }
   }
 
   // ---- Effect selection ----
@@ -216,10 +229,14 @@
     el.addEventListener('click', function(){
       var e = el.getAttribute('data-eff');
       if(effectLocked(e)){
-        if(e === 'alive' && !unlocked){
-          $status.textContent = 'Alive is part of the full set. Unlock all 5 for $9.99 below.';
+        if(e === 'alive'){
+          if(aliveFreeUsed() >= ALIVE_FREE_TRIES){
+            $status.textContent = 'You\'ve used your free Alive trial. Unlock unlimited Alive for $9.99 below.';
+          } else {
+            $status.textContent = 'Pick Alive to use your one free trial — then unlock for unlimited.';
+          }
         } else {
-          $status.textContent = 'This effect is part of the full set. Unlock all 5 for $9.99 below.';
+          $status.textContent = 'This effect is part of the full set. Unlock for $9.99 below.';
         }
         return;
       }
@@ -490,6 +507,11 @@
   $exportBtn.addEventListener('click', function(){
     if(!img){ $status.textContent = 'Upload a photo first.'; return; }
     if(rafId){ cancelAnimationFrame(rafId); rafId = null; } // pause preview so export has the main thread
+    // consume a free Alive try (only on real export, not preview)
+    if(effect === 'alive' && !unlocked){
+      var used = aliveFreeUsed();
+      try { localStorage.setItem(ALIVE_FREE_TRIES_KEY, String(used + 1)); } catch(e){}
+    }
     var W = unlocked ? 1280 : 640;   // paid: 720p-ish · free: 360p
     var H = Math.round(W * (640/480)); // 4:3 to match preview
     var FPS = 12, SECONDS = 3, FRAMES = FPS * SECONDS;
@@ -559,6 +581,11 @@
     setTimeout(function(){ URL.revokeObjectURL(a.href); }, 4000);
     $status.textContent = 'GIF saved ✅ Happy memory-keeping!';
     $exportBtn.disabled = false;
+    if(effect === 'alive' && !unlocked && aliveFreeUsed() >= ALIVE_FREE_TRIES){
+      // free Alive try used up — refresh lock state and fall back
+      paintEffects();
+      $status.textContent = 'That was your free Alive trial! Unlock unlimited Alive for $9.99 below.';
+    }
     animate(); // resume preview
   });
 
@@ -567,8 +594,8 @@
     unlocked = true;
     try{ localStorage.setItem(UNLOCKED_KEY, '1'); }catch(e){}
     $unlockMsg.className = 'ok';
-    $unlockMsg.textContent = 'Unlocked ✅ All effects and clean export are yours.';
-    $freeNote.textContent = 'Full set unlocked — all 5 effects, clean 720p export, no watermark.';
+    $unlockMsg.textContent = 'Unlocked ✅ Unlimited Alive and clean 720p export are yours.';
+    $freeNote.textContent = 'Unlocked — all effects free, unlimited Alive, clean 720p export, no watermark.';
     paintEffects();
   }
 
