@@ -18,20 +18,20 @@
 <meta name="description" content="Remove the background from any photo in your browser for free: people, portraits and product photos with a clean transparent cut-out. Nothing uploaded, no signup, private.">
 <link rel="canonical" href="https://aiharryone.github.io/old-photo-alive/remove-bg.html">
 <style>
-  :root{--cream:#f7efe3;--cream2:#fdf6ea;--ink:#4a3420;--brown:#6e4f2a;--tan:#b0703a;--muted:#9b8261;--green:#6d7a2a;--shadow:0 10px 30px rgba(90,60,25,.10);}
+  :root{--cream:#f6f8fb;--cream2:#ffffff;--ink:#111827;--brown:#111827;--tan:#4f46e5;--tan-d:#4338ca;--muted:#6b7280;--green:#059669;--green-bg:#ecfdf5;--paid-bg:#fffbeb;--shadow:0 10px 30px rgba(17,24,39,.08);--radius:16px;}
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:#5c4a3a;line-height:1.6;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--cream);color:#111827;line-height:1.6;}
   .wrap{max-width:1000px;margin:0 auto;padding:0 22px;}
-  header{background:linear-gradient(135deg,#ecd9b8,#f6e8cd);padding:18px 0;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(120,90,50,.08);}
+  header{background:#fff;padding:16px 0;position:sticky;top:0;z-index:50;border-bottom:1px solid #e5e7eb;box-shadow:0 2px 10px rgba(17,24,39,.05);}
   nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
   .logo{font-weight:bold;font-size:21px;color:var(--brown);}
   .nav-links{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-  .nav-links a{color:var(--brown);font-family:Helvetica,Arial,sans-serif;font-weight:bold;text-decoration:none;font-size:14px;}
+  nav-links a{color:var(--muted);font-family:inherit;font-weight:600;text-decoration:none;font-size:14px;}
   .nav-links a:hover{color:var(--tan);}
-  .btn{display:inline-block;background:linear-gradient(135deg,#c98650,#a15f2e);color:#fff;text-decoration:none;padding:11px 22px;border-radius:999px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;transition:.2s;border:none;cursor:pointer;font-size:14px;}
+  .btn{display:inline-block;background:linear-gradient(135deg,#4f46e5,#2563eb);color:#fff;text-decoration:none;padding:12px 24px;border-radius:999px;font-weight:700;font-family:inherit;transition:.15s;border:none;cursor:pointer;font-size:15px;box-shadow:0 4px 14px rgba(79,70,229,.3);}
   .btn:hover{transform:translateY(-1px);}
-  .btn.ghost{background:#fff;color:var(--brown);border:2px solid #dcc9a4;}
-  .btn.green{background:linear-gradient(135deg,#8f9a4a,#6d7a2a);}
+  .btn.ghost{background:#fff;color:var(--ink);border:1.5px solid #e5e7eb;box-shadow:none;}
+  .btn.green{background:linear-gradient(135deg,#059669,#10b981);box-shadow:0 4px 14px rgba(5,150,105,.3);}
   .btn:disabled{opacity:.5;cursor:not-allowed;}
   .hero{text-align:center;padding:40px 0 16px;}
   .hero h1{font-size:36px;color:var(--ink);margin-bottom:10px;}
@@ -52,7 +52,7 @@
   .bg-swatch{width:34px;height:34px;border-radius:9px;border:2px solid #e6d3b0;cursor:pointer;}
   .bg-swatch.active{border-color:var(--tan);box-shadow:0 0 0 2px var(--tan);}
   .privacy{background:linear-gradient(135deg,#4a3420,#6e4f2a);color:#f3e6cb;border-radius:16px;padding:20px;text-align:center;margin:24px 0;}
-  footer{background:linear-gradient(135deg,#e9d5b0,#f0e2c4);padding:22px 0;text-align:center;font-size:14px;color:var(--muted);margin-top:40px;}
+  footer{background:#fff;border-top:1px solid #e5e7eb;padding:22px 0;text-align:center;font-size:14px;color:var(--muted);margin-top:40px;}
   footer a{color:var(--brown);font-weight:bold;text-decoration:none;}
 </style>
 </head>

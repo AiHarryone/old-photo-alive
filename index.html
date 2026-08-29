@@ -1,289 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="msvalidate.01" content="E62785F51D89A3BD3AFBB2BC2BB07BF9">
 <meta charset="UTF-8">
+<meta name="msvalidate.01" content="E62785F51D89A3BD3AFBB2BC2BB07BF9">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OldPhoto Alive – Restore &amp; Animate Old Photos in Your Browser</title>
-<meta property="og:title" content="OldPhoto Alive – Restore, Animate & 9 Free Browser Tools">
-<meta property="og:description" content="Restore faded photos, remove backgrounds, make passport photos, compress images and more — nine free browser tools, nothing uploaded, no signup.">
+<title>OldPhoto Alive – 9 Free Browser Tools for Photos</title>
+<meta name="description" content="Nine free browser tools for photos: compress, passport photo, background removal, PDF, GIF, watermark, document scanner, restore and animate. Nothing uploaded, no signup.">
+<link rel="canonical" href="https://aiharryone.github.io/old-photo-alive/">
+<meta property="og:title" content="OldPhoto Alive – 9 Free Browser Tools for Photos">
+<meta property="og:description" content="Compress, passport photo, remove background, PDF, GIF, watermark, scanner, restore and animate — nine free tools, all in your browser.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://aiharryone.github.io/old-photo-alive/index.html">
+<meta property="og:url" content="https://aiharryone.github.io/old-photo-alive/">
 <meta property="og:image" content="https://aiharryone.github.io/old-photo-alive/assets/demo.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="OldPhoto Alive – Restore, Animate & 9 Free Browser Tools">
-<meta name="twitter:description" content="Restore faded photos, remove backgrounds, make passport photos, compress images and more — nine free browser tools, nothing uploaded, no signup.">
+<meta name="twitter:title" content="OldPhoto Alive – 9 Free Browser Tools for Photos">
+<meta name="twitter:description" content="Nine free browser tools for photos — nothing uploaded, no signup.">
 <meta name="twitter:image" content="https://aiharryone.github.io/old-photo-alive/assets/demo.jpg">
-
-<meta name="description" content="Restore faded old photos, then bring them to life — push-in, pan and fade motion, all in your browser. Nothing uploaded, no signup. Free.">
-<link rel="canonical" href="https://aiharryone.github.io/old-photo-alive/">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Is restoring and animating my old photo free?","acceptedAnswer":{"@type":"Answer","text":"Yes — old photo restoration and all 5 motion effects (push-in, pull-back, pan, fade) are completely free. No signup, no watermark."}},
-{"@type":"Question","name":"Is my photo uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Everything — restoration and animation — runs in your browser. Your photo never leaves your device."}},
-{"@type":"Question","name":"What effects can I apply to an old photo?","acceptedAnswer":{"@type":"Answer","text":"Slow push-in, slow pull-back, horizontal pan, vertical pan and a gentle fade-in — perfect for memorials, family history and memory videos."}}
-]}
+{"@context":"https://schema.org","@type":"WebSite","name":"OldPhoto Alive","url":"https://aiharryone.github.io/old-photo-alive/","description":"Nine free browser tools for photos: compress, passport photo, background removal, PDF, GIF, watermark, document scanner, restore and animate."}
 </script>
 <style>
-  :root{
-    --cream:#f7efe3; --cream2:#fdf6ea; --sand:#e9d5b0;
-    --ink:#4a3420; --brown:#6e4f2a; --tan:#b0703a; --tan-d:#985c2d;
-    --muted:#9b8261; --green:#6d7a2a; --green-bg:#eaf0d6; --paid-bg:#f6e3cd;
-    --shadow:0 10px 30px rgba(90,60,25,.10);
-    --radius:20px;
-  }
   *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --bg:#f6f8fb; --card:#ffffff; --ink:#111827; --muted:#6b7280;
+    --accent:#4f46e5; --accent2:#2563eb; --accent-soft:#eef2ff;
+    --green:#059669; --green-soft:#ecfdf5; --amber:#d97706; --amber-soft:#fffbeb;
+    --line:#e5e7eb; --shadow:0 10px 30px rgba(17,24,39,.08); --radius:16px;
+  }
   html{scroll-behavior:smooth;}
-  body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:#5c4a3a;line-height:1.65;}
-  .wrap{max-width:1020px;margin:0 auto;padding:0 22px;}
-  a{color:var(--tan);}
-  .btn{display:inline-block;background:linear-gradient(135deg,#c98650,#a15f2e);color:#fff;text-decoration:none;padding:13px 26px;border-radius:999px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;transition:.2s;border:none;cursor:pointer;font-size:15px;box-shadow:0 6px 18px rgba(176,112,58,.25);}
-  .btn:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(176,112,58,.32);}
-  .btn.ghost{background:#fff;color:var(--brown);border:2px solid #dcc9a4;box-shadow:none;}
-  .btn.ghost:hover{background:var(--cream2);box-shadow:none;}
-  .btn.green{background:linear-gradient(135deg,#8f9a4a,#6d7a2a);box-shadow:0 6px 18px rgba(109,122,42,.22);}
-  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
-  .pill{font-family:Helvetica,Arial,sans-serif;font-size:12px;font-weight:bold;border-radius:999px;padding:4px 12px;letter-spacing:.3px;}
-  .pill.free{background:var(--green-bg);color:var(--green);}
-  .pill.paid{background:var(--paid-bg);color:#a05a2a;}
-
-  /* ---------- header ---------- */
-  header{background:linear-gradient(135deg,#ecd9b8,#f6e8cd);padding:18px 0;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(120,90,50,.08);}
-  nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
-  .logo{font-weight:bold;font-size:21px;color:var(--brown);letter-spacing:.2px;}
-  .logo .dot{color:var(--tan);}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px;}
+  a{color:var(--accent);}
+  header{background:#fff;position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);}
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;flex-wrap:wrap;gap:10px;}
+  .logo{font-weight:800;font-size:20px;color:var(--ink);letter-spacing:-.3px;}
+  .logo em{font-style:normal;color:var(--accent);}
   .nav-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
-  .nav-links a.navlink{color:var(--brown);font-family:Helvetica,Arial,sans-serif;font-weight:bold;text-decoration:none;font-size:14px;}
-  .nav-links a.navlink:hover{color:var(--tan);}
-
-  /* ---------- hero ---------- */
-  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:52px 0 40px;}
-  @media(max-width:820px){.hero{grid-template-columns:1fr;text-align:center;}}
-  .hero .eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e6d3b0;border-radius:999px;padding:7px 16px;font-family:Helvetica,Arial,sans-serif;font-size:13px;font-weight:bold;color:var(--brown);margin-bottom:20px;}
-  .hero h1{font-size:46px;line-height:1.12;color:var(--ink);margin-bottom:18px;letter-spacing:-.5px;}
-  .hero h1 em{font-style:normal;color:var(--tan);}
-  .hero p.sub{font-size:18px;color:#7d6849;max-width:520px;margin-bottom:28px;}
-  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
-  .hero .trust{display:flex;gap:20px;flex-wrap:wrap;margin-top:26px;font-family:Helvetica,Arial,sans-serif;font-size:13px;color:var(--muted);font-weight:bold;}
+  .nav-links a{color:var(--muted);font-weight:600;text-decoration:none;font-size:14px;}
+  .nav-links a:hover{color:var(--ink);}
+  .btn{display:inline-block;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;padding:11px 22px;border-radius:999px;font-weight:700;font-size:14px;transition:.15s;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,.3);}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(79,70,229,.4);}
+  .btn.ghost{background:#fff;color:var(--ink);box-shadow:none;border:1.5px solid var(--line);}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent);box-shadow:none;}
+  .btn.green{background:linear-gradient(135deg,#059669,#10b981);box-shadow:0 4px 14px rgba(5,150,105,.3);}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;padding:52px 0 40px;}
+  @media(max-width:840px){.hero{grid-template-columns:1fr;text-align:center;}}
+  .hero .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:7px 16px;font-weight:700;font-size:13px;margin-bottom:18px;}
+  .hero h1{font-size:44px;line-height:1.1;letter-spacing:-1px;margin-bottom:16px;font-weight:800;}
+  .hero h1 span{color:var(--accent);}
+  .hero p.sub{font-size:18px;color:var(--muted);max-width:520px;margin-bottom:26px;}
+  .hero .cta-row{display:flex;gap:12px;flex-wrap:wrap;}
+  .hero .trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px;font-size:13px;font-weight:600;color:var(--muted);}
   .hero .trust span::before{content:"✓ ";color:var(--green);}
-  .demo-wrap{position:relative;}
-  .demo-frame{position:relative;border-radius:24px;padding:12px;background:linear-gradient(135deg,#fff,#f3e6cb);box-shadow:var(--shadow);transform:rotate(1.5deg);}
-  .demo-frame::after{content:"";position:absolute;inset:8px;border:1px solid rgba(176,112,58,.25);border-radius:18px;pointer-events:none;}
-  #heroDemo{display:block;width:100%;border-radius:16px;aspect-ratio:4/5;background:#1a1109;}
-  .demo-caption{margin-top:12px;text-align:center;font-size:14px;color:var(--muted);font-style:italic;}
-  .demo-caption b{color:var(--tan);}
-
-  /* ---------- tools grid ---------- */
-  .tools-sec{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;margin:10px 0 34px;border:1px solid rgba(176,112,58,.1);}
-  .tools-sec h2{color:var(--ink);font-size:26px;text-align:center;margin-bottom:6px;}
-  .tools-sec .sub{text-align:center;color:var(--muted);margin-bottom:22px;}
-  .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
-  .tool-card{display:block;background:var(--cream2);border:2px solid #e6d3b0;border-radius:16px;padding:16px;text-decoration:none;color:var(--brown);transition:.18s;position:relative;}
-  .tool-card:hover{border-color:var(--tan);transform:translateY(-2px);box-shadow:0 8px 20px rgba(120,90,50,.12);}
-  .tool-card .ico{font-size:26px;}
-  .tool-card .nm{font-weight:bold;font-size:16px;font-family:Helvetica,Arial,sans-serif;margin:6px 0 4px;color:var(--ink);}
-  .tool-card .ds{font-size:13px;color:var(--muted);line-height:1.45;}
-  .tool-card .tag{position:absolute;top:12px;right:12px;font-family:Helvetica,Arial,sans-serif;font-size:11px;font-weight:bold;border-radius:999px;padding:3px 10px;}
-  .tool-card .tag.free{background:var(--green-bg);color:var(--green);}
-  .tool-card .tag.pro{background:var(--paid-bg);color:#a05a2a;}
-  .tool-card.hl{background:linear-gradient(135deg,#eef3d9,#e6f0d6);border-color:#b9c96a;}
-
-  /* ---------- premium unlock ---------- */
-  .premium{background:linear-gradient(135deg,#4a3420,#6e4f2a);color:#f3e6cb;border-radius:var(--radius);padding:34px 26px;text-align:center;margin:0 0 34px;}
-  .premium h2{color:#f6e8cd;font-size:30px;margin-bottom:10px;}
-  .premium p{color:#e6d5b4;max-width:560px;margin:0 auto 18px;font-size:16px;}
-  .premium .price{font-size:40px;font-weight:bold;color:#e9c886;font-family:Helvetica,Arial,sans-serif;}
-  .premium .once{font-size:14px;color:#cbb689;}
-  .premium .feats{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0;font-family:Helvetica,Arial,sans-serif;font-size:13px;font-weight:bold;}
-  .premium .feats span{background:rgba(255,255,255,.08);border-radius:999px;padding:6px 14px;}
-  .premium .btn{font-size:18px;padding:14px 34px;}
-
-  /* ---------- shared upload ---------- */
-  .upload-zone{margin:10px 0 40px;}
-  .drop{background:linear-gradient(135deg,var(--cream2),#fbf0dc);border:2.5px dashed #d8b98a;border-radius:var(--radius);padding:38px 24px;text-align:center;cursor:pointer;transition:.2s;position:relative;}
-  .drop:hover{border-color:var(--tan);background:#fbf3e2;}
-  .drop.dragover{background:#f5e6c8;border-color:var(--tan);transform:scale(1.01);}
-  .drop .up{font-size:34px;}
-  .drop b{color:var(--brown);font-size:18px;display:block;margin-top:6px;}
-  .drop p{color:var(--muted);font-size:14px;margin-top:6px;}
-  .drop.done{border-style:solid;border-color:#a9c36a;background:#f2f6e2;}
-
-  /* ---------- tool sections ---------- */
-  .iface{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;margin-bottom:26px;border:1px solid rgba(176,112,58,.12);}
-  .iface-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:8px;}
-  .iface-icon{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
-  .iface-icon.r{background:#f6e3cd;} .iface-icon.k{background:#eaf0d6;} .iface-icon.a{background:#f3e0d6;}
-  .iface-head h2{color:var(--ink);font-size:24px;}
-  .iface-head .pill{margin-left:auto;}
-  .iface .desc{color:var(--muted);font-size:14px;margin-bottom:18px;max-width:640px;}
-  .preview-slot{min-height:120px;border:1.5px dashed #e0cdab;border-radius:14px;background:repeating-linear-gradient(45deg,#faf3e6,#faf3e6 12px,#f6ecd9 12px,#f6ecd9 24px);display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:bold;}
+  .demo-frame{border-radius:20px;padding:10px;background:#fff;box-shadow:var(--shadow);border:1px solid var(--line);transform:rotate(1deg);}
+  #heroDemo{display:block;width:100%;border-radius:14px;aspect-ratio:4/5;background:#111;}
+  .demo-caption{margin-top:10px;text-align:center;font-size:13px;color:var(--muted);}
+  .demo-caption b{color:var(--accent);}
+  .free-banner{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1px solid #a7f3d0;border-radius:14px;padding:14px 18px;margin:0 0 32px;font-weight:700;color:#065f46;font-size:15px;}
+  .free-banner a{color:#047857;text-decoration:underline;}
+  .tools-sec{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:30px;margin-bottom:34px;border:1px solid var(--line);}
+  .tools-sec h2{font-size:26px;letter-spacing:-.5px;text-align:center;margin-bottom:6px;font-weight:800;}
+  .tools-sec .sub{text-align:center;color:var(--muted);margin-bottom:24px;}
+  .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;}
+  .tool-card{display:block;background:#f9fafb;border:1.5px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:var(--ink);transition:.16s;position:relative;}
+  .tool-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 10px 24px rgba(17,24,39,.1);}
+  .tool-card .ico{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:10px;}
+  .tool-card .nm{font-weight:700;font-size:15px;margin-bottom:4px;}
+  .tool-card .ds{font-size:13px;color:var(--muted);line-height:1.5;}
+  .tool-card .tag{position:absolute;top:12px;right:12px;font-size:11px;font-weight:800;border-radius:999px;padding:3px 10px;}
+  .tool-card .tag.free{background:var(--green-soft);color:var(--green);}
+  .tool-card .tag.pro{background:var(--amber-soft);color:var(--amber);}
+  .tool-card.hl{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border-color:#a7f3d0;}
+  .premium{background:linear-gradient(135deg,#4f46e5,#2563eb);color:#fff;border-radius:20px;padding:38px 28px;text-align:center;margin-bottom:34px;box-shadow:0 16px 40px rgba(79,70,229,.3);}
+  .premium h2{font-size:30px;margin-bottom:10px;font-weight:800;letter-spacing:-.5px;}
+  .premium p{opacity:.92;max-width:560px;margin:0 auto 16px;}
+  .premium .price{font-size:42px;font-weight:800;}
+  .premium .once{font-size:14px;opacity:.85;font-weight:600;}
+  .premium .feats{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0;font-size:13px;font-weight:700;}
+  .premium .feats span{background:rgba(255,255,255,.15);border-radius:999px;padding:6px 14px;}
+  .premium .btn{background:#fff;color:var(--accent);font-size:17px;padding:14px 34px;box-shadow:0 8px 24px rgba(0,0,0,.2);}
+  .upload-zone{margin-bottom:30px;}
+  .drop{background:#fff;border:2px dashed #c7d2fe;border-radius:16px;padding:32px 20px;text-align:center;cursor:pointer;transition:.2s;}
+  .drop:hover{border-color:var(--accent);background:var(--accent-soft);}
+  .drop .up{font-size:30px;}
+  .drop b{color:var(--ink);font-size:17px;display:block;margin-top:6px;}
+  .drop p{color:var(--muted);font-size:13px;margin-top:4px;}
+  .iface{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px;margin-bottom:26px;border:1px solid var(--line);}
+  .iface-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
+  .iface-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;}
+  .iface-icon.r{background:var(--amber-soft);} .iface-icon.k{background:var(--accent-soft);}
+  .iface-head h2{font-size:22px;font-weight:800;letter-spacing:-.4px;}
+  .iface-head .pill{margin-left:auto;font-size:11px;font-weight:800;border-radius:999px;padding:4px 12px;}
+  .pill.free{background:var(--green-soft);color:var(--green);}
+  .pill.pro{background:var(--amber-soft);color:var(--amber);}
+  .iface .desc{color:var(--muted);font-size:14px;margin-bottom:18px;}
+  .preview-slot{min-height:110px;border:1.5px dashed var(--line);border-radius:12px;background:repeating-linear-gradient(45deg,#f9fafb,#f9fafb 12px,#f3f4f6 12px,#f3f4f6 24px);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;font-weight:600;}
   .preview-slot.filled{min-height:0;border:none;background:none;display:block;}
-
-  /* restore */
-  .restore-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start;}
-  @media(max-width:700px){.restore-grid{grid-template-columns:1fr;}}
-  #restoreView{max-width:100%;background:#000;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.12);display:block;margin:0 auto;}
-  .restore-controls .slider-row{margin-bottom:12px;}
-  .slider-row label{display:flex;justify-content:space-between;font-size:13px;font-weight:bold;color:var(--muted);font-family:Helvetica,Arial,sans-serif;}
-  .slider-row label span{color:var(--tan);}
-  input[type=range]{width:100%;margin-top:4px;accent-color:var(--tan);}
-  .chk{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:bold;color:var(--muted);font-family:Helvetica,Arial,sans-serif;margin-bottom:12px;}
-  .restore-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
-  .badge{display:inline-block;background:var(--cream2);border:1px solid #e6d3b0;border-radius:999px;padding:4px 12px;font-size:13px;color:var(--brown);font-family:Helvetica,Arial,sans-serif;margin-top:10px;}
-  .mini-hint{font-size:12px;color:var(--muted);margin-top:8px;}
-
-  /* animate */
+  .restore-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start;}
+  @media(max-width:720px){.restore-grid{grid-template-columns:1fr;}}
+  #restoreView{max-width:100%;border-radius:12px;display:block;margin:0 auto;background:#111;}
+  .slider-row{margin-bottom:12px;}
+  .slider-row label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--muted);}
+  .slider-row label span{color:var(--accent);}
+  input[type=range]{width:100%;margin-top:4px;accent-color:var(--accent);}
+  .chk{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--muted);margin-bottom:12px;}
+  .restore-btns,.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .badge{display:inline-block;background:var(--amber-soft);border:1px solid #fcd34d;border-radius:999px;padding:4px 12px;font-size:12px;color:var(--amber);margin-top:10px;font-weight:700;}
+  .hint{font-size:12px;color:var(--muted);margin-top:8px;}
   .effects{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
-  .eff{flex:1;min-width:100px;background:var(--cream2);border:2px solid #e6d3b0;border-radius:14px;padding:13px 10px;text-align:center;cursor:pointer;font-weight:bold;color:var(--brown);font-family:Helvetica,Arial,sans-serif;transition:.15s;font-size:14px;}
-  .eff:hover{border-color:var(--tan);background:#fbf3e2;}
-  .eff.active{background:var(--tan);color:#fff;border-color:var(--tan);}
-  .eff.locked{opacity:.55;background:#efe6d2;}
-  .eff.locked::after{content:" 🔒";}
-  .eff.locked.active{opacity:1;}
-  #aliveBtn{min-width:220px;font-size:16px;}
-  canvas.anim{max-width:100%;background:#000;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.18);display:block;margin:0 auto;}
-  .controls{margin-top:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-  .hint{font-size:13px;color:var(--muted);margin-top:10px;text-align:center;}
-  .alive-status{text-align:center;font-size:14px;color:var(--brown);font-family:Helvetica,Arial,sans-serif;font-weight:bold;margin-top:12px;}
-
-  /* unlock / pro */
-  .pro{background:linear-gradient(135deg,#fdf6ea,#f6e3cd);border:2px solid #e3c99c;border-radius:var(--radius);padding:26px;margin-top:20px;text-align:center;}
-  .pro h3{color:var(--ink);font-size:22px;margin-bottom:8px;}
-  .pro p{color:#7d6849;margin-bottom:16px;}
-  .pro .price{font-size:30px;font-weight:bold;color:var(--tan);font-family:Helvetica,Arial,sans-serif;}
-  .pro .once{font-size:13px;color:var(--muted);}
-  .key-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
-  #licenseKey{padding:11px 14px;border:2px solid #d8b98a;border-radius:12px;font-size:15px;min-width:240px;font-family:Helvetica,Arial,sans-serif;}
-  #unlockMsg{font-size:14px;margin-top:10px;font-weight:bold;}
-  #unlockMsg.ok{color:var(--green);}
-  #unlockMsg.err{color:#b04a3a;}
-
-  /* ---------- how it works ---------- */
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:14px 0 10px;}
+  .eff{flex:1;min-width:100px;background:#f9fafb;border:1.5px solid var(--line);border-radius:12px;padding:12px;text-align:center;cursor:pointer;font-weight:700;color:var(--muted);transition:.15s;font-size:14px;}
+  .eff:hover{border-color:var(--accent);color:var(--accent);}
+  .eff.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-color:var(--accent);}
+  canvas.anim{max-width:100%;border-radius:12px;display:block;margin:0 auto;background:#111;}
+  .sec-title{font-size:26px;font-weight:800;text-align:center;letter-spacing:-.5px;margin:8px 0 6px;}
+  .sec-sub{text-align:center;color:var(--muted);margin-bottom:22px;}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;}
   @media(max-width:760px){.steps{grid-template-columns:1fr;}}
-  .step-card{background:#fff;border-radius:18px;box-shadow:0 6px 18px rgba(90,60,25,.08);padding:22px;border:1px solid rgba(176,112,58,.1);}
-  .step-card .n{width:32px;height:32px;border-radius:50%;background:var(--tan);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Helvetica,Arial,sans-serif;font-weight:bold;margin-bottom:12px;}
-  .step-card h3{color:var(--ink);font-size:18px;margin-bottom:6px;}
-  .step-card p{font-size:14px;color:var(--muted);}
-
-  /* ---------- privacy strip ---------- */
-  .privacy{background:linear-gradient(135deg,#4a3420,#6e4f2a);color:#f3e6cb;border-radius:var(--radius);padding:30px;margin:10px 0 36px;text-align:center;}
-  .privacy .shield{font-size:40px;display:block;margin-bottom:8px;}
-  .privacy h2{font-size:26px;margin-bottom:10px;}
-  .privacy p{color:#e6d5b4;max-width:620px;margin:0 auto;font-size:16px;}
-
-  /* ---------- sections ---------- */
-  h2.sec{color:var(--ink);font-size:30px;text-align:center;margin-bottom:8px;}
-  .sec-sub{text-align:center;color:var(--muted);margin-bottom:24px;font-size:16px;}
-  section.block{padding:20px 0 6px;}
-
-  /* ---------- faq / related ---------- */
-  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:10px 0 30px;}
+  .step-card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:20px;border:1px solid var(--line);}
+  .step-card .n{width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:10px;}
+  .step-card h3{font-size:16px;font-weight:700;margin-bottom:4px;}
+  .step-card p{font-size:13px;color:var(--muted);}
+  .privacy{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;text-align:center;margin-bottom:30px;}
+  .privacy b{font-size:16px;}
+  .privacy p{color:var(--muted);font-size:14px;margin-top:4px;}
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:30px;}
   @media(max-width:760px){.faq-grid{grid-template-columns:1fr;}}
-  .faq-item{background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 4px 12px rgba(90,60,25,.07);}
-  .faq-item b{color:var(--ink);}
-  .faq-item p{font-size:14px;color:var(--muted);margin-top:4px;}
-  .related{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:26px;margin:10px 0 30px;}
-  .related h3{color:var(--ink);margin-bottom:14px;font-size:20px;}
-  .related a{display:inline-block;background:var(--cream2);color:var(--brown);border:1px solid #e6d3b0;border-radius:999px;padding:7px 16px;margin:4px 6px 0 0;text-decoration:none;font-size:14px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;}
-  .related a:hover{background:#f5e6c8;}
-
-  footer{background:linear-gradient(135deg,#e9d5b0,#f0e2c4);padding:26px 0;text-align:center;font-size:14px;color:var(--muted);margin-top:40px;}
-  footer a{color:var(--brown);font-weight:bold;text-decoration:none;}
-  #resetBtn{display:none;margin:0 auto 30px;width:100%;}
-  @media(max-width:600px){.hero h1{font-size:34px;}.btn{display:block;margin:8px 0;text-align:center;}}
+  .faq-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
+  .faq-item b{display:block;margin-bottom:4px;}
+  .faq-item p{font-size:14px;color:var(--muted);}
+  .related{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:30px;}
+  .related h3{font-size:18px;font-weight:700;margin-bottom:14px;}
+  .related a{display:inline-block;background:#f3f4f6;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:7px 16px;margin:4px 6px 0 0;text-decoration:none;font-size:13px;font-weight:600;}
+  .related a:hover{border-color:var(--accent);color:var(--accent);}
+  footer{background:#fff;border-top:1px solid var(--line);padding:24px 0;text-align:center;font-size:14px;color:var(--muted);}
+  footer a{color:var(--ink);font-weight:600;text-decoration:none;}
+  #resetBtn{display:none;margin:0 auto 26px;width:100%;}
+  @media(max-width:600px){.hero h1{font-size:32px;}.btn{width:100%;text-align:center;}}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap nav">
-    <div class="logo">OldPhoto<span class="dot"> Alive</span></div>
+    <div class="logo">OldPhoto<em>Alive</em></div>
     <div class="nav-links">
-      <a class="navlink" href="#tools">Tools</a>
-      <a class="navlink" href="#how">How it works</a>
+      <a href="#tools">Tools</a>
+      <a href="#restore">Restore</a>
+      <a href="#animate">Animate</a>
+      <a href="#faq">FAQ</a>
       <a class="btn" href="#premium">Unlock All – $9.99</a>
     </div>
   </div>
 </header>
 
 <div class="wrap">
-  <!-- ============ HERO with live demo ============ -->
+  <!-- HERO -->
   <div class="hero">
     <div>
       <div class="eyebrow">🔒 100% in your browser · nothing uploaded · no signup</div>
-      <h1>Bring an <em>old photo</em> back to life</h1>
-      <p class="sub">Restore faded photos, then make them move — slow push-ins, gentle pans, soft fades. One photo, two tools, right here on your device.</p>
+      <h1>Nine free photo tools, <span>one click</span></h1>
+      <p class="sub">Compress, passport photos, remove backgrounds, PDF, GIF, watermarks, document scanning, restore &amp; animate. Every tool runs locally on your device.</p>
       <div class="cta-row">
-        <a class="btn" href="#tools">🧰 Explore all 9 free tools</a>
-        <a class="btn ghost" href="#restore">🖼️ Restore a photo</a>
+        <a class="btn" href="#tools">🧰 Browse all 9 tools</a>
+        <a class="btn ghost" href="compress-image.html">Free Compress →</a>
       </div>
-      <div class="trust">
-        <span>No upload</span><span>No signup</span><span>1 free try each</span>
-      </div>
+      <div class="trust"><span>No upload</span><span>No signup</span><span>Free to try</span></div>
     </div>
     <div class="demo-wrap">
-      <div class="demo-frame">
-        <canvas id="heroDemo" width="400" height="500"></canvas>
-      </div>
-      <p class="demo-caption"><b>Watch a photo come alive</b> — this demo moves in your browser.</p>
+      <div class="demo-frame"><canvas id="heroDemo" width="400" height="500"></canvas></div>
+      <p class="demo-caption"><b>Watch a photo come alive</b> — this demo runs in your browser.</p>
     </div>
   </div>
 
-  <!-- ============ TOOLS GRID ============ -->
+  <!-- FREE BANNER -->
+  <div class="free-banner">🎉 <a href="compress-image.html">Compress Images</a> is completely free — no limits, no watermark. Every other tool is free to try once.</div>
+
+  <!-- TOOLS GRID (all tools, prominent) -->
   <div class="tools-sec" id="tools">
-    <h2>One site, nine free tools</h2>
-    <p class="sub">All in your browser — nothing uploaded, no account needed. <b>Compress Images is completely free</b>; every other tool is free to try once.</p>
+    <h2>All 9 tools</h2>
+    <p class="sub">Pick a tool — it opens in your browser and your file never leaves your device.</p>
     <div class="tools-grid">
-      <a class="tool-card hl" href="compress-image.html"><span class="tag free">FREE</span><div class="ico">🖼️</div><div class="nm">Compress Images</div><div class="ds">Shrink JPG/PNG/WebP, batch, convert. The fastest image compressor on the web.</div></a>
-      <a class="tool-card" href="#restore"><span class="tag pro">1 FREE TRY</span><div class="ico">🖼️</div><div class="nm">Restore Photos</div><div class="ds">Fix faded, blurry and noisy old photos in one click.</div></a>
-      <a class="tool-card" href="#animate"><span class="tag pro">1 FREE TRY</span><div class="ico">🎬</div><div class="nm">Animate Photos</div><div class="ds">Push-in, pan &amp; fade — export a moving GIF.</div></a>
-      <a class="tool-card" href="passport-photo.html"><span class="tag pro">1 FREE TRY</span><div class="ico">🪪</div><div class="nm">Passport Photo</div><div class="ds">Official passport/visa/ID photo sizes, in seconds.</div></a>
-      <a class="tool-card" href="remove-bg.html"><span class="tag pro">1 FREE TRY</span><div class="ico">✂️</div><div class="nm">Remove Background</div><div class="ds">Clean person cut-outs with a feathered edge.</div></a>
-      <a class="tool-card" href="pdf-tools.html"><span class="tag pro">1 FREE TRY</span><div class="ico">📄</div><div class="nm">PDF Tools</div><div class="ds">Images→PDF, merge PDFs, PDF→JPG.</div></a>
-      <a class="tool-card" href="gif-maker.html"><span class="tag pro">1 FREE TRY</span><div class="ico">🎞️</div><div class="nm">GIF Maker</div><div class="ds">Turn images into an animated GIF, speed &amp; loop.</div></a>
-      <a class="tool-card" href="watermark.html"><span class="tag pro">1 FREE TRY</span><div class="ico">🔖</div><div class="nm">Watermark</div><div class="ds">Add a text or logo watermark in batch.</div></a>
-      <a class="tool-card" href="document-scanner.html"><span class="tag pro">1 FREE TRY</span><div class="ico">📄</div><div class="nm">Document Scanner</div><div class="ds">Straighten &amp; crop a photo of any document.</div></a>
+      <a class="tool-card hl" href="compress-image.html"><span class="tag free">FREE</span><div class="ico" style="background:var(--green-soft)">🖼️</div><div class="nm">Compress Images</div><div class="ds">Shrink JPG/PNG/WebP, batch, resize &amp; convert.</div></a>
+      <a class="tool-card" href="passport-photo.html"><span class="tag pro">1 FREE TRY</span><div class="ico" style="background:var(--accent-soft)">🪪</div><div class="nm">Passport Photo</div><div class="ds">Official passport, visa &amp; ID photo sizes.</div></a>
+      <a class="tool-card" href="remove-bg.html"><span class="tag pro">1 FREE TRY</span><div class="ico" style="background:#fef3c7">✂️</div><div class="nm">Remove Background</div><div class="ds">Clean person cut-outs with feathered edges.</div></a>
+      <a class="tool-card" href="pdf-tools.html"><span class="tag pro">1 FREE TRY</span><div class="ico" style="background:#fee2e2">📄</div><div class="nm">PDF Tools</div><div class="ds">Images→PDF, merge PDFs, PDF→JPG.</div></a>
+      <a class="tool-card" href="gif-maker.html"><span class="tag pro">1 FREE TRY</span><div class="ico" style="background:#dcfce7">🎞️</div><div class="nm">GIF Maker</div><div class="ds">Turn images into an animated GIF.</div></a>
+      <a class="tool-card" href="watermark.html"><span class="tag pro">1 FREE TRY</span><div class="ico" style="background:#e0e7ff">🔖</div><div class="nm">Watermark</div><div class="ds">Add text or logo watermarks in batch.</div></a>
+      <a class="tool-card" href="document-scanner.html"><span class="tag pro">1 FREE TRY</span><div class="ico" style="background:#fce7f3">📄</div><div class="nm">Document Scanner</div><div class="ds">Straighten &amp; crop a document photo.</div></a>
+      <a class="tool-card" href="#restore"><span class="tag pro">1 FREE TRY</span><div class="ico" style="background:#ffedd5">🖼️</div><div class="nm">Restore Photos</div><div class="ds">Fix faded, blurry &amp; noisy old photos.</div></a>
+      <a class="tool-card" href="#animate"><span class="tag pro">1 FREE TRY</span><div class="ico" style="background:#c7d2fe">🎬</div><div class="nm">Animate Photos</div><div class="ds">Ken Burns push-in, pan &amp; fade → GIF.</div></a>
     </div>
   </div>
 
-  <!-- ============ PREMIUM UNLOCK ============ -->
+  <!-- PREMIUM -->
   <div class="premium" id="premium">
     <h2>Unlock everything, forever</h2>
     <p>One payment unlocks <b>all nine tools</b> — unlimited Compress, Passport, Remove Background, PDF, GIF, Watermark, Scanner, Restore &amp; Animate. No subscription, no watermark, yours for life.</p>
     <div class="price">$9.99 <span class="once">one-time · lifetime</span></div>
-    <div class="feats">
-      <span>All 9 tools</span><span>No watermark</span><span>Unlimited uses</span><span>Works on every device</span><span>100% private</span>
-    </div>
+    <div class="feats"><span>All 9 tools</span><span>No watermark</span><span>Unlimited uses</span><span>Works on every device</span><span>100% private</span></div>
     <a class="btn" href="https://creem.io/product/prod_6AE1xgYo8j7DIbN08Bh59S" target="_blank" rel="noopener">Get Lifetime Access →</a>
   </div>
 
-  <!-- ============ SHARED UPLOAD ============ -->
+  <!-- SHARED UPLOAD -->
   <div class="upload-zone">
     <div class="drop" id="drop">
       <div class="up">📷</div>
-      <b>Upload your photo — it feeds all two tools below</b>
+      <b>Upload a photo — feed it into Restore or Animate below</b>
       <p>or drag it here · JPG / PNG · stays on your device</p>
     </div>
     <input type="file" id="fileInput" accept="image/*" style="display:none;">
   </div>
 
-  <input type="hidden" id="workspace">
-
-  <!-- ============ ① RESTORE ============ -->
+  <!-- RESTORE -->
   <section class="iface" id="restore">
     <div class="iface-head">
       <div class="iface-icon r">🖼️</div>
       <h2>Restore Photos</h2>
-      <span class="pill free">FREE</span>
+      <span class="pill pro">1 FREE TRY</span>
     </div>
-    <p class="desc">Bring back faded tones, remove colour casts, sharpen soft scans and clean up noise. Fine-tune to taste, then send the result into Animate.</p>
+    <p class="desc">Bring back faded tones, remove colour casts, sharpen soft scans, clean up noise — then send the result into Animate.</p>
     <div class="restore-grid">
       <div style="text-align:center;">
         <div class="preview-slot" id="restoreSlot">Your restored photo appears here</div>
         <canvas id="restoreView" width="320" height="400" style="display:none;"></canvas>
-        <p class="hint" id="restoreHint">Drag the divider to compare before / after.</p>
+        <p class="hint">Drag the divider to compare before / after.</p>
       </div>
-      <div class="restore-controls">
+      <div>
         <button class="btn" id="autoBtn" style="width:100%;margin-bottom:14px;">✨ Auto Fix</button>
         <div class="slider-row"><label>Brightness <span id="vB">0</span></label><input type="range" id="sB" min="-60" max="60" value="0"></div>
         <div class="slider-row"><label>Contrast <span id="vC">0</span></label><input type="range" id="sC" min="-60" max="80" value="0"></div>
@@ -300,14 +242,14 @@
     </div>
   </section>
 
-  <!-- ============ ② ANIMATE (Ken Burns, free) ============ -->
+  <!-- ANIMATE -->
   <section class="iface" id="animate">
     <div class="iface-head">
       <div class="iface-icon k">🎬</div>
-      <h2>Animate — Push-in &amp; Pan</h2>
-      <span class="pill free">FREE</span>
+      <h2>Animate Photos</h2>
+      <span class="pill pro">1 FREE TRY</span>
     </div>
-    <p class="desc">The classic documentary move: a slow push toward a face, a gentle drift across a scene, a soft fade. Pick a motion, export a GIF.</p>
+    <p class="desc">The classic documentary move — a slow push toward a face, a gentle pan across a scene, a soft fade. Export a GIF.</p>
     <div class="effects" id="effects">
       <div class="eff active" data-eff="pushin">Push-in</div>
       <div class="eff" data-eff="pushout">Pull-back</div>
@@ -318,918 +260,309 @@
     <div style="text-align:center;">
       <div class="preview-slot" id="kbSlot">Your moving photo appears here</div>
       <canvas class="anim" id="kbCanvas" width="480" height="640" style="display:none;"></canvas>
-      <div class="controls">
-        <button class="btn green" id="exportKbBtn">Export GIF</button>
-      </div>
+      <div class="controls"><button class="btn green" id="exportKbBtn">Export GIF</button></div>
       <p class="hint" id="kbStatus">Pick a motion and hit Export.</p>
     </div>
   </section>
 
   <button class="btn ghost" id="resetBtn">Start over — new photo</button>
 
-  <!-- ============ HOW IT WORKS ============ -->
-  <section class="block" id="how">
-    <h2 class="sec">How it works</h2>
-    <p class="sec-sub">One photo, two tools. All in your browser.</p>
-    <div class="steps">
-      <div class="step-card">
-        <div class="n">1</div>
-        <h3>Upload</h3>
-        <p>Drag in a scan or a phone photo. It never leaves your device.</p>
-      </div>
-      <div class="step-card">
-        <div class="n">2</div>
-        <h3>Restore</h3>
-        <p>Auto Fix brings back faded tones, colour and sharpness — free.</p>
-      </div>
-      <div class="step-card">
-        <div class="n">3</div>
-        <h3>Animate</h3>
-        <p>Add slow motion, or gentle motion. Export a GIF.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PRIVACY ============ -->
-  <div class="privacy">
-    <span class="shield">🛡️</span>
-    <h2>Your memories stay yours.</h2>
-    <p>Everything — restoration, face detection, animation, export — runs in your browser. Your photo never touches a server, never sits in someone's cloud, and never trains a model.</p>
+  <!-- HOW IT WORKS -->
+  <h2 class="sec-title">How it works</h2>
+  <p class="sec-sub">One photo, two tools, all in your browser.</p>
+  <div class="steps">
+    <div class="step-card"><div class="n">1</div><h3>Upload</h3><p>Drag in a scan or a phone photo. It never leaves your device.</p></div>
+    <div class="step-card"><div class="n">2</div><h3>Restore</h3><p>Auto Fix brings back faded tones, colour and sharpness.</p></div>
+    <div class="step-card"><div class="n">3</div><h3>Animate</h3><p>Add slow motion and export a GIF. Share it anywhere.</p></div>
   </div>
 
-  <!-- ============ FAQ ============ -->
-  <section class="block">
-    <h2 class="sec">Questions, answered</h2>
-    <div class="faq-grid">
-      <div class="faq-item"><b>Is my photo uploaded anywhere?</b><p>No. Restoration and animation both run in your browser. Your photo never leaves your device.</p></div>
-      <div class="faq-item"><b>What's free?</b><p>Compress Images is completely free, and every other tool is free to try once. A one-time $9.99 unlocks all nine tools forever — no subscription.</p></div>
-      <div class="faq-item"><b>What does Restore do?</b><p>One-click Auto Fix brings back faded tones, removes colour casts, sharpens soft scans and reduces noise. The result feeds straight into Animate.</p></div>
-      <div class="faq-item"><b>How does the unlock work?</b><p>Pay once with a card, Creem emails you a license code, and you paste it into any tool. It unlocks every tool on the site permanently, on any device.</p></div>
-    </div>
-  </section>
+  <!-- PRIVACY -->
+  <div class="privacy">
+    <b>🔒 Your files stay yours.</b>
+    <p>Every tool runs in your browser. Nothing is uploaded, nothing is stored, nothing is tracked.</p>
+  </div>
 
-  <!-- ============ RELATED ============ -->
+  <!-- FAQ -->
+  <div class="faq-grid" id="faq">
+    <div class="faq-item"><b>What's free?</b><p>Compress Images is completely free. Every other tool is free to try once.</p></div>
+    <div class="faq-item"><b>How does the unlock work?</b><p>Pay once, Creem emails you a code, paste it into any tool — it unlocks everything permanently.</p></div>
+    <div class="faq-item"><b>Is my photo uploaded?</b><p>No. All processing happens in your browser. Your files never leave your device.</p></div>
+    <div class="faq-item"><b>What does Restore do?</b><p>One-click Auto Fix for faded tones, colour casts, blur and noise. The result feeds into Animate.</p></div>
+  </div>
+
+  <!-- RELATED -->
   <div class="related">
-    <h3>Tools &amp; guides</h3>
-    <a href="passport-photo.html">Passport Photo Maker (free)</a>
-    <a href="compress-image.html">Compress Images (free)</a>
-    <a href="remove-bg.html">Remove Background (free)</a>
-    <a href="pdf-tools.html">PDF Tools (free)</a>
-    <a href="gif-maker.html">GIF Maker (free)</a>
-    <a href="watermark.html">Watermark (free)</a>
-    <a href="document-scanner.html">Document Scanner (free)</a>
-    <a href="restore.html">Restore Photos (standalone)</a>
+    <h3>More tools</h3>
+    <a href="passport-photo.html">Passport Photo</a>
+    <a href="compress-image.html">Compress Images</a>
+    <a href="remove-bg.html">Remove Background</a>
+    <a href="pdf-tools.html">PDF Tools</a>
+    <a href="gif-maker.html">GIF Maker</a>
+    <a href="watermark.html">Watermark</a>
+    <a href="document-scanner.html">Document Scanner</a>
+    <a href="restore.html">Restore (standalone)</a>
     <a href="seo/animate-old-photos.html">How to Animate Old Photos</a>
     <a href="seo/revive-old-photos.html">Revive Old Photos</a>
-    <a href="seo/ken-burns-effect.html">What Is the Ken Burns Effect?</a>
+    <a href="seo/ken-burns-effect.html">Ken Burns Effect</a>
     <a href="seo/family-history-video.html">Family History Video</a>
-    <a href="seo/memorial-video-maker.html">Memorial Video Maker</a>
-    <a href="seo/old-photo-gif-maker.html">Old Photo GIF Maker</a>
-    <h3 style="margin-top:18px;">More free tools for self-publishers</h3>
-    <a href="https://aiharryone.github.io/kdp-launch-kit/">KDP Launch Kit</a>
-    <a href="https://aiharryone.github.io/kdp-launch-kit/royalty-calculator.html">Royalty Calculator</a>
-    <a href="https://aiharryone.github.io/kdp-launch-kit/kdp-cover-calculator.html">Cover Calculator</a>
-    <a href="https://aiharryone.github.io/kdp-launch-kit/isbn-converter.html">ISBN Converter</a>
+    <a href="seo/memorial-video-maker.html">Memorial Video</a>
+    <a href="seo/old-photo-gif-maker.html">Old Photo GIF</a>
   </div>
 </div>
 
 <footer>
-  Made for the memories that deserve to move. Questions? <a href="mailto:Ai_harryone@outlook.com">Ai_harryone@outlook.com</a> · <a href="index.html">OldPhoto Alive</a> · <a href="restore.html">Restore Photos</a> · <a href="https://aiharryone.github.io/kdp-launch-kit/terms.html">Terms</a> · <a href="https://aiharryone.github.io/kdp-launch-kit/privacy.html">Privacy</a>
+  OldPhotoAlive · <a href="index.html">Home</a> · <a href="restore.html">Restore</a> · <a href="passport-photo.html">Passport</a> · <a href="compress-image.html">Compress</a> · <a href="remove-bg.html">Remove BG</a> · <a href="pdf-tools.html">PDF</a>
 </footer>
 
 <script src="vendor/omggif.js"></script>
-<script src="vendor/delaunator.js"></script>
+<script src="unlock.js"></script>
 <script>
 (function(){
-  // ---- Config ----
-  var PAYMENT_LINK = 'https://creem.io/product/prod_1R4Hz0sKVv8p5c5TgWl20H';
-  var UNLOCK_API   = 'https://old-photo-unlock.aiharryone.workers.dev';
-  var ALIVE_FREE_TRIES_KEY = 'oldphoto_alive_tries';
-  var ALIVE_FREE_TRIES = 1;
-  var UNLOCKED_KEY = 'oldphoto_unlocked';
-
-  // ---- State ----
-  var img = null;
-  var srcImg = null;
-  function currentSource(){ return srcImg || img; }
-  var effect = 'pushin';
-  var unlocked = false;
-  try { unlocked = localStorage.getItem(UNLOCKED_KEY) === '1'; } catch(e){}
-  var faceLandmarks = null;
-  var faceMesh = null;
-  var morph = null;
-  var faceDetecting = false;
-  var MP_READY = false;
-  var faceLib = null;        // real-face motion-style library (face-lib.json)
-  var matchedStyle = null;   // best-matching library entry for the current photo
-  var matchedParams = null;  // derived animation parameters from the matched style
-
-  // ---- DOM ----
   var $file = document.getElementById('fileInput');
   var $drop = document.getElementById('drop');
-  var $dropDone = function(done){
-    $drop.classList.toggle('done', done);
-    $drop.querySelector('b').textContent = done ? 'Photo ready ✓ — it feeds all two tools below' : 'Upload your photo — it feeds all two tools below';
-  };
   var $kbCanvas = document.getElementById('kbCanvas');
-  var $aliveCanvas = document.getElementById('aliveCanvas');   // Alive is offline — guarded
   var $restoreView = document.getElementById('restoreView');
   var kbCtx = $kbCanvas.getContext('2d');
-  var aliveCtx = $aliveCanvas ? $aliveCanvas.getContext('2d') : null;
   var rvCtx = $restoreView.getContext('2d');
   var $kbStatus = document.getElementById('kbStatus');
-  var $aliveStatus = document.getElementById('aliveStatus');
-  var $aliveBtn = document.getElementById('aliveBtn');
   var $grayBadge = document.getElementById('grayBadge');
   var $restoreSlot = document.getElementById('restoreSlot');
   var $kbSlot = document.getElementById('kbSlot');
-  var $aliveSlot = document.getElementById('aliveSlot');
-  var $payBtn = document.getElementById('payBtn');
-  var $license = document.getElementById('licenseKey');
-  var $unlockBtn = document.getElementById('unlockBtn');
-  var $unlockMsg = document.getElementById('unlockMsg');
   var $resetBtn = document.getElementById('resetBtn');
 
-  // fill a preview slot: hide placeholder, show canvas
-  function showCanvas(cv, slot){ slot.classList.add('filled'); slot.style.display = 'none'; cv.style.display = 'block'; }
+  var img = null, srcImg = null;
+  function currentSource(){ return srcImg || img; }
+  var effect = 'pushin';
 
-  // ---- Hero demo: a sample photo that moves forever ----
+  // hero demo
   (function(){
     var demo = new Image();
     demo.src = 'assets/demo.jpg';
     demo.onload = function(){
       var cv = document.getElementById('heroDemo');
-      if(!cv || !cv.getContext) return;
+      if (!cv || !cv.getContext) return;
       var ctx = cv.getContext('2d');
-      var W = cv.width, H = cv.height;
-      var t0 = performance.now();
-      function loop(now){
+      var W = cv.width, H = cv.height, t0 = performance.now();
+      (function loop(now){
         var t = ((now - t0) % 4000) / 4000;
         var cover = Math.max(W/demo.width, H/demo.height);
-        var s = cover * (1 + 0.14 * t);
-        var sw = W/s, sh = H/s;
-        var sx = (demo.width - sw)/2, sy = (demo.height - sh)/2;
-        ctx.drawImage(demo, sx, sy, sw, sh, 0, 0, W, H);
+        var s = cover * (1 + 0.14 * t), sw = W/s, sh = H/s;
+        ctx.drawImage(demo, (demo.width-sw)/2, (demo.height-sh)/2, sw, sh, 0, 0, W, H);
         requestAnimationFrame(loop);
-      }
-      requestAnimationFrame(loop);
+      })(t0);
     };
   })();
 
-  // ---- helpers ----
-  function aliveFreeUsed(){
-    var n = 0;
-    try { n = parseInt(localStorage.getItem(ALIVE_FREE_TRIES_KEY), 10) || 0; } catch(e){}
-    return n;
-  }
-  function effectLocked(e){
-    if(e === 'alive'){
-      if(!faceLandmarks) return true;
-      if(unlocked) return false;
-      return aliveFreeUsed() >= ALIVE_FREE_TRIES;
-    }
-    return false;
-  }
+  function showCanvas(cv, slot){ slot.classList.add('filled'); slot.style.display = 'none'; cv.style.display = 'block'; }
 
-  function paintEffects(){
-    document.querySelectorAll('#effects .eff').forEach(function(el){
-      var e = el.getAttribute('data-eff');
-      el.classList.toggle('active', e === effect && effect !== 'alive');
-    });
-    // Alive is offline — skip its UI entirely
-    if($aliveBtn && $aliveStatus){
-      var show = !!faceLandmarks;
-      $aliveBtn.style.display = show ? '' : 'none';
-      var locked = effectLocked('alive');
-      $aliveBtn.classList.toggle('locked', locked);
-      $aliveBtn.classList.toggle('active', effect === 'alive' && !locked);
-      if(show){
-        $aliveStatus.textContent = locked
-          ? (aliveFreeUsed() >= ALIVE_FREE_TRIES ? 'You\'ve used your free Alive trial — unlock for $9.99 to keep using it.' : 'One free Alive try left — then unlock for $9.99.')
-          : (unlocked ? 'Alive unlocked — unlimited, no watermark.' : 'Face detected ✓ — click Alive to use your one free trial.');
-      }
-    }
-    if(effect === 'alive' && effectLocked('alive')){ effect = 'pushin'; }
-  }
-
-  // ---- Effect selection (free) ----
-  document.querySelectorAll('#effects .eff').forEach(function(el){
-    el.addEventListener('click', function(){
-      var e = el.getAttribute('data-eff');
-      if(!img){ $kbStatus.textContent = 'Upload a photo first (dropzone above).'; return; }
-      effect = e;
-      paintEffects();
-      animate($kbCanvas, e);
-    });
-  });
-
-  // ---- Alive button (offline; guarded) ----
-  if($aliveBtn){
-  $aliveBtn.addEventListener('click', function(){
-    if(!img){ if($aliveStatus) $aliveStatus.textContent = 'Upload a photo first (dropzone above).'; return; }
-    if(effectLocked('alive')){
-      if($aliveStatus) $aliveStatus.textContent = aliveFreeUsed() >= ALIVE_FREE_TRIES
-        ? 'You\'ve used your free Alive trial. Unlock unlimited Alive for $9.99 below.'
-        : 'Pick Alive to use your one free trial — then unlock for unlimited.';
-      return;
-    }
-    effect = 'alive';
-    paintEffects();
-    animate($aliveCanvas, 'alive');
-  });
-  }
-
-  // ---- Upload ----
+  // upload
   $drop.addEventListener('click', function(){ $file.click(); });
   $drop.addEventListener('dragover', function(ev){ ev.preventDefault(); $drop.classList.add('dragover'); });
   $drop.addEventListener('dragleave', function(){ $drop.classList.remove('dragover'); });
-  $drop.addEventListener('drop', function(ev){
-    ev.preventDefault(); $drop.classList.remove('dragover');
-    if(ev.dataTransfer.files && ev.dataTransfer.files[0]) loadFile(ev.dataTransfer.files[0]);
-  });
-  $file.addEventListener('change', function(){
-    if($file.files && $file.files[0]) loadFile($file.files[0]);
-  });
+  $drop.addEventListener('drop', function(ev){ ev.preventDefault(); $drop.classList.remove('dragover'); if(ev.dataTransfer.files[0]) loadFile(ev.dataTransfer.files[0]); });
+  $file.addEventListener('change', function(){ if($file.files[0]) loadFile($file.files[0]); });
 
   function loadFile(f){
     if(!f.type.match(/^image\//)){ $kbStatus.textContent = 'Please choose an image file.'; return; }
-    faceLandmarks = null; faceMesh = null;
     var reader = new FileReader();
     reader.onload = function(ev){
       var im = new Image();
       im.onload = function(){
-        img = im;
-        srcImg = null;
+        img = im; srcImg = null;
         grayscale = isGrayscale(im);
         $grayBadge.style.display = grayscale ? 'inline-block' : 'none';
-        setupRestore();
-        renderRestore();
-        // photo appears in both interfaces at once
+        setupRestore(); renderRestore();
         showCanvas($restoreView, $restoreSlot);
         showCanvas($kbCanvas, $kbSlot);
-        if($aliveCanvas && aliveCtx){ showCanvas($aliveCanvas, $aliveSlot); drawStill(aliveCtx, $aliveCanvas, im); }
-        $dropDone(true);
         $resetBtn.style.display = 'block';
         resetRestoreControls();
-        paintEffects();
         animate($kbCanvas, 'pushin');
-        // Alive offline — no face detection / MediaPipe needed
       };
       im.src = ev.target.result;
     };
     reader.readAsDataURL(f);
   }
 
-  // draw a static cover-cropped photo onto a canvas
-  function drawStill(ctx, cv, src){
-    var W = cv.width, H = cv.height;
-    var cover = Math.max(W/src.width, H/src.height);
-    var sw = W/cover, sh = H/cover;
-    var sx = (src.width - sw)/2, sy = (src.height - sh)/2;
-    ctx.drawImage(src, sx, sy, sw, sh, 0, 0, W, H);
-  }
-
-  // ---- Restore module ----
+  // ---- restore ----
   var restoreSettings = { bright: 0, contrast: 0, sat: 0, sharpen: 0, denoise: false };
   var restoreWork = null, restoreDivider = 0.5, restoreDragging = false, grayscale = false;
 
   function isGrayscale(im){
-    var c = document.createElement('canvas');
-    c.width = 64; c.height = 64;
-    var g = c.getContext('2d');
-    g.drawImage(im, 0, 0, 64, 64);
-    var d = g.getImageData(0, 0, 64, 64).data;
-    var maxSpread = 0;
-    for (var i = 0; i < d.length; i += 4){
-      var spread = Math.max(d[i], d[i+1], d[i+2]) - Math.min(d[i], d[i+1], d[i+2]);
-      if (spread > maxSpread) maxSpread = spread;
-    }
-    return maxSpread < 12;
+    var c = document.createElement('canvas'); c.width = 64; c.height = 64;
+    var g = c.getContext('2d'); g.drawImage(im, 0, 0, 64, 64);
+    var d = g.getImageData(0, 0, 64, 64).data, maxS = 0;
+    for (var i = 0; i < d.length; i += 4){ var s = Math.max(d[i],d[i+1],d[i+2]) - Math.min(d[i],d[i+1],d[i+2]); if (s > maxS) maxS = s; }
+    return maxS < 12;
   }
-
   function setupRestore(){
-    var max = 1000;
-    var s = Math.min(1, max / Math.max(img.width, img.height));
+    var s = Math.min(1, 1000 / Math.max(img.width, img.height));
     restoreWork = document.createElement('canvas');
     restoreWork.width = Math.max(2, Math.round(img.width * s));
     restoreWork.height = Math.max(2, Math.round(img.height * s));
     restoreWork.getContext('2d').drawImage(img, 0, 0, restoreWork.width, restoreWork.height);
-    $restoreView.width = 320;
-    $restoreView.height = Math.max(2, Math.round(320 * restoreWork.height / restoreWork.width));
+    $restoreView.width = 320; $restoreView.height = Math.max(2, Math.round(320 * restoreWork.height / restoreWork.width));
   }
-
   function processPixels(src, W, H, o){
-    var n = W * H;
-    var out = new Uint8ClampedArray(src);
+    var n = W*H, out = new Uint8ClampedArray(src);
     (function(){
       var hist = [new Float64Array(256), new Float64Array(256), new Float64Array(256)];
-      for (var i = 0; i < n; i++){
-        var j = i * 4;
-        for (var c = 0; c < 3; c++) hist[c][out[j + c]]++;
-      }
+      for (var i = 0; i < n; i++){ var j = i*4; for (var c = 0; c < 3; c++) hist[c][out[j+c]]++; }
       var min = [0,0,0], max = [255,255,255];
-      for (var c = 0; c < 3; c++){
-        var acc = 0;
-        while (min[c] < 255 && acc < n * 0.01){ acc += hist[c][min[c]]; min[c]++; }
-        acc = 0;
-        while (max[c] > 0 && acc < n * 0.01){ acc += hist[c][max[c]]; max[c]--; }
-      }
-      var stretch = true;
-      for (var c = 0; c < 3; c++){ if (max[c] - min[c] < 12) stretch = false; }
-      if (stretch){
-        var MAX_GAIN = 2.0, TARGET_SPAN = 220;
-        for (var c = 0; c < 3; c++){
-          var span = max[c] - min[c];
-          var gain = span < 1 ? 1 : TARGET_SPAN / span;
-          if (gain > MAX_GAIN) gain = MAX_GAIN;
-          var mid = (min[c] + max[c]) / 2;
-          for (var i = 0; i < n; i++){
-            var j = i * 4;
-            var v = (out[j + c] - mid) * gain + 128;
-            out[j + c] = v < 0 ? 0 : (v > 255 ? 255 : v);
-          }
-        }
-      }
+      for (var c = 0; c < 3; c++){ var a = 0; while (min[c] < 255 && a < n*0.01){ a += hist[c][min[c]]; min[c]++; } a = 0; while (max[c] > 0 && a < n*0.01){ a += hist[c][max[c]]; max[c]--; } }
+      var st = true; for (var c = 0; c < 3; c++) if (max[c]-min[c] < 12) st = false;
+      if (st) for (var c = 0; c < 3; c++){ var span = max[c]-min[c], gain = span < 1 ? 1 : Math.min(2, 220/span), mid = (min[c]+max[c])/2;
+        for (var i = 0; i < n; i++){ var v = (out[i*4+c]-mid)*gain + 128; out[i*4+c] = v < 0 ? 0 : (v > 255 ? 255 : v); } }
     })();
     if (!grayscale){
-      var mr = 0, mg = 0, mb = 0;
-      for (var i = 0; i < n; i++){ var j = i*4; mr += out[j]; mg += out[j+1]; mb += out[j+2]; }
-      mr /= n; mg /= n; mb /= n;
-      var avg = (mr + mg + mb) / 3;
-      var kr = 1 + 0.6 * (avg / (mr || 1) - 1);
-      var kg = 1 + 0.6 * (avg / (mg || 1) - 1);
-      var kb = 1 + 0.6 * (avg / (mb || 1) - 1);
-      for (var i = 0; i < n; i++){
-        var j = i*4;
-        out[j]   = out[j]   * kr;
-        out[j+1] = out[j+1] * kg;
-        out[j+2] = out[j+2] * kb;
-      }
+      var mr=0,mg=0,mb=0; for (var i=0;i<n;i++){ mr+=out[i*4]; mg+=out[i*4+1]; mb+=out[i*4+2]; } mr/=n; mg/=n; mb/=n;
+      var avg=(mr+mg+mb)/3, kr=1+0.6*(avg/(mr||1)-1), kg=1+0.6*(avg/(mg||1)-1), kb=1+0.6*(avg/(mb||1)-1);
+      for (var i=0;i<n;i++){ out[i*4]*=kr; out[i*4+1]*=kg; out[i*4+2]*=kb; }
     }
-    var bright = o.bright * 2.55;
-    var cf2 = (259 * (o.contrast * 2.55 + 255)) / (255 * (259 - o.contrast * 2.55));
-    var sat = 1 + o.sat / 100;
-    for (var i = 0; i < n; i++){
-      var j = i*4;
-      var r = out[j], g = out[j+1], b = out[j+2];
-      var gray = 0.299 * r + 0.587 * g + 0.114 * b;
-      r = gray + (r - gray) * sat;
-      g = gray + (g - gray) * sat;
-      b = gray + (b - gray) * sat;
-      r = cf2 * (r - 128) + 128 + bright;
-      g = cf2 * (g - 128) + 128 + bright;
-      b = cf2 * (b - 128) + 128 + bright;
-      out[j]   = r < 0 ? 0 : (r > 255 ? 255 : r);
-      out[j+1] = g < 0 ? 0 : (g > 255 ? 255 : g);
-      out[j+2] = b < 0 ? 0 : (b > 255 ? 255 : b);
-    }
+    var bright = o.bright*2.55, cf2 = (259*(o.contrast*2.55+255))/(255*(259-o.contrast*2.55)), sat = 1+o.sat/100;
+    for (var i=0;i<n;i++){ var j=i*4, r=out[j], g=out[j+1], b=out[j+2], gr=0.299*r+0.587*g+0.114*b;
+      r = cf2*(gr+(r-gr)*sat-128)+128+bright; g = cf2*(gr+(g-gr)*sat-128)+128+bright; b = cf2*(gr+(b-gr)*sat-128)+128+bright;
+      out[j]=r<0?0:r>255?255:r; out[j+1]=g<0?0:g>255?255:g; out[j+2]=b<0?0:b>255?255:b; }
     if (o.sharpen > 0){
-      var amt = o.sharpen / 100 * 0.9;
-      var base = out.slice();
-      for (var y = 1; y < H - 1; y++){
-        for (var x = 1; x < W - 1; x++){
-          var k = (y * W + x) * 4;
-          for (var c = 0; c < 3; c++){
-            var center = base[k + c];
-            var nb =
-              base[k - 4 + c] + base[k + 4 + c] + base[k - W*4 + c] + base[k + W*4 + c] +
-              base[k - W*4 - 4 + c] + base[k - W*4 + 4 + c] + base[k + W*4 - 4 + c] + base[k + W*4 + 4 + c];
-            var lap = center * 8 - nb;
-            var v = center + amt * lap / 8;
-            out[k + c] = v < 0 ? 0 : (v > 255 ? 255 : v);
-          }
-        }
-      }
+      var amt = o.sharpen/100*0.9, base = out.slice();
+      for (var y=1;y<H-1;y++) for (var x=1;x<W-1;x++){ var k=(y*W+x)*4;
+        for (var c=0;c<3;c++){ var cc=base[k+c], nb=base[k-4+c]+base[k+4+c]+base[k-W*4+c]+base[k+W*4+c]+base[k-W*4-4+c]+base[k-W*4+4+c]+base[k+W*4-4+c]+base[k+W*4+4+c];
+          var v = cc + amt*(cc*8-nb)/8; out[k+c]=v<0?0:v>255?255:v; } }
     }
     if (o.denoise){
       var base = out.slice();
-      for (var y = 1; y < H - 1; y++){
-        for (var x = 1; x < W - 1; x++){
-          var k = (y * W + x) * 4;
-          for (var c = 0; c < 3; c++){
-            var vals = [];
-            for (var dy = -1; dy <= 1; dy++)
-              for (var dx = -1; dx <= 1; dx++)
-                vals.push(base[((y + dy) * W + (x + dx)) * 4 + c]);
-            vals.sort(function(a,b){ return a - b; });
-            out[k + c] = vals[4];
-          }
-        }
-      }
+      for (var y=1;y<H-1;y++) for (var x=1;x<W-1;x++){ var k=(y*W+x)*4;
+        for (var c=0;c<3;c++){ var v=[]; for (var dy=-1;dy<=1;dy++) for (var dx=-1;dx<=1;dx++) v.push(base[((y+dy)*W+(x+dx))*4+c]); v.sort(function(a,b){return a-b;}); out[k+c]=v[4]; } }
     }
     return out;
   }
-
   function renderRestore(){
-    if(!restoreWork) return;
-    var srcData = restoreWork.getContext('2d').getImageData(0, 0, restoreWork.width, restoreWork.height);
-    var data = processPixels(srcData.data, restoreWork.width, restoreWork.height, restoreSettings);
-    var c = document.createElement('canvas');
-    c.width = restoreWork.width; c.height = restoreWork.height;
+    if (!restoreWork) return;
+    var sd = restoreWork.getContext('2d').getImageData(0,0,restoreWork.width,restoreWork.height);
+    var data = processPixels(sd.data, restoreWork.width, restoreWork.height, restoreSettings);
+    var c = document.createElement('canvas'); c.width = restoreWork.width; c.height = restoreWork.height;
     c.getContext('2d').putImageData(new ImageData(data, restoreWork.width, restoreWork.height), 0, 0);
     var w = $restoreView.width, h = $restoreView.height;
     rvCtx.drawImage(c, 0, 0, w, h);
     var split = Math.round(w * restoreDivider);
-    rvCtx.save();
-    rvCtx.beginPath();
-    rvCtx.rect(0, 0, split, h);
-    rvCtx.clip();
-    rvCtx.drawImage(restoreWork, 0, 0, w, h);
-    rvCtx.restore();
-    rvCtx.fillStyle = 'rgba(255,255,255,0.85)';
-    rvCtx.fillRect(split - 1, 0, 2, h);
+    rvCtx.save(); rvCtx.beginPath(); rvCtx.rect(0,0,split,h); rvCtx.clip(); rvCtx.drawImage(restoreWork,0,0,w,h); rvCtx.restore();
+    rvCtx.fillStyle = 'rgba(255,255,255,0.85)'; rvCtx.fillRect(split-1,0,2,h);
   }
-
   function fullRestore(){
-    var W = img.width, H = img.height;
-    var c = document.createElement('canvas');
-    c.width = W; c.height = H;
-    var g = c.getContext('2d');
-    g.drawImage(img, 0, 0);
-    var d = processPixels(g.getImageData(0, 0, W, H).data, W, H, restoreSettings);
-    g.putImageData(new ImageData(d, W, H), 0, 0);
+    var W = img.width, H = img.height, c = document.createElement('canvas'); c.width=W; c.height=H;
+    var g = c.getContext('2d'); g.drawImage(img, 0, 0);
+    g.putImageData(new ImageData(processPixels(g.getImageData(0,0,W,H).data, W, H, restoreSettings), W, H), 0, 0);
     return c;
   }
-
-  function bindSlider(id, key, vid){
-    var el = document.getElementById(id);
-    var lab = document.getElementById(vid);
-    el.addEventListener('input', function(){
-      if(!img){ return; }
-      restoreSettings[key] = parseInt(el.value, 10);
-      lab.textContent = el.value;
-      renderRestore();
-    });
-  }
-  bindSlider('sB', 'bright', 'vB');
-  bindSlider('sC', 'contrast', 'vC');
-  bindSlider('sS', 'sat', 'vS');
-  bindSlider('sSh', 'sharpen', 'vSh');
-  document.getElementById('denoise').addEventListener('change', function(){
-    if(!img) return;
-    restoreSettings.denoise = this.checked;
-    renderRestore();
-  });
-
+  function bind(id, key, vid){ var el = document.getElementById(id), lab = document.getElementById(vid);
+    el.addEventListener('input', function(){ if(!img) return; restoreSettings[key] = +el.value; lab.textContent = el.value; renderRestore(); }); }
+  bind('sB','bright','vB'); bind('sC','contrast','vC'); bind('sS','sat','vS'); bind('sSh','sharpen','vSh');
+  document.getElementById('denoise').addEventListener('change', function(){ if(!img) return; restoreSettings.denoise = this.checked; renderRestore(); });
   document.getElementById('autoBtn').addEventListener('click', function(){
-    if(!img){ $kbStatus.textContent = 'Upload a photo first (dropzone above).'; return; }
-    restoreSettings.bright = 3; restoreSettings.contrast = 16;
-    restoreSettings.sat = grayscale ? 12 : 16; restoreSettings.sharpen = 30;
-    restoreSettings.denoise = true;
-    document.getElementById('sB').value = 3; document.getElementById('vB').textContent = 3;
-    document.getElementById('sC').value = 16; document.getElementById('vC').textContent = 16;
-    document.getElementById('sS').value = restoreSettings.sat; document.getElementById('vS').textContent = restoreSettings.sat;
-    document.getElementById('sSh').value = 30; document.getElementById('vSh').textContent = 30;
-    document.getElementById('denoise').checked = true;
-    renderRestore();
+    if(!img){ $kbStatus.textContent = 'Upload a photo first.'; return; }
+    restoreSettings = { bright: 3, contrast: 16, sat: grayscale ? 12 : 16, sharpen: 30, denoise: true };
+    document.getElementById('sB').value=3; document.getElementById('vB').textContent=3;
+    document.getElementById('sC').value=16; document.getElementById('vC').textContent=16;
+    document.getElementById('sS').value=restoreSettings.sat; document.getElementById('vS').textContent=restoreSettings.sat;
+    document.getElementById('sSh').value=30; document.getElementById('vSh').textContent=30;
+    document.getElementById('denoise').checked=true; renderRestore();
   });
-
-  function resetRestoreControls(){
-    restoreSettings = { bright: 0, contrast: 0, sat: 0, sharpen: 0, denoise: false };
-    document.getElementById('sB').value = 0; document.getElementById('vB').textContent = 0;
-    document.getElementById('sC').value = 0; document.getElementById('vC').textContent = 0;
-    document.getElementById('sS').value = 0; document.getElementById('vS').textContent = 0;
-    document.getElementById('sSh').value = 0; document.getElementById('vSh').textContent = 0;
-    document.getElementById('denoise').checked = false;
-  }
-
+  function resetRestoreControls(){ restoreSettings = { bright:0, contrast:0, sat:0, sharpen:0, denoise:false };
+    document.getElementById('sB').value=0; document.getElementById('vB').textContent=0;
+    document.getElementById('sC').value=0; document.getElementById('vC').textContent=0;
+    document.getElementById('sS').value=0; document.getElementById('vS').textContent=0;
+    document.getElementById('sSh').value=0; document.getElementById('vSh').textContent=0;
+    document.getElementById('denoise').checked=false; }
   document.getElementById('applyRestoreBtn').addEventListener('click', function(){
-    if(!img){ $kbStatus.textContent = 'Upload a photo first (dropzone above).'; return; }
-    srcImg = fullRestore();
-    $kbStatus.textContent = 'Restored version applied to Animate ✓';
-    if(effect === 'alive'){ animate($aliveCanvas, 'alive'); }
-    else { animate($kbCanvas, effect); }
+    if(!img) return; srcImg = fullRestore(); $kbStatus.textContent = 'Restored version applied to Animate ✓'; animate($kbCanvas, effect);
   });
-
   function exportRestore(type){
-    if(!img){ $kbStatus.textContent = 'Upload a photo first (dropzone above).'; return; }
-    var c = fullRestore();
-    var mime = type === 'jpg' ? 'image/jpeg' : 'image/png';
-    var a = document.createElement('a');
-    a.href = c.toDataURL(mime, 0.92);
-    a.download = 'restored.' + (type === 'jpg' ? 'jpg' : 'png');
-    a.click();
+    if(!img) return;
+    var c = fullRestore(), a = document.createElement('a');
+    a.href = c.toDataURL(type === 'jpg' ? 'image/jpeg' : 'image/png', 0.92); a.download = 'restored.' + (type === 'jpg' ? 'jpg' : 'png'); a.click();
   }
   document.getElementById('exportRestorePng').addEventListener('click', function(){ OP.gate('restore', 1, function(){ exportRestore('png'); }); });
   document.getElementById('exportRestoreJpg').addEventListener('click', function(){ OP.gate('restore', 1, function(){ exportRestore('jpg'); }); });
-
-  $restoreView.addEventListener('pointerdown', function(ev){ if(!img) return; restoreDragging = true; moveDiv(ev); });
-  window.addEventListener('pointermove', function(ev){ if (restoreDragging) moveDiv(ev); });
+  $restoreView.addEventListener('pointerdown', function(ev){ if(!img) return; restoreDragging = true; mvDiv(ev); });
+  window.addEventListener('pointermove', function(ev){ if (restoreDragging) mvDiv(ev); });
   window.addEventListener('pointerup', function(){ restoreDragging = false; });
-  function moveDiv(ev){
-    var r = $restoreView.getBoundingClientRect();
-    restoreDivider = Math.max(0, Math.min(1, (ev.clientX - r.left) / r.width));
-    renderRestore();
-  }
+  function mvDiv(ev){ var r = $restoreView.getBoundingClientRect(); restoreDivider = Math.max(0, Math.min(1, (ev.clientX - r.left)/r.width)); renderRestore(); }
 
-  // ---- real-face style library: load + photo→style matching ----
-  fetch('face-lib.json').then(function(r){ return r.ok ? r.json() : null; }).then(function(j){
-    if (j && j.styles && j.styles.length) faceLib = j;
-  }).catch(function(){});
-  function faceSigFromL(L){
-    var cx = (L[33].x + L[362].x) / 2, cy = (L[33].y + L[362].y) / 2;
-    var eyeD = Math.max(1e-4, Math.hypot(L[33].x - L[362].x, L[33].y - L[362].y));
-    var pts = [];
-    for (var i = 0; i < 478; i++){ pts.push((L[i].x - cx) / eyeD, (L[i].y - cy) / eyeD); }
-    var minY = 1, maxY = 0;
-    for (var j = 0; j < 468; j++){ if (L[j].y < minY) minY = L[j].y; if (L[j].y > maxY) maxY = L[j].y; }
-    return { pts: pts, facePct: (maxY - minY) * 100 };
-  }
-  function matchFaceStyle(L){
-    if (!faceLib || !faceLib.styles.length) return null;
-    var sig = faceSigFromL(L);
-    var best = null, bestD = Infinity;
-    for (var s = 0; s < faceLib.styles.length; s++){
-      var sp = faceLib.styles[s].faceSig.pts;
-      if (!sp || sp.length !== sig.pts.length) continue;
-      var d = 0;
-      for (var i = 0; i < sig.pts.length; i++){ var dd = sig.pts[i] - sp[i]; d += dd * dd; }
-      d = Math.sqrt(d / sig.pts.length);
-      d += Math.abs(sig.facePct - faceLib.styles[s].faceSig.facePct) * 0.4; // head-size ratio matters
-      if (d < bestD){ bestD = d; best = faceLib.styles[s]; }
-    }
-    return best ? { style: best, dist: bestD } : null;
-  }
-  function applyMatchedStyle(m){
-    if (!m) return;
-    var mo = m.style.motion || {};
-    function cl(v, lo, hi){ return Math.min(hi, Math.max(lo, v)); }
-    // Library fine-muscle metrics → wide-range animation multipliers, so different
-    // real faces produce clearly different motion (high-motion vs calm styles).
-    matchedParams = {
-      smileAmp: cl((mo.mouthOpen || 0.1) * 6 + (mo.mouthSpread || 0.05) * 2, 0.6, 1.3),
-      squintAmp: cl((mo.eyeMotion || 0.03) * 28, 0.6, 1.3),   // periocular lid activity → smiling-squint strength
-      browAmp: cl((mo.browMotion || 0.03) * 24, 0.6, 1.3),
-      lipAmp: cl((mo.lipMotion || 0.04) * 18, 0.6, 1.3),      // perioral lip activity → mouth open/close
-      headAng: cl(mo.headSwayX * 0.0013, 0.02, 0.05),
-      headDrift: cl(mo.headSwayX * 0.0007, 0.01, 0.028),
-      headYScale: mo.headSwayY > 8 ? 1.2 : 0.8,
-      styleName: m.style.video,
-      dist: m.dist
-    };
-    matchedStyle = m.style;
-    dlog('matched style: ' + m.style.video + ' (dist ' + m.dist.toFixed(3) + ', facePct ' + m.style.faceSig.facePct + '%)');
-  }
-
-  // ---- Alive: face detection ----
-  window.__detectLog = window.__detectLog || [];
-  function dlog(m){ try{ window.__detectLog.push(m); }catch(e){} console.log('[detect]', m); }
-  function detectFace(){
-    if(faceDetecting) return;
-    faceDetecting = true;
-    dlog('detectFace start, hasImg=' + !!img);
-    var loadMorph = Promise.resolve();
-    if(!morph){
-      loadMorph = import(new URL('./vendor/morph.js', window.location.href).href).then(function(m){ morph = m; });
-    }
-    loadMorph.then(function(){
-      return ensureMediaPipe();
-    }).then(function(lm){
-      dlog('mediapipe ready');
-      if(!img) return;
-      var c = document.createElement('canvas');
-      var MAX = 512;
-      var s = Math.min(1, MAX / Math.max(img.width, img.height));
-      c.width = Math.max(1, Math.round(img.width * s));
-      c.height = Math.max(1, Math.round(img.height * s));
-      var g = c.getContext('2d', { willReadFrequently: true });
-      g.drawImage(img, 0, 0, c.width, c.height);
-      var res = lm.detect(c);
-      dlog('detect done, faces=' + (res && res.faceLandmarks ? res.faceLandmarks.length : 'null'));
-      if(res && res.faceLandmarks && res.faceLandmarks.length){
-        var face = res.faceLandmarks[0];
-        faceLandmarks = face.map(function(p){ return { x: p.x, y: p.y, z: p.z }; });
-        faceMesh = morph.buildFaceMesh(faceLandmarks);
-        window.__landmarks = faceLandmarks;
-        window.__mesh = faceMesh;
-        window.__morph = morph;
-        dlog('face set, tris=' + (faceMesh.tris.length));
-        // match the photo's face against the real-face library and adopt that style
-        applyMatchedStyle(matchFaceStyle(faceLandmarks));
-      }
-    }).catch(function(e){ dlog('detect error: ' + (e && e.message)); })
-    .finally(function(){
-      faceDetecting = false;
-      paintEffects();
-    });
-  }
-
-  function ensureMediaPipe(){
-    if(MP_READY) return MP_READY;
-    var base = new URL('./vendor/mediapipe/wasm/', window.location.href).href.replace(/\/$/, '');
-    var bundleUrl = new URL('./vendor/mediapipe/vision_bundle.mjs', window.location.href).href;
-    return import(bundleUrl).then(function(mod){
-      return mod.FilesetResolver.forVisionTasks(base).then(function(vision){
-        return mod.FaceLandmarker.createFromOptions(vision, {
-          baseOptions: { modelAssetPath: new URL('./vendor/mediapipe/face_landmarker.task', window.location.href).href, delegate: 'CPU' },
-          runningMode: 'IMAGE', numFaces: 1
-        });
-      });
-    }).then(function(lm){ MP_READY = lm; dlog('landmarker ready'); return lm; });
-  }
-
-  // ---- Reset ----
-  $resetBtn.addEventListener('click', function(){
-    if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
-    img = null; srcImg = null; faceLandmarks = null; faceMesh = null;
-    $dropDone(false);
-    $restoreSlot.style.display = ''; $kbSlot.style.display = '';
-    if($aliveSlot) $aliveSlot.style.display = '';
-    $restoreSlot.classList.remove('filled'); $kbSlot.classList.remove('filled');
-    if($aliveSlot) $aliveSlot.classList.remove('filled');
-    $restoreView.style.display = 'none'; $kbCanvas.style.display = 'none';
-    if($aliveCanvas) $aliveCanvas.style.display = 'none';
-    $resetBtn.style.display = 'none';
-    $kbStatus.textContent = 'Pick a motion and hit Export.';
-    if($aliveStatus) $aliveStatus.textContent = '';
+  // ---- animate (Ken Burns) ----
+  document.querySelectorAll('#effects .eff').forEach(function(el){
+    el.addEventListener('click', function(){ effect = el.getAttribute('data-eff'); paint(); animate($kbCanvas, effect); });
   });
-
-  // ---- Animation math ----
+  function paint(){ document.querySelectorAll('#effects .eff').forEach(function(el){ el.classList.toggle('active', el.getAttribute('data-eff') === effect); }); }
   function coverScale(iw, ih, W, H){ return Math.max(W/iw, H/ih); }
   function srcRect(iw, ih, W, H, eff, t){
-    var cover = coverScale(iw, ih, W, H);
-    var s = cover, cx = 0.5, cy = 0.5;
-    if(eff === 'pushin'){  s = cover * (1 + 0.15*t); }
-    else if(eff === 'pushout'){ s = cover * (1.15 - 0.15*t); }
-    else if(eff === 'panx'){  s = cover * 1.2; cx = t; }
-    else if(eff === 'pany'){  s = cover * 1.2; cy = t; }
-    else if(eff === 'fade'){  s = cover * (1 + 0.05*t); }
+    var cover = coverScale(iw, ih, W, H), s = cover, cx = 0.5, cy = 0.5;
+    if(eff === 'pushin') s = cover*(1+0.15*t); else if(eff === 'pushout') s = cover*(1.15-0.15*t);
+    else if(eff === 'panx'){ s = cover*1.2; cx = t; } else if(eff === 'pany'){ s = cover*1.2; cy = t; }
+    else if(eff === 'fade') s = cover*(1+0.05*t);
     var sw = W/s, sh = H/s;
-    var sx = (iw - sw) * cx;
-    var sy = (ih - sh) * cy;
-    return {sx:sx, sy:sy, sw:sw, sh:sh, fade: (eff==='fade' ? t : 1)};
+    return { sx: (iw-sw)*cx, sy: (ih-sh)*cy, sw: sw, sh: sh, fade: eff==='fade' ? t : 1 };
   }
-
-  var warpCacheKey = '', warpCacheCanvas = null;
-  function warpedSource(t, targetW){
-    var src = currentSource();
-    if(!morph || !faceLandmarks || !faceMesh || !src){ return src; }
-    var isPreview = (targetW || 480) <= 720;
-    if(isPreview){
-      var key = Math.round(t * 45);
-      if(warpCacheKey === key) return warpCacheCanvas || src;
-    }
-    // expression displacement — calibrated from 12 real face videos. One shared
-    // expression envelope drives the MOUTH and the EYES TOGETHER (Duchenne smile),
-    // with a quick natural blink on top.
-    var displaced = faceLandmarks.map(function(p){ return { x: p.x, y: p.y, z: p.z }; });
-    var fc = morph.faceCenter(faceLandmarks, 1, 1);
-    // ---- matched real-face style (from face-lib.json) drives everything ----
-    var mp_ = matchedParams || {};
-    // HEAD SIZE RATIO scales pixel-level muscle strength, but clamped so motion is
-    // always visible yet never distorts (max local displacement stays < ~15px).
-    var facePct = (fc.r * 2) * 100;                       // head height as % of frame
-    var faceScale = Math.min(1.35, Math.max(0.7, facePct / 30));
-    // one expression envelope → mouth + eyes + brows all move together (bounded)
-    function smooth(x, a, b){ if(x <= a) return 0; if(x >= b) return 1; var u=(x-a)/(b-a); return u*u*(3-2*u); }
-    var env = smooth(t, 0.12, 0.3) * (1 - smooth(t, 0.82, 0.98));
-    var smileT  = Math.min(1.15, env * faceScale * (mp_.smileAmp || 1));    // mouth corners/cheeks
-    var mouthT  = Math.min(1.15, env * faceScale * (mp_.lipAmp || 1));      // lips part (library lip activity)
-    var squintT = Math.min(1.25, smileT * (mp_.squintAmp || 1));            // eyes smile WITH the mouth
-    var browT   = Math.min(1.2, smileT * (mp_.browAmp || 1));               // brows
-    if(morph.displaceSmile){ displaced = morph.displaceSmile(displaced, smileT); }
-    if(morph.displaceMouth){ displaced = morph.displaceMouth(displaced, mouthT); }
-    if(morph.displaceSquint){ displaced = morph.displaceSquint(displaced, squintT); }
-    if(morph.displaceEyebrows){ displaced = morph.displaceEyebrows(displaced, browT); }
-    if(morph.displaceBreathe){ displaced = morph.displaceBreathe(displaced, t); }
-    // NO blink — the eyes animate only WITH the smile (Duchenne squint + periocular
-    // muscle), so the eyes and mouth always move together and nothing ever jolts.
-    // ---- whole-head rigid motion (hair follows), from the matched style ----
-    var MW = Math.min(targetW || 480, src.width, 720);
-    var MH = Math.round(MW * src.height / src.width);
-    var srcCanvas = document.createElement('canvas');
-    srcCanvas.width = src.width; srcCanvas.height = src.height;
-    srcCanvas.getContext('2d').drawImage(src, 0, 0);
-    var head = {
-      ang: (mp_.headAng || 0.025) * Math.sin(t * Math.PI * 2),
-      dx: (mp_.headDrift || 0.012) * MW * Math.sin(t * Math.PI * 2),
-      dy: 0.006 * (mp_.headYScale || 1) * MH * Math.sin(t * Math.PI * 2 + 0.5)
-    };
-    try {
-      // feathered FACE-mesh warp (localized, no whole-image tearing) + rigid head motion
-      var out = morph.renderAlive(srcCanvas, MW, MH, faceLandmarks, displaced, faceMesh.tris, head);
-      if(isPreview){ warpCacheKey = key; warpCacheCanvas = out; }
-      return out;
-    } catch(e){ return src; }
-  }
-
-  function drawFrame(c, W, H, eff, t, withWatermark){
-    c.fillStyle = '#fff8f0';
-    c.fillRect(0, 0, W, H);
-    var src = currentSource();
-    if(!src) return;
+  function drawFrame(c, W, H, eff, t, wm){
+    c.fillStyle = '#fff8f0'; c.fillRect(0,0,W,H);
+    var src = currentSource(); if (!src) return;
     var r = srcRect(src.width, src.height, W, H, eff, t);
-    if(eff === 'alive' && faceLandmarks && morph){
-      var srcW = warpedSource(t, W);
-      var sxr = r.sx / src.width * srcW.width;
-      var syr = r.sy / src.height * srcW.height;
-      var swr = r.sw / src.width * srcW.width;
-      var shr = r.sh / src.height * srcW.height;
-      c.drawImage(srcW, sxr, syr, swr, shr, 0, 0, W, H);
-    } else {
-      c.drawImage(src, r.sx, r.sy, r.sw, r.sh, 0, 0, W, H);
-    }
-    if(r.fade < 1){
-      c.fillStyle = 'rgba(255,248,240,' + (1 - r.fade) + ')';
-      c.fillRect(0, 0, W, H);
-    }
-    if(withWatermark){
-      c.font = 'bold ' + Math.max(13, W*0.022) + 'px Helvetica, Arial, sans-serif';
-      c.textAlign = 'right';
-      c.fillStyle = 'rgba(255,255,255,0.75)';
-      c.shadowColor = 'rgba(0,0,0,0.6)';
-      c.shadowBlur = 4;
-      c.fillText('OldPhotoAlive · Free', W - 12, H - 14);
-      c.shadowBlur = 0;
-    }
+    c.drawImage(src, r.sx, r.sy, r.sw, r.sh, 0, 0, W, H);
+    if (r.fade < 1){ c.fillStyle = 'rgba(255,248,240,' + (1-r.fade) + ')'; c.fillRect(0,0,W,H); }
+    if (wm){ c.font = 'bold ' + Math.max(13, W*0.022) + 'px -apple-system,Helvetica,sans-serif'; c.textAlign='right'; c.fillStyle='rgba(255,255,255,0.75)'; c.shadowColor='rgba(0,0,0,0.6)'; c.shadowBlur=4; c.fillText('OldPhotoAlive', W-12, H-14); }
   }
-
-  // ---- Live preview loop ----
   var DUR = 3000, rafId = null, startT = 0, activeCtx = kbCtx, activeEff = 'pushin';
   function animate(canvas, eff){
-    if(rafId) cancelAnimationFrame(rafId);
-    activeCtx = canvas.getContext('2d');
-    activeEff = eff;
-    startT = performance.now();
-    var PREV_W = 480, PREV_H = 640;
-    function loop(now){
-      var t = ((now - startT) % DUR) / DUR;
-      drawFrame(activeCtx, PREV_W, PREV_H, activeEff, t, !unlocked);
-      rafId = requestAnimationFrame(loop);
-    }
-    rafId = requestAnimationFrame(loop);
+    if (rafId) cancelAnimationFrame(rafId);
+    activeCtx = canvas.getContext('2d'); activeEff = eff; startT = performance.now();
+    (function loop(now){ var t = ((now - startT) % DUR) / DUR; drawFrame(activeCtx, 480, 640, activeEff, t, false); rafId = requestAnimationFrame(loop); })(startT);
   }
-
-  // ---- GIF encoding ----
   function quantize(rgba, w, h){
-    var BUCKETS = 32;
-    var pop = new Uint32Array(BUCKETS * BUCKETS * BUCKETS);
-    var avg = new Float64Array(BUCKETS * BUCKETS * BUCKETS * 3);
-    var idxOf = function(r, g, b){ return (r >> 3) * BUCKETS * BUCKETS + (g >> 3) * BUCKETS + (b >> 3); };
-    var i, p, N = w * h;
-    for(i = 0; i < N; i++){
-      var r = rgba[i*4], g = rgba[i*4+1], b = rgba[i*4+2];
-      var k = idxOf(r, g, b);
-      pop[k]++;
-      avg[k*3] += r; avg[k*3+1] += g; avg[k*3+2] += b;
-    }
-    var buckets = [];
-    for(i = 0; i < pop.length; i++){
-      if(pop[i] > 0) buckets.push(i);
-    }
-    buckets.sort(function(a, b){ return pop[b] - pop[a]; });
-    var MAX = 255;
-    if(buckets.length > MAX) buckets.length = MAX;
-    var palette = [];
-    var map = new Int32Array(pop.length).fill(-1);
-    for(i = 0; i < buckets.length; i++){
-      var k = buckets[i];
-      var n = pop[k];
-      map[k] = i;
-      palette.push((Math.round(avg[k*3]/n) << 16) | (Math.round(avg[k*3+1]/n) << 8) | Math.round(avg[k*3+2]/n));
-    }
-    var target = 2;
-    while(target < palette.length) target <<= 1;
-    if(target > 256) target = 256;
-    while(palette.length < target) palette.push(0xffffff);
-    var indexed = new Uint8Array(N);
-    for(i = 0; i < N; i++){
-      var k = idxOf(rgba[i*4], rgba[i*4+1], rgba[i*4+2]);
-      var direct = map[k];
-      if(direct !== -1){ indexed[i] = direct; continue; }
-      var c = (rgba[i*4] << 16) | (rgba[i*4+1] << 8) | rgba[i*4+2];
-      var bd = Infinity, bi = 0;
-      for(p = 0; p < buckets.length; p++){
-        var pc = palette[p];
-        var dr = ((c>>16)&255)-((pc>>16)&255), dg = ((c>>8)&255)-((pc>>8)&255), db = (c&255)-(pc&255);
-        var d = dr*dr + dg*dg + db*db;
-        if(d < bd){ bd = d; bi = p; }
-      }
-      indexed[i] = bi;
-    }
-    return {palette: palette, indexed: indexed};
+    var B = 32, pop = new Uint32Array(B*B*B), avg = new Float64Array(B*B*B*3), idx = function(r,g,b){ return (r>>3)*B*B+(g>>3)*B+(b>>3); }, N = w*h;
+    for (var i=0;i<N;i++){ var k = idx(rgba[i*4],rgba[i*4+1],rgba[i*4+2]); pop[k]++; avg[k*3]+=rgba[i*4]; avg[k*3+1]+=rgba[i*4+1]; avg[k*3+2]+=rgba[i*4+2]; }
+    var bs = []; for (var i=0;i<pop.length;i++) if (pop[i]) bs.push(i); bs.sort(function(a,b){return pop[b]-pop[a];}); if (bs.length>255) bs.length=255;
+    var pal = [], map = new Int32Array(pop.length).fill(-1);
+    for (var i=0;i<bs.length;i++){ var k=bs[i], n=pop[k]; map[k]=i; pal.push((Math.round(avg[k*3]/n)<<16)|(Math.round(avg[k*3+1]/n)<<8)|Math.round(avg[k*3+2]/n)); }
+    var t=2; while (t<pal.length) t<<=1; if (t>256) t=256; while (pal.length<t) pal.push(0xffffff);
+    var ind = new Uint8Array(N);
+    for (var i=0;i<N;i++){ var k=idx(rgba[i*4],rgba[i*4+1],rgba[i*4+2]), d=map[k]; if (d!==-1){ ind[i]=d; continue; }
+      var c=(rgba[i*4]<<16)|(rgba[i*4+1]<<8)|rgba[i*4+2], bd=Infinity, bi=0;
+      for (var p=0;p<bs.length;p++){ var pc=pal[p], dr=((c>>16)&255)-((pc>>16)&255), dg=((c>>8)&255)-((pc>>8)&255), db=(c&255)-(pc&255), dd=dr*dr+dg*dg+db*db; if (dd<bd){bd=dd; bi=p;} }
+      ind[i]=bi; }
+    return { palette: pal, indexed: ind };
   }
-
   function exportGif(eff, btn, statusEl){
-    var src = currentSource();
-    if(!src){ statusEl.textContent = 'Upload a photo first (dropzone above).'; return; }
-    if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
-    if(eff === 'alive' && !unlocked){
-      var used = aliveFreeUsed();
-      try { localStorage.setItem(ALIVE_FREE_TRIES_KEY, String(used + 1)); } catch(e){}
-    }
-    var W = unlocked ? 1280 : 640;
-    var H = Math.round(W * (640/480));
-    var FPS = 12, SECONDS = 3, FRAMES = FPS * SECONDS;
-    statusEl.textContent = 'Rendering ' + FRAMES + ' frames… please wait.';
-    btn.disabled = true;
-    var off = document.createElement('canvas');
-    off.width = W; off.height = H;
-    var octx = off.getContext('2d', {willReadFrequently: true});
-    var frameBuffers = [];
-    for(var i = 0; i < FRAMES; i++){
-      var t = i / (FRAMES - 1);
-      drawFrame(octx, W, H, eff, t, !unlocked);
-      frameBuffers.push(octx.getImageData(0, 0, W, H).data.slice());
-    }
-    var est = 1024 + FRAMES * (W * H * 6);
-    var buf = new Uint8Array(est);
-    function mapToPalette(rgba, palette){
-      var indexed = new Uint8Array(W * H);
-      var cache = new Map();
-      var N = W * H;
-      for(var p = 0; p < N; p++){
-        var c = (rgba[p*4] << 16) | (rgba[p*4+1] << 8) | rgba[p*4+2];
-        var hit = cache.get(c);
-        if(hit !== undefined){ indexed[p] = hit; continue; }
-        var bd = Infinity, bi = 0;
-        for(var g = 0; g < palette.length; g++){
-          var gc = palette[g];
-          var dr = ((c>>16)&255)-((gc>>16)&255), dg = ((c>>8)&255)-((gc>>8)&255), db = (c&255)-(gc&255);
-          var d = dr*dr + dg*dg + db*db;
-          if(d < bd){ bd = d; bi = g; }
-        }
-        cache.set(c, bi);
-        indexed[p] = bi;
-      }
-      return indexed;
-    }
-    var q0 = quantize(frameBuffers[0], W, H);
-    var global = q0.palette;
-    var gif = new GifWriter(buf, W, H, {loop: 0, palette: global});
-    for(var i = 0; i < FRAMES; i++){
-      var indexed = (i === 0) ? q0.indexed : mapToPalette(frameBuffers[i], global);
-      gif.addFrame(0, 0, W, H, indexed, { palette: global, delay: Math.round(100 / FPS) });
-      statusEl.textContent = 'Rendering ' + (i+1) + '/' + FRAMES + '…';
-    }
+    var src = currentSource(); if (!src){ statusEl.textContent = 'Upload a photo first.'; return; }
+    if (rafId){ cancelAnimationFrame(rafId); rafId = null; }
+    var W = 640, H = Math.round(W*640/480), FPS = 12, SECONDS = 3, FRAMES = FPS*SECONDS;
+    statusEl.textContent = 'Rendering…'; btn.disabled = true;
+    var off = document.createElement('canvas'); off.width = W; off.height = H;
+    var octx = off.getContext('2d', {willReadFrequently: true}), bufs = [];
+    for (var i=0;i<FRAMES;i++){ var t = i/(FRAMES-1); drawFrame(octx, W, H, eff, t, true); bufs.push(octx.getImageData(0,0,W,H).data.slice()); }
+    var est = 1024 + FRAMES*W*H*6, buf = new Uint8Array(est);
+    var q0 = quantize(bufs[0], W, H), pal = q0.palette, gif = new GifWriter(buf, W, H, { loop: 0, palette: pal });
+    function m2p(rgba){ var ind = new Uint8Array(W*H), cache = new Map();
+      for (var p=0;p<W*H;p++){ var c=(rgba[p*4]<<16)|(rgba[p*4+1]<<8)|rgba[p*4+2], hit=cache.get(c); if (hit!==undefined){ ind[p]=hit; continue; }
+        var bd=Infinity, bi=0; for (var g2=0;g2<pal.length;g2++){ var gc=pal[g2], dr=((c>>16)&255)-((gc>>16)&255), dg=((c>>8)&255)-((gc>>8)&255), db=(c&255)-(gc&255), dd=dr*dr+dg*dg+db*db; if (dd<bd){bd=dd; bi=g2;} } cache.set(c, bi); ind[p]=bi; }
+      return ind; }
+    for (var i=0;i<FRAMES;i++){ var ind = i===0 ? q0.indexed : m2p(bufs[i]); gif.addFrame(0,0,W,H,ind,{ palette: pal, delay: Math.round(100/FPS) }); }
     var len = gif.end();
-    var blob = new Blob([buf.subarray(0, len)], {type: 'image/gif'});
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'old-photo-alive.gif';
-    a.click();
-    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 4000);
-    statusEl.textContent = 'GIF saved ✅';
-    btn.disabled = false;
-    if(eff === 'alive' && !unlocked && aliveFreeUsed() >= ALIVE_FREE_TRIES){
-      paintEffects();
-      statusEl.textContent = 'That was your free Alive trial! Unlock unlimited Alive for $9.99 below.';
-    }
+    var blob = new Blob([buf.subarray(0, len)], { type: 'image/gif' });
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'animated-photo.gif'; a.click();
+    statusEl.textContent = 'GIF saved ✅'; btn.disabled = false;
     animate($kbCanvas, 'pushin');
   }
+  var exportKb = document.getElementById('exportKbBtn');
+  exportKb.addEventListener('click', function(){ OP.gate('animate', 1, function(){ exportGif(effect, exportKb, $kbStatus); }); });
 
-  document.getElementById('exportKbBtn').addEventListener('click', function(){
-    OP.gate('animate', 1, function(){ exportGif(effect === 'alive' ? 'pushin' : effect, this, $kbStatus); });
+  $resetBtn.addEventListener('click', function(){
+    if (rafId){ cancelAnimationFrame(rafId); rafId = null; }
+    img = null; srcImg = null;
+    $restoreSlot.style.display = ''; $kbSlot.style.display = '';
+    $restoreSlot.classList.remove('filled'); $kbSlot.classList.remove('filled');
+    $restoreView.style.display = 'none'; $kbCanvas.style.display = 'none';
+    $resetBtn.style.display = 'none';
+    $kbStatus.textContent = 'Pick a motion and hit Export.';
   });
-  var exportAliveBtn = document.getElementById('exportAliveBtn');
-  if(exportAliveBtn){
-    exportAliveBtn.addEventListener('click', function(){
-      if(!img){ if($aliveStatus) $aliveStatus.textContent = 'Upload a photo first (dropzone above).'; return; }
-      exportGif('alive', this, $aliveStatus);
-    });
-  }
-
-  // ---- Payment / unlock (Alive offline — guarded) ----
-  function setUnlocked(){
-    unlocked = true;
-    try{ localStorage.setItem(UNLOCKED_KEY, '1'); }catch(e){}
-    if($unlockMsg){ $unlockMsg.className = 'ok'; $unlockMsg.textContent = 'Unlocked ✅'; }
-    paintEffects();
-  }
-
-  if($payBtn && PAYMENT_LINK){
-    $payBtn.href = PAYMENT_LINK;
-  }
-
-  if($unlockBtn && $license && $unlockMsg){ $unlockBtn.addEventListener('click', function(){
-    var key = $license.value.trim();
-    if(!key){ $unlockMsg.className = 'err'; $unlockMsg.textContent = 'Paste your license key first.'; return; }
-    if(!UNLOCK_API){
-      $unlockMsg.className = 'err';
-      $unlockMsg.textContent = 'Unlock service not ready yet — please wait a moment.';
-      return;
-    }
-    $unlockMsg.textContent = 'Checking…';
-    fetch(UNLOCK_API + '/unlock', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({key: key, product: 'old-photo-alive', instanceName: 'web-browser'})
-    }).then(function(r){
-      if(!r.ok) throw new Error('bad key');
-      return r.json();
-    }).then(function(j){
-      if(j && (j.valid || j.ok)){ setUnlocked(); }
-      else { $unlockMsg.className = 'err'; $unlockMsg.textContent = 'That key did not validate. Please double-check it.'; }
-    }).catch(function(){
-      $unlockMsg.className = 'err';
-      $unlockMsg.textContent = 'Could not reach the unlock service. Check your connection and try again.';
-    });
-  });
-  }
-
-  paintEffects();
 })();
 </script>
-<script src="unlock.js"></script>
 </body>
 </html>
