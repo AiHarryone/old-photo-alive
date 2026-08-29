@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="msvalidate.01" content="E62785F51D89A3BD3AFBB2BC2BB07BF9">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GIF Maker – Create Animated GIFs from Images (Free, in Browser)</title>
+<meta name="description" content="Make an animated GIF from your images in seconds: add frames, set speed, loop or reverse, export. All in your browser, nothing uploaded, free.">
+<link rel="canonical" href="https://aiharryone.github.io/old-photo-alive/gif-maker.html">
+<style>
+  :root{--cream:#f7efe3;--cream2:#fdf6ea;--ink:#4a3420;--brown:#6e4f2a;--tan:#b0703a;--muted:#9b8261;--green:#6d7a2a;--shadow:0 10px 30px rgba(90,60,25,.10);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:#5c4a3a;line-height:1.6;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 22px;}
+  header{background:linear-gradient(135deg,#ecd9b8,#f6e8cd);padding:18px 0;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(120,90,50,.08);}
+  nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .logo{font-weight:bold;font-size:21px;color:var(--brown);}
+  .nav-links{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .nav-links a{color:var(--brown);font-family:Helvetica,Arial,sans-serif;font-weight:bold;text-decoration:none;font-size:14px;}
+  .nav-links a:hover{color:var(--tan);}
+  .btn{display:inline-block;background:linear-gradient(135deg,#c98650,#a15f2e);color:#fff;text-decoration:none;padding:11px 22px;border-radius:999px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;transition:.2s;border:none;cursor:pointer;font-size:14px;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn.green{background:linear-gradient(135deg,#8f9a4a,#6d7a2a);}
+  .btn:disabled{opacity:.5;cursor:not-allowed;}
+  .hero{text-align:center;padding:38px 0 16px;}
+  .hero h1{font-size:36px;color:var(--ink);margin-bottom:10px;}
+  .hero p{font-size:17px;color:#7d6849;max-width:620px;margin:0 auto;}
+  .drop{background:linear-gradient(135deg,var(--cream2),#fbf0dc);border:2.5px dashed #d8b98a;border-radius:20px;padding:32px 24px;text-align:center;cursor:pointer;transition:.2s;margin:16px 0;}
+  .drop:hover{border-color:var(--tan);background:#fbf3e2;}
+  .drop b{color:var(--brown);font-size:17px;display:block;margin-top:6px;}
+  .drop p{color:var(--muted);font-size:13px;margin-top:5px;}
+  .panel{background:#fff;border-radius:16px;padding:18px 20px;box-shadow:var(--shadow);}
+  .thumbs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+  .thumb{width:64px;height:64px;object-fit:cover;border-radius:8px;border:2px solid #e6d3b0;position:relative;}
+  .thumb .x{position:absolute;top:-6px;right:-6px;background:#c0392b;color:#fff;border-radius:50%;width:18px;height:18px;font-size:11px;line-height:18px;text-align:center;cursor:pointer;font-family:Helvetica,Arial,sans-serif;}
+  .row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:14px;}
+  .ctl label{font-size:13px;font-weight:bold;color:var(--muted);font-family:Helvetica,Arial,sans-serif;display:block;margin-bottom:4px;}
+  select,input[type=range]{accent-color:var(--tan);}
+  .privacy{background:linear-gradient(135deg,#4a3420,#6e4f2a);color:#f3e6cb;border-radius:16px;padding:20px;text-align:center;margin:22px 0;}
+  footer{background:linear-gradient(135deg,#e9d5b0,#f0e2c4);padding:22px 0;text-align:center;font-size:14px;color:var(--muted);margin-top:40px;}
+  footer a{color:var(--brown);font-weight:bold;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="logo">OldPhoto Alive</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="gif-maker.html">GIF Maker</a>
+      <a href="watermark.html">Watermark</a>
+      <a href="document-scanner.html">Scan</a>
+      <a href="pdf-tools.html">PDF</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>GIF Maker — Turn Images into an Animated GIF</h1>
+    <p>Add frames, set the speed, loop or reverse it — then export. All in your browser, nothing uploaded.</p>
+  </div>
+
+  <div class="drop" id="drop">
+    <div style="font-size:32px;">🎞️</div>
+    <b>Add frames (images)</b>
+    <p>multiple allowed · upload order = frame order · stays on your device</p>
+  </div>
+  <input type="file" id="fileInput" accept="image/*" multiple style="display:none;">
+
+  <div class="panel" id="panel" style="display:none;">
+    <div class="thumbs" id="thumbs"></div>
+    <div class="row">
+      <div class="ctl"><label>Speed (ms/frame)</label><input type="range" id="delay" min="50" max="1000" value="200"><span id="dVal" style="font-size:13px;color:var(--tan);font-weight:bold;margin-left:6px;">200</span></div>
+      <label style="font-size:13px;color:var(--muted);font-weight:bold;font-family:Helvetica,Arial,sans-serif;"><input type="checkbox" id="loop" checked> Loop</label>
+      <label style="font-size:13px;color:var(--muted);font-weight:bold;font-family:Helvetica,Arial,sans-serif;"><input type="checkbox" id="reverse"> Reverse order</label>
+      <button class="btn green" id="makeBtn">Download GIF</button>
+    </div>
+    <p class="status" id="status" style="font-size:13px;color:var(--muted);margin-top:10px;font-family:Helvetica,Arial,sans-serif;"></p>
+  </div>
+
+  <div class="privacy">
+    <b>🔒 Your frames never leave your device.</b>
+  </div>
+</div>
+
+<footer>
+  OldPhoto Alive · <a href="index.html">Home</a> · <a href="gif-maker.html">GIF Maker</a> · <a href="watermark.html">Watermark</a> · <a href="document-scanner.html">Document Scanner</a>
+</footer>
+
+<script src="vendor/omggif.js"></script>
+<script>
+(function(){
+  var frames = []; // {img}
+  var $drop = document.getElementById('drop'), $file = document.getElementById('fileInput');
+  var $thumbs = document.getElementById('thumbs'), $panel = document.getElementById('panel');
+  $drop.onclick = function(){ $file.click(); };
+  $drop.ondragover = function(e){ e.preventDefault(); };
+  $drop.ondrop = function(e){ e.preventDefault(); for (var f of e.dataTransfer.files) if (f.type.match(/^image\//)) add(f); };
+  $file.onchange = function(){ for (var f of this.files) if (f.type.match(/^image\//)) add(f); };
+  function add(f){
+    var r = new FileReader();
+    r.onload = function(ev){ var im = new Image(); im.onload = function(){ frames.push({ img: im, name: f.name }); renderThumbs(); }; im.src = ev.target.result; };
+    r.readAsDataURL(f);
+  }
+  function renderThumbs(){
+    $thumbs.innerHTML = '';
+    frames.forEach(function(fr, i){
+      var w = document.createElement('div'); w.className = 'thumb'; w.style.background = 'url(' + fr.img.src + ') center/cover';
+      var x = document.createElement('span'); x.className = 'x'; x.textContent = '×'; x.onclick = function(){ frames.splice(i, 1); renderThumbs(); };
+      w.appendChild(x); $thumbs.appendChild(w);
+    });
+    $panel.style.display = frames.length ? 'block' : 'none';
+  }
+  document.getElementById('delay').oninput = function(){ document.getElementById('dVal').textContent = this.value; };
+
+  // median-cut-ish quantizer (from the animate tool)
+  function quantize(rgba, w, h){
+    var BUCKETS = 32, pop = new Uint32Array(BUCKETS*BUCKETS*BUCKETS), avg = new Float64Array(BUCKETS*BUCKETS*BUCKETS*3);
+    var idx = function(r,g,b){ return (r>>3)*BUCKETS*BUCKETS + (g>>3)*BUCKETS + (b>>3); };
+    var N = w*h;
+    for (var i=0;i<N;i++){ var k = idx(rgba[i*4], rgba[i*4+1], rgba[i*4+2]); pop[k]++; avg[k*3]+=rgba[i*4]; avg[k*3+1]+=rgba[i*4+1]; avg[k*3+2]+=rgba[i*4+2]; }
+    var b = []; for (var i=0;i<pop.length;i++) if (pop[i]) b.push(i);
+    b.sort(function(a,c){ return pop[c]-pop[a]; }); if (b.length > 255) b.length = 255;
+    var palette = [], map = new Int32Array(pop.length).fill(-1);
+    for (var i=0;i<b.length;i++){ var k=b[i], n=pop[k]; map[k]=i; palette.push((Math.round(avg[k*3]/n)<<16)|(Math.round(avg[k*3+1]/n)<<8)|Math.round(avg[k*3+2]/n)); }
+    var target = 2; while (target < palette.length) target <<= 1; if (target > 256) target = 256;
+    while (palette.length < target) palette.push(0xffffff);
+    var indexed = new Uint8Array(N);
+    for (var i=0;i<N;i++){ var k = idx(rgba[i*4], rgba[i*4+1], rgba[i*4+2]); var d = map[k]; if (d !== -1){ indexed[i]=d; continue; }
+      var c = (rgba[i*4]<<16)|(rgba[i*4+1]<<8)|rgba[i*4+2], bd=Infinity, bi=0;
+      for (var p=0;p<b.length;p++){ var pc=palette[p], dr=((c>>16)&255)-((pc>>16)&255), dg=((c>>8)&255)-((pc>>8)&255), db=(c&255)-(pc&255), dd=dr*dr+dg*dg+db*db; if (dd<bd){bd=dd; bi=p;} }
+      indexed[i]=bi;
+    }
+    return { palette: palette, indexed: indexed };
+  }
+
+  document.getElementById('makeBtn').onclick = function(){
+    if (!frames.length) return;
+    var delay = +document.getElementById('delay').value, loop = document.getElementById('loop').checked, rev = document.getElementById('reverse').checked;
+    var order = frames.map((_, i) => i); if (rev) order.reverse();
+    var W = 0, H = 0; frames.forEach(function(f){ W = Math.max(W, f.img.width); H = Math.max(H, f.img.height); });
+    var maxDim = 400, s = Math.min(1, maxDim / Math.max(W, H)); W = Math.round(W*s); H = Math.round(H*s);
+    document.getElementById('status').textContent = 'Encoding GIF…';
+    var off = document.createElement('canvas'); off.width = W; off.height = H;
+    var g = off.getContext('2d', { willReadFrequently: true });
+    var bufs = [];
+    order.forEach(function(oi){
+      g.fillStyle = '#fff'; g.fillRect(0, 0, W, H);
+      var f = frames[oi].img, r = Math.min(W/f.width, H/f.height);
+      var iw = f.width*r, ih = f.height*r;
+      g.drawImage(f, (W-iw)/2, (H-ih)/2, iw, ih);
+      bufs.push(g.getImageData(0,0,W,H).data.slice());
+    });
+    var est = 1024 + bufs.length * (W*H*6), buf = new Uint8Array(est);
+    var q0 = quantize(bufs[0], W, H), pal = q0.palette;
+    var gif = new GifWriter(buf, W, H, { loop: loop ? 0 : null, palette: pal });
+    function mapToPal(rgba){
+      var idx2 = new Uint8Array(W*H), cache = new Map();
+      for (var p=0;p<W*H;p++){
+        var c = (rgba[p*4]<<16)|(rgba[p*4+1]<<8)|rgba[p*4+2], hit = cache.get(c);
+        if (hit !== undefined){ idx2[p]=hit; continue; }
+        var bd=Infinity, bi=0;
+        for (var g2=0;g2<pal.length;g2++){ var gc=pal[g2], dr=((c>>16)&255)-((gc>>16)&255), dg=((c>>8)&255)-((gc>>8)&255), db=(c&255)-(gc&255), dd=dr*dr+dg*dg+db*db; if (dd<bd){bd=dd; bi=g2;} }
+        cache.set(c, bi); idx2[p]=bi;
+      }
+      return idx2;
+    }
+    for (var i=0;i<bufs.length;i++){
+      var indexed = (i===0) ? q0.indexed : mapToPal(bufs[i]);
+      gif.addFrame(0, 0, W, H, indexed, { palette: pal, delay: Math.round(delay/10) });
+    }
+    var len = gif.end();
+    var blob = new Blob([buf.subarray(0, len)], { type: 'image/gif' });
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'my-animation.gif'; a.click();
+    document.getElementById('status').textContent = 'Done ✅ (' + Math.round(len/1024) + ' KB)';
+  };
+})();
+</script>
+</body>
+</html>

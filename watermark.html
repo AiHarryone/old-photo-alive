@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="msvalidate.01" content="E62785F51D89A3BD3AFBB2BC2BB07BF9">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watermark Photos – Add a Logo or Text Watermark in Batch (Free, in Browser)</title>
+<meta name="description" content="Add a text or logo watermark to your photos in batch — position, size, opacity and rotation controls. All in your browser, nothing uploaded, free.">
+<link rel="canonical" href="https://aiharryone.github.io/old-photo-alive/watermark.html">
+<style>
+  :root{--cream:#f7efe3;--cream2:#fdf6ea;--ink:#4a3420;--brown:#6e4f2a;--tan:#b0703a;--muted:#9b8261;--green:#6d7a2a;--shadow:0 10px 30px rgba(90,60,25,.10);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:#5c4a3a;line-height:1.6;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 22px;}
+  header{background:linear-gradient(135deg,#ecd9b8,#f6e8cd);padding:18px 0;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(120,90,50,.08);}
+  nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .logo{font-weight:bold;font-size:21px;color:var(--brown);}
+  .nav-links{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .nav-links a{color:var(--brown);font-family:Helvetica,Arial,sans-serif;font-weight:bold;text-decoration:none;font-size:14px;}
+  .nav-links a:hover{color:var(--tan);}
+  .btn{display:inline-block;background:linear-gradient(135deg,#c98650,#a15f2e);color:#fff;text-decoration:none;padding:11px 22px;border-radius:999px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;transition:.2s;border:none;cursor:pointer;font-size:14px;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn.green{background:linear-gradient(135deg,#8f9a4a,#6d7a2a);}
+  .hero{text-align:center;padding:38px 0 16px;}
+  .hero h1{font-size:36px;color:var(--ink);margin-bottom:10px;}
+  .hero p{font-size:17px;color:#7d6849;max-width:620px;margin:0 auto;}
+  .drop{background:linear-gradient(135deg,var(--cream2),#fbf0dc);border:2.5px dashed #d8b98a;border-radius:20px;padding:32px 24px;text-align:center;cursor:pointer;transition:.2s;margin:16px 0;}
+  .drop:hover{border-color:var(--tan);background:#fbf3e2;}
+  .drop b{color:var(--brown);font-size:17px;display:block;margin-top:6px;}
+  .drop p{color:var(--muted);font-size:13px;margin-top:5px;}
+  .panel{background:#fff;border-radius:16px;padding:18px 20px;box-shadow:var(--shadow);}
+  .row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:14px;}
+  .ctl label{font-size:13px;font-weight:bold;color:var(--muted);font-family:Helvetica,Arial,sans-serif;display:block;margin-bottom:4px;}
+  input[type=text]{padding:8px 10px;border:2px solid #dcc9a4;border-radius:10px;font-size:14px;font-family:Helvetica,Arial,sans-serif;}
+  select,input[type=range],input[type=color]{accent-color:var(--tan);}
+  .status{font-size:13px;color:var(--muted);margin-top:10px;font-family:Helvetica,Arial,sans-serif;}
+  .privacy{background:linear-gradient(135deg,#4a3420,#6e4f2a);color:#f3e6cb;border-radius:16px;padding:20px;text-align:center;margin:22px 0;}
+  footer{background:linear-gradient(135deg,#e9d5b0,#f0e2c4);padding:22px 0;text-align:center;font-size:14px;color:var(--muted);margin-top:40px;}
+  footer a{color:var(--brown);font-weight:bold;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="logo">OldPhoto Alive</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="gif-maker.html">GIF Maker</a>
+      <a href="watermark.html">Watermark</a>
+      <a href="document-scanner.html">Scan</a>
+      <a href="pdf-tools.html">PDF</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>Watermark Photos — Batch, in Your Browser</h1>
+    <p>Add a text or logo watermark to many photos at once. Position, size, opacity and rotation — all local, nothing uploaded.</p>
+  </div>
+
+  <div class="drop" id="drop">
+    <div style="font-size:32px;">🔖</div>
+    <b>Add photos</b>
+    <p>multiple allowed · batch watermarking · stays on your device</p>
+  </div>
+  <input type="file" id="fileInput" accept="image/*" multiple style="display:none;">
+
+  <div class="panel" id="panel" style="display:none;">
+    <div class="row">
+      <div class="ctl"><label>Watermark text</label><input type="text" id="wmText" value="© My Studio" style="min-width:180px;"></div>
+      <div class="ctl"><label>Size (% of width)</label><input type="range" id="wmSize" min="2" max="25" value="6"><span id="szVal" style="font-size:13px;color:var(--tan);font-weight:bold;margin-left:6px;">6</span></div>
+      <div class="ctl"><label>Opacity</label><input type="range" id="wmOpacity" min="5" max="100" value="45"><span id="opVal" style="font-size:13px;color:var(--tan);font-weight:bold;margin-left:6px;">45</span></div>
+      <div class="ctl"><label>Color</label><input type="color" id="wmColor" value="#ffffff"></div>
+      <div class="ctl"><label>Position</label><select id="wmPos"><option value="br">Bottom right</option><option value="bl">Bottom left</option><option value="tr">Top right</option><option value="tl">Top left</option><option value="center">Center</option></select></div>
+      <div class="ctl"><label>Font</label><select id="wmFont"><option>Arial</option><option>Georgia</option><option>Courier</option></select></div>
+      <button class="btn green" id="applyBtn">Download All Watermarked</button>
+    </div>
+    <p class="status" id="status"></p>
+  </div>
+
+  <div class="privacy">
+    <b>🔒 Your photos never leave your device.</b>
+  </div>
+</div>
+
+<footer>
+  OldPhoto Alive · <a href="index.html">Home</a> · <a href="gif-maker.html">GIF Maker</a> · <a href="watermark.html">Watermark</a> · <a href="document-scanner.html">Document Scanner</a>
+</footer>
+
+<script>
+(function(){
+  var imgs = [];
+  var $drop = document.getElementById('drop'), $file = document.getElementById('fileInput');
+  $drop.onclick = function(){ $file.click(); };
+  $drop.ondragover = function(e){ e.preventDefault(); };
+  $drop.ondrop = function(e){ e.preventDefault(); for (var f of e.dataTransfer.files) if (f.type.match(/^image\//)) add(f); };
+  $file.onchange = function(){ for (var f of this.files) if (f.type.match(/^image\//)) add(f); };
+  function add(f){
+    var r = new FileReader();
+    r.onload = function(ev){ var im = new Image(); im.onload = function(){ imgs.push({ img: im, name: f.name.replace(/\.[^.]+$/, '') }); document.getElementById('panel').style.display = 'block'; }; im.src = ev.target.result; };
+    r.readAsDataURL(f);
+  }
+  document.getElementById('wmSize').oninput = function(){ document.getElementById('szVal').textContent = this.value; };
+  document.getElementById('wmOpacity').oninput = function(){ document.getElementById('opVal').textContent = this.value; };
+
+  document.getElementById('applyBtn').onclick = function(){
+    if (!imgs.length) return;
+    var text = document.getElementById('wmText').value || '©';
+    var sizePct = +document.getElementById('wmSize').value / 100;
+    var opacity = +document.getElementById('wmOpacity').value / 100;
+    var color = document.getElementById('wmColor').value;
+    var pos = document.getElementById('wmPos').value;
+    var font = document.getElementById('wmFont').value;
+    document.getElementById('status').textContent = 'Applying watermark…';
+    imgs.forEach(function(it){
+      var c = document.createElement('canvas'); c.width = it.img.width; c.height = it.img.height;
+      var g = c.getContext('2d'); g.drawImage(it.img, 0, 0);
+      var fs = Math.round(c.width * sizePct);
+      g.font = 'bold ' + fs + 'px ' + font;
+      g.textBaseline = 'middle';
+      var tw = g.measureText(text).width;
+      var pad = c.width * 0.04;
+      var x = pos === 'bl' ? pad : pos === 'br' ? c.width - tw - pad : pos === 'center' ? (c.width - tw)/2 : pos === 'tl' ? pad : c.width - tw - pad;
+      var y = pos === 'tl' || pos === 'tr' ? fs : c.height - pad;
+      g.globalAlpha = opacity;
+      g.fillStyle = color; g.shadowColor = 'rgba(0,0,0,0.5)'; g.shadowBlur = fs*0.15;
+      g.fillText(text, x, y);
+      var a = document.createElement('a'); a.href = c.toDataURL('image/jpeg', 0.95); a.download = it.name + '-wm.jpg'; a.click();
+    });
+    document.getElementById('status').textContent = 'Done ✅ (' + imgs.length + ' photos)';
+  };
+})();
+</script>
+</body>
+</html>
