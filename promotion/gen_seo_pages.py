@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Generate SEO landing pages for OldPhoto Alive. Run with `py gen_seo_pages.py`."""
+"""Generate SEO landing pages for PixelFix. Run with `py gen_seo_pages.py`."""
 import os
 
 OUT = r'D:\claude\old-photo-alive\seo'
@@ -65,7 +65,7 @@ HEAD = '''<!DOCTYPE html>
 <body>
 <header>
   <div class="wrap nav">
-    <div class="logo"><a href="index.html">OldPhoto Alive</a></div>
+    <div class="logo"><a href="index.html">PixelFix</a></div>
     <div>
       <a href="index.html#tool" style="color:#8a6a3f;margin-right:16px;font-weight:bold;text-decoration:none;font-family:Helvetica,Arial,sans-serif;">Try Free</a>
       <a class="btn" href="index.html">Unlock All – $9.99</a>
@@ -99,7 +99,7 @@ HEAD = '''<!DOCTYPE html>
 </div>
 
 <footer>
-  Made for the memories that deserve to move. Questions? Ai_harryone@outlook.com · <a href="index.html">OldPhoto Alive</a> · <a href="index.html#tool">Try Free</a> · <a href="index.html">Unlock</a>
+  Made for the memories that deserve to move. Questions? Ai_harryone@outlook.com · <a href="index.html">PixelFix</a> · <a href="index.html#tool">Try Free</a> · <a href="index.html">Unlock</a>
 </footer>
 </body>
 </html>
@@ -134,7 +134,7 @@ PAGES = [
     'sections': [
       sec('What “Animating an Old Photo” Really Means', '<p>Animating a still photo is just <b>motion applied to an image</b> — a slow zoom toward a face, a gentle drift across a scene, a soft dissolve. It’s the classic <b>Ken Burns effect</b>: the same move used in nearly every documentary, and it’s what makes an old photo feel alive instead of frozen.</p><p style="margin-top:10px;">Unlike AI face-reanimation services, the effect is applied <b>entirely in your browser</b>. You upload nothing, sign up for nothing, and your photos are never sent to a server.</p>'),
       sec('How to Animate an Old Photo in 30 Seconds', '<ol class="steps">%s</ol>' % ''.join('<li>%s</li>' % x for x in [
-        'Open <a href="index.html" style="color:#b0703a;font-weight:bold;">OldPhoto Alive</a> on any device.',
+        'Open <a href="index.html" style="color:#b0703a;font-weight:bold;">PixelFix</a> on any device.',
         'Upload or drag in a photo (JPG or PNG, 1000px+ scans animate best).',
         'Pick a motion — <b>Push-in</b> (slow zoom), <b>Pull-back</b>, <b>Pan across</b>, <b>Pan up</b>, or <b>Fade in</b>.',
         'Hit <b>Export</b> — you get an animated GIF, ready to share.'
@@ -171,14 +171,14 @@ PAGES = [
     'hero_sub': 'Try Alive once free · One-time $9.99 to unlock unlimited',
     'sections': [
       sec('Why “Revive Old Photos” Is a Search on People’s Minds', '<p>“Revive old photos” is one of the most-searched photo animation requests — usually for the same reason: someone has a photo of a parent or grandparent, and they want to feel that person close again. A slow push-in already does something. A photo that <b>blinks, smiles, and breathes</b> does something else entirely.</p>'),
-      sec('Two Ways OldPhoto Alive Brings a Photo to Life', '<div class="grid">%s</div>' % (
+      sec('Two Ways PixelFix Brings a Photo to Life', '<div class="grid">%s</div>' % (
         card('Ken Burns Motion', 'A slow push-in or pan — the classic, elegant way to make any old photo feel like a living memory. All 5 effects are free.') +
         card('Alive Face Animation', 'A face detected in the photo <b>blinks, smiles and breathes</b> — the closest most of us get to seeing someone again. One free try, then unlock unlimited for a one-time $9.99.') +
         card('100% Private', 'Face detection and animation run on your device with MediaPipe — the photo never leaves your browser.') +
         card('GIF Export', 'Share the result as an animated GIF, wherever you share memories.')
       )),
       sec('How to Use the Alive Effect', '<ol class="steps">%s</ol>' % ''.join('<li>%s</li>' % x for x in [
-        'Open <a href="index.html" style="color:#b0703a;font-weight:bold;">OldPhoto Alive</a> and upload a clear, face-forward photo.',
+        'Open <a href="index.html" style="color:#b0703a;font-weight:bold;">PixelFix</a> and upload a clear, face-forward photo.',
         'Wait for the <b>Alive ✨</b> button to appear (it shows once a face is detected — faces occupying 1/3 of the frame work best).',
         'Click it and preview the animation — blink, smile, breath.',
         'Export a GIF. Your first Alive is free; unlimited Alive + clean 720p is a one-time $9.99.'
@@ -217,12 +217,12 @@ PAGES = [
         <div class="example"><b>Fade in</b> — a gentle dissolve from a warm field. Elegant and minimal.</div>
       '''),
       sec('How to Make a Ken Burns Effect in 30 Seconds', '<ol class="steps">%s</ol>' % ''.join('<li>%s</li>' % x for x in [
-        'Open <a href="index.html" style="color:#b0703a;font-weight:bold;">OldPhoto Alive</a>.',
+        'Open <a href="index.html" style="color:#b0703a;font-weight:bold;">PixelFix</a>.',
         'Upload any photo — the tool applies the effect live as you choose.',
         'Tap between Push-in, Pull-back, Pan across, Pan up and Fade to preview each.',
         'Export an animated GIF. All 5 effects are free with a small watermark.'
       ])),
-      sec('Ken Burns in a Tribute Video', '<p>If you’re assembling a memorial or family-history video, the standard trick is to give each photo a different motion so the sequence doesn’t feel repetitive: <b>push-in on one, pan across the next, fade on the third</b>. OldPhoto Alive makes each clip in seconds, and everything stays on your device until you’re ready to assemble it.</p>'),
+      sec('Ken Burns in a Tribute Video', '<p>If you’re assembling a memorial or family-history video, the standard trick is to give each photo a different motion so the sequence doesn’t feel repetitive: <b>push-in on one, pan across the next, fade on the third</b>. PixelFix makes each clip in seconds, and everything stays on your device until you’re ready to assemble it.</p>'),
       faq_block([
         ('What is the Ken Burns effect?', 'A slow, continuous zoom or pan applied to a still photo — the documentary technique that makes photographs feel alive and cinematic.'),
         ('Is it free?', 'Yes — all 5 motion effects are free with a small watermark. One-time $9.99 removes it and unlocks unlimited Alive face animation.'),
@@ -244,7 +244,7 @@ PAGES = [
       sec('The Problem with Family History Photos', '<p>Most family history sits in shoeboxes and albums — still, silent, easy to skip. When you want to <b>tell your family’s story</b>, a slideshow of static photos holds attention for seconds. A slideshow where each photo <b>slowly moves</b> — pushing in, drifting across — becomes something you watch, and then send to every relative.</p>'),
       sec('How to Build a Family History Video', '<ol class="steps">%s</ol>' % ''.join('<li>%s</li>' % x for x in [
         '<b>Collect your best photos</b> — 8–15 sharp scans, in chronological order if you can.',
-        'Animate each in <a href="index.html" style="color:#b0703a;font-weight:bold;">OldPhoto Alive</a>: vary the motion (push-in, pan, fade) so the sequence feels alive.',
+        'Animate each in <a href="index.html" style="color:#b0703a;font-weight:bold;">PixelFix</a>: vary the motion (push-in, pan, fade) so the sequence feels alive.',
         'Export each as a GIF, then drop them into any video editor in order.',
         'Add captions or narration between clips — names, dates, one line of story each.',
         'Export the finished video and share it with the family.'
@@ -255,9 +255,9 @@ PAGES = [
         <div class="example"><b>Cut to a moment</b> — a wedding, a reunion, a favorite day. Fade in, hold, fade out.</div>
         <div class="example"><b>Close with the descendant</b> — the family continuing. A gentle pull-back to end on the whole picture.</div>
       '''),
-      sec('Privacy Matters More Here Than Anywhere', '<p>Family photos are the most personal thing you own. That’s why OldPhoto Alive processes everything <b>in your browser</b> — the scans of your grandparents never touch a server, never sit in someone else’s cloud, and never get used to train a model. The animation, the face detection, the GIF export: all on your device.</p>'),
+      sec('Privacy Matters More Here Than Anywhere', '<p>Family photos are the most personal thing you own. That’s why PixelFix processes everything <b>in your browser</b> — the scans of your grandparents never touch a server, never sit in someone else’s cloud, and never get used to train a model. The animation, the face detection, the GIF export: all on your device.</p>'),
       faq_block([
-        ('How do I turn photos into a video?', 'Animate each photo in OldPhoto Alive (export as GIF), then assemble the GIFs in any free video editor. No cloud service ever sees your photos.'),
+        ('How do I turn photos into a video?', 'Animate each photo in PixelFix (export as GIF), then assemble the GIFs in any free video editor. No cloud service ever sees your photos.'),
         ('Is it free?', 'Yes — all 5 motion effects are free. A one-time $9.99 removes the watermark and unlocks unlimited Alive face animation.'),
         ('Can I use photos of people who have passed?', 'Yes — this is exactly what the tool is for. The Alive face animation is one free try if you want to see a loved one blink, smile and breathe.'),
         ('Do my photos get uploaded?', 'Never. Everything runs locally in your browser.')
@@ -274,7 +274,7 @@ PAGES = [
     'hero_p': 'For a memorial service or a private tribute: photos of someone you love, animated with slow, quiet motion. Done privately, on your device, with nothing uploaded.',
     'hero_sub': 'Free to try · Private by design · No account',
     'sections': [
-      sec('Why Motion Belongs in a Memorial', '<p>At a memorial, a still photo is a reminder; a photo that <b>slowly moves</b> is a presence. A slow push-in toward your father’s face, a gentle pan across your grandmother’s garden — motion turns a slideshow into a tribute, and it does it without a single word.</p><p style="margin-top:10px;">This is a hard moment, and you shouldn’t have to hand your most private photos to a cloud app to honor someone. OldPhoto Alive runs entirely in your browser.</p>'),
+      sec('Why Motion Belongs in a Memorial', '<p>At a memorial, a still photo is a reminder; a photo that <b>slowly moves</b> is a presence. A slow push-in toward your father’s face, a gentle pan across your grandmother’s garden — motion turns a slideshow into a tribute, and it does it without a single word.</p><p style="margin-top:10px;">This is a hard moment, and you shouldn’t have to hand your most private photos to a cloud app to honor someone. PixelFix runs entirely in your browser.</p>'),
       sec('What You Can Create', '<div class="grid">%s</div>' % (
         card('Gentle Motion', 'Slow push-ins, pans and fades — the classic memorial slideshow feel. All 5 effects free.') +
         card('Alive Face Animation', 'A loved one’s photo that blinks, smiles and breathes — one free try, then one-time $9.99.') +
@@ -283,7 +283,7 @@ PAGES = [
       )),
       sec('How to Make a Memorial Video', '<ol class="steps">%s</ol>' % ''.join('<li>%s</li>' % x for x in [
         'Choose 10–15 of your favorite, clearest photos.',
-        'Animate each in <a href="index.html" style="color:#b0703a;font-weight:bold;">OldPhoto Alive</a> — slow push-ins and fades read best.',
+        'Animate each in <a href="index.html" style="color:#b0703a;font-weight:bold;">PixelFix</a> — slow push-ins and fades read best.',
         'Vary the motion between photos so the sequence breathes.',
         'Export GIFs and assemble them in a video editor, usually set to a piece of music.',
         'Keep it private or share it with family — your call, because it never left your device.'
@@ -309,7 +309,7 @@ PAGES = [
     'sections': [
       sec('Why a GIF?', '<p>A GIF is the most shareable video format there is: it plays everywhere — messaging apps, social media, email, memorial pages — with no player, no log-in, no clicking “play.” An animated old photo as a GIF lets a memory move wherever you send it.</p>'),
       sec('How to Make an Old Photo GIF in 30 Seconds', '<ol class="steps">%s</ol>' % ''.join('<li>%s</li>' % x for x in [
-        'Open <a href="index.html" style="color:#b0703a;font-weight:bold;">OldPhoto Alive</a> and upload your photo.',
+        'Open <a href="index.html" style="color:#b0703a;font-weight:bold;">PixelFix</a> and upload your photo.',
         'Preview a motion: Push-in, Pull-back, Pan across, Pan up or Fade in.',
         'Hit <b>Export GIF</b> — the tool renders the animation locally.',
         'Save the GIF and share it anywhere that accepts images.'
@@ -322,7 +322,7 @@ PAGES = [
       ])),
       sec('When to Add Alive', '<p>If your photo has a clear face, wait a moment for the <b>Alive ✨</b> button to appear — it animates a real blink, smile and breath. It’s free for one try, and a one-time $9.99 unlocks unlimited Alive plus a clean, watermark-free 720p export.</p>'),
       faq_block([
-        ('How do I turn a photo into a GIF?', 'Upload it to OldPhoto Alive, pick a motion, and hit Export GIF — the animation is rendered locally in your browser.'),
+        ('How do I turn a photo into a GIF?', 'Upload it to PixelFix, pick a motion, and hit Export GIF — the animation is rendered locally in your browser.'),
         ('Is it free?', 'Yes — all 5 motion effects export free with a small watermark. One-time $9.99 removes the watermark and unlocks unlimited Alive face animation.'),
         ('Where can I share the GIF?', 'Anywhere — messaging apps, social media, email, memorial and family pages. GIFs play everywhere.'),
         ('Does it upload my photo?', 'No. The photo is processed entirely on your device.')

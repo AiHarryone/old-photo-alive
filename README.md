@@ -1,4 +1,4 @@
-# OldPhoto Alive — 9 Free Browser Tools for Photos
+# PixelFix — 9 Free Browser Tools for Photos
 
 **One site, nine free image tools — all running 100% in your browser. Nothing uploaded, no account, no signup.**
 
