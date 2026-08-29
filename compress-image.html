@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="msvalidate.01" content="E62785F51D89A3BD3AFBB2BC2BB07BF9">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compress Image – Shrink JPG, PNG &amp; WebP in Your Browser (Free)</title>
+<meta name="description" content="Compress images online for free in your browser: shrink JPG, PNG and WebP files for faster websites and emails. Resize, convert format, batch — nothing uploaded, no signup.">
+<link rel="canonical" href="https://aiharryone.github.io/old-photo-alive/compress-image.html">
+<style>
+  :root{--cream:#f7efe3;--cream2:#fdf6ea;--ink:#4a3420;--brown:#6e4f2a;--tan:#b0703a;--muted:#9b8261;--green:#6d7a2a;--shadow:0 10px 30px rgba(90,60,25,.10);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:#5c4a3a;line-height:1.6;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 22px;}
+  header{background:linear-gradient(135deg,#ecd9b8,#f6e8cd);padding:18px 0;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(120,90,50,.08);}
+  nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .logo{font-weight:bold;font-size:21px;color:var(--brown);}
+  .nav-links{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .nav-links a{color:var(--brown);font-family:Helvetica,Arial,sans-serif;font-weight:bold;text-decoration:none;font-size:14px;}
+  .nav-links a:hover{color:var(--tan);}
+  .btn{display:inline-block;background:linear-gradient(135deg,#c98650,#a15f2e);color:#fff;text-decoration:none;padding:11px 22px;border-radius:999px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;transition:.2s;border:none;cursor:pointer;font-size:14px;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn.ghost{background:#fff;color:var(--brown);border:2px solid #dcc9a4;}
+  .btn.green{background:linear-gradient(135deg,#8f9a4a,#6d7a2a);}
+  .btn.small{padding:8px 14px;font-size:13px;}
+  .hero{text-align:center;padding:40px 0 16px;}
+  .hero h1{font-size:36px;color:var(--ink);margin-bottom:10px;}
+  .hero p{font-size:17px;color:#7d6849;max-width:640px;margin:0 auto;}
+  .drop{background:linear-gradient(135deg,var(--cream2),#fbf0dc);border:2.5px dashed #d8b98a;border-radius:20px;padding:36px 24px;text-align:center;cursor:pointer;transition:.2s;margin:18px 0;}
+  .drop:hover{border-color:var(--tan);background:#fbf3e2;}
+  .drop b{color:var(--brown);font-size:18px;display:block;margin-top:6px;}
+  .drop p{color:var(--muted);font-size:14px;margin-top:6px;}
+  .controls{background:#fff;border-radius:16px;padding:18px 20px;box-shadow:var(--shadow);display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-bottom:18px;}
+  .ctl label{font-size:13px;font-weight:bold;color:var(--muted);font-family:Helvetica,Arial,sans-serif;display:block;margin-bottom:4px;}
+  select,input[type=range]{accent-color:var(--tan);}
+  select{padding:8px 10px;border:2px solid #dcc9a4;border-radius:10px;font-family:Helvetica,Arial,sans-serif;font-size:14px;background:#fff;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+  .card{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:14px;overflow:hidden;}
+  .card img{width:100%;height:140px;object-fit:contain;background:#faf3e6;border-radius:10px;}
+  .card .meta{font-size:13px;color:var(--muted);margin-top:8px;font-family:Helvetica,Arial,sans-serif;}
+  .card .meta b{color:var(--brown);}
+  .card .save{font-size:14px;font-weight:bold;color:var(--green);margin-top:4px;font-family:Helvetica,Arial,sans-serif;}
+  .card .row{display:flex;gap:8px;margin-top:10px;}
+  .privacy{background:linear-gradient(135deg,#4a3420,#6e4f2a);color:#f3e6cb;border-radius:16px;padding:22px;text-align:center;margin:24px 0;}
+  .privacy b{font-size:18px;}
+  footer{background:linear-gradient(135deg,#e9d5b0,#f0e2c4);padding:22px 0;text-align:center;font-size:14px;color:var(--muted);margin-top:40px;}
+  footer a{color:var(--brown);font-weight:bold;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="logo">OldPhoto Alive</div>
+    <div class="nav-links">
+      <a href="index.html">Restore &amp; Animate</a>
+      <a href="restore.html">Restore</a>
+      <a href="passport-photo.html">Passport Photo</a>
+      <a href="compress-image.html">Compress</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>Compress Images Online — Free, in Your Browser</h1>
+    <p>Shrink JPG, PNG and WebP files for faster websites, lighter emails and smaller storage. Resize, convert format, batch — your images never leave your device.</p>
+  </div>
+
+  <div class="drop" id="drop">
+    <div style="font-size:34px;">🖼️</div>
+    <b>Drop images here</b>
+    <p>or click to choose · JPG / PNG / WebP · multiple allowed · stays on your device</p>
+  </div>
+  <input type="file" id="fileInput" accept="image/*" multiple style="display:none;">
+
+  <div class="controls" id="controls" style="display:none;">
+    <div class="ctl"><label>Quality</label><input type="range" id="quality" min="10" max="100" value="70"><span id="qVal" style="font-size:13px;color:var(--tan);font-weight:bold;margin-left:6px;">70</span></div>
+    <div class="ctl"><label>Format</label><select id="format"><option value="jpeg">JPEG</option><option value="webp">WebP</option><option value="png">PNG (lossless)</option></select></div>
+    <div class="ctl"><label>Max width</label><select id="maxW"><option value="0">Original</option><option value="1920">1920</option><option value="1600">1600</option><option value="1280">1280</option><option value="1024">1024</option><option value="800">800</option></select></div>
+    <button class="btn green" id="dlAll">Download all</button>
+    <span style="font-size:13px;color:var(--muted);font-family:Helvetica,Arial,sans-serif;">🔒 nothing uploaded</span>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="privacy">
+    <b>🔒 Your images never leave your device.</b>
+    <p style="margin-top:6px;">Everything runs in your browser — no upload, no server, no signup. Private by design.</p>
+  </div>
+</div>
+
+<footer>
+  OldPhoto Alive · <a href="index.html">Restore &amp; Animate</a> · <a href="restore.html">Restore Photos</a> · <a href="passport-photo.html">Passport Photo</a> · <a href="compress-image.html">Compress Images</a>
+</footer>
+
+<script>
+(function(){
+  var $drop = document.getElementById('drop'), $file = document.getElementById('fileInput');
+  var $controls = document.getElementById('controls'), $grid = document.getElementById('grid');
+  var items = []; // {img, name, orig, out}
+
+  $drop.onclick = function(){ $file.click(); };
+  $drop.ondragover = function(e){ e.preventDefault(); $drop.classList.add('dragover'); };
+  $drop.ondragleave = function(){ $drop.classList.remove('dragover'); };
+  $drop.ondrop = function(e){ e.preventDefault(); $drop.classList.remove('dragover'); for (var f of e.dataTransfer.files) if (f.type.match(/^image\//)) add(f); };
+  $file.onchange = function(){ for (var f of $file.files) if (f.type.match(/^image\//)) add(f); };
+
+  function add(f){
+    var r = new FileReader();
+    r.onload = function(ev){
+      var im = new Image();
+      im.onload = function(){
+        items.push({ img: im, name: f.name.replace(/\.[^.]+$/, ''), orig: f.size });
+        $drop.style.display = 'none';
+        $controls.style.display = 'flex';
+        processAll();
+      };
+      im.src = ev.target.result;
+    };
+    r.readAsDataURL(f);
+  }
+
+  var qEl = document.getElementById('quality'), fEl = document.getElementById('format'), wEl = document.getElementById('maxW');
+  qEl.oninput = function(){ document.getElementById('qVal').textContent = qEl.value; processAll(); };
+  fEl.onchange = processAll; wEl.onchange = processAll;
+
+  function compress(im, format, q, maxW){
+    var w = im.width, h = im.height;
+    if (maxW && w > maxW){ h = Math.round(h * maxW / w); w = maxW; }
+    var c = document.createElement('canvas'); c.width = w; c.height = h;
+    c.getContext('2d').drawImage(im, 0, 0, w, h);
+    var mime = format === 'png' ? 'image/png' : (format === 'webp' ? 'image/webp' : 'image/jpeg');
+    var blob = c.toBlob ? null : null;
+    // use dataURL fallback synchronously
+    return { w: w, h: h, dataURL: c.toDataURL(mime, q/100) };
+  }
+
+  function processAll(){
+    var format = fEl.value, q = +qEl.value, maxW = +wEl.value;
+    $grid.innerHTML = '';
+    items.forEach(function(it, i){
+      var out = compress(it.img, format, q, maxW);
+      var bytes = Math.round(out.dataURL.length * 0.75);
+      var pct = it.orig ? Math.round(bytes / it.orig * 100) : 0;
+      var card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML =
+        '<img src="' + it.img.src + '">' +
+        '<div class="meta"><b>' + (it.name + '.' + format) + '</b> · ' + out.w + '×' + out.h + '</div>' +
+        '<div class="meta">Original ' + fmt(it.orig) + ' → Compressed <b>' + fmt(bytes) + '</b></div>' +
+        '<div class="save">' + (pct <= 100 ? '↓ ' + (100-pct) + '% smaller' : '↗ bigger — lower quality or resize') + '</div>' +
+        '<div class="row"><button class="btn small" data-i="' + i + '">Download</button></div>';
+      $grid.appendChild(card);
+      it.out = { dataURL: out.dataURL, name: it.name + '.' + format, bytes: bytes };
+    });
+    $grid.querySelectorAll('button[data-i]').forEach(function(b){
+      b.onclick = function(){
+        var it = items[+b.getAttribute('data-i')];
+        var a = document.createElement('a'); a.href = it.out.dataURL; a.download = it.out.name; a.click();
+      };
+    });
+  }
+
+  document.getElementById('dlAll').onclick = function(){
+    items.forEach(function(it){ if (it.out){ var a = document.createElement('a'); a.href = it.out.dataURL; a.download = it.out.name; a.click(); } });
+  };
+
+  function fmt(n){ if (n > 1048576) return (n/1048576).toFixed(1) + ' MB'; return Math.round(n/1024) + ' KB'; }
+})();
+</script>
+</body>
+</html>
