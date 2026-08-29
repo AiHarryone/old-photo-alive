@@ -5,7 +5,7 @@ import os
 OUT = r'D:\claude\old-photo-alive\seo'
 os.makedirs(OUT, exist_ok=True)
 
-BASE = 'https://aiharryone.github.io/old-photo-alive'
+BASE = 'https://aiharryone.github.io/pixelfix'
 
 HEAD = '''<!DOCTYPE html>
 <html lang="en">

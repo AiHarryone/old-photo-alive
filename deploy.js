@@ -8,7 +8,7 @@ const path = require('path');
 
 const PAT = process.env.GH_PAT;
 if (!PAT) { console.error('Set GH_PAT env var first.'); process.exit(1); }
-const REPO = process.argv[2];                 // "AiHarryone/old-photo-alive"
+const REPO = process.argv[2];                 // "AiHarryone/pixelfix"
 const DIR = process.argv[3];                  // absolute path to files
 const MSG = process.argv[4] || 'deploy: static site update';
 
