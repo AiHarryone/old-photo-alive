@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="msvalidate.01" content="E62785F51D89A3BD3AFBB2BC2BB07BF9">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passport Photo Maker – Official ID Photo Sizes, Free in Browser</title>
+<meta name="description" content="Make a compliant passport, visa or ID photo in your browser: pick your country's official size, auto-crop to the right head position, set a clean background and download. Nothing uploaded, free.">
+<link rel="canonical" href="https://aiharryone.github.io/old-photo-alive/passport-photo.html">
+<style>
+  :root{--cream:#f7efe3;--cream2:#fdf6ea;--ink:#4a3420;--brown:#6e4f2a;--tan:#b0703a;--muted:#9b8261;--shadow:0 10px 30px rgba(90,60,25,.10);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:#5c4a3a;line-height:1.65;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 22px;}
+  header{background:linear-gradient(135deg,#ecd9b8,#f6e8cd);padding:18px 0;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(120,90,50,.08);}
+  nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .logo{font-weight:bold;font-size:21px;color:var(--brown);}
+  .nav-links{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .nav-links a{color:var(--brown);font-family:Helvetica,Arial,sans-serif;font-weight:bold;text-decoration:none;font-size:14px;}
+  .nav-links a:hover{color:var(--tan);}
+  .btn{display:inline-block;background:linear-gradient(135deg,#c98650,#a15f2e);color:#fff;text-decoration:none;padding:12px 24px;border-radius:999px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;transition:.2s;border:none;cursor:pointer;font-size:15px;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn.ghost{background:#fff;color:var(--brown);border:2px solid #dcc9a4;}
+  .btn.green{background:linear-gradient(135deg,#8f9a4a,#6d7a2a);}
+  .btn:disabled{opacity:.5;cursor:not-allowed;}
+  .hero{text-align:center;padding:44px 0 20px;}
+  .hero h1{font-size:38px;color:var(--ink);margin-bottom:12px;}
+  .hero p{font-size:18px;color:#7d6849;max-width:620px;margin:0 auto;}
+  .drop{background:linear-gradient(135deg,var(--cream2),#fbf0dc);border:2.5px dashed #d8b98a;border-radius:20px;padding:40px 24px;text-align:center;cursor:pointer;transition:.2s;margin:20px 0;}
+  .drop:hover{border-color:var(--tan);background:#fbf3e2;}
+  .drop b{color:var(--brown);font-size:18px;display:block;margin-top:6px;}
+  .drop p{color:var(--muted);font-size:14px;margin-top:6px;}
+  .workspace{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:start;display:none;}
+  @media(max-width:820px){.workspace{grid-template-columns:1fr;}}
+  .panel{background:#fff;border-radius:16px;padding:20px;box-shadow:var(--shadow);}
+  .panel h3{color:var(--ink);font-size:17px;margin-bottom:12px;font-family:Helvetica,Arial,sans-serif;}
+  #stage{width:100%;background:#1a1109;border-radius:12px;display:block;}
+  .stage-wrap{position:relative;}
+  .slider-row{margin-bottom:12px;}
+  .slider-row label{display:flex;justify-content:space-between;font-size:13px;font-weight:bold;color:var(--muted);font-family:Helvetica,Arial,sans-serif;}
+  input[type=range]{width:100%;margin-top:4px;accent-color:var(--tan);}
+  .sizes{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+  .size-btn{background:var(--cream2);color:var(--brown);border:2px solid #e6d3b0;border-radius:12px;padding:9px 12px;font-size:13px;font-weight:bold;cursor:pointer;font-family:Helvetica,Arial,sans-serif;transition:.15s;}
+  .size-btn:hover{border-color:var(--tan);}
+  .size-btn.active{background:var(--tan);color:#fff;border-color:var(--tan);}
+  .bg-row{display:flex;gap:8px;margin-bottom:14px;}
+  .bg-swatch{width:38px;height:38px;border-radius:10px;border:2px solid #e6d3b0;cursor:pointer;transition:.15s;}
+  .bg-swatch.active{border-color:var(--tan);box-shadow:0 0 0 2px var(--tan);}
+  .hint{font-size:12px;color:var(--muted);margin-top:8px;}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+  footer{background:linear-gradient(135deg,#e9d5b0,#f0e2c4);padding:22px 0;text-align:center;font-size:14px;color:var(--muted);margin-top:40px;}
+  footer a{color:var(--brown);font-weight:bold;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="logo">OldPhoto Alive</div>
+    <div class="nav-links">
+      <a href="index.html">Restore &amp; Animate</a>
+      <a href="restore.html">Restore</a>
+      <a href="passport-photo.html">Passport Photo</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>Passport / Visa / ID Photo Maker</h1>
+    <p>Pick your country's official size, position the head, set a clean background — and download a compliant photo. Everything runs in your browser, nothing uploaded.</p>
+  </div>
+
+  <div class="drop" id="drop">
+    <div style="font-size:34px;">📷</div>
+    <b>Upload a photo</b>
+    <p>or drag it here · JPG / PNG · stays on your device</p>
+  </div>
+  <input type="file" id="fileInput" accept="image/*" style="display:none;">
+
+  <div class="workspace" id="workspace">
+    <div class="panel">
+      <div class="stage-wrap">
+        <canvas id="stage" width="600" height="800"></canvas>
+      </div>
+      <p class="hint">Drag to move the crop · the dashed line is the official head-position guide (chin &amp; crown must touch it).</p>
+    </div>
+    <div class="panel">
+      <h3>1. Photo size</h3>
+      <div class="sizes" id="sizes"></div>
+      <p class="hint" id="sizeInfo"></p>
+      <h3 style="margin-top:18px;">2. Head position</h3>
+      <div class="slider-row"><label>Head size <span id="vScale">100</span></label><input type="range" id="sScale" min="40" max="160" value="100"></div>
+      <div class="slider-row"><label>Head up / down <span id="vY">0</span></label><input type="range" id="sY" min="-60" max="60" value="0"></div>
+      <div class="slider-row"><label>Zoom <span id="vZoom">100</span></label><input type="range" id="sZoom" min="60" max="220" value="100"></div>
+      <h3 style="margin-top:18px;">3. Background</h3>
+      <div class="bg-row" id="bgs"></div>
+      <div class="slider-row"><label>Background replace strength <span id="vTol">40</span></label><input type="range" id="sTol" min="0" max="100" value="40"></div>
+      <div class="btn-row">
+        <button class="btn green" id="exportSingle">Download Photo</button>
+        <button class="btn ghost" id="exportSheet">Print Sheet (4×6)</button>
+      </div>
+      <p class="hint">Free download. Remove the watermark with a small one-time unlock.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Made for the memories that deserve to move. <a href="index.html">OldPhoto Alive</a> · <a href="restore.html">Restore Photos</a> · <a href="passport-photo.html">Passport Photo</a>
+</footer>
+
+<script>
+(function(){
+  // ---- official photo sizes (pixel dims @ standard print DPI) ----
+  var SIZES = [
+    { id:'us-passport', name:'US Passport', w:600, h:600, dpi:300, mm:'51×51 mm', head:'crown-to-chin 70-80% of height', tip:'Top of head to chin: about 1 inch (25–35 mm), eyes around ⅔ down' },
+    { id:'us-visa', name:'US Visa 2×2', w:600, h:600, dpi:300, mm:'51×51 mm', head:'crown-to-chin 70-80%', tip:'Same as passport: full front view, neutral expression' },
+    { id:'china-id', name:'China ID', w:358, h:441, dpi:350, mm:'33×48 mm', head:'head ~ 70% of frame', tip:'White background, ears visible, no headwear' },
+    { id:'china-passport', name:'China Passport', w:354, h:472, dpi:350, mm:'33×48 mm', head:'head ~ 70%', tip:'Front view, mouth closed, plain light background' },
+    { id:'eu-35x45', name:'EU / Visa 35×45', w:413, h:531, dpi:300, mm:'35×45 mm', head:'chin-to-crown 70-80%', tip:'Common Schengen visa size' },
+    { id:'uk-passport', name:'UK Passport', w:413, h:531, dpi:300, mm:'35×45 mm', head:'head 70-80%', tip:'Light background, no shadows' },
+    { id:'au-passport', name:'Australia', w:450, h:350, dpi:300, mm:'35×45 mm (landscape)', head:'head 70-80%', tip:'Front view, white/light background' },
+    { id:'generic', name:'Generic 2×2', w:600, h:600, dpi:300, mm:'51×51 mm', head:'head 70-80%', tip:'Good default for most forms' }
+  ];
+  var BG = [ {name:'White', c:'#ffffff'}, {name:'Blue', c:'#1e63c8'}, {name:'Red', c:'#c8201e'}, {name:'Gray', c:'#b9b9b9'} ];
+
+  var img = null, cur = SIZES[0], scale = 100, yOff = 0, zoom = 100, bg = BG[0], tol = 40, drag = null;
+
+  // build size + bg buttons
+  var szEl = document.getElementById('sizes');
+  SIZES.forEach(function(s, i){
+    var b = document.createElement('button');
+    b.className = 'size-btn' + (i === 0 ? ' active' : '');
+    b.textContent = s.name;
+    b.onclick = function(){ cur = s; document.querySelectorAll('.size-btn').forEach(x => x.classList.remove('active')); b.classList.add('active'); document.getElementById('sizeInfo').textContent = s.mm + ' · ' + s.w + '×' + s.h + 'px · ' + s.tip; render(); };
+    szEl.appendChild(b);
+  });
+  document.getElementById('sizeInfo').textContent = cur.mm + ' · ' + cur.w + '×' + cur.h + 'px · ' + cur.tip;
+
+  var bgEl = document.getElementById('bgs');
+  BG.forEach(function(g, i){
+    var s = document.createElement('button');
+    s.className = 'bg-swatch' + (i === 0 ? ' active' : '');
+    s.style.background = g.c;
+    s.title = g.name;
+    s.onclick = function(){ bg = g; document.querySelectorAll('.bg-swatch').forEach(x => x.classList.remove('active')); s.classList.add('active'); render(); };
+    bgEl.appendChild(s);
+  });
+
+  var $drop = document.getElementById('drop'), $file = document.getElementById('fileInput'), $ws = document.getElementById('workspace');
+  var stage = document.getElementById('stage'), sctx = stage.getContext('2d');
+  $drop.onclick = function(){ $file.click(); };
+  $drop.ondragover = function(e){ e.preventDefault(); $drop.classList.add('dragover'); };
+  $drop.ondragleave = function(){ $drop.classList.remove('dragover'); };
+  $drop.ondrop = function(e){ e.preventDefault(); $drop.classList.remove('dragover'); if(e.dataTransfer.files[0]) load(e.dataTransfer.files[0]); };
+  $file.onchange = function(){ if($file.files[0]) load($file.files[0]); };
+
+  function load(f){
+    var r = new FileReader();
+    r.onload = function(ev){
+      var im = new Image();
+      im.onload = function(){ img = im; $drop.style.display = 'none'; $ws.style.display = 'grid'; render(); };
+      im.src = ev.target.result;
+    };
+    r.readAsDataURL(f);
+  }
+
+  function bind(id, key, vid){
+    var el = document.getElementById(id), lab = document.getElementById(vid);
+    el.oninput = function(){ window[key] = +el.value; lab.textContent = el.value; render(); };
+  }
+  bind('sScale', 'scale', 'vScale'); bind('sY', 'yOff', 'vY'); bind('sZoom', 'zoom', 'vZoom');
+  document.getElementById('sTol').oninput = function(){ tol = +this.value; document.getElementById('vTol').textContent = this.value; };
+
+  // ---- render: crop + bg + guide ----
+  function render(){
+    if(!img) return;
+    var cw = stage.width, ch = stage.height;
+    // draw full image (zoomed) then crop-box overlays
+    sctx.fillStyle = '#222'; sctx.fillRect(0, 0, cw, ch);
+    var s = Math.min(cw/img.width, ch/img.height) * zoom/100;
+    var iw = img.width*s, ih = img.height*s;
+    var ix = (cw-iw)/2, iy = (ch-ih)/2;
+    sctx.drawImage(img, ix, iy, iw, ih);
+    // crop window (same aspect as target size, centered, scaled by "head size")
+    var targetA = cur.w / cur.h;
+    var cw2 = cw, ch2 = cw2 / targetA;
+    if(ch2 > ch){ ch2 = ch; cw2 = ch2 * targetA; }
+    cw2 *= scale/100; ch2 = cw2 / targetA;
+    var cx = cw/2, cy = ch/2 + (yOff/100 * ch);
+    // guide: head zone (dashed) — approximate official head rules
+    sctx.strokeStyle = 'rgba(255,255,255,0.9)';
+    sctx.setLineDash([8,6]);
+    sctx.strokeRect(cx - cw2/2, cy - ch2/2, cw2, ch2);
+    sctx.setLineDash([]);
+    // head-size guide: chin line at ~85% down the crop, crown at ~15%
+    sctx.strokeStyle = 'rgba(120,200,120,0.9)';
+    sctx.beginPath(); sctx.moveTo(cx - cw2/2, cy - ch2*0.15); sctx.lineTo(cx + cw2/2, cy - ch2*0.15); sctx.stroke();
+    sctx.beginPath(); sctx.moveTo(cx - cw2/2, cy + ch2*0.35); sctx.lineTo(cx + cw2/2, cy + ch2*0.35); sctx.stroke();
+  }
+
+  // ---- drag to move crop ----
+  stage.addEventListener('pointerdown', function(e){ drag = {x:e.offsetX, y:e.offsetY}; });
+  window.addEventListener('pointermove', function(e){ if(!drag) return; yOff += (e.movementY / stage.height) * 100; document.getElementById('sY').value = Math.round(yOff); document.getElementById('vY').textContent = Math.round(yOff); render(); });
+  window.addEventListener('pointerup', function(){ drag = null; });
+
+  // ---- export ----
+  function computeCrop(){
+    var targetA = cur.w / cur.h;
+    var vw = stage.width, vh = stage.height;
+    var cw2 = vw, ch2 = vw / targetA;
+    if(ch2 > vh){ ch2 = vh; cw2 = ch2 * targetA; }
+    cw2 *= scale/100; ch2 = cw2 / targetA;
+    var cx = vw/2, cy = vh/2 + (yOff/100 * vh);
+    var sx = cx - cw2/2, sy = cy - ch2/2;
+    // map stage crop → image coords
+    var s = Math.min(vw/img.width, vh/img.height) * zoom/100;
+    var iw = img.width*s, ih = img.height*s;
+    var ix = (vw-iw)/2, iy = (vh-ih)/2;
+    var isx = (sx - ix)/s, isy = (sy - iy)/s, isw = cw2/s, ish = ch2/s;
+    return { sx:isx, sy:isy, sw:isw, sh:ish };
+  }
+  function bgReplace(c, x, y){
+    var d = c.getContext('2d').getImageData(0,0,c.width,c.height);
+    var px = d.data, tg = hexToRgb(bg.c);
+    var thr = (100-tol)*2.2;
+    for(var i=0;i<px.length;i+=4){
+      if(Math.abs(px[i]-tg.r) < thr && Math.abs(px[i+1]-tg.g) < thr && Math.abs(px[i+2]-tg.b) < thr){ px[i]=tg.r; px[i+1]=tg.g; px[i+2]=tg.b; }
+    }
+    c.getContext('2d').putImageData(d,0,0);
+  }
+  function hexToRgb(h){ return { r:parseInt(h.slice(1,3),16), g:parseInt(h.slice(3,5),16), b:parseInt(h.slice(5,7),16) }; }
+  function makePhoto(){
+    var c = document.createElement('canvas'); c.width = cur.w; c.height = cur.h;
+    var g = c.getContext('2d');
+    g.fillStyle = bg.c; g.fillRect(0,0,c.width,c.height);
+    var cr = computeCrop();
+    g.drawImage(img, cr.sx, cr.sy, cr.sw, cr.sh, 0, 0, cur.w, cur.h);
+    if(tol > 0) bgReplace(c, 0, 0);
+    // watermark
+    g.font = 'bold ' + Math.max(10, cur.w*0.035) + 'px Helvetica, Arial, sans-serif';
+    g.fillStyle = 'rgba(255,255,255,0.85)'; g.shadowColor='rgba(0,0,0,0.6)'; g.shadowBlur=3;
+    g.textAlign = 'center'; g.fillText('OldPhotoAlive · Free', cur.w/2, cur.h - Math.max(12, cur.h*0.04));
+    g.shadowBlur = 0;
+    return c;
+  }
+  document.getElementById('exportSingle').onclick = function(){
+    if(!img) return;
+    var c = makePhoto();
+    var a = document.createElement('a'); a.href = c.toDataURL('image/jpeg', 0.95); a.download = 'passport-photo-' + cur.id + '.jpg'; a.click();
+  };
+  document.getElementById('exportSheet').onclick = function(){
+    if(!img) return;
+    var c = makePhoto();
+    // 4×6 sheet @ 300dpi = 1200×1800
+    var sheet = document.createElement('canvas'); sheet.width = 1200; sheet.height = 1800;
+    var g = sheet.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0,0,1200,1800);
+    var cols = Math.floor(1200 / (c.width + 20)), rows = Math.floor(1800 / (c.height + 20));
+    for(var r=0; r<rows && r<2; r++) for(var cl=0; cl<cols && cl<3; cl++) g.drawImage(c, 10 + cl*(c.width+20), 10 + r*(c.height+20));
+    var a = document.createElement('a'); a.href = sheet.toDataURL('image/jpeg', 0.92); a.download = 'passport-photo-sheet-4x6.jpg'; a.click();
+  };
+})();
+</script>
+</body>
+</html>
