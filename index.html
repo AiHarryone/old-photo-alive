@@ -4,14 +4,14 @@
 <meta name="msvalidate.01" content="E62785F51D89A3BD3AFBB2BC2BB07BF9">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OldPhoto Alive – Animate Old Photos in Your Browser (Free)</title>
-<meta name="description" content="Turn old photos into gentle, living motion — push-in, pan and fade effects, right in your browser. No upload, no signup. Free to try.">
+<title>OldPhoto Alive – Restore &amp; Animate Old Photos in Your Browser (Free)</title>
+<meta name="description" content="Restore faded old photos, then bring them to life — push-in, pan and fade motion, plus real face animation. All in your browser, nothing uploaded. Free to try.">
 <link rel="canonical" href="https://aiharryone.github.io/old-photo-alive/">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Is animating my old photo free?","acceptedAnswer":{"@type":"Answer","text":"Yes — all 5 motion effects are free with a small watermark, and you can try the Alive face animation once for free. Unlimited Alive plus watermark-free 720p export is a one-time $9.99, no subscription."}},
-{"@type":"Question","name":"Is my photo uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Everything runs in your browser. Your photo never leaves your device."}},
-{"@type":"Question","name":"What effects can I apply to an old photo?","acceptedAnswer":{"@type":"Answer","text":"Slow push-in, slow pull-back, horizontal pan, vertical pan and a gentle fade-in. Great for memorials, family history and memory videos."}}
+{"@type":"Question","name":"Is restoring and animating my old photo free?","acceptedAnswer":{"@type":"Answer","text":"Yes — old photo restoration and all 5 motion effects (push-in, pull-back, pan, fade) are free with a small watermark. The Alive face animation is free for one try; unlimited Alive plus watermark-free 720p export is a one-time $9.99, no subscription."}},
+{"@type":"Question","name":"Is my photo uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Everything — restoration and animation — runs in your browser. Your photo never leaves your device."}},
+{"@type":"Question","name":"What effects can I apply to an old photo?","acceptedAnswer":{"@type":"Answer","text":"Slow push-in, slow pull-back, horizontal pan, vertical pan and a gentle fade-in — perfect for memorials, family history and memory videos. Plus a real face animation (blink, smile, breathe) with the Alive effect."}}
 ]}
 </script>
 <style>
@@ -22,39 +22,42 @@
   nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
   .logo{font-weight:bold;font-size:20px;color:#7a5c36;}
   .logo a{color:#7a5c36;text-decoration:none;}
+  .navlink{color:#8a6a3f;margin-right:14px;font-weight:bold;text-decoration:none;font-family:Helvetica,Arial,sans-serif;}
+  .navlink:hover{color:#b0703a;}
   .btn{display:inline-block;background:#b0703a;color:#fff;text-decoration:none;padding:12px 24px;border-radius:30px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;transition:.2s;border:none;cursor:pointer;font-size:15px;}
   .btn:hover{background:#985c2d;}
   .btn.ghost{background:#fff;color:#8a6a3f;border:2px solid #d8b98a;}
   .btn.green{background:#8a7a3a;}
   .btn.green:hover{background:#71662f;}
   .btn:disabled{opacity:.5;cursor:not-allowed;}
-  .hero{text-align:center;padding:46px 0 26px;}
+  .hero{text-align:center;padding:42px 0 20px;}
   .hero h1{font-size:34px;color:#6e4f2a;margin-bottom:12px;}
-  .hero p{font-size:18px;color:#7d6a52;max-width:620px;margin:0 auto;}
-  .restore-cta{text-align:center;background:linear-gradient(135deg,#fdf6ea,#f3e2c2);border:2px solid #d8b98a;border-radius:16px;padding:20px 24px;margin:6px 0 22px;display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;}
-  .restore-cta b{color:#6e4f2a;font-family:Helvetica,Arial,sans-serif;font-size:16px;}
-  .restore-cta .btn{font-size:15px;}
-  section{padding:24px 0;}
-  h2{color:#6e4f2a;margin-bottom:14px;font-size:24px;}
-  .tool{background:#fff;border-radius:16px;padding:26px;box-shadow:0 4px 14px rgba(120,90,50,.12);}
+  .hero p{font-size:18px;color:#7d6a52;max-width:640px;margin:0 auto;}
+  section{padding:22px 0;}
   .drop{background:#fdf6ea;border:2px dashed #d8b98a;border-radius:14px;padding:34px 20px;text-align:center;cursor:pointer;transition:.2s;}
   .drop:hover{border-color:#b0703a;background:#fbf0dc;}
   .drop.dragover{background:#f5e6c8;border-color:#b0703a;}
   .drop b{color:#7a5c36;font-size:17px;}
   .drop p{color:#a08a6a;font-size:14px;margin-top:6px;}
-  .effects{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;}
-  .eff{flex:1;min-width:120px;background:#faf3e6;border:2px solid #e6d3b0;border-radius:12px;padding:12px;text-align:center;cursor:pointer;font-weight:bold;color:#8a6a3f;font-family:Helvetica,Arial,sans-serif;transition:.15s;}
+  h2{color:#6e4f2a;margin-bottom:14px;font-size:22px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  h2 .num{background:#b0703a;color:#fff;border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-family:Helvetica,Arial,sans-serif;}
+  .tag{font-family:Helvetica,Arial,sans-serif;font-size:12px;font-weight:bold;border-radius:20px;padding:3px 10px;}
+  .tag.free{background:#e6f0d6;color:#5c7a2a;}
+  .tag.paid{background:#f3dfc8;color:#a05a2a;}
+  .iface{background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 14px rgba(120,90,50,.12);margin-bottom:22px;}
+  .effects{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
+  .eff{flex:1;min-width:110px;background:#faf3e6;border:2px solid #e6d3b0;border-radius:12px;padding:12px;text-align:center;cursor:pointer;font-weight:bold;color:#8a6a3f;font-family:Helvetica,Arial,sans-serif;transition:.15s;}
   .eff:hover{border-color:#b0703a;}
   .eff.active{background:#b0703a;color:#fff;border-color:#b0703a;}
   .eff.locked{opacity:.55;background:#efe6d2;}
   .eff.locked::after{content:" 🔒";}
   .eff.locked.active{opacity:1;}
-  .preview-wrap{margin-top:20px;text-align:center;}
-  #preview{max-width:100%;background:#000;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.15);}
-  .controls{margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  #aliveBtn{min-width:200px;margin-bottom:8px;font-size:16px;}
+  canvas{max-width:100%;background:#000;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.15);}
+  .controls{margin-top:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
   .hint{font-size:13px;color:#a08a6a;margin-top:10px;text-align:center;}
   .note{font-size:13px;color:#a08a6a;margin-top:14px;}
-  .pro{background:linear-gradient(135deg,#fdf6ea,#f3e2c2);border:2px solid #d8b98a;border-radius:16px;padding:26px;margin-top:26px;text-align:center;}
+  .pro{background:linear-gradient(135deg,#fdf6ea,#f3e2c2);border:2px solid #d8b98a;border-radius:16px;padding:26px;margin-top:22px;text-align:center;}
   .pro h3{color:#6e4f2a;font-size:22px;margin-bottom:8px;}
   .pro p{color:#7d6a52;margin-bottom:16px;}
   .pro .price{font-size:26px;font-weight:bold;color:#b0703a;font-family:Helvetica,Arial,sans-serif;}
@@ -64,12 +67,23 @@
   #unlockMsg{font-size:14px;margin-top:10px;font-weight:bold;}
   #unlockMsg.ok{color:#6a8a3a;}
   #unlockMsg.err{color:#b04a3a;}
+  .restore-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start;}
+  @media(max-width:700px){.restore-grid{grid-template-columns:1fr;}}
+  .slider-row{margin-bottom:12px;}
+  .slider-row label{display:flex;justify-content:space-between;font-size:14px;font-weight:bold;color:#7d6a52;font-family:Helvetica,Arial,sans-serif;}
+  .slider-row label span{color:#b0703a;}
+  input[type=range]{width:100%;margin-top:4px;accent-color:#b0703a;}
+  .chk{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:bold;color:#7d6a52;font-family:Helvetica,Arial,sans-serif;margin-bottom:12px;}
+  .restore-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .badge{display:inline-block;background:#fdf6ea;border:1px solid #e6d3b0;border-radius:20px;padding:4px 12px;font-size:13px;color:#8a6a3f;font-family:Helvetica,Arial,sans-serif;margin-top:10px;}
+  .alive-top{text-align:center;margin-bottom:14px;}
+  #aliveStatus{font-size:14px;color:#7d6a52;font-family:Helvetica,Arial,sans-serif;}
   .faq p{margin-bottom:10px;background:#fff;border-radius:10px;padding:14px 18px;}
   .faq b{color:#6e4f2a;}
   .related{margin-top:36px;background:#fff;border-radius:14px;box-shadow:0 4px 14px rgba(120,90,50,.12);padding:24px;}
   .related a{display:inline-block;background:#fdf6ea;color:#8a6a3f;border:1px solid #e6d3b0;border-radius:20px;padding:6px 14px;margin:4px 6px 0 0;text-decoration:none;font-size:14px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;}
   .related a:hover{background:#f5e6c8;}
-  footer{background:#e9d5b0;padding:22px 0;text-align:center;font-size:14px;color:#7d6a52;}
+  footer{background:#e9d5b0;padding:22px 0;text-align:center;font-size:14px;color:#7d6a52;margin-top:30px;}
   footer a{color:#6e4f2a;}
   #status{font-size:14px;color:#7d6a52;margin-top:12px;font-family:Helvetica,Arial,sans-serif;}
   @media(max-width:600px){.hero h1{font-size:27px;}.btn{display:block;margin:8px 0;text-align:center;}.eff{min-width:100%;}}
@@ -80,9 +94,10 @@
   <div class="wrap nav">
     <div class="logo"><a href="index.html">OldPhoto Alive</a></div>
     <div>
-      <a href="#tool" style="color:#8a6a3f;margin-right:14px;font-weight:bold;text-decoration:none;font-family:Helvetica,Arial,sans-serif;">Try Free</a>
-      <a class="btn ghost" href="restore.html">Restore Photos</a>
-      <a class="btn" href="#unlock">Unlock All – $9.99</a>
+      <a class="navlink" href="#restore">Restore</a>
+      <a class="navlink" href="#animate">Animate</a>
+      <a class="navlink" href="#alive">Alive</a>
+      <a class="btn" href="#alive">Unlock All – $9.99</a>
     </div>
   </div>
 </header>
@@ -90,68 +105,107 @@
 <div class="wrap">
   <div class="hero">
     <h1>Bring an Old Photo Back to Life</h1>
-    <p>A slow push-in. A gentle pan. The quiet motion of a memory — made in your browser, nothing uploaded, no account needed.</p>
+    <p>Restore it. Then make it move. Three tools, one photo, all in your browser — nothing uploaded, no account needed.</p>
   </div>
 
-  <div class="restore-cta">
-    <b>🖼️ Faded or blurry old photo? Restore it first — free, in your browser.</b>
-    <a class="btn" href="restore.html">Restore Photos →</a>
-  </div>
+  <section id="upload">
+    <div class="drop" id="drop">
+      <b>Click to upload a photo</b>
+      <p>or drag it here · JPG / PNG · stays on your device</p>
+    </div>
+    <input type="file" id="fileInput" accept="image/*" style="display:none;">
+  </section>
 
-  <section id="tool">
-    <div class="tool">
-      <div class="drop" id="drop">
-        <b>Click to upload a photo</b>
-        <p>or drag it here · JPG / PNG · stays on your device</p>
+  <div id="workspace" style="display:none;">
+
+    <!-- ① Restore (free) -->
+    <section class="iface" id="restore">
+      <h2><span class="num">1</span> Restore Photos <span class="tag free">FREE</span></h2>
+      <div class="restore-grid">
+        <div style="text-align:center;">
+          <canvas id="restoreView" width="320" height="400"></canvas>
+          <p class="hint">Drag the divider to compare before / after</p>
+        </div>
+        <div>
+          <button class="btn" id="autoBtn" style="width:100%;margin-bottom:14px;">✨ Auto Fix</button>
+          <div class="slider-row"><label>Brightness <span id="vB">0</span></label><input type="range" id="sB" min="-60" max="60" value="0"></div>
+          <div class="slider-row"><label>Contrast <span id="vC">0</span></label><input type="range" id="sC" min="-60" max="80" value="0"></div>
+          <div class="slider-row"><label>Saturation <span id="vS">0</span></label><input type="range" id="sS" min="-80" max="80" value="0"></div>
+          <div class="slider-row"><label>Sharpen <span id="vSh">0</span></label><input type="range" id="sSh" min="0" max="100" value="0"></div>
+          <label class="chk"><input type="checkbox" id="denoise"> Reduce noise</label>
+          <div class="badge" id="grayBadge" style="display:none;">Black &amp; white photo detected</div>
+          <div class="restore-btns">
+            <button class="btn green" id="applyRestoreBtn">✓ Apply to animation</button>
+            <button class="btn ghost" id="exportRestorePng">Export PNG</button>
+            <button class="btn ghost" id="exportRestoreJpg">Export JPG</button>
+          </div>
+          <p class="note">The restored version feeds straight into Animate and Alive below.</p>
+        </div>
       </div>
-      <input type="file" id="fileInput" accept="image/*" style="display:none;">
+    </section>
 
+    <!-- ② Ken Burns animate (free) -->
+    <section class="iface" id="animate">
+      <h2><span class="num">2</span> Animate — Push-in &amp; Pan <span class="tag free">FREE</span></h2>
       <div class="effects" id="effects">
         <div class="eff active" data-eff="pushin">Push-in</div>
         <div class="eff" data-eff="pushout">Pull-back</div>
-        <div class="eff" data-eff="alive" data-face="1" style="display:none;">Alive ✨</div>
         <div class="eff" data-eff="panx">Pan across</div>
         <div class="eff" data-eff="pany">Pan up</div>
         <div class="eff" data-eff="fade">Fade in</div>
       </div>
-
-      <div class="preview-wrap" style="display:none;" id="previewWrap">
-        <canvas id="preview" width="480" height="640"></canvas>
+      <div style="text-align:center;">
+        <canvas id="kbCanvas" width="480" height="640"></canvas>
         <div class="controls">
-          <button class="btn green" id="exportBtn">Export GIF</button>
-          <button class="btn ghost" id="resetBtn">New photo</button>
+          <button class="btn green" id="exportKbBtn">Export GIF</button>
         </div>
-        <div class="hint" id="status">Pick an effect and hit Export.</div>
+        <p class="hint" id="kbStatus">Pick a motion and hit Export.</p>
       </div>
+    </section>
 
-      <div class="note" id="freeNote">All 5 motion effects are free. Try Alive once free — then unlock unlimited Alive + clean 720p export below.</div>
-    </div>
-  </section>
+    <!-- ③ Alive face animation (paid) -->
+    <section class="iface" id="alive">
+      <h2><span class="num">3</span> Alive — Face Animation <span class="tag paid">$9.99 · ONE-TIME</span></h2>
+      <div class="alive-top">
+        <div class="eff" id="aliveBtn" data-eff="alive">Alive ✨</div>
+        <p id="aliveStatus"></p>
+      </div>
+      <div style="text-align:center;">
+        <canvas id="aliveCanvas" width="480" height="640"></canvas>
+        <div class="controls">
+          <button class="btn green" id="exportAliveBtn">Export GIF</button>
+        </div>
+        <p class="hint" id="aliveHint">Try Alive once free — then unlock unlimited Alive + clean 720p export for a one-time $9.99.</p>
+      </div>
+      <div class="pro" id="unlock">
+        <h3>Unlock Unlimited Alive</h3>
+        <p>Unlimited Alive animations · clean 720p export · no watermark · no subscription, ever</p>
+        <div class="price">$9.99 <span class="once">one-time</span></div>
+        <div class="controls">
+          <a class="btn" id="payBtn" href="#unlock">Get Unlimited Alive</a>
+        </div>
+        <div class="key-form">
+          <input type="text" id="licenseKey" placeholder="Already bought? Paste your license key">
+          <button class="btn ghost" id="unlockBtn">Unlock</button>
+        </div>
+        <div id="unlockMsg"></div>
+      </div>
+    </section>
 
-  <section class="pro" id="unlock">
-    <h3>Unlock Unlimited Alive</h3>
-    <p>Unlimited Alive animations · clean 720p export · no watermark · no subscription, ever</p>
-    <div class="price">$9.99 <span class="once">one-time</span></div>
-    <div class="controls">
-      <a class="btn" id="payBtn" href="#unlock">Get Unlimited Alive</a>
-    </div>
-    <div class="key-form">
-      <input type="text" id="licenseKey" placeholder="Already bought? Paste your license key">
-      <button class="btn ghost" id="unlockBtn">Unlock</button>
-    </div>
-    <div id="unlockMsg"></div>
-  </section>
+    <button class="btn ghost" id="resetBtn" style="width:100%;">Start over — new photo</button>
+  </div>
 
   <section class="faq">
     <h2>FAQ</h2>
-    <p><b>Is my photo uploaded anywhere?</b> No. Everything runs in your browser. Your photo never leaves your device.</p>
-    <p><b>What effects can I use?</b> Slow push-in, slow pull-back, pan across, pan up and a gentle fade-in — perfect for memorials, family history and memory videos.</p>
-    <p><b>Is it free?</b> Yes — all 5 motion effects are free with a small watermark. You can also try Alive (face animation) once for free. Unlimited Alive + watermark-free 720p export is a one-time $9.99 — no subscription.</p>
+    <p><b>Is my photo uploaded anywhere?</b> No. Restoration and animation both run in your browser. Your photo never leaves your device.</p>
+    <p><b>What's free?</b> Photo restoration, and all 5 motion effects (push-in, pull-back, pan, pan up, fade) with a small watermark. Alive is free for one try; unlimited Alive + clean 720p is a one-time $9.99.</p>
+    <p><b>What does Restore do?</b> One-click Auto Fix brings back faded tones, removes colour casts, sharpens soft scans and reduces noise. Fine sliders are available too, and the result feeds into Animate and Alive.</p>
+    <p><b>How do I use Alive?</b> Upload a clear, face-forward photo (face at least a third of the frame). Once the face is detected the Alive button appears — click it to see blink, smile and breath.</p>
   </section>
 
   <div class="related">
-    <h2>New to Animating Old Photos? Start Here</h2>
-    <a href="restore.html">Restore Old Photos (free)</a>
+    <h2>Guides &amp; More</h2>
+    <a href="restore.html">Restore Photos (standalone)</a>
     <a href="seo/animate-old-photos.html">How to Animate Old Photos</a>
     <a href="seo/revive-old-photos.html">Revive Old Photos</a>
     <a href="seo/ken-burns-effect.html">What Is the Ken Burns Effect?</a>
@@ -167,99 +221,108 @@
 </div>
 
 <footer>
-  Made for the memories that deserve to move. Questions? Ai_harryone@outlook.com · <a href="index.html">OldPhoto Alive</a> · <a href="https://aiharryone.github.io/kdp-launch-kit/terms.html">Terms</a> · <a href="https://aiharryone.github.io/kdp-launch-kit/privacy.html">Privacy</a>
+  Made for the memories that deserve to move. Questions? Ai_harryone@outlook.com · <a href="index.html">OldPhoto Alive</a> · <a href="restore.html">Restore Photos</a> · <a href="https://aiharryone.github.io/kdp-launch-kit/terms.html">Terms</a> · <a href="https://aiharryone.github.io/kdp-launch-kit/privacy.html">Privacy</a>
 </footer>
 
 <script src="vendor/omggif.js"></script>
 <script src="vendor/delaunator.js"></script>
 <script>
 (function(){
-  // ---- Config (filled in during launch, milestone 3) ----
+  // ---- Config ----
   var PAYMENT_LINK = 'https://creem.io/product/prod_1R4Hz0sKVv8p5c5TgWl20H';  // Creem product link
   var UNLOCK_API   = 'https://old-photo-unlock.aiharryone.workers.dev';  // Cloudflare Worker base URL
   var FREE_EFFECTS = ['pushin','pushout','panx','pany','fade']; // all Ken Burns effects free
-  var ALIVE_FREE_TRIES_KEY = 'oldphoto_alive_tries'; // how many Alive exports the user has done
-  var ALIVE_FREE_TRIES = 1;                            // first Alive use is free
+  var ALIVE_FREE_TRIES_KEY = 'oldphoto_alive_tries';
+  var ALIVE_FREE_TRIES = 1;
   var UNLOCKED_KEY = 'oldphoto_unlocked';
 
   // ---- State ----
-  var img = null;            // loaded image element
+  var img = null;            // original image element
+  var srcImg = null;         // current source for animation (img or the restored canvas)
+  function currentSource(){ return srcImg || img; }
   var effect = 'pushin';
   var unlocked = false;
   try { unlocked = localStorage.getItem(UNLOCKED_KEY) === '1'; } catch(e){}
   // ---- Face / Alive state ----
-  var faceLandmarks = null;   // array of {x,y} normalized (0..1) once detected
-  var faceMesh = null;        // { points, tris }
-  var morph = null;           // module ref (set via dynamic import)
+  var faceLandmarks = null;
+  var faceMesh = null;
+  var morph = null;
   var faceDetecting = false;
-  var MP_READY = false;       // MediaPipe loaded?
+  var MP_READY = false;
 
   // ---- DOM ----
   var $drop = document.getElementById('drop');
   var $file = document.getElementById('fileInput');
-  var $wrap = document.getElementById('previewWrap');
-  var $canvas = document.getElementById('preview');
-  var $status = document.getElementById('status');
-  var $freeNote = document.getElementById('freeNote');
-  var ctx = $canvas.getContext('2d');
+  var $workspace = document.getElementById('workspace');
+  var $kbCanvas = document.getElementById('kbCanvas');
+  var $aliveCanvas = document.getElementById('aliveCanvas');
+  var kbCtx = $kbCanvas.getContext('2d');
+  var aliveCtx = $aliveCanvas.getContext('2d');
+  var $kbStatus = document.getElementById('kbStatus');
+  var $aliveStatus = document.getElementById('aliveStatus');
+  var $aliveBtn = document.getElementById('aliveBtn');
+  var $aliveHint = document.getElementById('aliveHint');
   var $payBtn = document.getElementById('payBtn');
   var $license = document.getElementById('licenseKey');
   var $unlockBtn = document.getElementById('unlockBtn');
   var $unlockMsg = document.getElementById('unlockMsg');
 
-  function lockedEffs(){ return effectLocked(effect); }
   function aliveFreeUsed(){
-    // How many Alive exports the user has already done this browser.
     var n = 0;
     try { n = parseInt(localStorage.getItem(ALIVE_FREE_TRIES_KEY), 10) || 0; } catch(e){}
     return n;
   }
   function effectLocked(e){
     if(e === 'alive'){
-      // needs a face, and if not unlocked, free tries are exhausted
       if(!faceLandmarks) return true;
       if(unlocked) return false;
-      return aliveFreeUsed() >= ALIVE_FREE_TRIES; // locked once the 1 free try is used
+      return aliveFreeUsed() >= ALIVE_FREE_TRIES;
     }
-    return false; // all Ken Burns effects are free
+    return false;
   }
 
   function paintEffects(){
-    document.querySelectorAll('.eff').forEach(function(el){
+    document.querySelectorAll('#effects .eff').forEach(function(el){
       var e = el.getAttribute('data-eff');
-      if(e === 'alive'){
-        // show only when a face is detected; locked when not paid
-        el.style.display = faceLandmarks ? '' : 'none';
-        el.classList.toggle('locked', effectLocked(e));
-        el.classList.toggle('active', e === effect);
-        return;
-      }
-      el.classList.toggle('locked', effectLocked(e));
-      el.classList.toggle('active', e === effect);
+      el.classList.toggle('active', e === effect && effect !== 'alive');
     });
-    // if the current effect is alive but no longer selectable, fall back to pushin
-    if(effect === 'alive' && effectLocked('alive')){ effect = 'pushin'; paintEffects(); }
+    // Alive button state
+    var show = !!faceLandmarks;
+    $aliveBtn.style.display = show ? '' : 'none';
+    var locked = effectLocked('alive');
+    $aliveBtn.classList.toggle('locked', locked);
+    $aliveBtn.classList.toggle('active', effect === 'alive' && !locked);
+    if(show){
+      $aliveStatus.textContent = locked
+        ? (aliveFreeUsed() >= ALIVE_FREE_TRIES ? 'You\'ve used your free Alive trial — unlock for $9.99 to keep using it.' : 'One free Alive try left — then unlock for $9.99.')
+        : (unlocked ? 'Alive unlocked — unlimited, no watermark.' : 'Face detected ✓ — click Alive to use your one free trial.');
+    }
+    if(effect === 'alive' && effectLocked('alive')){ effect = 'pushin'; }
   }
 
-  // ---- Effect selection ----
-  document.querySelectorAll('.eff').forEach(function(el){
+  // ---- Effect selection (free Ken Burns) ----
+  document.querySelectorAll('#effects .eff').forEach(function(el){
     el.addEventListener('click', function(){
       var e = el.getAttribute('data-eff');
-      if(effectLocked(e)){
-        if(e === 'alive'){
-          if(aliveFreeUsed() >= ALIVE_FREE_TRIES){
-            $status.textContent = 'You\'ve used your free Alive trial. Unlock unlimited Alive for $9.99 below.';
-          } else {
-            $status.textContent = 'Pick Alive to use your one free trial — then unlock for unlimited.';
-          }
-        } else {
-          $status.textContent = 'This effect is part of the full set. Unlock for $9.99 below.';
-        }
-        return;
-      }
       effect = e;
       paintEffects();
+      animate($kbCanvas, e);
     });
+  });
+
+  // ---- Alive button (paid / free trial) ----
+  $aliveBtn.addEventListener('click', function(){
+    if(effectLocked('alive')){
+      if(aliveFreeUsed() >= ALIVE_FREE_TRIES){
+        $aliveStatus.textContent = 'You\'ve used your free Alive trial. Unlock unlimited Alive for $9.99 below.';
+      } else {
+        $aliveStatus.textContent = 'Pick Alive to use your one free trial — then unlock for unlimited.';
+      }
+      return;
+    }
+    effect = 'alive';
+    paintEffects();
+    animate($aliveCanvas, 'alive');
   });
 
   // ---- Upload ----
@@ -275,23 +338,267 @@
   });
 
   function loadFile(f){
-    if(!f.type.match(/^image\//)){ $status.textContent = 'Please choose an image file.'; return; }
-    // reset face state for new photo
+    if(!f.type.match(/^image\//)){ $kbStatus.textContent = 'Please choose an image file.'; return; }
     faceLandmarks = null; faceMesh = null;
     var reader = new FileReader();
     reader.onload = function(ev){
       var im = new Image();
       im.onload = function(){
         img = im;
+        srcImg = null;
+        grayscale = isGrayscale(im);
+        $grayBadge.style.display = grayscale ? 'inline-block' : 'none';
+        setupRestore();
+        renderRestore();
         $drop.style.display = 'none';
-        $wrap.style.display = 'block';
+        $workspace.style.display = 'block';
+        resetRestoreControls();
         paintEffects();
-        animate();
-        detectFace(); // async: tries to enable "Alive ✨"
+        animate($kbCanvas, 'pushin');
+        detectFace(); // async: enables the Alive button
       };
       im.src = ev.target.result;
     };
     reader.readAsDataURL(f);
+  }
+
+  // ---- Restore module ----
+  var restoreSettings = { bright: 0, contrast: 0, sat: 0, sharpen: 0, denoise: false };
+  var restoreWork = null, restoreDivider = 0.5, restoreDragging = false, grayscale = false;
+  var $restoreView = document.getElementById('restoreView');
+  var $grayBadge = document.getElementById('grayBadge');
+  var rvCtx = $restoreView.getContext('2d');
+
+  function isGrayscale(im){
+    var c = document.createElement('canvas');
+    c.width = 64; c.height = 64;
+    var g = c.getContext('2d');
+    g.drawImage(im, 0, 0, 64, 64);
+    var d = g.getImageData(0, 0, 64, 64).data;
+    var maxSpread = 0;
+    for (var i = 0; i < d.length; i += 4){
+      var spread = Math.max(d[i], d[i+1], d[i+2]) - Math.min(d[i], d[i+1], d[i+2]);
+      if (spread > maxSpread) maxSpread = spread;
+    }
+    return maxSpread < 12;
+  }
+
+  function setupRestore(){
+    var max = 1000;
+    var s = Math.min(1, max / Math.max(img.width, img.height));
+    restoreWork = document.createElement('canvas');
+    restoreWork.width = Math.max(2, Math.round(img.width * s));
+    restoreWork.height = Math.max(2, Math.round(img.height * s));
+    restoreWork.getContext('2d').drawImage(img, 0, 0, restoreWork.width, restoreWork.height);
+    $restoreView.width = 320;
+    $restoreView.height = Math.max(2, Math.round(320 * restoreWork.height / restoreWork.width));
+  }
+
+  function processPixels(src, W, H, o){
+    var n = W * H;
+    var out = new Uint8ClampedArray(src);
+    // 1. gentle auto levels (centred stretch, capped gain)
+    (function(){
+      var hist = [new Float64Array(256), new Float64Array(256), new Float64Array(256)];
+      for (var i = 0; i < n; i++){
+        var j = i * 4;
+        for (var c = 0; c < 3; c++) hist[c][out[j + c]]++;
+      }
+      var min = [0,0,0], max = [255,255,255];
+      for (var c = 0; c < 3; c++){
+        var acc = 0;
+        while (min[c] < 255 && acc < n * 0.01){ acc += hist[c][min[c]]; min[c]++; }
+        acc = 0;
+        while (max[c] > 0 && acc < n * 0.01){ acc += hist[c][max[c]]; max[c]--; }
+      }
+      var stretch = true;
+      for (var c = 0; c < 3; c++){ if (max[c] - min[c] < 12) stretch = false; }
+      if (stretch){
+        var MAX_GAIN = 2.0, TARGET_SPAN = 220;
+        for (var c = 0; c < 3; c++){
+          var span = max[c] - min[c];
+          var gain = span < 1 ? 1 : TARGET_SPAN / span;
+          if (gain > MAX_GAIN) gain = MAX_GAIN;
+          var mid = (min[c] + max[c]) / 2;
+          for (var i = 0; i < n; i++){
+            var j = i * 4;
+            var v = (out[j + c] - mid) * gain + 128;
+            out[j + c] = v < 0 ? 0 : (v > 255 ? 255 : v);
+          }
+        }
+      }
+    })();
+    // 2. white balance (soft gray-world) for colour photos
+    if (!grayscale){
+      var mr = 0, mg = 0, mb = 0;
+      for (var i = 0; i < n; i++){ var j = i*4; mr += out[j]; mg += out[j+1]; mb += out[j+2]; }
+      mr /= n; mg /= n; mb /= n;
+      var avg = (mr + mg + mb) / 3;
+      var kr = 1 + 0.6 * (avg / (mr || 1) - 1);
+      var kg = 1 + 0.6 * (avg / (mg || 1) - 1);
+      var kb = 1 + 0.6 * (avg / (mb || 1) - 1);
+      for (var i = 0; i < n; i++){
+        var j = i*4;
+        out[j]   = out[j]   * kr;
+        out[j+1] = out[j+1] * kg;
+        out[j+2] = out[j+2] * kb;
+      }
+    }
+    // 3. brightness / contrast / saturation
+    var bright = o.bright * 2.55;
+    var cf2 = (259 * (o.contrast * 2.55 + 255)) / (255 * (259 - o.contrast * 2.55));
+    var sat = 1 + o.sat / 100;
+    for (var i = 0; i < n; i++){
+      var j = i*4;
+      var r = out[j], g = out[j+1], b = out[j+2];
+      var gray = 0.299 * r + 0.587 * g + 0.114 * b;
+      r = gray + (r - gray) * sat;
+      g = gray + (g - gray) * sat;
+      b = gray + (b - gray) * sat;
+      r = cf2 * (r - 128) + 128 + bright;
+      g = cf2 * (g - 128) + 128 + bright;
+      b = cf2 * (b - 128) + 128 + bright;
+      out[j]   = r < 0 ? 0 : (r > 255 ? 255 : r);
+      out[j+1] = g < 0 ? 0 : (g > 255 ? 255 : g);
+      out[j+2] = b < 0 ? 0 : (b > 255 ? 255 : b);
+    }
+    // 4. unsharp mask
+    if (o.sharpen > 0){
+      var amt = o.sharpen / 100 * 0.9;
+      var base = out.slice();
+      for (var y = 1; y < H - 1; y++){
+        for (var x = 1; x < W - 1; x++){
+          var k = (y * W + x) * 4;
+          for (var c = 0; c < 3; c++){
+            var center = base[k + c];
+            var nb =
+              base[k - 4 + c] + base[k + 4 + c] + base[k - W*4 + c] + base[k + W*4 + c] +
+              base[k - W*4 - 4 + c] + base[k - W*4 + 4 + c] + base[k + W*4 - 4 + c] + base[k + W*4 + 4 + c];
+            var lap = center * 8 - nb;
+            var v = center + amt * lap / 8;
+            out[k + c] = v < 0 ? 0 : (v > 255 ? 255 : v);
+          }
+        }
+      }
+    }
+    // 5. median denoise
+    if (o.denoise){
+      var base = out.slice();
+      for (var y = 1; y < H - 1; y++){
+        for (var x = 1; x < W - 1; x++){
+          var k = (y * W + x) * 4;
+          for (var c = 0; c < 3; c++){
+            var vals = [];
+            for (var dy = -1; dy <= 1; dy++)
+              for (var dx = -1; dx <= 1; dx++)
+                vals.push(base[((y + dy) * W + (x + dx)) * 4 + c]);
+            vals.sort(function(a,b){ return a - b; });
+            out[k + c] = vals[4];
+          }
+        }
+      }
+    }
+    return out;
+  }
+
+  function renderRestore(){
+    if(!restoreWork) return;
+    var srcData = restoreWork.getContext('2d').getImageData(0, 0, restoreWork.width, restoreWork.height);
+    var data = processPixels(srcData.data, restoreWork.width, restoreWork.height, restoreSettings);
+    var c = document.createElement('canvas');
+    c.width = restoreWork.width; c.height = restoreWork.height;
+    c.getContext('2d').putImageData(new ImageData(data, restoreWork.width, restoreWork.height), 0, 0);
+    var w = $restoreView.width, h = $restoreView.height;
+    rvCtx.drawImage(c, 0, 0, w, h);
+    var split = Math.round(w * restoreDivider);
+    rvCtx.save();
+    rvCtx.beginPath();
+    rvCtx.rect(0, 0, split, h);
+    rvCtx.clip();
+    rvCtx.drawImage(restoreWork, 0, 0, w, h);
+    rvCtx.restore();
+    rvCtx.fillStyle = 'rgba(255,255,255,0.85)';
+    rvCtx.fillRect(split - 1, 0, 2, h);
+  }
+
+  function fullRestore(){
+    var W = img.width, H = img.height;
+    var c = document.createElement('canvas');
+    c.width = W; c.height = H;
+    var g = c.getContext('2d');
+    g.drawImage(img, 0, 0);
+    var d = processPixels(g.getImageData(0, 0, W, H).data, W, H, restoreSettings);
+    g.putImageData(new ImageData(d, W, H), 0, 0);
+    return c;
+  }
+
+  function bindSlider(id, key, vid){
+    var el = document.getElementById(id);
+    var lab = document.getElementById(vid);
+    el.addEventListener('input', function(){
+      restoreSettings[key] = parseInt(el.value, 10);
+      lab.textContent = el.value;
+      renderRestore();
+    });
+  }
+  bindSlider('sB', 'bright', 'vB');
+  bindSlider('sC', 'contrast', 'vC');
+  bindSlider('sS', 'sat', 'vS');
+  bindSlider('sSh', 'sharpen', 'vSh');
+  document.getElementById('denoise').addEventListener('change', function(){
+    restoreSettings.denoise = this.checked;
+    renderRestore();
+  });
+
+  document.getElementById('autoBtn').addEventListener('click', function(){
+    restoreSettings.bright = 3; restoreSettings.contrast = 16;
+    restoreSettings.sat = grayscale ? 12 : 16; restoreSettings.sharpen = 30;
+    restoreSettings.denoise = true;
+    document.getElementById('sB').value = 3; document.getElementById('vB').textContent = 3;
+    document.getElementById('sC').value = 16; document.getElementById('vC').textContent = 16;
+    document.getElementById('sS').value = restoreSettings.sat; document.getElementById('vS').textContent = restoreSettings.sat;
+    document.getElementById('sSh').value = 30; document.getElementById('vSh').textContent = 30;
+    document.getElementById('denoise').checked = true;
+    renderRestore();
+  });
+
+  function resetRestoreControls(){
+    restoreSettings = { bright: 0, contrast: 0, sat: 0, sharpen: 0, denoise: false };
+    document.getElementById('sB').value = 0; document.getElementById('vB').textContent = 0;
+    document.getElementById('sC').value = 0; document.getElementById('vC').textContent = 0;
+    document.getElementById('sS').value = 0; document.getElementById('vS').textContent = 0;
+    document.getElementById('sSh').value = 0; document.getElementById('vSh').textContent = 0;
+    document.getElementById('denoise').checked = false;
+  }
+
+  document.getElementById('applyRestoreBtn').addEventListener('click', function(){
+    if(!img) return;
+    srcImg = fullRestore();
+    $kbStatus.textContent = 'Restored version applied to Animate ✓';
+    // re-render the active animation preview with the restored source
+    if(effect === 'alive'){ animate($aliveCanvas, 'alive'); }
+    else { animate($kbCanvas, effect); }
+  });
+
+  function exportRestore(type){
+    if(!img) return;
+    var c = fullRestore();
+    var mime = type === 'jpg' ? 'image/jpeg' : 'image/png';
+    var a = document.createElement('a');
+    a.href = c.toDataURL(mime, 0.92);
+    a.download = 'restored.' + (type === 'jpg' ? 'jpg' : 'png');
+    a.click();
+  }
+  document.getElementById('exportRestorePng').addEventListener('click', function(){ exportRestore('png'); });
+  document.getElementById('exportRestoreJpg').addEventListener('click', function(){ exportRestore('jpg'); });
+
+  $restoreView.addEventListener('pointerdown', function(ev){ restoreDragging = true; moveDiv(ev); });
+  window.addEventListener('pointermove', function(ev){ if (restoreDragging) moveDiv(ev); });
+  window.addEventListener('pointerup', function(){ restoreDragging = false; });
+  function moveDiv(ev){
+    var r = $restoreView.getBoundingClientRect();
+    restoreDivider = Math.max(0, Math.min(1, (ev.clientX - r.left) / r.width));
+    renderRestore();
   }
 
   // ---- Alive: load morph + MediaPipe, detect face ----
@@ -301,7 +608,6 @@
     if(faceDetecting) return;
     faceDetecting = true;
     dlog('detectFace start, hasImg=' + !!img);
-    // ensure morph module loaded
     var loadMorph = Promise.resolve();
     if(!morph){
       loadMorph = import(new URL('./vendor/morph.js', window.location.href).href).then(function(m){ morph = m; });
@@ -312,7 +618,6 @@
     }).then(function(lm){
       dlog('mediapipe ready');
       if(!img) return;
-      // downscale to a working canvas for detection speed
       var c = document.createElement('canvas');
       var MAX = 512;
       var s = Math.min(1, MAX / Math.max(img.width, img.height));
@@ -324,17 +629,14 @@
       dlog('detect done, faces=' + (res && res.faceLandmarks ? res.faceLandmarks.length : 'null'));
       if(res && res.faceLandmarks && res.faceLandmarks.length){
         var face = res.faceLandmarks[0];
-        // convert normalized coords (relative to c) to image coords (same ratio, so same norm)
-        // keep z too — a few displacement effects use depth for subtle parallax
         faceLandmarks = face.map(function(p){ return { x: p.x, y: p.y, z: p.z }; });
-        // build mesh once
         faceMesh = morph.buildFaceMesh(faceLandmarks);
         window.__landmarks = faceLandmarks;
         window.__mesh = faceMesh;
         window.__morph = morph;
         dlog('face set, tris=' + (faceMesh.tris.length));
       }
-    }).catch(function(e){ dlog('detect error: ' + (e && e.message) + ' | name=' + (e && e.name) + ' | ' + (e && e.stack || '').split('\n').slice(0,3).join(' ')); })
+    }).catch(function(e){ dlog('detect error: ' + (e && e.message)); })
     .finally(function(){
       faceDetecting = false;
       paintEffects();
@@ -345,11 +647,8 @@
     if(MP_READY) return MP_READY;
     var base = new URL('./vendor/mediapipe/wasm/', window.location.href).href.replace(/\/$/, '');
     var bundleUrl = new URL('./vendor/mediapipe/vision_bundle.mjs', window.location.href).href;
-    dlog('bundle url: ' + bundleUrl);
     return import(bundleUrl).then(function(mod){
-      dlog('bundle imported');
       return mod.FilesetResolver.forVisionTasks(base).then(function(vision){
-        dlog('vision resolver ready');
         return mod.FaceLandmarker.createFromOptions(vision, {
           baseOptions: { modelAssetPath: new URL('./vendor/mediapipe/face_landmarker.task', window.location.href).href, delegate: 'CPU' },
           runningMode: 'IMAGE', numFaces: 1
@@ -359,18 +658,16 @@
   }
 
   document.getElementById('resetBtn').addEventListener('click', function(){
-    img = null;
-    $wrap.style.display = 'none';
+    if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
+    img = null; srcImg = null; faceLandmarks = null; faceMesh = null;
+    $workspace.style.display = 'none';
     $drop.style.display = 'block';
-    $status.textContent = 'Pick an effect and hit Export.';
+    $kbStatus.textContent = 'Pick a motion and hit Export.';
+    $aliveStatus.textContent = '';
   });
 
   // ---- Animation math ----
-  // cover = min scale so the image fully fills the canvas
-  function coverScale(iw, ih, W, H){
-    return Math.max(W/iw, H/ih);
-  }
-  // Returns source window (sx,sy,sw,sh) mapping to full canvas at time t (0..1)
+  function coverScale(iw, ih, W, H){ return Math.max(W/iw, H/ih); }
   function srcRect(iw, ih, W, H, eff, t){
     var cover = coverScale(iw, ih, W, H);
     var s = cover, cx = 0.5, cy = 0.5;
@@ -385,65 +682,53 @@
     return {sx:sx, sy:sy, sw:sw, sh:sh, fade: (eff==='fade' ? t : 1)};
   }
 
-  // ---- Alive support: morph the source image per frame ----
-  // Returns a canvas with the source image face-morphed at time t (0..1).
-  // Combines blink + smile + subtle breathe. Cached by t for preview (coarse),
-  // but export (targetW large) always recomputes so every GIF frame is unique.
   var warpCacheKey = '', warpCacheCanvas = null;
   function warpedSource(t, targetW){
-    if(!morph || !faceLandmarks || !faceMesh){ return img; }
+    var src = currentSource();
+    if(!morph || !faceLandmarks || !faceMesh || !src){ return src; }
     var isPreview = (targetW || 480) <= 720;
     if(isPreview){
-      // coarse cache for preview: ~15 updates/sec, low CPU
       var key = Math.round(t * 45);
-      if(warpCacheKey === key) return warpCacheCanvas || img;
+      if(warpCacheKey === key) return warpCacheCanvas || src;
     }
-    // compose displacement — timed like a real person's micro-expressions over one
-    // 3s cycle: one quick blink, a soft smile that eases in and out, breathing,
-    // a brow lift riding the smile, and a barely-there head sway.
     var displaced = faceLandmarks;
     if(morph.displaceBlink){
-      // one natural blink per cycle (~0.25s), peaking near t≈0.28; eyes open otherwise
       var blinkT = Math.max(0, Math.min(1, 0.5 + (0.28 - t) * 12));
       displaced = morph.displaceBlink(displaced, blinkT);
     }
     if(morph.displaceSmile){
-      // soft smile: begins just after the blink, eases in and out across the cycle
       displaced = morph.displaceSmile(displaced, Math.max(0, Math.sin((t - 0.1) * Math.PI)));
     }
     if(morph.displaceBreathe){ displaced = morph.displaceBreathe(displaced, t); }
     if(morph.displaceEyebrows){ displaced = morph.displaceEyebrows(displaced, t); }
     if(morph.displaceHeadSway){ displaced = morph.displaceHeadSway(displaced, t); }
-    // warp at working resolution (preview ~480w, export ~720w)
-    var MW = Math.min(targetW || 480, img.width, 720);
-    var MH = Math.round(MW * img.height / img.width);
-    var src = document.createElement('canvas');
-    src.width = img.width; src.height = img.height;
-    src.getContext('2d').drawImage(img, 0, 0);
+    var MW = Math.min(targetW || 480, src.width, 720);
+    var MH = Math.round(MW * src.height / src.width);
+    var srcCanvas = document.createElement('canvas');
+    srcCanvas.width = src.width; srcCanvas.height = src.height;
+    srcCanvas.getContext('2d').drawImage(src, 0, 0);
     try {
-      var out = morph.warpFaceToCanvas(src, MW, MH, faceLandmarks, displaced, faceMesh.tris);
+      var out = morph.warpFaceToCanvas(srcCanvas, MW, MH, faceLandmarks, displaced, faceMesh.tris);
       if(isPreview){ warpCacheKey = key; warpCacheCanvas = out; }
       return out;
-    } catch(e){ return img; }
+    } catch(e){ return src; }
   }
 
   function drawFrame(c, W, H, eff, t, withWatermark){
     c.fillStyle = '#fff8f0';
     c.fillRect(0, 0, W, H);
-    if(!img) return;
-    var r = srcRect(img.width, img.height, W, H, eff, t);
+    var src = currentSource();
+    if(!src) return;
+    var r = srcRect(src.width, src.height, W, H, eff, t);
     if(eff === 'alive' && faceLandmarks && morph){
-      // use warped source, keep srcRect window for framing
       var srcW = warpedSource(t, W);
-      // srcRect window is in original image coords; warped canvas is same aspect, scaled.
-      // Map r (in img px) to warped canvas coords:
-      var sxr = r.sx / img.width * srcW.width;
-      var syr = r.sy / img.height * srcW.height;
-      var swr = r.sw / img.width * srcW.width;
-      var shr = r.sh / img.height * srcW.height;
+      var sxr = r.sx / src.width * srcW.width;
+      var syr = r.sy / src.height * srcW.height;
+      var swr = r.sw / src.width * srcW.width;
+      var shr = r.sh / src.height * srcW.height;
       c.drawImage(srcW, sxr, syr, swr, shr, 0, 0, W, H);
     } else {
-      c.drawImage(img, r.sx, r.sy, r.sw, r.sh, 0, 0, W, H);
+      c.drawImage(src, r.sx, r.sy, r.sw, r.sh, 0, 0, W, H);
     }
     if(r.fade < 1){
       c.fillStyle = 'rgba(255,248,240,' + (1 - r.fade) + ')';
@@ -461,26 +746,24 @@
   }
 
   // ---- Live preview loop ----
-  var DUR = 3000, rafId = null, startT = 0;
-  function animate(){
+  var DUR = 3000, rafId = null, startT = 0, activeCtx = kbCtx, activeEff = 'pushin';
+  function animate(canvas, eff){
     if(rafId) cancelAnimationFrame(rafId);
+    activeCtx = canvas.getContext('2d');
+    activeEff = eff;
     startT = performance.now();
     var PREV_W = 480, PREV_H = 640;
     function loop(now){
       var t = ((now - startT) % DUR) / DUR;
-      drawFrame(ctx, PREV_W, PREV_H, effect, t, !unlocked);
+      drawFrame(activeCtx, PREV_W, PREV_H, activeEff, t, !unlocked);
       rafId = requestAnimationFrame(loop);
     }
     rafId = requestAnimationFrame(loop);
   }
 
-  // ---- GIF encoding (pure-JS omggif + median-cut quantizer) ----
-
-  // Popcount-based color quantization -> palette (RGB ints) + indexed pixels.
-  // Bucket colors by 5-bit-per-channel; keep the 255 most-popular buckets as
-  // the palette (GIF allows up to 256), then map every pixel to its nearest.
+  // ---- GIF encoding ----
   function quantize(rgba, w, h){
-    var BUCKETS = 32; // 5 bits per channel
+    var BUCKETS = 32;
     var pop = new Uint32Array(BUCKETS * BUCKETS * BUCKETS);
     var avg = new Float64Array(BUCKETS * BUCKETS * BUCKETS * 3);
     var idxOf = function(r, g, b){ return (r >> 3) * BUCKETS * BUCKETS + (g >> 3) * BUCKETS + (b >> 3); };
@@ -491,13 +774,11 @@
       pop[k]++;
       avg[k*3] += r; avg[k*3+1] += g; avg[k*3+2] += b;
     }
-    // collect populated buckets
     var buckets = [];
     for(i = 0; i < pop.length; i++){
       if(pop[i] > 0) buckets.push(i);
     }
     buckets.sort(function(a, b){ return pop[b] - pop[a]; });
-    // palette = top 255 buckets
     var MAX = 255;
     if(buckets.length > MAX) buckets.length = MAX;
     var palette = [];
@@ -508,12 +789,10 @@
       map[k] = i;
       palette.push((Math.round(avg[k*3]/n) << 16) | (Math.round(avg[k*3+1]/n) << 8) | Math.round(avg[k*3+2]/n));
     }
-    // ensure power-of-two count for GIF (add a white entry as filler)
     var target = 2;
     while(target < palette.length) target <<= 1;
     if(target > 256) target = 256;
-    while(palette.length < target) palette.push(0xffffff); // white filler
-    // map pixels to nearest palette colour
+    while(palette.length < target) palette.push(0xffffff);
     var indexed = new Uint8Array(N);
     for(i = 0; i < N; i++){
       var k = idxOf(rgba[i*4], rgba[i*4+1], rgba[i*4+2]);
@@ -532,40 +811,30 @@
     return {palette: palette, indexed: indexed};
   }
 
-  $exportBtn = document.getElementById('exportBtn');
-  $exportBtn.addEventListener('click', function(){
-    if(!img){ $status.textContent = 'Upload a photo first.'; return; }
-    if(rafId){ cancelAnimationFrame(rafId); rafId = null; } // pause preview so export has the main thread
-    // consume a free Alive try (only on real export, not preview)
-    if(effect === 'alive' && !unlocked){
+  function exportGif(eff, btn, statusEl){
+    var src = currentSource();
+    if(!src){ return; }
+    if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
+    if(eff === 'alive' && !unlocked){
       var used = aliveFreeUsed();
       try { localStorage.setItem(ALIVE_FREE_TRIES_KEY, String(used + 1)); } catch(e){}
     }
-    var W = unlocked ? 1280 : 640;   // paid: 720p-ish · free: 360p
-    var H = Math.round(W * (640/480)); // 4:3 to match preview
+    var W = unlocked ? 1280 : 640;
+    var H = Math.round(W * (640/480));
     var FPS = 12, SECONDS = 3, FRAMES = FPS * SECONDS;
-    $status.textContent = 'Rendering ' + FRAMES + ' frames… please wait.';
-    $exportBtn.disabled = true;
-
+    statusEl.textContent = 'Rendering ' + FRAMES + ' frames… please wait.';
+    btn.disabled = true;
     var off = document.createElement('canvas');
     off.width = W; off.height = H;
     var octx = off.getContext('2d', {willReadFrequently: true});
-
-    // draw all frames to offscreen, collect RGBA
     var frameBuffers = [];
     for(var i = 0; i < FRAMES; i++){
       var t = i / (FRAMES - 1);
-      drawFrame(octx, W, H, effect, t, !unlocked);
+      drawFrame(octx, W, H, eff, t, !unlocked);
       frameBuffers.push(octx.getImageData(0, 0, W, H).data.slice());
     }
-
-    // estimate buffer size: GIF header + per-frame (GCE+descriptor+LZW). 6 bytes/px is generous.
     var est = 1024 + FRAMES * (W * H * 6);
     var buf = new Uint8Array(est);
-
-    // Map an RGBA buffer onto a fixed palette, returning indexed pixels.
-    // Uses a per-frame colour cache (old photos have few distinct colours) to avoid
-    // re-scanning the full palette for every pixel — 10-30x faster.
     function mapToPalette(rgba, palette){
       var indexed = new Uint8Array(W * H);
       var cache = new Map();
@@ -586,36 +855,41 @@
       }
       return indexed;
     }
-
-    // Shared global palette (median-cut over the first frame) for colour consistency.
     var q0 = quantize(frameBuffers[0], W, H);
     var global = q0.palette;
     var gif = new GifWriter(buf, W, H, {loop: 0, palette: global});
-
     for(var i = 0; i < FRAMES; i++){
       var indexed = (i === 0) ? q0.indexed : mapToPalette(frameBuffers[i], global);
-      gif.addFrame(0, 0, W, H, indexed, {
-        palette: global,
-        delay: Math.round(100 / FPS)  // 1/100 s
-      });
-      $status.textContent = 'Rendering ' + (i+1) + '/' + FRAMES + '…';
+      gif.addFrame(0, 0, W, H, indexed, { palette: global, delay: Math.round(100 / FPS) });
+      statusEl.textContent = 'Rendering ' + (i+1) + '/' + FRAMES + '…';
     }
     var len = gif.end();
-
     var blob = new Blob([buf.subarray(0, len)], {type: 'image/gif'});
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = 'old-photo-alive.gif';
     a.click();
     setTimeout(function(){ URL.revokeObjectURL(a.href); }, 4000);
-    $status.textContent = 'GIF saved ✅ Happy memory-keeping!';
-    $exportBtn.disabled = false;
-    if(effect === 'alive' && !unlocked && aliveFreeUsed() >= ALIVE_FREE_TRIES){
-      // free Alive try used up — refresh lock state and fall back
+    statusEl.textContent = 'GIF saved ✅';
+    btn.disabled = false;
+    if(eff === 'alive' && !unlocked && aliveFreeUsed() >= ALIVE_FREE_TRIES){
       paintEffects();
-      $status.textContent = 'That was your free Alive trial! Unlock unlimited Alive for $9.99 below.';
+      statusEl.textContent = 'That was your free Alive trial! Unlock unlimited Alive for $9.99 below.';
     }
-    animate(); // resume preview
+    animate($kbCanvas, 'pushin'); // resume the free preview
+  }
+
+  document.getElementById('exportKbBtn').addEventListener('click', function(){
+    if(!img){ $kbStatus.textContent = 'Upload a photo first.'; return; }
+    exportGif(effect === 'alive' ? 'pushin' : effect, this, $kbStatus);
+  });
+  document.getElementById('exportAliveBtn').addEventListener('click', function(){
+    if(!img){ $aliveStatus.textContent = 'Upload a photo first.'; return; }
+    if(effectLocked('alive')){
+      $aliveStatus.textContent = 'Alive needs a detected face and an available free trial — or unlock for $9.99.';
+      return;
+    }
+    exportGif('alive', this, $aliveStatus);
   });
 
   // ---- Payment / unlock ----
@@ -624,7 +898,7 @@
     try{ localStorage.setItem(UNLOCKED_KEY, '1'); }catch(e){}
     $unlockMsg.className = 'ok';
     $unlockMsg.textContent = 'Unlocked ✅ Unlimited Alive and clean 720p export are yours.';
-    $freeNote.textContent = 'Unlocked — all effects free, unlimited Alive, clean 720p export, no watermark.';
+    $aliveHint.textContent = 'Unlocked — unlimited Alive, clean 720p export, no watermark.';
     paintEffects();
   }
 
