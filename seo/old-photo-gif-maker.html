@@ -7,70 +7,92 @@
 <title>Old Photo GIF Maker — Animate Any Old Photo & Export a GIF (Free)</title>
 <meta name="description" content="Turn an old photo into an animated GIF in your browser: slow zoom, pan and fade, exported as a shareable GIF. Free, no signup, nothing uploaded.">
 <link rel="canonical" href="https://aiharryone.github.io/pixelfix/seo/old-photo-gif-maker.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PixelFix">
+<meta property="og:title" content="Old Photo GIF Maker — Animate Any Old Photo & Export a GIF (Free)">
+<meta property="og:description" content="Turn an old photo into an animated GIF in your browser: slow zoom, pan and fade, exported as a shareable GIF. Free, no signup, nothing uploaded.">
+<meta property="og:url" content="https://aiharryone.github.io/pixelfix/seo/old-photo-gif-maker.html">
+<meta property="og:image" content="https://aiharryone.github.io/pixelfix/assets/demo.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Old Photo GIF Maker — Animate Any Old Photo & Export a GIF (Free)">
+<meta name="twitter:description" content="Turn an old photo into an animated GIF in your browser: slow zoom, pan and fade, exported as a shareable GIF. Free, no signup, nothing uploaded.">
+<meta name="twitter:image" content="https://aiharryone.github.io/pixelfix/assets/demo.jpg">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I turn a photo into a GIF?","acceptedAnswer":{"@type":"Answer","text":"Upload it to PixelFix, pick a motion, and hit Export GIF — the animation is rendered locally in your browser."}},{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes — all 5 motion effects export free with a small watermark. One-time $9.99 removes the watermark and unlocks unlimited Alive face animation."}},{"@type":"Question","name":"Where can I share the GIF?","acceptedAnswer":{"@type":"Answer","text":"Anywhere — messaging apps, social media, email, memorial and family pages. GIFs play everywhere."}},{"@type":"Question","name":"Does it upload my photo?","acceptedAnswer":{"@type":"Answer","text":"No. The photo is processed entirely on your device."}}]}
 </script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:Georgia,'Times New Roman',serif;background:#f7efe3;color:#5c4a3a;line-height:1.6;}
-  .wrap{max-width:880px;margin:0 auto;padding:0 20px;}
-  header{background:linear-gradient(135deg,#e9d5b0,#f6e8cd);padding:24px 0;}
-  nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
-  .logo{font-weight:bold;font-size:20px;color:#7a5c36;}
-  .logo a{color:#7a5c36;text-decoration:none;}
-  .btn{display:inline-block;background:#b0703a;color:#fff;text-decoration:none;padding:12px 24px;border-radius:30px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;transition:.2s;border:none;cursor:pointer;font-size:15px;}
-  .btn:hover{background:#985c2d;}
-  .btn.ghost{background:#fff;color:#8a6a3f;border:2px solid #d8b98a;}
-  .hero{text-align:center;padding:46px 0 26px;}
-  .hero h1{font-size:34px;color:#6e4f2a;margin-bottom:12px;}
-  .hero p{font-size:18px;color:#7d6a52;max-width:640px;margin:0 auto;}
-  .hero .sub{font-size:14px;color:#a08a6a;margin-top:12px;}
-  section{padding:26px 0;}
-  h2{color:#6e4f2a;margin-bottom:14px;font-size:24px;}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
-  .card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 4px 14px rgba(120,90,50,.12);}
-  .card h3{color:#b0703a;margin-bottom:6px;font-size:17px;font-family:Helvetica,Arial,sans-serif;}
-  .card p{font-size:15px;}
+  :root{--bg:#f6f8fb;--card:#fff;--ink:#111827;--muted:#6b7280;--accent:#4f46e5;--accent2:#2563eb;--accent-soft:#eef2ff;--green:#059669;--green-soft:#ecfdf5;--amber:#d97706;--amber-soft:#fffbeb;--line:#e5e7eb;--shadow:0 10px 30px rgba(17,24,39,.08);--radius:16px;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px;}
+  header{background:#fff;position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;flex-wrap:wrap;gap:10px;}
+  .logo{font-weight:800;font-size:20px;letter-spacing:-.3px;color:var(--ink);}
+  .logo em{font-style:normal;color:var(--accent);}
+  .nav-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .nav-links a{color:var(--muted);font-weight:600;text-decoration:none;font-size:14px;}
+  .nav-links a:hover{color:var(--ink);}
+  .btn{display:inline-block;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;padding:11px 22px;border-radius:999px;font-weight:700;font-size:14px;transition:.15s;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,.3);}
+  .btn:hover{transform:translateY(-1px);}
+  .btn.ghost{background:#fff;color:var(--ink);box-shadow:none;border:1.5px solid var(--line);}
+  .hero{text-align:center;padding:48px 0 30px;}
+  .hero .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:7px 16px;font-weight:700;font-size:13px;margin-bottom:18px;}
+  .hero h1{font-size:38px;line-height:1.15;letter-spacing:-.8px;margin-bottom:14px;font-weight:800;}
+  .hero h1 span{color:var(--accent);}
+  .hero p{font-size:18px;color:var(--muted);max-width:640px;margin:0 auto;}
+  .hero .sub{font-size:14px;color:var(--muted);margin-top:12px;font-weight:600;}
+  .hero .cta-row{margin-top:26px;}
+  section{padding:28px 0;}
+  h2{color:var(--ink);margin-bottom:16px;font-size:24px;letter-spacing:-.4px;font-weight:800;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);}
+  .card h3{color:var(--ink);margin-bottom:8px;font-size:17px;}
+  .card p{font-size:15px;color:var(--muted);}
   ul.tips{margin:8px 0 8px 22px;}
   ul.tips li{margin:8px 0;}
   ol.steps{margin:8px 0 8px 22px;}
   ol.steps li{margin:8px 0;}
-  .example{background:#fff;border-radius:14px;padding:20px;box-shadow:0 4px 14px rgba(120,90,50,.12);margin-bottom:14px;}
-  .example b{color:#6e4f2a;}
-  .chip{display:inline-block;background:#fdf6ea;color:#8a6a3f;border:1px solid #e6d3b0;border-radius:20px;padding:6px 12px;margin:4px 4px 0 0;font-size:14px;}
-  .cta{text-align:center;background:linear-gradient(135deg,#fdf6ea,#f3e2c2);border:2px solid #d8b98a;border-radius:16px;padding:34px 24px;margin:20px 0;}
-  .cta h2{margin-bottom:10px;}
-  .cta p{margin-bottom:20px;font-size:16px;color:#7d6a52;}
-  .faq p{margin-bottom:10px;background:#fff;border-radius:10px;padding:14px 18px;}
-  .faq b{color:#6e4f2a;}
-  .note{font-size:13px;color:#a08a6a;}
-  .related{margin-top:36px;background:#fff;border-radius:14px;box-shadow:0 4px 14px rgba(120,90,50,.12);padding:24px;}
+  .example{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;box-shadow:var(--shadow);margin-bottom:14px;}
+  .example b{color:var(--ink);}
+  .chip{display:inline-block;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:6px 14px;margin:4px 4px 0 0;font-size:14px;font-weight:600;}
+  .cta{text-align:center;background:linear-gradient(135deg,#4f46e5,#2563eb);color:#fff;border-radius:var(--radius);padding:40px 26px;margin:20px 0;box-shadow:0 14px 40px rgba(79,70,229,.35);}
+  .cta h2{color:#fff;margin-bottom:10px;}
+  .cta p{margin-bottom:22px;font-size:16px;opacity:.92;}
+  .cta .btn{background:#fff;color:var(--accent);font-size:17px;padding:14px 34px;box-shadow:0 6px 18px rgba(0,0,0,.15);}
+  .faq p{margin-bottom:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;}
+  .faq b{color:var(--ink);}
+  .note{font-size:13px;color:var(--muted);}
+  .related{margin-top:36px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px;}
   .related h2{font-size:20px;margin-bottom:12px;}
-  .related a{display:inline-block;background:#fdf6ea;color:#8a6a3f;border:1px solid #e6d3b0;border-radius:20px;padding:6px 14px;margin:4px 6px 0 0;text-decoration:none;font-size:14px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;}
-  .related a:hover{background:#f5e6c8;}
-  footer{background:#e9d5b0;padding:22px 0;text-align:center;font-size:14px;color:#7d6a52;}
-  footer a{color:#6e4f2a;}
-  @media(max-width:600px){.hero h1{font-size:27px;}.btn{display:block;margin:8px 0;text-align:center;}}
+  .related a{display:inline-block;background:var(--accent-soft);color:var(--accent);border:1px solid transparent;border-radius:999px;padding:6px 14px;margin:4px 6px 0 0;text-decoration:none;font-size:14px;font-weight:600;}
+  .related a:hover{background:#e0e7ff;}
+  footer{background:#fff;border-top:1px solid var(--line);padding:24px 0;text-align:center;font-size:14px;color:var(--muted);}
+  footer a{color:var(--ink);font-weight:600;text-decoration:none;}
+  @media(max-width:600px){.hero h1{font-size:28px;}.btn{display:block;margin:8px 0;text-align:center;}.nav-links{gap:12px;}}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap nav">
-    <div class="logo"><a href="index.html">PixelFix</a></div>
-    <div>
-      <a href="index.html#tool" style="color:#8a6a3f;margin-right:16px;font-weight:bold;text-decoration:none;font-family:Helvetica,Arial,sans-serif;">Try Free</a>
-      <a class="btn" href="index.html">Unlock All – $9.99</a>
+    <div class="logo">Pixel<em>Fix</em></div>
+    <div class="nav-links">
+      <a href="https://aiharryone.github.io/pixelfix/index.html">Tools</a>
+      <a href="https://aiharryone.github.io/pixelfix/compress-image.html">Compress</a>
+      <a href="https://aiharryone.github.io/pixelfix/restore.html">Restore</a>
+      <a href="https://aiharryone.github.io/pixelfix/index.html#tool">Animate</a>
+      <a class="btn" href="https://aiharryone.github.io/pixelfix/index.html">Unlock All – $9.99</a>
     </div>
   </div>
 </header>
 
 <div class="wrap">
   <div class="hero">
+    <div class="eyebrow">🔒 100% in your browser · nothing uploaded · no signup</div>
     <h1>Old Photo GIF Maker — from Still Photo to Living GIF</h1>
     <p>A slow push-in. A gentle pan. The motion of a memory, exported as a GIF you can share anywhere — made in your browser, nothing uploaded.</p>
     <p class="sub">Free · No signup · Exports as GIF</p>
-    <div style="margin-top:22px;">
-      <a class="btn" href="index.html#tool" style="font-size:17px;">Try It Free — No Signup →</a>
+    <div class="cta-row">
+      <a class="btn" href="https://aiharryone.github.io/pixelfix/index.html" style="font-size:17px;padding:14px 30px;">Try It Free — No Signup →</a>
     </div>
   </div>
 
@@ -81,7 +103,7 @@
 
 <section>
 <h2>How to Make an Old Photo GIF in 30 Seconds</h2>
-<ol class="steps"><li>Open <a href="index.html" style="color:#b0703a;font-weight:bold;">PixelFix</a> and upload your photo.</li><li>Preview a motion: Push-in, Pull-back, Pan across, Pan up or Fade in.</li><li>Hit <b>Export GIF</b> — the tool renders the animation locally.</li><li>Save the GIF and share it anywhere that accepts images.</li></ol>
+<ol class="steps"><li>Open <a href="https://aiharryone.github.io/pixelfix/index.html" style="color:#4f46e5;font-weight:bold;">PixelFix</a> and upload your photo.</li><li>Preview a motion: Push-in, Pull-back, Pan across, Pan up or Fade in.</li><li>Hit <b>Export GIF</b> — the tool renders the animation locally.</li><li>Save the GIF and share it anywhere that accepts images.</li></ol>
 </section>
 
 <section>
@@ -101,25 +123,25 @@
   <div class="cta">
     <h2>Turn a Photo into a GIF That Moves.</h2>
     <p>Free to try — export your first animated photo GIF in 30 seconds.</p>
-    <a class="btn" href="index.html#tool" style="font-size:17px;">Animate Your Photo Now — Free →</a>
+    <a class="btn" href="https://aiharryone.github.io/pixelfix/index.html">Animate Your Photo Now — Free →</a>
   </div>
 
   <div class="related">
     <h2>More Ways to Bring Photos to Life</h2>
-    <a href="restore.html">Restore Old Photos</a>
-    <a href="index.html">Animate Old Photos</a>
-    <a href="seo/animate-old-photos.html">Animate Old Photos</a>
-    <a href="seo/revive-old-photos.html">Revive Old Photos</a>
-    <a href="seo/ken-burns-effect.html">Ken Burns Effect</a>
-    <a href="seo/family-history-video.html">Family History Video</a>
-    <a href="seo/memorial-video-maker.html">Memorial Video Maker</a>
-    <a href="seo/revive-old-photos.html">Revive Old Photos</a>
-    <p style="margin-top:14px;font-size:13px;color:#a08a6a;">Every tool above runs entirely in your browser — your photos never leave your device.</p>
+    <a href="https://aiharryone.github.io/pixelfix/restore.html">Restore Old Photos</a>
+    <a href="https://aiharryone.github.io/pixelfix/index.html">Animate Old Photos</a>
+    <a href="https://aiharryone.github.io/pixelfix/seo/animate-old-photos.html">Animate Old Photos</a>
+    <a href="https://aiharryone.github.io/pixelfix/seo/revive-old-photos.html">Revive Old Photos</a>
+    <a href="https://aiharryone.github.io/pixelfix/seo/ken-burns-effect.html">Ken Burns Effect</a>
+    <a href="https://aiharryone.github.io/pixelfix/seo/family-history-video.html">Family History Video</a>
+    <a href="https://aiharryone.github.io/pixelfix/seo/memorial-video-maker.html">Memorial Video Maker</a>
+    <a href="https://aiharryone.github.io/pixelfix/seo/revive-old-photos.html">Revive Old Photos</a>
+    <p style="margin-top:14px;font-size:13px;color:var(--muted);">Every tool above runs entirely in your browser — your photos never leave your device.</p>
   </div>
 </div>
 
 <footer>
-  Made for the memories that deserve to move. Questions? Ai_harryone@outlook.com · <a href="index.html">PixelFix</a> · <a href="index.html#tool">Try Free</a> · <a href="index.html">Unlock</a>
+  <a href="https://aiharryone.github.io/pixelfix/index.html">PixelFix</a> · <a href="https://aiharryone.github.io/pixelfix/restore.html">Restore</a> · <a href="https://aiharryone.github.io/pixelfix/passport-photo.html">Passport</a> · <a href="https://aiharryone.github.io/pixelfix/compress-image.html">Compress</a> · <a href="https://aiharryone.github.io/pixelfix/remove-bg.html">Remove BG</a> · <a href="https://aiharryone.github.io/pixelfix/pdf-tools.html">PDF</a> · Ai_harryone@outlook.com
 </footer>
 </body>
 </html>

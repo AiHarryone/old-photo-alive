@@ -16,70 +16,92 @@ HEAD = '''<!DOCTYPE html>
 <title>{title}</title>
 <meta name="description" content="{meta}">
 <link rel="canonical" href="{base}/seo/{slug}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PixelFix">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{meta}">
+<meta property="og:url" content="{base}/seo/{slug}">
+<meta property="og:image" content="{base}/assets/demo.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{meta}">
+<meta name="twitter:image" content="{base}/assets/demo.jpg">
 <script type="application/ld+json">
 {ldjson}
 </script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:Georgia,'Times New Roman',serif;background:#f7efe3;color:#5c4a3a;line-height:1.6;}
-  .wrap{max-width:880px;margin:0 auto;padding:0 20px;}
-  header{background:linear-gradient(135deg,#e9d5b0,#f6e8cd);padding:24px 0;}
-  nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
-  .logo{font-weight:bold;font-size:20px;color:#7a5c36;}
-  .logo a{color:#7a5c36;text-decoration:none;}
-  .btn{display:inline-block;background:#b0703a;color:#fff;text-decoration:none;padding:12px 24px;border-radius:30px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;transition:.2s;border:none;cursor:pointer;font-size:15px;}
-  .btn:hover{background:#985c2d;}
-  .btn.ghost{background:#fff;color:#8a6a3f;border:2px solid #d8b98a;}
-  .hero{text-align:center;padding:46px 0 26px;}
-  .hero h1{font-size:34px;color:#6e4f2a;margin-bottom:12px;}
-  .hero p{font-size:18px;color:#7d6a52;max-width:640px;margin:0 auto;}
-  .hero .sub{font-size:14px;color:#a08a6a;margin-top:12px;}
-  section{padding:26px 0;}
-  h2{color:#6e4f2a;margin-bottom:14px;font-size:24px;}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
-  .card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 4px 14px rgba(120,90,50,.12);}
-  .card h3{color:#b0703a;margin-bottom:6px;font-size:17px;font-family:Helvetica,Arial,sans-serif;}
-  .card p{font-size:15px;}
+  :root{--bg:#f6f8fb;--card:#fff;--ink:#111827;--muted:#6b7280;--accent:#4f46e5;--accent2:#2563eb;--accent-soft:#eef2ff;--green:#059669;--green-soft:#ecfdf5;--amber:#d97706;--amber-soft:#fffbeb;--line:#e5e7eb;--shadow:0 10px 30px rgba(17,24,39,.08);--radius:16px;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px;}
+  header{background:#fff;position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;flex-wrap:wrap;gap:10px;}
+  .logo{font-weight:800;font-size:20px;letter-spacing:-.3px;color:var(--ink);}
+  .logo em{font-style:normal;color:var(--accent);}
+  .nav-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .nav-links a{color:var(--muted);font-weight:600;text-decoration:none;font-size:14px;}
+  .nav-links a:hover{color:var(--ink);}
+  .btn{display:inline-block;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;padding:11px 22px;border-radius:999px;font-weight:700;font-size:14px;transition:.15s;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,.3);}
+  .btn:hover{transform:translateY(-1px);}
+  .btn.ghost{background:#fff;color:var(--ink);box-shadow:none;border:1.5px solid var(--line);}
+  .hero{text-align:center;padding:48px 0 30px;}
+  .hero .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:7px 16px;font-weight:700;font-size:13px;margin-bottom:18px;}
+  .hero h1{font-size:38px;line-height:1.15;letter-spacing:-.8px;margin-bottom:14px;font-weight:800;}
+  .hero h1 span{color:var(--accent);}
+  .hero p{font-size:18px;color:var(--muted);max-width:640px;margin:0 auto;}
+  .hero .sub{font-size:14px;color:var(--muted);margin-top:12px;font-weight:600;}
+  .hero .cta-row{margin-top:26px;}
+  section{padding:28px 0;}
+  h2{color:var(--ink);margin-bottom:16px;font-size:24px;letter-spacing:-.4px;font-weight:800;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);}
+  .card h3{color:var(--ink);margin-bottom:8px;font-size:17px;}
+  .card p{font-size:15px;color:var(--muted);}
   ul.tips{margin:8px 0 8px 22px;}
   ul.tips li{margin:8px 0;}
   ol.steps{margin:8px 0 8px 22px;}
   ol.steps li{margin:8px 0;}
-  .example{background:#fff;border-radius:14px;padding:20px;box-shadow:0 4px 14px rgba(120,90,50,.12);margin-bottom:14px;}
-  .example b{color:#6e4f2a;}
-  .chip{display:inline-block;background:#fdf6ea;color:#8a6a3f;border:1px solid #e6d3b0;border-radius:20px;padding:6px 12px;margin:4px 4px 0 0;font-size:14px;}
-  .cta{text-align:center;background:linear-gradient(135deg,#fdf6ea,#f3e2c2);border:2px solid #d8b98a;border-radius:16px;padding:34px 24px;margin:20px 0;}
-  .cta h2{margin-bottom:10px;}
-  .cta p{margin-bottom:20px;font-size:16px;color:#7d6a52;}
-  .faq p{margin-bottom:10px;background:#fff;border-radius:10px;padding:14px 18px;}
-  .faq b{color:#6e4f2a;}
-  .note{font-size:13px;color:#a08a6a;}
-  .related{margin-top:36px;background:#fff;border-radius:14px;box-shadow:0 4px 14px rgba(120,90,50,.12);padding:24px;}
+  .example{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;box-shadow:var(--shadow);margin-bottom:14px;}
+  .example b{color:var(--ink);}
+  .chip{display:inline-block;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:6px 14px;margin:4px 4px 0 0;font-size:14px;font-weight:600;}
+  .cta{text-align:center;background:linear-gradient(135deg,#4f46e5,#2563eb);color:#fff;border-radius:var(--radius);padding:40px 26px;margin:20px 0;box-shadow:0 14px 40px rgba(79,70,229,.35);}
+  .cta h2{color:#fff;margin-bottom:10px;}
+  .cta p{margin-bottom:22px;font-size:16px;opacity:.92;}
+  .cta .btn{background:#fff;color:var(--accent);font-size:17px;padding:14px 34px;box-shadow:0 6px 18px rgba(0,0,0,.15);}
+  .faq p{margin-bottom:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;}
+  .faq b{color:var(--ink);}
+  .note{font-size:13px;color:var(--muted);}
+  .related{margin-top:36px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px;}
   .related h2{font-size:20px;margin-bottom:12px;}
-  .related a{display:inline-block;background:#fdf6ea;color:#8a6a3f;border:1px solid #e6d3b0;border-radius:20px;padding:6px 14px;margin:4px 6px 0 0;text-decoration:none;font-size:14px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;}
-  .related a:hover{background:#f5e6c8;}
-  footer{background:#e9d5b0;padding:22px 0;text-align:center;font-size:14px;color:#7d6a52;}
-  footer a{color:#6e4f2a;}
-  @media(max-width:600px){.hero h1{font-size:27px;}.btn{display:block;margin:8px 0;text-align:center;}}
+  .related a{display:inline-block;background:var(--accent-soft);color:var(--accent);border:1px solid transparent;border-radius:999px;padding:6px 14px;margin:4px 6px 0 0;text-decoration:none;font-size:14px;font-weight:600;}
+  .related a:hover{background:#e0e7ff;}
+  footer{background:#fff;border-top:1px solid var(--line);padding:24px 0;text-align:center;font-size:14px;color:var(--muted);}
+  footer a{color:var(--ink);font-weight:600;text-decoration:none;}
+  @media(max-width:600px){.hero h1{font-size:28px;}.btn{display:block;margin:8px 0;text-align:center;}.nav-links{gap:12px;}}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap nav">
-    <div class="logo"><a href="index.html">PixelFix</a></div>
-    <div>
-      <a href="index.html#tool" style="color:#8a6a3f;margin-right:16px;font-weight:bold;text-decoration:none;font-family:Helvetica,Arial,sans-serif;">Try Free</a>
-      <a class="btn" href="index.html">Unlock All – $9.99</a>
+    <div class="logo">Pixel<em>Fix</em></div>
+    <div class="nav-links">
+      <a href="{base}/index.html">Tools</a>
+      <a href="{base}/compress-image.html">Compress</a>
+      <a href="{base}/restore.html">Restore</a>
+      <a href="{base}/index.html#tool">Animate</a>
+      <a class="btn" href="{base}/index.html">Unlock All – $9.99</a>
     </div>
   </div>
 </header>
 
 <div class="wrap">
   <div class="hero">
+    <div class="eyebrow">🔒 100% in your browser · nothing uploaded · no signup</div>
     <h1>{h1}</h1>
     <p>{hero_p}</p>
     <p class="sub">{hero_sub}</p>
-    <div style="margin-top:22px;">
-      <a class="btn" href="index.html#tool" style="font-size:17px;">Try It Free — No Signup →</a>
+    <div class="cta-row">
+      <a class="btn" href="{base}/index.html" style="font-size:17px;padding:14px 30px;">Try It Free — No Signup →</a>
     </div>
   </div>
 
@@ -88,18 +110,18 @@ HEAD = '''<!DOCTYPE html>
   <div class="cta">
     <h2>{cta_h2}</h2>
     <p>{cta_p}</p>
-    <a class="btn" href="index.html#tool" style="font-size:17px;">Animate Your Photo Now — Free →</a>
+    <a class="btn" href="{base}/index.html">Animate Your Photo Now — Free →</a>
   </div>
 
   <div class="related">
     <h2>More Ways to Bring Photos to Life</h2>
     {related}
-    <p style="margin-top:14px;font-size:13px;color:#a08a6a;">Every tool above runs entirely in your browser — your photos never leave your device.</p>
+    <p style="margin-top:14px;font-size:13px;color:var(--muted);">Every tool above runs entirely in your browser — your photos never leave your device.</p>
   </div>
 </div>
 
 <footer>
-  Made for the memories that deserve to move. Questions? Ai_harryone@outlook.com · <a href="index.html">PixelFix</a> · <a href="index.html#tool">Try Free</a> · <a href="index.html">Unlock</a>
+  <a href="{base}/index.html">PixelFix</a> · <a href="{base}/restore.html">Restore</a> · <a href="{base}/passport-photo.html">Passport</a> · <a href="{base}/compress-image.html">Compress</a> · <a href="{base}/remove-bg.html">Remove BG</a> · <a href="{base}/pdf-tools.html">PDF</a> · Ai_harryone@outlook.com
 </footer>
 </body>
 </html>
@@ -134,7 +156,7 @@ PAGES = [
     'sections': [
       sec('What “Animating an Old Photo” Really Means', '<p>Animating a still photo is just <b>motion applied to an image</b> — a slow zoom toward a face, a gentle drift across a scene, a soft dissolve. It’s the classic <b>Ken Burns effect</b>: the same move used in nearly every documentary, and it’s what makes an old photo feel alive instead of frozen.</p><p style="margin-top:10px;">Unlike AI face-reanimation services, the effect is applied <b>entirely in your browser</b>. You upload nothing, sign up for nothing, and your photos are never sent to a server.</p>'),
       sec('How to Animate an Old Photo in 30 Seconds', '<ol class="steps">%s</ol>' % ''.join('<li>%s</li>' % x for x in [
-        'Open <a href="index.html" style="color:#b0703a;font-weight:bold;">PixelFix</a> on any device.',
+        'Open <a href="{base}/index.html" style="color:#4f46e5;font-weight:bold;">PixelFix</a> on any device.',
         'Upload or drag in a photo (JPG or PNG, 1000px+ scans animate best).',
         'Pick a motion — <b>Push-in</b> (slow zoom), <b>Pull-back</b>, <b>Pan across</b>, <b>Pan up</b>, or <b>Fade in</b>.',
         'Hit <b>Export</b> — you get an animated GIF, ready to share.'
@@ -178,7 +200,7 @@ PAGES = [
         card('GIF Export', 'Share the result as an animated GIF, wherever you share memories.')
       )),
       sec('How to Use the Alive Effect', '<ol class="steps">%s</ol>' % ''.join('<li>%s</li>' % x for x in [
-        'Open <a href="index.html" style="color:#b0703a;font-weight:bold;">PixelFix</a> and upload a clear, face-forward photo.',
+        'Open <a href="{base}/index.html" style="color:#4f46e5;font-weight:bold;">PixelFix</a> and upload a clear, face-forward photo.',
         'Wait for the <b>Alive ✨</b> button to appear (it shows once a face is detected — faces occupying 1/3 of the frame work best).',
         'Click it and preview the animation — blink, smile, breath.',
         'Export a GIF. Your first Alive is free; unlimited Alive + clean 720p is a one-time $9.99.'
@@ -217,7 +239,7 @@ PAGES = [
         <div class="example"><b>Fade in</b> — a gentle dissolve from a warm field. Elegant and minimal.</div>
       '''),
       sec('How to Make a Ken Burns Effect in 30 Seconds', '<ol class="steps">%s</ol>' % ''.join('<li>%s</li>' % x for x in [
-        'Open <a href="index.html" style="color:#b0703a;font-weight:bold;">PixelFix</a>.',
+        'Open <a href="{base}/index.html" style="color:#4f46e5;font-weight:bold;">PixelFix</a>.',
         'Upload any photo — the tool applies the effect live as you choose.',
         'Tap between Push-in, Pull-back, Pan across, Pan up and Fade to preview each.',
         'Export an animated GIF. All 5 effects are free with a small watermark.'
@@ -244,7 +266,7 @@ PAGES = [
       sec('The Problem with Family History Photos', '<p>Most family history sits in shoeboxes and albums — still, silent, easy to skip. When you want to <b>tell your family’s story</b>, a slideshow of static photos holds attention for seconds. A slideshow where each photo <b>slowly moves</b> — pushing in, drifting across — becomes something you watch, and then send to every relative.</p>'),
       sec('How to Build a Family History Video', '<ol class="steps">%s</ol>' % ''.join('<li>%s</li>' % x for x in [
         '<b>Collect your best photos</b> — 8–15 sharp scans, in chronological order if you can.',
-        'Animate each in <a href="index.html" style="color:#b0703a;font-weight:bold;">PixelFix</a>: vary the motion (push-in, pan, fade) so the sequence feels alive.',
+        'Animate each in <a href="{base}/index.html" style="color:#4f46e5;font-weight:bold;">PixelFix</a>: vary the motion (push-in, pan, fade) so the sequence feels alive.',
         'Export each as a GIF, then drop them into any video editor in order.',
         'Add captions or narration between clips — names, dates, one line of story each.',
         'Export the finished video and share it with the family.'
@@ -283,7 +305,7 @@ PAGES = [
       )),
       sec('How to Make a Memorial Video', '<ol class="steps">%s</ol>' % ''.join('<li>%s</li>' % x for x in [
         'Choose 10–15 of your favorite, clearest photos.',
-        'Animate each in <a href="index.html" style="color:#b0703a;font-weight:bold;">PixelFix</a> — slow push-ins and fades read best.',
+        'Animate each in <a href="{base}/index.html" style="color:#4f46e5;font-weight:bold;">PixelFix</a> — slow push-ins and fades read best.',
         'Vary the motion between photos so the sequence breathes.',
         'Export GIFs and assemble them in a video editor, usually set to a piece of music.',
         'Keep it private or share it with family — your call, because it never left your device.'
@@ -309,7 +331,7 @@ PAGES = [
     'sections': [
       sec('Why a GIF?', '<p>A GIF is the most shareable video format there is: it plays everywhere — messaging apps, social media, email, memorial pages — with no player, no log-in, no clicking “play.” An animated old photo as a GIF lets a memory move wherever you send it.</p>'),
       sec('How to Make an Old Photo GIF in 30 Seconds', '<ol class="steps">%s</ol>' % ''.join('<li>%s</li>' % x for x in [
-        'Open <a href="index.html" style="color:#b0703a;font-weight:bold;">PixelFix</a> and upload your photo.',
+        'Open <a href="{base}/index.html" style="color:#4f46e5;font-weight:bold;">PixelFix</a> and upload your photo.',
         'Preview a motion: Push-in, Pull-back, Pan across, Pan up or Fade in.',
         'Hit <b>Export GIF</b> — the tool renders the animation locally.',
         'Save the GIF and share it anywhere that accepts images.'
@@ -335,13 +357,13 @@ PAGES = [
 
 def related_links(slug):
     items = []
-    items.append('<a href="restore.html">Restore Old Photos</a>')
-    items.append('<a href="index.html">Animate Old Photos</a>')
+    items.append('<a href="{base}/restore.html">Restore Old Photos</a>')
+    items.append('<a href="{base}/index.html">Animate Old Photos</a>')
     for p in PAGES:
         if p['slug'] != slug:
             label = p['h1'].split(' — ')[0]
-            items.append('<a href="seo/%s">%s</a>' % (p['slug'], label))
-    items.append('<a href="seo/revive-old-photos.html">Revive Old Photos</a>')
+            items.append('<a href="{base}/seo/%s">%s</a>' % (p['slug'], label))
+    items.append('<a href="{base}/seo/revive-old-photos.html">Revive Old Photos</a>')
     return '\n    '.join(items)
 
 def render(page):
@@ -361,7 +383,11 @@ def render(page):
         '{related}': related_links(page['slug']),
     }
     for k, v in subs.items():
+        if k == '{base}':
+            continue
         html = html.replace(k, v)
+    # replace {base} LAST so it also resolves inside {sections}/{related} content
+    html = html.replace('{base}', BASE)
     return html
 
 def _ld_for(page):
