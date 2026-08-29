@@ -2,21 +2,21 @@
 
 **One site, nine free image tools — all running 100% in your browser. Nothing uploaded, no account, no signup.**
 
-Live at: **https://aiharryone.github.io/old-photo-alive/**
+Live at: **https://aiharryone.github.io/pixelfix/**
 
 ## 🧰 The tools
 
 | Tool | What it does | Cost |
 |------|--------------|------|
-| [Compress Images](https://aiharryone.github.io/old-photo-alive/compress-image.html) | Shrink JPG/PNG/WebP, batch, resize, convert | **Free** |
-| [Restore Photos](https://aiharryone.github.io/old-photo-alive/restore.html) | Fix faded, blurry, noisy old photos | 1 free try |
-| [Animate Photos](https://aiharryone.github.io/old-photo-alive/) | Ken Burns push-in/pan/fade → animated GIF | 1 free try |
-| [Passport Photo Maker](https://aiharryone.github.io/old-photo-alive/passport-photo.html) | Official passport/visa/ID photo sizes | 1 free try |
-| [Remove Background](https://aiharryone.github.io/old-photo-alive/remove-bg.html) | Clean person cut-outs with feathered edges | 1 free try |
-| [PDF Tools](https://aiharryone.github.io/old-photo-alive/pdf-tools.html) | Images→PDF, merge PDFs, PDF→JPG | 1 free try |
-| [GIF Maker](https://aiharryone.github.io/old-photo-alive/gif-maker.html) | Turn images into an animated GIF | 1 free try |
-| [Watermark](https://aiharryone.github.io/old-photo-alive/watermark.html) | Add text/logo watermark in batch | 1 free try |
-| [Document Scanner](https://aiharryone.github.io/old-photo-alive/document-scanner.html) | Straighten & crop a photo of any document | 1 free try |
+| [Compress Images](https://aiharryone.github.io/pixelfix/compress-image.html) | Shrink JPG/PNG/WebP, batch, resize, convert | **Free** |
+| [Restore Photos](https://aiharryone.github.io/pixelfix/restore.html) | Fix faded, blurry, noisy old photos | 1 free try |
+| [Animate Photos](https://aiharryone.github.io/pixelfix/) | Ken Burns push-in/pan/fade → animated GIF | 1 free try |
+| [Passport Photo Maker](https://aiharryone.github.io/pixelfix/passport-photo.html) | Official passport/visa/ID photo sizes | 1 free try |
+| [Remove Background](https://aiharryone.github.io/pixelfix/remove-bg.html) | Clean person cut-outs with feathered edges | 1 free try |
+| [PDF Tools](https://aiharryone.github.io/pixelfix/pdf-tools.html) | Images→PDF, merge PDFs, PDF→JPG | 1 free try |
+| [GIF Maker](https://aiharryone.github.io/pixelfix/gif-maker.html) | Turn images into an animated GIF | 1 free try |
+| [Watermark](https://aiharryone.github.io/pixelfix/watermark.html) | Add text/logo watermark in batch | 1 free try |
+| [Document Scanner](https://aiharryone.github.io/pixelfix/document-scanner.html) | Straighten & crop a photo of any document | 1 free try |
 
 **Unlock all nine tools forever for a one-time $9.99** — no subscription. [Get lifetime access](https://creem.io/product/prod_6AE1xgYo8j7DIbN08Bh59S).
 
