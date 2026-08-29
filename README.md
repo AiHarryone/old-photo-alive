@@ -1,39 +1,46 @@
-# OldPhoto Alive — Bring Old Photos Back to Life
+# OldPhoto Alive — 9 Free Browser Tools for Photos
 
-Turn a still, faded photo into a gentle, living motion — in your browser. No upload, no signup, no watermark on your memories.
+**One site, nine free image tools — all running 100% in your browser. Nothing uploaded, no account, no signup.**
 
 Live at: **https://aiharryone.github.io/old-photo-alive/**
 
-## What it does
+## 🧰 The tools
 
-Upload any JPG/PNG and apply slow, cinematic motion effects:
+| Tool | What it does | Cost |
+|------|--------------|------|
+| [Compress Images](https://aiharryone.github.io/old-photo-alive/compress-image.html) | Shrink JPG/PNG/WebP, batch, resize, convert | **Free** |
+| [Restore Photos](https://aiharryone.github.io/old-photo-alive/restore.html) | Fix faded, blurry, noisy old photos | 1 free try |
+| [Animate Photos](https://aiharryone.github.io/old-photo-alive/) | Ken Burns push-in/pan/fade → animated GIF | 1 free try |
+| [Passport Photo Maker](https://aiharryone.github.io/old-photo-alive/passport-photo.html) | Official passport/visa/ID photo sizes | 1 free try |
+| [Remove Background](https://aiharryone.github.io/old-photo-alive/remove-bg.html) | Clean person cut-outs with feathered edges | 1 free try |
+| [PDF Tools](https://aiharryone.github.io/old-photo-alive/pdf-tools.html) | Images→PDF, merge PDFs, PDF→JPG | 1 free try |
+| [GIF Maker](https://aiharryone.github.io/old-photo-alive/gif-maker.html) | Turn images into an animated GIF | 1 free try |
+| [Watermark](https://aiharryone.github.io/old-photo-alive/watermark.html) | Add text/logo watermark in batch | 1 free try |
+| [Document Scanner](https://aiharryone.github.io/old-photo-alive/document-scanner.html) | Straighten & crop a photo of any document | 1 free try |
 
-- 🎞 **Push-in** — slow zoom toward the subject (classic Ken Burns)
-- 🎞 **Pull-back** — gentle zoom out to reveal the scene
-- 🎞 **Pan across** — horizontal drift through the frame
-- 🎞 **Pan up** — vertical rise over the image
-- 🎞 **Fade in** — a quiet dissolve from a soft field
+**Unlock all nine tools forever for a one-time $9.99** — no subscription. [Get lifetime access](https://creem.io/product/prod_6AE1xgYo8j7DIbN08Bh59S).
 
-Export as an animated GIF, ready for social media, family slideshows, memorial tributes or memory videos.
+## 🔒 Why it's different
 
-## Why it's different
+- **100% in your browser** — photos, documents and PDFs never leave your device. Built for the privacy-sensitive moments (family photos, memories, ID documents).
+- **No signup, no account, no server** — open a page and it works.
+- **Free to try** — Compress Images is completely free; every other tool gives one free try.
+- **Lifetime unlock** — one $9.99 payment, all tools, forever.
 
-- **100% in your browser** — your photo never leaves your device. Built for the privacy-sensitive moments (family photos, memories).
-- **No signup, no account** — just open and use it.
-- **Free to try** — push-in & pull-back with a small watermark.
-- **One-time $9.99** unlock — all 5 effects, clean 1080p export, no subscription ever.
+## 🛠 Tech
 
-## Tech
-
-- Static HTML + vanilla Canvas (`requestAnimationFrame` Ken Burns animation)
-- Pure-JS GIF encoding via [omggif](https://github.com/deanm/omggif) (median-cut quantization, no server, no Web Worker)
+- Static HTML + vanilla Canvas — no frameworks, no build step, no dependencies at runtime
+- Pure-JS GIF encoding via [omggif](https://github.com/deanm/omggif)
+- Person cut-out via MediaPipe SelfieSegmentation (243 KB model, runs on-device)
+- PDF via [jsPDF](https://github.com/parallax/jsPDF), [pdf-lib](https://github.com/Hopding/pdf-lib), [pdf.js](https://mozilla.github.io/pdf.js/)
 - GitHub Pages hosting · Cloudflare Worker for Creem license unlock
-- SEO: sitemap + robots.txt + IndexNow + Bing verification
+- SEO: sitemap + robots.txt + IndexNow + Bing verification + Open Graph/Twitter cards
 
-## Free tools for KDP authors
+## 💡 Also built by the same person
 
-Made by the same person who built [KDP Launch Kit](https://aiharryone.github.io/kdp-launch-kit/) — free calculators and generators for Amazon self-publishers.
+- [KDP Launch Kit](https://aiharryone.github.io/kdp-launch-kit/) — free calculators and generators for Amazon KDP self-publishers
+- [Certificate Maker](https://aiharryone.github.io/certificate-maker/) — online certificate generator
 
-## License
+## 📜 License
 
-The tool itself is free to use; the animated GIFs you create are yours. Code released for reference.
+The tools are free to use; anything you create is yours. Code released for reference.
