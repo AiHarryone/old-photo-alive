@@ -234,9 +234,10 @@
     a.download = 'cutout.' + (type === 'png' ? 'png' : 'jpg');
     a.click();
   }
-  document.getElementById('exportPng').onclick = function(){ exportImg('png'); };
-  document.getElementById('exportJpg').onclick = function(){ exportImg('jpg'); };
+  document.getElementById('exportPng').onclick = function(){ OP.gate('removebg', 1, function(){ exportImg('png'); }); };
+  document.getElementById('exportJpg').onclick = function(){ OP.gate('removebg', 1, function(){ exportImg('jpg'); }); };
 })();
 </script>
+<script src="unlock.js"></script>
 </body>
 </html>

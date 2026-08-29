@@ -146,6 +146,7 @@ function renderList(){
   document.getElementById('imgList').innerHTML = 'Ready: <b>' + images.length + '</b> image(s) — pages in upload order.';
 }
 document.getElementById('makePdf').onclick = async function(){
+    if (!OP.gate('pdf', 1)) return;
   if (!images.length) { document.getElementById('imgStatus').textContent = 'Add images first.'; return; }
   document.getElementById('imgStatus').textContent = 'Building PDF…';
   var { jsPDF } = window.jspdf;
@@ -172,6 +173,7 @@ var pdfs = [];
 document.getElementById('dropPdfs').onclick = function(){ document.getElementById('pdfInput').click(); };
 document.getElementById('pdfInput').onchange = function(){ for (var f of this.files) if (f.type === 'application/pdf') pdfs.push(f); document.getElementById('pdfList').innerHTML = 'Ready: <b>' + pdfs.length + '</b> PDF(s).'; };
 document.getElementById('mergeBtn').onclick = async function(){
+    if (!OP.gate('pdf', 1)) return;
   if (!pdfs.length) { document.getElementById('mergeStatus').textContent = 'Add PDFs first.'; return; }
   document.getElementById('mergeStatus').textContent = 'Merging…';
   try {
@@ -192,6 +194,7 @@ document.getElementById('mergeBtn').onclick = async function(){
 // ---- PDF → JPG ----
 document.getElementById('dropPdf2').onclick = function(){ document.getElementById('pdf2Input').click(); };
 document.getElementById('pdf2Btn').onclick = async function(){
+    if (!OP.gate('pdf', 1)) return;
   var f = document.getElementById('pdf2Input').files[0];
   if (!f) { document.getElementById('pdf2Status').textContent = 'Add a PDF first.'; return; }
   document.getElementById('pdf2Status').textContent = 'Rendering pages…';
@@ -210,5 +213,6 @@ document.getElementById('pdf2Btn').onclick = async function(){
   } catch(e){ document.getElementById('pdf2Status').textContent = 'Error: ' + (e.message || e); }
 };
 </script>
+<script src="unlock.js"></script>
 </body>
 </html>

@@ -245,11 +245,14 @@
   }
   document.getElementById('exportSingle').onclick = function(){
     if(!img) return;
+    OP.gate('passport', 1, function(){
     var c = makePhoto();
     var a = document.createElement('a'); a.href = c.toDataURL('image/jpeg', 0.95); a.download = 'passport-photo-' + cur.id + '.jpg'; a.click();
+  });
   };
   document.getElementById('exportSheet').onclick = function(){
     if(!img) return;
+    OP.gate('passport', 1, function(){
     var c = makePhoto();
     // 4×6 sheet @ 300dpi = 1200×1800
     var sheet = document.createElement('canvas'); sheet.width = 1200; sheet.height = 1800;
@@ -257,8 +260,10 @@
     var cols = Math.floor(1200 / (c.width + 20)), rows = Math.floor(1800 / (c.height + 20));
     for(var r=0; r<rows && r<2; r++) for(var cl=0; cl<cols && cl<3; cl++) g.drawImage(c, 10 + cl*(c.width+20), 10 + r*(c.height+20));
     var a = document.createElement('a'); a.href = sheet.toDataURL('image/jpeg', 0.92); a.download = 'passport-photo-sheet-4x6.jpg'; a.click();
+  });
   };
 })();
 </script>
+<script src="unlock.js"></script>
 </body>
 </html>

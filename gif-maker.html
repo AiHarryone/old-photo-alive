@@ -137,6 +137,7 @@
 
   document.getElementById('makeBtn').onclick = function(){
     if (!frames.length) return;
+    OP.gate('gif', 1, function(){
     var delay = +document.getElementById('delay').value, loop = document.getElementById('loop').checked, rev = document.getElementById('reverse').checked;
     var order = frames.map((_, i) => i); if (rev) order.reverse();
     var W = 0, H = 0; frames.forEach(function(f){ W = Math.max(W, f.img.width); H = Math.max(H, f.img.height); });
@@ -174,8 +175,10 @@
     var blob = new Blob([buf.subarray(0, len)], { type: 'image/gif' });
     var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'my-animation.gif'; a.click();
     document.getElementById('status').textContent = 'Done ✅ (' + Math.round(len/1024) + ' KB)';
+  });
   };
 })();
 </script>
+<script src="unlock.js"></script>
 </body>
 </html>

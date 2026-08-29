@@ -106,6 +106,7 @@
 
   document.getElementById('applyBtn').onclick = function(){
     if (!imgs.length) return;
+    OP.gate('watermark', 1, function(){
     var text = document.getElementById('wmText').value || '©';
     var sizePct = +document.getElementById('wmSize').value / 100;
     var opacity = +document.getElementById('wmOpacity').value / 100;
@@ -129,8 +130,10 @@
       var a = document.createElement('a'); a.href = c.toDataURL('image/jpeg', 0.95); a.download = it.name + '-wm.jpg'; a.click();
     });
     document.getElementById('status').textContent = 'Done ✅ (' + imgs.length + ' photos)';
+  });
   };
 })();
 </script>
+<script src="unlock.js"></script>
 </body>
 </html>

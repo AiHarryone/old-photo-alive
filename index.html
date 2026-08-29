@@ -750,8 +750,8 @@
     a.download = 'restored.' + (type === 'jpg' ? 'jpg' : 'png');
     a.click();
   }
-  document.getElementById('exportRestorePng').addEventListener('click', function(){ exportRestore('png'); });
-  document.getElementById('exportRestoreJpg').addEventListener('click', function(){ exportRestore('jpg'); });
+  document.getElementById('exportRestorePng').addEventListener('click', function(){ OP.gate('restore', 1, function(){ exportRestore('png'); }); });
+  document.getElementById('exportRestoreJpg').addEventListener('click', function(){ OP.gate('restore', 1, function(){ exportRestore('jpg'); }); });
 
   $restoreView.addEventListener('pointerdown', function(ev){ if(!img) return; restoreDragging = true; moveDiv(ev); });
   window.addEventListener('pointermove', function(ev){ if (restoreDragging) moveDiv(ev); });
@@ -1119,7 +1119,7 @@
   }
 
   document.getElementById('exportKbBtn').addEventListener('click', function(){
-    exportGif(effect === 'alive' ? 'pushin' : effect, this, $kbStatus);
+    OP.gate('animate', 1, function(){ exportGif(effect === 'alive' ? 'pushin' : effect, this, $kbStatus); });
   });
   var exportAliveBtn = document.getElementById('exportAliveBtn');
   if(exportAliveBtn){
@@ -1170,5 +1170,6 @@
   paintEffects();
 })();
 </script>
+<script src="unlock.js"></script>
 </body>
 </html>
