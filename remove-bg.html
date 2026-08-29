@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="msvalidate.01" content="E62785F51D89A3BD3AFBB2BC2BB07BF9">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remove Background – Erase Image Background in Your Browser (Free)</title>
+<meta name="description" content="Remove the background from any photo in your browser for free: people, portraits and product photos with a clean transparent cut-out. Nothing uploaded, no signup, private.">
+<link rel="canonical" href="https://aiharryone.github.io/old-photo-alive/remove-bg.html">
+<style>
+  :root{--cream:#f7efe3;--cream2:#fdf6ea;--ink:#4a3420;--brown:#6e4f2a;--tan:#b0703a;--muted:#9b8261;--green:#6d7a2a;--shadow:0 10px 30px rgba(90,60,25,.10);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:#5c4a3a;line-height:1.6;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 22px;}
+  header{background:linear-gradient(135deg,#ecd9b8,#f6e8cd);padding:18px 0;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(120,90,50,.08);}
+  nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .logo{font-weight:bold;font-size:21px;color:var(--brown);}
+  .nav-links{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .nav-links a{color:var(--brown);font-family:Helvetica,Arial,sans-serif;font-weight:bold;text-decoration:none;font-size:14px;}
+  .nav-links a:hover{color:var(--tan);}
+  .btn{display:inline-block;background:linear-gradient(135deg,#c98650,#a15f2e);color:#fff;text-decoration:none;padding:11px 22px;border-radius:999px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;transition:.2s;border:none;cursor:pointer;font-size:14px;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn.ghost{background:#fff;color:var(--brown);border:2px solid #dcc9a4;}
+  .btn.green{background:linear-gradient(135deg,#8f9a4a,#6d7a2a);}
+  .btn:disabled{opacity:.5;cursor:not-allowed;}
+  .hero{text-align:center;padding:40px 0 16px;}
+  .hero h1{font-size:36px;color:var(--ink);margin-bottom:10px;}
+  .hero p{font-size:17px;color:#7d6849;max-width:640px;margin:0 auto;}
+  .drop{background:linear-gradient(135deg,var(--cream2),#fbf0dc);border:2.5px dashed #d8b98a;border-radius:20px;padding:36px 24px;text-align:center;cursor:pointer;transition:.2s;margin:18px 0;}
+  .drop:hover{border-color:var(--tan);background:#fbf3e2;}
+  .drop b{color:var(--brown);font-size:18px;display:block;margin-top:6px;}
+  .drop p{color:var(--muted);font-size:14px;margin-top:6px;}
+  .work{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start;display:none;}
+  @media(max-width:820px){.work{grid-template-columns:1fr;}}
+  .panel{background:#fff;border-radius:16px;padding:18px;box-shadow:var(--shadow);text-align:center;}
+  .panel h3{color:var(--ink);font-size:16px;margin-bottom:10px;font-family:Helvetica,Arial,sans-serif;}
+  .panel img, .panel canvas{max-width:100%;max-height:340px;border-radius:10px;background:repeating-conic-gradient(#eee 0 25%, #fff 0 50%) 0 0/20px 20px;}
+  .status{font-size:13px;color:var(--muted);margin-top:8px;font-family:Helvetica,Arial,sans-serif;}
+  .ctrl{background:#fff;border-radius:16px;padding:18px 20px;box-shadow:var(--shadow);display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:16px;}
+  .ctl label{font-size:13px;font-weight:bold;color:var(--muted);font-family:Helvetica,Arial,sans-serif;display:block;margin-bottom:4px;}
+  .bg-row{display:flex;gap:8px;}
+  .bg-swatch{width:34px;height:34px;border-radius:9px;border:2px solid #e6d3b0;cursor:pointer;}
+  .bg-swatch.active{border-color:var(--tan);box-shadow:0 0 0 2px var(--tan);}
+  .privacy{background:linear-gradient(135deg,#4a3420,#6e4f2a);color:#f3e6cb;border-radius:16px;padding:20px;text-align:center;margin:24px 0;}
+  footer{background:linear-gradient(135deg,#e9d5b0,#f0e2c4);padding:22px 0;text-align:center;font-size:14px;color:var(--muted);margin-top:40px;}
+  footer a{color:var(--brown);font-weight:bold;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="logo">OldPhoto Alive</div>
+    <div class="nav-links">
+      <a href="index.html">Restore &amp; Animate</a>
+      <a href="restore.html">Restore</a>
+      <a href="passport-photo.html">Passport Photo</a>
+      <a href="compress-image.html">Compress</a>
+      <a href="remove-bg.html">Remove BG</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>Remove Image Background — Free, in Your Browser</h1>
+    <p>Cut people and objects out of any photo with a clean, feathered edge. Works for portraits, product shots and ID photos — and runs 100% on your device.</p>
+  </div>
+
+  <div class="drop" id="drop">
+    <div style="font-size:34px;">✂️</div>
+    <b>Upload a photo</b>
+    <p>or drag it here · JPG / PNG · stays on your device</p>
+  </div>
+  <input type="file" id="fileInput" accept="image/*" style="display:none;">
+
+  <div class="work" id="work">
+    <div class="panel">
+      <h3>Original</h3>
+      <img id="orig">
+      <p class="status" id="status">Processing… this runs on your device.</p>
+    </div>
+    <div class="panel">
+      <h3>Background removed</h3>
+      <canvas id="out" width="400" height="500"></canvas>
+      <p class="status">Checkerboard = transparent</p>
+    </div>
+  </div>
+
+  <div class="ctrl" id="ctrl" style="display:none;">
+    <div class="ctl"><label>New background</label>
+      <div class="bg-row" id="bgs"></div>
+    </div>
+    <div class="ctl"><label>Edge feather</label><input type="range" id="feather" min="0" max="100" value="35"><span id="fVal" style="font-size:13px;color:var(--tan);font-weight:bold;margin-left:6px;">35</span></div>
+    <button class="btn green" id="exportPng">Download PNG</button>
+    <button class="btn ghost" id="exportJpg">Download JPG</button>
+    <span style="font-size:13px;color:var(--muted);font-family:Helvetica,Arial,sans-serif;">🔒 nothing uploaded</span>
+  </div>
+
+  <div class="privacy">
+    <b>🔒 Private by design.</b>
+    <p style="margin-top:6px;">The person cut-out model runs entirely in your browser — your photo never leaves your device.</p>
+  </div>
+</div>
+
+<footer>
+  OldPhoto Alive · <a href="index.html">Restore &amp; Animate</a> · <a href="restore.html">Restore Photos</a> · <a href="passport-photo.html">Passport Photo</a> · <a href="compress-image.html">Compress Images</a> · <a href="remove-bg.html">Remove BG</a>
+</footer>
+
+<script>
+(function(){
+  var $drop = document.getElementById('drop'), $file = document.getElementById('fileInput');
+  var $work = document.getElementById('work'), $ctrl = document.getElementById('ctrl');
+  var $orig = document.getElementById('orig'), $out = document.getElementById('out'), $status = document.getElementById('status');
+  var octx = $out.getContext('2d');
+  var img = null, mask = null, bg = null; // bg=null => transparent
+
+  var BGS = [ {name:'Transparent', c:null}, {name:'White', c:'#ffffff'}, {name:'Blue', c:'#1e63c8'}, {name:'Red', c:'#c8201e'} ];
+  var bgEl = document.getElementById('bgs');
+  BGS.forEach(function(g, i){
+    var s = document.createElement('button');
+    s.className = 'bg-swatch' + (i === 0 ? ' active' : '');
+    if (g.c) s.style.background = g.c; else { s.style.background = 'repeating-conic-gradient(#ccc 0 25%, #fff 0 50%) 0 0/10px 10px'; }
+    s.title = g.name;
+    s.onclick = function(){ bg = g.c; document.querySelectorAll('.bg-swatch').forEach(x => x.classList.remove('active')); s.classList.add('active'); draw(); };
+    bgEl.appendChild(s);
+  });
+  document.getElementById('feather').oninput = function(){ document.getElementById('fVal').textContent = this.value; draw(); };
+
+  $drop.onclick = function(){ $file.click(); };
+  $drop.ondragover = function(e){ e.preventDefault(); $drop.classList.add('dragover'); };
+  $drop.ondragleave = function(){ $drop.classList.remove('dragover'); };
+  $drop.ondrop = function(e){ e.preventDefault(); $drop.classList.remove('dragover'); if(e.dataTransfer.files[0]) load(e.dataTransfer.files[0]); };
+  $file.onchange = function(){ if($file.files[0]) load($file.files[0]); };
+
+  function load(f){
+    var r = new FileReader();
+    r.onload = function(ev){
+      var im = new Image();
+      im.onload = function(){ img = im; $orig.src = im.src; $drop.style.display = 'none'; $work.style.display = 'grid'; $ctrl.style.display = 'flex'; $status.textContent = 'Running the cut-out model…'; setTimeout(segment, 50); };
+      im.src = ev.target.result;
+    };
+    r.readAsDataURL(f);
+  }
+
+  async function segment(){
+    try {
+      var base = new URL('./vendor/mediapipe/wasm/', location.href).href.replace(/\/$/, '');
+      var mod = await import(new URL('./vendor/mediapipe/vision_bundle.mjs', location.href).href);
+      var vision = await mod.FilesetResolver.forVisionTasks(base);
+      var seg = await mod.ImageSegmenter.createFromOptions(vision, {
+        baseOptions: { modelAssetPath: new URL('./vendor/mediapipe-models/selfie_segmenter.tflite', location.href).href, delegate: 'CPU' },
+        runningMode: 'IMAGE', outputCategoryMask: false, outputConfidenceMasks: true
+      });
+      var c = document.createElement('canvas'); c.width = img.width; c.height = img.height;
+      c.getContext('2d').drawImage(img, 0, 0);
+      var res = await seg.segment(c);
+      var masks = res.confidenceMasks;
+      // person = last category (1 for selfie_segmenter)
+      var person = masks[masks.length - 1];
+      var pdata = person.getAsFloat32Array();
+      var w = person.width, h = person.height;
+      // build full-res mask (upsample from mask res)
+      mask = new Uint8ClampedArray(img.width * img.height);
+      for (var y = 0; y < img.height; y++){
+        var my = Math.min(h - 1, Math.floor(y / img.height * h));
+        for (var x = 0; x < img.width; x++){
+          var mx = Math.min(w - 1, Math.floor(x / img.width * w));
+          mask[y * img.width + x] = Math.round(pdata[my * w + mx] * 255);
+        }
+      }
+      $status.textContent = 'Done — cut-out ready.';
+      draw();
+    } catch(e){ $status.textContent = 'Model failed: ' + (e.message || e); }
+  }
+
+  function draw(){
+    if(!img || !mask) return;
+    var W = img.width, H = img.height;
+    $out.width = W; $out.height = H;
+    var data = new Uint8ClampedArray(W * H * 4);
+    // put original pixels with alpha = mask (feathered)
+    var feather = +document.getElementById('feather').value / 100 * 12;
+    var fuzz = document.createElement('canvas'); fuzz.width = W; fuzz.height = H;
+    var fg = fuzz.getContext('2d', { willReadFrequently: true });
+    var fd = fg.createImageData(W, H);
+    for (var i = 0; i < mask.length; i++) fd.data[i*4+3] = mask[i];
+    fg.putImageData(fd, 0, 0);
+    // feather by blurring the mask channel (draw small, scale up)
+    var small = document.createElement('canvas'); var SW = Math.max(64, Math.round(W/4)); var SH = Math.max(64, Math.round(H/4));
+    small.width = SW; small.height = SH;
+    var sg = small.getContext('2d');
+    sg.drawImage(fuzz, 0, 0, W, H, 0, 0, SW, SH);
+    var blurred = document.createElement('canvas'); blurred.width = SW; blurred.height = SH;
+    var bg2 = blurred.getContext('2d');
+    bg2.filter = 'blur(' + Math.max(0, feather) + 'px)';
+    bg2.drawImage(small, 0, 0);
+    var sd = bg2.getImageData(0, 0, SW, SH).data;
+    for (var y = 0; y < H; y++){
+      var sy = Math.min(SH - 1, Math.floor(y * SH / H));
+      for (var x = 0; x < W; x++){
+        var sx = Math.min(SW - 1, Math.floor(x * SW / W));
+        var si = (sy * SW + sx) * 4 + 3;
+        var oi = (y * W + x) * 4;
+        data[oi+3] = sd[si];
+      }
+    }
+    // copy original RGB
+    var tmp = document.createElement('canvas'); tmp.width = W; tmp.height = H;
+    tmp.getContext('2d').drawImage(img, 0, 0);
+    var td = tmp.getContext('2d').getImageData(0, 0, W, H).data;
+    for (var i = 0; i < W * H; i++){
+      data[i*4] = td[i*4]; data[i*4+1] = td[i*4+1]; data[i*4+2] = td[i*4+2];
+    }
+    // background fill
+    if (bg){
+      for (var i = 0; i < W * H; i++){
+        var a = data[i*4+3];
+        if (a < 255){
+          var b = parseInt(bg.slice(1,3),16), g = parseInt(bg.slice(3,5),16), r = parseInt(bg.slice(5,7),16);
+          var t = (255 - a) / 255;
+          data[i*4] = Math.round(data[i*4] * (1-t) + r * t);
+          data[i*4+1] = Math.round(data[i*4+1] * (1-t) + g * t);
+          data[i*4+2] = Math.round(data[i*4+2] * (1-t) + b * t);
+          data[i*4+3] = 255;
+        }
+      }
+    }
+    octx.putImageData(new ImageData(data, W, H), 0, 0);
+  }
+
+  function exportImg(type){
+    var a = document.createElement('a');
+    a.href = $out.toDataURL(type === 'png' ? 'image/png' : 'image/jpeg', 0.95);
+    a.download = 'cutout.' + (type === 'png' ? 'png' : 'jpg');
+    a.click();
+  }
+  document.getElementById('exportPng').onclick = function(){ exportImg('png'); };
+  document.getElementById('exportJpg').onclick = function(){ exportImg('jpg'); };
+})();
+</script>
+</body>
+</html>

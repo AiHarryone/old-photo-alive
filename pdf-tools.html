@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="msvalidate.01" content="E62785F51D89A3BD3AFBB2BC2BB07BF9">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Tools – Images to PDF, Merge PDF, PDF to JPG (Free, in Browser)</title>
+<meta name="description" content="Convert JPG/PNG to PDF, merge multiple PDFs, and turn PDF pages into JPGs — all free in your browser. Nothing uploaded, no signup, private.">
+<link rel="canonical" href="https://aiharryone.github.io/old-photo-alive/pdf-tools.html">
+<style>
+  :root{--cream:#f7efe3;--cream2:#fdf6ea;--ink:#4a3420;--brown:#6e4f2a;--tan:#b0703a;--muted:#9b8261;--green:#6d7a2a;--shadow:0 10px 30px rgba(90,60,25,.10);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:#5c4a3a;line-height:1.6;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 22px;}
+  header{background:linear-gradient(135deg,#ecd9b8,#f6e8cd);padding:18px 0;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(120,90,50,.08);}
+  nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .logo{font-weight:bold;font-size:21px;color:var(--brown);}
+  .nav-links{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .nav-links a{color:var(--brown);font-family:Helvetica,Arial,sans-serif;font-weight:bold;text-decoration:none;font-size:14px;}
+  .nav-links a:hover{color:var(--tan);}
+  .btn{display:inline-block;background:linear-gradient(135deg,#c98650,#a15f2e);color:#fff;text-decoration:none;padding:11px 22px;border-radius:999px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;transition:.2s;border:none;cursor:pointer;font-size:14px;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn.ghost{background:#fff;color:var(--brown);border:2px solid #dcc9a4;}
+  .btn.green{background:linear-gradient(135deg,#8f9a4a,#6d7a2a);}
+  .btn:disabled{opacity:.5;cursor:not-allowed;}
+  .hero{text-align:center;padding:38px 0 16px;}
+  .hero h1{font-size:36px;color:var(--ink);margin-bottom:10px;}
+  .hero p{font-size:17px;color:#7d6849;max-width:620px;margin:0 auto;}
+  .tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;}
+  .tab{background:var(--cream2);color:var(--brown);border:2px solid #e6d3b0;border-radius:999px;padding:10px 20px;font-weight:bold;cursor:pointer;font-family:Helvetica,Arial,sans-serif;font-size:14px;}
+  .tab.active{background:var(--tan);color:#fff;border-color:var(--tan);}
+  .drop{background:linear-gradient(135deg,var(--cream2),#fbf0dc);border:2.5px dashed #d8b98a;border-radius:20px;padding:32px 24px;text-align:center;cursor:pointer;transition:.2s;}
+  .drop:hover{border-color:var(--tan);background:#fbf3e2;}
+  .drop b{color:var(--brown);font-size:17px;display:block;margin-top:6px;}
+  .drop p{color:var(--muted);font-size:13px;margin-top:5px;}
+  .panel{background:#fff;border-radius:16px;padding:18px;box-shadow:var(--shadow);}
+  .list{font-size:13px;color:var(--muted);margin-top:10px;font-family:Helvetica,Arial,sans-serif;}
+  .list b{color:var(--brown);}
+  .status{font-size:13px;color:var(--muted);margin-top:10px;font-family:Helvetica,Arial,sans-serif;}
+  .privacy{background:linear-gradient(135deg,#4a3420,#6e4f2a);color:#f3e6cb;border-radius:16px;padding:20px;text-align:center;margin:24px 0;}
+  footer{background:linear-gradient(135deg,#e9d5b0,#f0e2c4);padding:22px 0;text-align:center;font-size:14px;color:var(--muted);margin-top:40px;}
+  footer a{color:var(--brown);font-weight:bold;text-decoration:none;}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="logo">OldPhoto Alive</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="remove-bg.html">Remove BG</a>
+      <a href="compress-image.html">Compress</a>
+      <a href="pdf-tools.html">PDF Tools</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>Free PDF Tools — in Your Browser</h1>
+    <p>Images to PDF, merge PDFs, PDF to JPG. Everything runs locally — your files never leave your device.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-t="img2pdf">Images → PDF</button>
+    <button class="tab" data-t="merge">Merge PDF</button>
+    <button class="tab" data-t="pdf2img">PDF → JPG</button>
+  </div>
+
+  <!-- Images to PDF -->
+  <div class="panel" id="tab-img2pdf">
+    <div class="drop" id="dropImgs">
+      <div style="font-size:32px;">🖼️</div>
+      <b>Add images (JPG / PNG / WebP)</b>
+      <p>multiple allowed · order = page order · stays on your device</p>
+    </div>
+    <input type="file" id="imgInput" accept="image/*" multiple style="display:none;">
+    <div class="list" id="imgList"></div>
+    <div style="margin-top:12px;display:flex;gap:10px;align-items:center;">
+      <label style="font-size:13px;color:var(--muted);font-weight:bold;font-family:Helvetica,Arial,sans-serif;">Page size: <select id="pageSize"><option value="a4">A4</option><option value="letter">Letter</option><option value="fit">Fit image</option></select></label>
+      <button class="btn green" id="makePdf">Download PDF</button>
+    </div>
+    <p class="status" id="imgStatus"></p>
+  </div>
+
+  <!-- Merge PDF -->
+  <div class="panel" id="tab-merge" style="display:none;">
+    <div class="drop" id="dropPdfs">
+      <div style="font-size:32px;">📄</div>
+      <b>Add PDFs to merge</b>
+      <p>in the order shown · stays on your device</p>
+    </div>
+    <input type="file" id="pdfInput" accept="application/pdf" multiple style="display:none;">
+    <div class="list" id="pdfList"></div>
+    <button class="btn green" id="mergeBtn" style="margin-top:12px;">Merge &amp; Download</button>
+    <p class="status" id="mergeStatus"></p>
+  </div>
+
+  <!-- PDF to JPG -->
+  <div class="panel" id="tab-pdf2img" style="display:none;">
+    <div class="drop" id="dropPdf2">
+      <div style="font-size:32px;">🖼️📄</div>
+      <b>Add a PDF to turn into JPGs</b>
+      <p>each page becomes a JPG · stays on your device</p>
+    </div>
+    <input type="file" id="pdf2Input" accept="application/pdf" style="display:none;">
+    <button class="btn green" id="pdf2Btn" style="margin-top:12px;">Convert &amp; Download</button>
+    <p class="status" id="pdf2Status"></p>
+  </div>
+
+  <div class="privacy">
+    <b>🔒 Your files never leave your device.</b>
+    <p style="margin-top:6px;">All conversion runs in your browser. No upload, no server, no signup.</p>
+  </div>
+</div>
+
+<footer>
+  OldPhoto Alive · <a href="index.html">Home</a> · <a href="remove-bg.html">Remove BG</a> · <a href="compress-image.html">Compress</a> · <a href="pdf-tools.html">PDF Tools</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+
+// ---- tabs ----
+document.querySelectorAll('.tab').forEach(function(t){
+  t.onclick = function(){
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active')); t.classList.add('active');
+    document.querySelectorAll('[id^="tab-"]').forEach(x => x.style.display = 'none');
+    document.getElementById('tab-' + t.getAttribute('data-t')).style.display = 'block';
+  };
+});
+
+// ---- Images → PDF ----
+var images = [];
+document.getElementById('dropImgs').onclick = function(){ document.getElementById('imgInput').click(); };
+document.getElementById('imgInput').onchange = function(){ for (var f of this.files) if (f.type.match(/^image\//)) loadImg(f); };
+function loadImg(f){
+  var r = new FileReader();
+  r.onload = function(ev){ var im = new Image(); im.onload = function(){ images.push(im); renderList(); }; im.src = ev.target.result; };
+  r.readAsDataURL(f);
+}
+function renderList(){
+  document.getElementById('imgList').innerHTML = 'Ready: <b>' + images.length + '</b> image(s) — pages in upload order.';
+}
+document.getElementById('makePdf').onclick = async function(){
+  if (!images.length) { document.getElementById('imgStatus').textContent = 'Add images first.'; return; }
+  document.getElementById('imgStatus').textContent = 'Building PDF…';
+  var { jsPDF } = window.jspdf;
+  var size = document.getElementById('pageSize').value;
+  var pdf;
+  for (var i = 0; i < images.length; i++){
+    var im = images[i];
+    var wPt, hPt;
+    if (size === 'a4'){ wPt = 595; hPt = 842; }
+    else if (size === 'letter'){ wPt = 612; hPt = 792; }
+    else { wPt = im.width; hPt = im.height; }
+    if (i === 0) pdf = new jsPDF({ orientation: wPt > hPt ? 'landscape' : 'portrait', unit: 'pt', format: [wPt, hPt] });
+    else pdf.addPage([wPt, hPt], wPt > hPt ? 'landscape' : 'portrait');
+    var r = Math.min(wPt / im.width, hPt / im.height);
+    var iw = im.width * r, ih = im.height * r;
+    pdf.addImage(im.src, 'JPEG', (wPt - iw)/2, (hPt - ih)/2, iw, ih);
+  }
+  pdf.save('images-to-pdf.pdf');
+  document.getElementById('imgStatus').textContent = 'Done ✅';
+};
+
+// ---- Merge PDF ----
+var pdfs = [];
+document.getElementById('dropPdfs').onclick = function(){ document.getElementById('pdfInput').click(); };
+document.getElementById('pdfInput').onchange = function(){ for (var f of this.files) if (f.type === 'application/pdf') pdfs.push(f); document.getElementById('pdfList').innerHTML = 'Ready: <b>' + pdfs.length + '</b> PDF(s).'; };
+document.getElementById('mergeBtn').onclick = async function(){
+  if (!pdfs.length) { document.getElementById('mergeStatus').textContent = 'Add PDFs first.'; return; }
+  document.getElementById('mergeStatus').textContent = 'Merging…';
+  try {
+    var { PDFDocument } = PDFLib;
+    var merged = await PDFDocument.create();
+    for (var f of pdfs){
+      var src = await PDFDocument.load(await f.arrayBuffer());
+      var pages = await merged.copyPages(src, src.getPageIndices());
+      pages.forEach(p => merged.addPage(p));
+    }
+    var bytes = await merged.save();
+    var blob = new Blob([bytes], { type: 'application/pdf' });
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'merged.pdf'; a.click();
+    document.getElementById('mergeStatus').textContent = 'Done ✅ (' + Math.round(bytes.length/1024) + ' KB)';
+  } catch(e){ document.getElementById('mergeStatus').textContent = 'Error: ' + (e.message || e); }
+};
+
+// ---- PDF → JPG ----
+document.getElementById('dropPdf2').onclick = function(){ document.getElementById('pdf2Input').click(); };
+document.getElementById('pdf2Btn').onclick = async function(){
+  var f = document.getElementById('pdf2Input').files[0];
+  if (!f) { document.getElementById('pdf2Status').textContent = 'Add a PDF first.'; return; }
+  document.getElementById('pdf2Status').textContent = 'Rendering pages…';
+  try {
+    var data = await f.arrayBuffer();
+    var doc = await pdfjsLib.getDocument({ data: data }).promise;
+    for (var p = 1; p <= doc.numPages; p++){
+      var page = await doc.getPage(p);
+      var viewport = page.getViewport({ scale: 1.5 });
+      var canvas = document.createElement('canvas'); canvas.width = viewport.width; canvas.height = viewport.height;
+      var ctx = canvas.getContext('2d');
+      await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+      var a = document.createElement('a'); a.href = canvas.toDataURL('image/jpeg', 0.9); a.download = 'page-' + p + '.jpg'; a.click();
+    }
+    document.getElementById('pdf2Status').textContent = 'Done ✅ (' + doc.numPages + ' pages)';
+  } catch(e){ document.getElementById('pdf2Status').textContent = 'Error: ' + (e.message || e); }
+};
+</script>
+</body>
+</html>
