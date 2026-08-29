@@ -108,20 +108,18 @@
     <p>Restore it. Then make it move. Three tools, one photo, all in your browser — nothing uploaded, no account needed.</p>
   </div>
 
-  <section id="upload">
-    <div class="drop" id="drop">
-      <b>Click to upload a photo</b>
-      <p>or drag it here · JPG / PNG · stays on your device</p>
-    </div>
-    <input type="file" id="fileInput" accept="image/*" style="display:none;">
-  </section>
+  <input type="file" id="fileInput" accept="image/*" style="display:none;">
 
-  <div id="workspace" style="display:none;">
+  <div id="workspace">
 
     <!-- ① Restore (free) -->
     <section class="iface" id="restore">
       <h2><span class="num">1</span> Restore Photos <span class="tag free">FREE</span></h2>
-      <div class="restore-grid">
+      <div class="drop" id="dropRestore">
+        <b>Upload a photo to restore</b>
+        <p>or drag it here · JPG / PNG · stays on your device</p>
+      </div>
+      <div class="restore-grid" id="restoreTools" style="display:none;">
         <div style="text-align:center;">
           <canvas id="restoreView" width="320" height="400"></canvas>
           <p class="hint">Drag the divider to compare before / after</p>
@@ -147,6 +145,11 @@
     <!-- ② Ken Burns animate (free) -->
     <section class="iface" id="animate">
       <h2><span class="num">2</span> Animate — Push-in &amp; Pan <span class="tag free">FREE</span></h2>
+      <div class="drop" id="dropAnimate">
+        <b>Upload a photo to animate</b>
+        <p>or drag it here · JPG / PNG · stays on your device</p>
+      </div>
+      <div id="animateTools" style="display:none;">
       <div class="effects" id="effects">
         <div class="eff active" data-eff="pushin">Push-in</div>
         <div class="eff" data-eff="pushout">Pull-back</div>
@@ -161,11 +164,17 @@
         </div>
         <p class="hint" id="kbStatus">Pick a motion and hit Export.</p>
       </div>
+      </div>
     </section>
 
     <!-- ③ Alive face animation (paid) -->
     <section class="iface" id="alive">
       <h2><span class="num">3</span> Alive — Face Animation <span class="tag paid">$9.99 · ONE-TIME</span></h2>
+      <div class="drop" id="dropAlive">
+        <b>Upload a photo for Alive</b>
+        <p>or drag it here · JPG / PNG · stays on your device</p>
+      </div>
+      <div id="aliveTools" style="display:none;">
       <div class="alive-top">
         <div class="eff" id="aliveBtn" data-eff="alive">Alive ✨</div>
         <p id="aliveStatus"></p>
@@ -189,6 +198,7 @@
           <button class="btn ghost" id="unlockBtn">Unlock</button>
         </div>
         <div id="unlockMsg"></div>
+      </div>
       </div>
     </section>
 
@@ -251,9 +261,14 @@
   var MP_READY = false;
 
   // ---- DOM ----
-  var $drop = document.getElementById('drop');
   var $file = document.getElementById('fileInput');
   var $workspace = document.getElementById('workspace');
+  var $dropRestore = document.getElementById('dropRestore');
+  var $dropAnimate = document.getElementById('dropAnimate');
+  var $dropAlive = document.getElementById('dropAlive');
+  var $restoreTools = document.getElementById('restoreTools');
+  var $animateTools = document.getElementById('animateTools');
+  var $aliveTools = document.getElementById('aliveTools');
   var $kbCanvas = document.getElementById('kbCanvas');
   var $aliveCanvas = document.getElementById('aliveCanvas');
   var kbCtx = $kbCanvas.getContext('2d');
@@ -325,14 +340,17 @@
     animate($aliveCanvas, 'alive');
   });
 
-  // ---- Upload ----
-  $drop.addEventListener('click', function(){ $file.click(); });
-  $drop.addEventListener('dragover', function(ev){ ev.preventDefault(); $drop.classList.add('dragover'); });
-  $drop.addEventListener('dragleave', function(){ $drop.classList.remove('dragover'); });
-  $drop.addEventListener('drop', function(ev){
-    ev.preventDefault(); $drop.classList.remove('dragover');
-    if(ev.dataTransfer.files && ev.dataTransfer.files[0]) loadFile(ev.dataTransfer.files[0]);
-  });
+  // ---- Upload (each interface has its own dropzone) ----
+  function bindDrop(el){
+    el.addEventListener('click', function(){ $file.click(); });
+    el.addEventListener('dragover', function(ev){ ev.preventDefault(); el.classList.add('dragover'); });
+    el.addEventListener('dragleave', function(){ el.classList.remove('dragover'); });
+    el.addEventListener('drop', function(ev){
+      ev.preventDefault(); el.classList.remove('dragover');
+      if(ev.dataTransfer.files && ev.dataTransfer.files[0]) loadFile(ev.dataTransfer.files[0]);
+    });
+  }
+  [$dropRestore, $dropAnimate, $dropAlive].forEach(bindDrop);
   $file.addEventListener('change', function(){
     if($file.files && $file.files[0]) loadFile($file.files[0]);
   });
@@ -350,8 +368,8 @@
         $grayBadge.style.display = grayscale ? 'inline-block' : 'none';
         setupRestore();
         renderRestore();
-        $drop.style.display = 'none';
-        $workspace.style.display = 'block';
+        [$dropRestore, $dropAnimate, $dropAlive].forEach(function(el){ el.style.display = 'none'; });
+        $restoreTools.style.display = ''; $animateTools.style.display = ''; $aliveTools.style.display = '';
         resetRestoreControls();
         paintEffects();
         animate($kbCanvas, 'pushin');
@@ -660,8 +678,8 @@
   document.getElementById('resetBtn').addEventListener('click', function(){
     if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
     img = null; srcImg = null; faceLandmarks = null; faceMesh = null;
-    $workspace.style.display = 'none';
-    $drop.style.display = 'block';
+    [$dropRestore, $dropAnimate, $dropAlive].forEach(function(el){ el.style.display = ''; });
+    $restoreTools.style.display = 'none'; $animateTools.style.display = 'none'; $aliveTools.style.display = 'none';
     $kbStatus.textContent = 'Pick a motion and hit Export.';
     $aliveStatus.textContent = '';
   });
