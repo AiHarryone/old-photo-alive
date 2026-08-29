@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="msvalidate.01" content="E62785F51D89A3BD3AFBB2BC2BB07BF9">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Old Photo Restorer – Fix Faded, Blurry &amp; Noisy Photos Free (In Browser)</title>
+<meta name="description" content="Restore old photos free in your browser: fix faded colours, blur, noise and low contrast on scans and prints. Nothing uploaded, no signup. Export high-quality PNG/JPG.">
+<link rel="canonical" href="https://aiharryone.github.io/old-photo-alive/restore.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is old photo restoration free?","acceptedAnswer":{"@type":"Answer","text":"Yes — restore faded, blurry and noisy photos completely free, in your browser. No account, no subscription."}},
+{"@type":"Question","name":"Are my photos uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Everything runs locally in your browser. Your photos never leave your device."}},
+{"@type":"Question","name":"What does the auto fix do?","acceptedAnswer":{"@type":"Answer","text":"It stretches faded tones, removes colour casts, sharpens soft details and reduces noise — a complete pass for old scans and prints."}},
+{"@type":"Question","name":"What formats can I export?","acceptedAnswer":{"@type":"Answer","text":"PNG or JPG, at the full resolution of your original photo."}}
+]}
+</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:Georgia,'Times New Roman',serif;background:#f7efe3;color:#5c4a3a;line-height:1.6;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px;}
+  header{background:linear-gradient(135deg,#e9d5b0,#f6e8cd);padding:24px 0;}
+  nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+  .logo{font-weight:bold;font-size:20px;color:#7a5c36;}
+  .logo a{color:#7a5c36;text-decoration:none;}
+  .navlink{color:#8a6a3f;margin-right:16px;font-weight:bold;text-decoration:none;font-family:Helvetica,Arial,sans-serif;}
+  .navlink.active{color:#b0703a;}
+  .btn{display:inline-block;background:#b0703a;color:#fff;text-decoration:none;padding:12px 24px;border-radius:30px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;transition:.2s;border:none;cursor:pointer;font-size:15px;}
+  .btn:hover{background:#985c2d;}
+  .btn.ghost{background:#fff;color:#8a6a3f;border:2px solid #d8b98a;}
+  .btn.green{background:#8a7a3a;}
+  .btn.green:hover{background:#71662f;}
+  .btn:disabled{opacity:.5;cursor:not-allowed;}
+  .hero{text-align:center;padding:46px 0 22px;}
+  .hero h1{font-size:34px;color:#6e4f2a;margin-bottom:12px;}
+  .hero p{font-size:18px;color:#7d6a52;max-width:640px;margin:0 auto;}
+  section{padding:22px 0;}
+  h2{color:#6e4f2a;margin-bottom:12px;font-size:22px;}
+  .drop{background:#fdf6ea;border:2px dashed #d8b98a;border-radius:14px;padding:38px 20px;text-align:center;cursor:pointer;transition:.2s;margin-bottom:18px;}
+  .drop:hover{border-color:#b0703a;background:#fbf0dc;}
+  .drop.dragover{background:#f5e6c8;border-color:#b0703a;}
+  .drop b{color:#7a5c36;font-size:17px;}
+  .drop p{color:#a08a6a;font-size:14px;margin-top:6px;}
+  .workspace{display:grid;grid-template-columns:320px 1fr;gap:22px;align-items:start;}
+  @media(max-width:860px){.workspace{grid-template-columns:1fr;}}
+  .panel{background:#fff;border-radius:14px;padding:20px;box-shadow:0 4px 14px rgba(120,90,50,.12);}
+  .panel h3{color:#6e4f2a;font-size:17px;margin-bottom:12px;font-family:Helvetica,Arial,sans-serif;}
+  .slider-row{margin-bottom:14px;}
+  .slider-row label{display:flex;justify-content:space-between;font-size:14px;font-weight:bold;color:#7d6a52;font-family:Helvetica,Arial,sans-serif;}
+  .slider-row label span{color:#b0703a;}
+  input[type=range]{width:100%;margin-top:4px;accent-color:#b0703a;}
+  .chk{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:bold;color:#7d6a52;font-family:Helvetica,Arial,sans-serif;margin-bottom:14px;}
+  .preview-wrap{background:#fff;border-radius:14px;padding:16px;box-shadow:0 4px 14px rgba(120,90,50,.12);}
+  .preview-wrap .cap{display:flex;justify-content:space-between;font-size:13px;color:#a08a6a;font-family:Helvetica,Arial,sans-serif;margin-bottom:8px;}
+  #view{width:100%;background:#000;border-radius:10px;cursor:ew-resize;display:block;}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+  .badge{display:inline-block;background:#fdf6ea;border:1px solid #e6d3b0;border-radius:20px;padding:4px 12px;font-size:13px;color:#8a6a3f;font-family:Helvetica,Arial,sans-serif;margin-top:8px;}
+  .hint{font-size:13px;color:#a08a6a;margin-top:10px;}
+  .note{font-size:13px;color:#a08a6a;margin-top:14px;}
+  .faq p{margin-bottom:10px;background:#fff;border-radius:10px;padding:14px 18px;}
+  .faq b{color:#6e4f2a;}
+  .related{margin-top:36px;background:#fff;border-radius:14px;box-shadow:0 4px 14px rgba(120,90,50,.12);padding:24px;}
+  .related h2{font-size:20px;margin-bottom:12px;}
+  .related a{display:inline-block;background:#fdf6ea;color:#8a6a3f;border:1px solid #e6d3b0;border-radius:20px;padding:6px 14px;margin:4px 6px 0 0;text-decoration:none;font-size:14px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;}
+  .related a:hover{background:#f5e6c8;}
+  footer{background:#e9d5b0;padding:22px 0;text-align:center;font-size:14px;color:#7d6a52;margin-top:30px;}
+  footer a{color:#6e4f2a;}
+  @media(max-width:600px){.hero h1{font-size:27px;}.btn{display:block;margin:8px 0;text-align:center;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="logo"><a href="index.html">OldPhoto Alive</a></div>
+    <div>
+      <a class="navlink" href="index.html">Animate Photos</a>
+      <a class="navlink active" href="restore.html">Restore Photos</a>
+      <a class="btn" href="index.html#unlock">Unlock Alive – $9.99</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>Restore Old Photos — Free, in Your Browser</h1>
+    <p>Bring back faded colours, sharpen soft scans, and clean up noise from old prints. Everything runs on your device — nothing is uploaded, no account needed.</p>
+  </div>
+
+  <section>
+    <div class="drop" id="drop">
+      <b>Click to upload a photo</b>
+      <p>or drag it here · JPG / PNG · stays on your device</p>
+    </div>
+    <input type="file" id="fileInput" accept="image/*" style="display:none;">
+
+    <div class="workspace" id="workspace" style="display:none;">
+      <div class="panel">
+        <h3>Restore</h3>
+        <button class="btn" id="autoBtn" style="width:100%;margin-bottom:16px;">✨ Auto Fix</button>
+        <div class="slider-row"><label>Brightness <span id="vB">0</span></label><input type="range" id="sB" min="-60" max="60" value="0"></div>
+        <div class="slider-row"><label>Contrast <span id="vC">0</span></label><input type="range" id="sC" min="-60" max="80" value="0"></div>
+        <div class="slider-row"><label>Saturation <span id="vS">0</span></label><input type="range" id="sS" min="-80" max="80" value="0"></div>
+        <div class="slider-row"><label>Sharpen <span id="vSh">0</span></label><input type="range" id="sSh" min="0" max="100" value="0"></div>
+        <label class="chk"><input type="checkbox" id="denoise"> Reduce noise</label>
+        <button class="btn ghost" id="resetBtn" style="width:100%;">Reset</button>
+        <div class="badge" id="grayBadge" style="display:none;">Black &amp; white photo detected</div>
+        <div class="actions">
+          <button class="btn green" id="exportPng">Export PNG</button>
+          <button class="btn ghost" id="exportJpg">Export JPG</button>
+        </div>
+        <p class="hint">Drag the divider in the photo to compare before / after.</p>
+      </div>
+      <div class="preview-wrap">
+        <div class="cap"><span id="fileName">photo</span><span id="dimLabel"></span></div>
+        <canvas id="view" width="640" height="480"></canvas>
+        <p class="note">100% local processing — your photo never leaves this page.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h2>FAQ</h2>
+    <p><b>What can I fix?</b> Faded or washed-out tones, colour casts, soft focus and noise on old scans and prints — a complete pass in one click, plus fine sliders.</p>
+    <p><b>Is my photo uploaded anywhere?</b> No. Every adjustment runs in your browser. Your photo never leaves your device.</p>
+    <p><b>Do I lose my original?</b> No — the original stays untouched. Restore is non-destructive until you export.</p>
+    <p><b>What size can I export?</b> Full resolution of your photo, as PNG or JPG.</p>
+  </section>
+
+  <div class="related">
+    <h2>Keep Going — Turn Your Restored Photo into a Living Memory</h2>
+    <a href="index.html">Animate Old Photos</a>
+    <a href="index.html#unlock">Unlock Alive (face animation)</a>
+    <a href="seo/animate-old-photos.html">How to Animate Old Photos</a>
+    <a href="seo/revive-old-photos.html">Revive Old Photos</a>
+    <a href="seo/family-history-video.html">Family History Video</a>
+    <a href="seo/memorial-video-maker.html">Memorial Video Maker</a>
+    <p style="margin-top:14px;font-size:13px;color:#a08a6a;">Restore first, then animate — both run entirely in your browser.</p>
+  </div>
+</div>
+
+<footer>
+  Made for the memories that deserve to move. Questions? Ai_harryone@outlook.com · <a href="index.html">OldPhoto Alive</a> · <a href="restore.html">Restore Photos</a> · <a href="index.html#unlock">Unlock</a>
+</footer>
+
+<script>
+(function(){
+  var $drop = document.getElementById('drop');
+  var $file = document.getElementById('fileInput');
+  var $workspace = document.getElementById('workspace');
+  var $view = document.getElementById('view');
+  var $fileName = document.getElementById('fileName');
+  var $dimLabel = document.getElementById('dimLabel');
+  var $grayBadge = document.getElementById('grayBadge');
+  var vctx = $view.getContext('2d');
+
+  // state
+  var img = null;               // original Image
+  var work = null;              // working-resolution canvas (orig, processed)
+  var workW = 0, workH = 0;
+  var divider = 0.5;            // before/after split (fraction of width)
+  var dragging = false;
+  var grayscale = false;
+  var settings = { bright: 0, contrast: 0, sat: 0, sharpen: 0, denoise: false };
+
+  // ---- upload ----
+  $drop.addEventListener('click', function(){ $file.click(); });
+  $drop.addEventListener('dragover', function(ev){ ev.preventDefault(); $drop.classList.add('dragover'); });
+  $drop.addEventListener('dragleave', function(){ $drop.classList.remove('dragover'); });
+  $drop.addEventListener('drop', function(ev){
+    ev.preventDefault(); $drop.classList.remove('dragover');
+    if(ev.dataTransfer.files && ev.dataTransfer.files[0]) loadFile(ev.dataTransfer.files[0]);
+  });
+  $file.addEventListener('change', function(){
+    if($file.files && $file.files[0]) loadFile($file.files[0]);
+  });
+
+  function loadFile(f){
+    if(!f.type.match(/^image\//)) return;
+    $fileName.textContent = f.name;
+    var reader = new FileReader();
+    reader.onload = function(ev){
+      var im = new Image();
+      im.onload = function(){
+        img = im;
+        grayscale = isGrayscale(im);
+        $grayBadge.style.display = grayscale ? 'inline-block' : 'none';
+        setupWork();
+        $drop.style.display = 'none';
+        $workspace.style.display = 'grid';
+        render();
+      };
+      im.src = ev.target.result;
+    };
+    reader.readAsDataURL(f);
+  }
+
+  // Working resolution: cap longest side at ~1000px for fast live preview.
+  function setupWork(){
+    var max = 1000;
+    var s = Math.min(1, max / Math.max(img.width, img.height));
+    workW = Math.max(2, Math.round(img.width * s));
+    workH = Math.max(2, Math.round(img.height * s));
+    work = document.createElement('canvas');
+    work.width = workW; work.height = workH;
+    work.getContext('2d').drawImage(img, 0, 0, workW, workH);
+    // fit view canvas to a fixed layout
+    $view.width = 640; $view.height = Math.round(640 * workH / workW);
+    $dimLabel.textContent = img.width + '×' + img.height + ' px';
+  }
+
+  function isGrayscale(im){
+    var c = document.createElement('canvas');
+    c.width = 64; c.height = 64;
+    var g = c.getContext('2d');
+    g.drawImage(im, 0, 0, 64, 64);
+    var d = g.getImageData(0, 0, 64, 64).data;
+    var maxSpread = 0;
+    for (var i = 0; i < d.length; i += 4){
+      var spread = Math.max(d[i], d[i+1], d[i+2]) - Math.min(d[i], d[i+1], d[i+2]);
+      if (spread > maxSpread) maxSpread = spread;
+    }
+    return maxSpread < 12; // near-neutral channels
+  }
+
+  // ---- processing pipeline ----
+  function processPixels(src, W, H, o){
+    // returns new Uint8ClampedArray (processed)
+    var n = W * H;
+    var out = new Uint8ClampedArray(src);
+
+    // 1. auto levels: gentle per-channel stretch (fixes faded prints).
+    // Centred on the mid-tones, gain capped so faded photos gain punch without
+    // blowing out highlights or crushing shadows.
+    (function(){
+      var hist = [new Float64Array(256), new Float64Array(256), new Float64Array(256)];
+      for (var i = 0; i < n; i++){
+        var j = i * 4;
+        for (var c = 0; c < 3; c++) hist[c][out[j + c]]++;
+      }
+      var min = [0,0,0], max = [255,255,255];
+      for (var c = 0; c < 3; c++){
+        var acc = 0;
+        while (min[c] < 255 && acc < n * 0.01){ acc += hist[c][min[c]]; min[c]++; }
+        acc = 0;
+        while (max[c] > 0 && acc < n * 0.01){ acc += hist[c][max[c]]; max[c]--; }
+      }
+      var stretch = true;
+      for (var c = 0; c < 3; c++){
+        if (max[c] - min[c] < 12) stretch = false; // near-flat channel: skip
+      }
+      if (stretch){
+        var MAX_GAIN = 2.0, TARGET_SPAN = 220; // keep ~2% headroom at both ends
+        for (var c = 0; c < 3; c++){
+          var span = max[c] - min[c];
+          var gain = span < 1 ? 1 : TARGET_SPAN / span;
+          if (gain > MAX_GAIN) gain = MAX_GAIN;
+          var mid = (min[c] + max[c]) / 2;
+          for (var i = 0; i < n; i++){
+            var j = i * 4;
+            var v = (out[j + c] - mid) * gain + 128;
+            out[j + c] = v < 0 ? 0 : (v > 255 ? 255 : v);
+          }
+        }
+      }
+    })();
+
+    // 2. white balance (gray-world, soft 60%) for colour photos
+    if (!grayscale){
+      var mr = 0, mg = 0, mb = 0;
+      for (var i = 0; i < n; i++){ var j = i*4; mr += out[j]; mg += out[j+1]; mb += out[j+2]; }
+      mr /= n; mg /= n; mb /= n;
+      var avg = (mr + mg + mb) / 3;
+      var kr = 1 + 0.6 * (avg / (mr || 1) - 1);
+      var kg = 1 + 0.6 * (avg / (mg || 1) - 1);
+      var kb = 1 + 0.6 * (avg / (mb || 1) - 1);
+      for (var i = 0; i < n; i++){
+        var j = i*4;
+        out[j]   = out[j]   * kr;
+        out[j+1] = out[j+1] * kg;
+        out[j+2] = out[j+2] * kb;
+      }
+    }
+
+    // 3. brightness / contrast / saturation (standard formulas)
+    var bright = o.bright * 2.55;
+    // map -60..80 slider to -153..204, then standard contrast factor
+    var cf2 = (259 * (o.contrast * 2.55 + 255)) / (255 * (259 - o.contrast * 2.55));
+    var sat = 1 + o.sat / 100;
+    for (var i = 0; i < n; i++){
+      var j = i*4;
+      var r = out[j], g = out[j+1], b = out[j+2];
+      var gray = 0.299 * r + 0.587 * g + 0.114 * b;
+      r = gray + (r - gray) * sat;
+      g = gray + (g - gray) * sat;
+      b = gray + (b - gray) * sat;
+      r = cf2 * (r - 128) + 128 + bright;
+      g = cf2 * (g - 128) + 128 + bright;
+      b = cf2 * (b - 128) + 128 + bright;
+      out[j]   = r < 0 ? 0 : (r > 255 ? 255 : r);
+      out[j+1] = g < 0 ? 0 : (g > 255 ? 255 : g);
+      out[j+2] = b < 0 ? 0 : (b > 255 ? 255 : b);
+    }
+
+    // 4. unsharp mask (3x3 laplacian)
+    if (o.sharpen > 0){
+      var amt = o.sharpen / 100 * 0.9;
+      var base = out.slice(); // copy before sharpening
+      for (var y = 1; y < H - 1; y++){
+        for (var x = 1; x < W - 1; x++){
+          var k = (y * W + x) * 4;
+          for (var c = 0; c < 3; c++){
+            var center = base[k + c];
+            var nb =
+              base[k - 4 + c] + base[k + 4 + c] + base[k - W*4 + c] + base[k + W*4 + c] +
+              base[k - W*4 - 4 + c] + base[k - W*4 + 4 + c] + base[k + W*4 - 4 + c] + base[k + W*4 + 4 + c];
+            var lap = center * 8 - nb;
+            var v = center + amt * lap / 8;
+            out[k + c] = v < 0 ? 0 : (v > 255 ? 255 : v);
+          }
+        }
+      }
+    }
+
+    // 5. median denoise (3x3 per channel) — only where enabled
+    if (o.denoise){
+      var base = out.slice();
+      for (var y = 1; y < H - 1; y++){
+        for (var x = 1; x < W - 1; x++){
+          var k = (y * W + x) * 4;
+          for (var c = 0; c < 3; c++){
+            var vals = [];
+            for (var dy = -1; dy <= 1; dy++)
+              for (var dx = -1; dx <= 1; dx++)
+                vals.push(base[((y + dy) * W + (x + dx)) * 4 + c]);
+            vals.sort(function(a,b){ return a - b; });
+            out[k + c] = vals[4];
+          }
+        }
+      }
+    }
+
+    return out;
+  }
+
+  function processCanvas(){
+    var src = work.getContext('2d').getImageData(0, 0, workW, workH);
+    var data = processPixels(src.data, workW, workH, settings);
+    var c = document.createElement('canvas');
+    c.width = workW; c.height = workH;
+    c.getContext('2d').putImageData(new ImageData(data, workW, workH), 0, 0);
+    return c;
+  }
+
+  function render(){
+    if (!img) return;
+    var processed = processCanvas();
+    // draw processed, then original clipped left up to divider
+    vctx.drawImage(processed, 0, 0, $view.width, $view.height);
+    var split = Math.round($view.width * divider);
+    vctx.save();
+    vctx.beginPath();
+    vctx.rect(0, 0, split, $view.height);
+    vctx.clip();
+    vctx.drawImage(work, 0, 0, $view.width, $view.height);
+    vctx.restore();
+    // divider line
+    vctx.fillStyle = 'rgba(255,255,255,0.85)';
+    vctx.fillRect(split - 1, 0, 2, $view.height);
+  }
+
+  // ---- controls ----
+  function bindSlider(id, key, vid){
+    var el = document.getElementById(id);
+    var lab = document.getElementById(vid);
+    el.addEventListener('input', function(){
+      settings[key] = parseInt(el.value, 10);
+      lab.textContent = el.value;
+      render();
+    });
+  }
+  bindSlider('sB', 'bright', 'vB');
+  bindSlider('sC', 'contrast', 'vC');
+  bindSlider('sS', 'sat', 'vS');
+  bindSlider('sSh', 'sharpen', 'vSh');
+  document.getElementById('denoise').addEventListener('change', function(){
+    settings.denoise = this.checked;
+    render();
+  });
+
+  document.getElementById('autoBtn').addEventListener('click', function(){
+    // sensible auto-pass: levels + balance + saturation lift + sharpen + denoise.
+    // Kept modest — the levels stretch does most of the work for faded prints.
+    settings.bright = 3; settings.contrast = 16; settings.sat = 12; settings.sharpen = 30;
+    if (!grayscale) settings.sat = 16;
+    settings.denoise = true;
+    document.getElementById('sB').value = settings.bright; document.getElementById('vB').textContent = settings.bright;
+    document.getElementById('sC').value = settings.contrast; document.getElementById('vC').textContent = settings.contrast;
+    document.getElementById('sS').value = settings.sat; document.getElementById('vS').textContent = settings.sat;
+    document.getElementById('sSh').value = settings.sharpen; document.getElementById('vSh').textContent = settings.sharpen;
+    document.getElementById('denoise').checked = true;
+    render();
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', function(){
+    settings = { bright: 0, contrast: 0, sat: 0, sharpen: 0, denoise: false };
+    document.getElementById('sB').value = 0; document.getElementById('vB').textContent = 0;
+    document.getElementById('sC').value = 0; document.getElementById('vC').textContent = 0;
+    document.getElementById('sS').value = 0; document.getElementById('vS').textContent = 0;
+    document.getElementById('sSh').value = 0; document.getElementById('vSh').textContent = 0;
+    document.getElementById('denoise').checked = false;
+    render();
+  });
+
+  // ---- before/after divider drag ----
+  $view.addEventListener('pointerdown', function(ev){ dragging = true; moveDiv(ev); });
+  window.addEventListener('pointermove', function(ev){ if (dragging) moveDiv(ev); });
+  window.addEventListener('pointerup', function(){ dragging = false; });
+  function moveDiv(ev){
+    var r = $view.getBoundingClientRect();
+    divider = Math.max(0, Math.min(1, (ev.clientX - r.left) / r.width));
+    render();
+  }
+
+  // ---- export (full resolution) ----
+  function exportImage(type){
+    if (!img) return;
+    var W = img.width, H = img.height;
+    var c = document.createElement('canvas');
+    c.width = W; c.height = H;
+    var g = c.getContext('2d');
+    g.drawImage(img, 0, 0);
+    var data = processPixels(g.getImageData(0, 0, W, H).data, W, H, settings);
+    g.putImageData(new ImageData(data, W, H), 0, 0);
+    var mime = type === 'jpg' ? 'image/jpeg' : 'image/png';
+    var a = document.createElement('a');
+    a.href = c.toDataURL(mime, 0.92);
+    a.download = 'restored.' + (type === 'jpg' ? 'jpg' : 'png');
+    a.click();
+  }
+  document.getElementById('exportPng').addEventListener('click', function(){ exportImage('png'); });
+  document.getElementById('exportJpg').addEventListener('click', function(){ exportImage('jpg'); });
+
+})();
+</script>
+</body>
+</html>

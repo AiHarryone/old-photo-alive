@@ -335,11 +335,13 @@ PAGES = [
 
 def related_links(slug):
     items = []
+    items.append('<a href="restore.html">Restore Old Photos</a>')
+    items.append('<a href="index.html">Animate Old Photos</a>')
     for p in PAGES:
         if p['slug'] != slug:
             label = p['h1'].split(' — ')[0]
             items.append('<a href="seo/%s">%s</a>' % (p['slug'], label))
-    items.append('<a href="index.html">OldPhoto Alive — Home</a>')
+    items.append('<a href="index.html#unlock">Unlock Alive</a>')
     return '\n    '.join(items)
 
 def render(page):
