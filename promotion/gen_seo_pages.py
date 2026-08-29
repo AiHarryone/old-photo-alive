@@ -68,7 +68,7 @@ HEAD = '''<!DOCTYPE html>
     <div class="logo"><a href="index.html">OldPhoto Alive</a></div>
     <div>
       <a href="index.html#tool" style="color:#8a6a3f;margin-right:16px;font-weight:bold;text-decoration:none;font-family:Helvetica,Arial,sans-serif;">Try Free</a>
-      <a class="btn" href="index.html#unlock">Unlock All – $9.99</a>
+      <a class="btn" href="index.html">Unlock All – $9.99</a>
     </div>
   </div>
 </header>
@@ -99,7 +99,7 @@ HEAD = '''<!DOCTYPE html>
 </div>
 
 <footer>
-  Made for the memories that deserve to move. Questions? Ai_harryone@outlook.com · <a href="index.html">OldPhoto Alive</a> · <a href="index.html#tool">Try Free</a> · <a href="index.html#unlock">Unlock</a>
+  Made for the memories that deserve to move. Questions? Ai_harryone@outlook.com · <a href="index.html">OldPhoto Alive</a> · <a href="index.html#tool">Try Free</a> · <a href="index.html">Unlock</a>
 </footer>
 </body>
 </html>
@@ -341,7 +341,7 @@ def related_links(slug):
         if p['slug'] != slug:
             label = p['h1'].split(' — ')[0]
             items.append('<a href="seo/%s">%s</a>' % (p['slug'], label))
-    items.append('<a href="index.html#unlock">Unlock Alive</a>')
+    items.append('<a href="seo/revive-old-photos.html">Revive Old Photos</a>')
     return '\n    '.join(items)
 
 def render(page):

@@ -4,217 +4,309 @@
 <meta name="msvalidate.01" content="E62785F51D89A3BD3AFBB2BC2BB07BF9">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OldPhoto Alive – Restore &amp; Animate Old Photos in Your Browser (Free)</title>
-<meta name="description" content="Restore faded old photos, then bring them to life — push-in, pan and fade motion, plus real face animation. All in your browser, nothing uploaded. Free to try.">
+<title>OldPhoto Alive – Restore &amp; Animate Old Photos in Your Browser</title>
+<meta name="description" content="Restore faded old photos, then bring them to life — push-in, pan and fade motion, all in your browser. Nothing uploaded, no signup. Free.">
 <link rel="canonical" href="https://aiharryone.github.io/old-photo-alive/">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Is restoring and animating my old photo free?","acceptedAnswer":{"@type":"Answer","text":"Yes — old photo restoration and all 5 motion effects (push-in, pull-back, pan, fade) are free with a small watermark. The Alive face animation is free for one try; unlimited Alive plus watermark-free 720p export is a one-time $9.99, no subscription."}},
+{"@type":"Question","name":"Is restoring and animating my old photo free?","acceptedAnswer":{"@type":"Answer","text":"Yes — old photo restoration and all 5 motion effects (push-in, pull-back, pan, fade) are completely free. No signup, no watermark."}},
 {"@type":"Question","name":"Is my photo uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Everything — restoration and animation — runs in your browser. Your photo never leaves your device."}},
-{"@type":"Question","name":"What effects can I apply to an old photo?","acceptedAnswer":{"@type":"Answer","text":"Slow push-in, slow pull-back, horizontal pan, vertical pan and a gentle fade-in — perfect for memorials, family history and memory videos. Plus a real face animation (blink, smile, breathe) with the Alive effect."}}
+{"@type":"Question","name":"What effects can I apply to an old photo?","acceptedAnswer":{"@type":"Answer","text":"Slow push-in, slow pull-back, horizontal pan, vertical pan and a gentle fade-in — perfect for memorials, family history and memory videos."}}
 ]}
 </script>
 <style>
+  :root{
+    --cream:#f7efe3; --cream2:#fdf6ea; --sand:#e9d5b0;
+    --ink:#4a3420; --brown:#6e4f2a; --tan:#b0703a; --tan-d:#985c2d;
+    --muted:#9b8261; --green:#6d7a2a; --green-bg:#eaf0d6; --paid-bg:#f6e3cd;
+    --shadow:0 10px 30px rgba(90,60,25,.10);
+    --radius:20px;
+  }
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:Georgia,'Times New Roman',serif;background:#f7efe3;color:#5c4a3a;line-height:1.6;}
-  .wrap{max-width:880px;margin:0 auto;padding:0 20px;}
-  header{background:linear-gradient(135deg,#e9d5b0,#f6e8cd);padding:24px 0;}
-  nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
-  .logo{font-weight:bold;font-size:20px;color:#7a5c36;}
-  .logo a{color:#7a5c36;text-decoration:none;}
-  .navlink{color:#8a6a3f;margin-right:14px;font-weight:bold;text-decoration:none;font-family:Helvetica,Arial,sans-serif;}
-  .navlink:hover{color:#b0703a;}
-  .btn{display:inline-block;background:#b0703a;color:#fff;text-decoration:none;padding:12px 24px;border-radius:30px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;transition:.2s;border:none;cursor:pointer;font-size:15px;}
-  .btn:hover{background:#985c2d;}
-  .btn.ghost{background:#fff;color:#8a6a3f;border:2px solid #d8b98a;}
-  .btn.green{background:#8a7a3a;}
-  .btn.green:hover{background:#71662f;}
-  .btn:disabled{opacity:.5;cursor:not-allowed;}
-  .hero{text-align:center;padding:42px 0 20px;}
-  .hero h1{font-size:34px;color:#6e4f2a;margin-bottom:12px;}
-  .hero p{font-size:18px;color:#7d6a52;max-width:640px;margin:0 auto;}
-  section{padding:22px 0;}
-  .drop{background:#fdf6ea;border:2px dashed #d8b98a;border-radius:14px;padding:34px 20px;text-align:center;cursor:pointer;transition:.2s;}
-  .drop:hover{border-color:#b0703a;background:#fbf0dc;}
-  .drop.dragover{background:#f5e6c8;border-color:#b0703a;}
-  .drop b{color:#7a5c36;font-size:17px;}
-  .drop p{color:#a08a6a;font-size:14px;margin-top:6px;}
-  h2{color:#6e4f2a;margin-bottom:14px;font-size:22px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-  h2 .num{background:#b0703a;color:#fff;border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-family:Helvetica,Arial,sans-serif;}
-  .tag{font-family:Helvetica,Arial,sans-serif;font-size:12px;font-weight:bold;border-radius:20px;padding:3px 10px;}
-  .tag.free{background:#e6f0d6;color:#5c7a2a;}
-  .tag.paid{background:#f3dfc8;color:#a05a2a;}
-  .iface{background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 14px rgba(120,90,50,.12);margin-bottom:22px;}
-  .effects{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
-  .eff{flex:1;min-width:110px;background:#faf3e6;border:2px solid #e6d3b0;border-radius:12px;padding:12px;text-align:center;cursor:pointer;font-weight:bold;color:#8a6a3f;font-family:Helvetica,Arial,sans-serif;transition:.15s;}
-  .eff:hover{border-color:#b0703a;}
-  .eff.active{background:#b0703a;color:#fff;border-color:#b0703a;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:#5c4a3a;line-height:1.65;}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 22px;}
+  a{color:var(--tan);}
+  .btn{display:inline-block;background:linear-gradient(135deg,#c98650,#a15f2e);color:#fff;text-decoration:none;padding:13px 26px;border-radius:999px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;transition:.2s;border:none;cursor:pointer;font-size:15px;box-shadow:0 6px 18px rgba(176,112,58,.25);}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(176,112,58,.32);}
+  .btn.ghost{background:#fff;color:var(--brown);border:2px solid #dcc9a4;box-shadow:none;}
+  .btn.ghost:hover{background:var(--cream2);box-shadow:none;}
+  .btn.green{background:linear-gradient(135deg,#8f9a4a,#6d7a2a);box-shadow:0 6px 18px rgba(109,122,42,.22);}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
+  .pill{font-family:Helvetica,Arial,sans-serif;font-size:12px;font-weight:bold;border-radius:999px;padding:4px 12px;letter-spacing:.3px;}
+  .pill.free{background:var(--green-bg);color:var(--green);}
+  .pill.paid{background:var(--paid-bg);color:#a05a2a;}
+
+  /* ---------- header ---------- */
+  header{background:linear-gradient(135deg,#ecd9b8,#f6e8cd);padding:18px 0;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(120,90,50,.08);}
+  nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .logo{font-weight:bold;font-size:21px;color:var(--brown);letter-spacing:.2px;}
+  .logo .dot{color:var(--tan);}
+  .nav-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .nav-links a.navlink{color:var(--brown);font-family:Helvetica,Arial,sans-serif;font-weight:bold;text-decoration:none;font-size:14px;}
+  .nav-links a.navlink:hover{color:var(--tan);}
+
+  /* ---------- hero ---------- */
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:52px 0 40px;}
+  @media(max-width:820px){.hero{grid-template-columns:1fr;text-align:center;}}
+  .hero .eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e6d3b0;border-radius:999px;padding:7px 16px;font-family:Helvetica,Arial,sans-serif;font-size:13px;font-weight:bold;color:var(--brown);margin-bottom:20px;}
+  .hero h1{font-size:46px;line-height:1.12;color:var(--ink);margin-bottom:18px;letter-spacing:-.5px;}
+  .hero h1 em{font-style:normal;color:var(--tan);}
+  .hero p.sub{font-size:18px;color:#7d6849;max-width:520px;margin-bottom:28px;}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero .trust{display:flex;gap:20px;flex-wrap:wrap;margin-top:26px;font-family:Helvetica,Arial,sans-serif;font-size:13px;color:var(--muted);font-weight:bold;}
+  .hero .trust span::before{content:"✓ ";color:var(--green);}
+  .demo-wrap{position:relative;}
+  .demo-frame{position:relative;border-radius:24px;padding:12px;background:linear-gradient(135deg,#fff,#f3e6cb);box-shadow:var(--shadow);transform:rotate(1.5deg);}
+  .demo-frame::after{content:"";position:absolute;inset:8px;border:1px solid rgba(176,112,58,.25);border-radius:18px;pointer-events:none;}
+  #heroDemo{display:block;width:100%;border-radius:16px;aspect-ratio:4/5;background:#1a1109;}
+  .demo-caption{margin-top:12px;text-align:center;font-size:14px;color:var(--muted);font-style:italic;}
+  .demo-caption b{color:var(--tan);}
+
+  /* ---------- shared upload ---------- */
+  .upload-zone{margin:10px 0 40px;}
+  .drop{background:linear-gradient(135deg,var(--cream2),#fbf0dc);border:2.5px dashed #d8b98a;border-radius:var(--radius);padding:38px 24px;text-align:center;cursor:pointer;transition:.2s;position:relative;}
+  .drop:hover{border-color:var(--tan);background:#fbf3e2;}
+  .drop.dragover{background:#f5e6c8;border-color:var(--tan);transform:scale(1.01);}
+  .drop .up{font-size:34px;}
+  .drop b{color:var(--brown);font-size:18px;display:block;margin-top:6px;}
+  .drop p{color:var(--muted);font-size:14px;margin-top:6px;}
+  .drop.done{border-style:solid;border-color:#a9c36a;background:#f2f6e2;}
+
+  /* ---------- tool sections ---------- */
+  .iface{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;margin-bottom:26px;border:1px solid rgba(176,112,58,.12);}
+  .iface-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:8px;}
+  .iface-icon{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+  .iface-icon.r{background:#f6e3cd;} .iface-icon.k{background:#eaf0d6;} .iface-icon.a{background:#f3e0d6;}
+  .iface-head h2{color:var(--ink);font-size:24px;}
+  .iface-head .pill{margin-left:auto;}
+  .iface .desc{color:var(--muted);font-size:14px;margin-bottom:18px;max-width:640px;}
+  .preview-slot{min-height:120px;border:1.5px dashed #e0cdab;border-radius:14px;background:repeating-linear-gradient(45deg,#faf3e6,#faf3e6 12px,#f6ecd9 12px,#f6ecd9 24px);display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:bold;}
+  .preview-slot.filled{min-height:0;border:none;background:none;display:block;}
+
+  /* restore */
+  .restore-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start;}
+  @media(max-width:700px){.restore-grid{grid-template-columns:1fr;}}
+  #restoreView{max-width:100%;background:#000;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.12);display:block;margin:0 auto;}
+  .restore-controls .slider-row{margin-bottom:12px;}
+  .slider-row label{display:flex;justify-content:space-between;font-size:13px;font-weight:bold;color:var(--muted);font-family:Helvetica,Arial,sans-serif;}
+  .slider-row label span{color:var(--tan);}
+  input[type=range]{width:100%;margin-top:4px;accent-color:var(--tan);}
+  .chk{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:bold;color:var(--muted);font-family:Helvetica,Arial,sans-serif;margin-bottom:12px;}
+  .restore-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+  .badge{display:inline-block;background:var(--cream2);border:1px solid #e6d3b0;border-radius:999px;padding:4px 12px;font-size:13px;color:var(--brown);font-family:Helvetica,Arial,sans-serif;margin-top:10px;}
+  .mini-hint{font-size:12px;color:var(--muted);margin-top:8px;}
+
+  /* animate */
+  .effects{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+  .eff{flex:1;min-width:100px;background:var(--cream2);border:2px solid #e6d3b0;border-radius:14px;padding:13px 10px;text-align:center;cursor:pointer;font-weight:bold;color:var(--brown);font-family:Helvetica,Arial,sans-serif;transition:.15s;font-size:14px;}
+  .eff:hover{border-color:var(--tan);background:#fbf3e2;}
+  .eff.active{background:var(--tan);color:#fff;border-color:var(--tan);}
   .eff.locked{opacity:.55;background:#efe6d2;}
   .eff.locked::after{content:" 🔒";}
   .eff.locked.active{opacity:1;}
-  #aliveBtn{min-width:200px;margin-bottom:8px;font-size:16px;}
-  canvas{max-width:100%;background:#000;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.15);}
+  #aliveBtn{min-width:220px;font-size:16px;}
+  canvas.anim{max-width:100%;background:#000;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.18);display:block;margin:0 auto;}
   .controls{margin-top:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-  .hint{font-size:13px;color:#a08a6a;margin-top:10px;text-align:center;}
-  .note{font-size:13px;color:#a08a6a;margin-top:14px;}
-  .pro{background:linear-gradient(135deg,#fdf6ea,#f3e2c2);border:2px solid #d8b98a;border-radius:16px;padding:26px;margin-top:22px;text-align:center;}
-  .pro h3{color:#6e4f2a;font-size:22px;margin-bottom:8px;}
-  .pro p{color:#7d6a52;margin-bottom:16px;}
-  .pro .price{font-size:26px;font-weight:bold;color:#b0703a;font-family:Helvetica,Arial,sans-serif;}
-  .pro .once{font-size:13px;color:#a08a6a;}
+  .hint{font-size:13px;color:var(--muted);margin-top:10px;text-align:center;}
+  .alive-status{text-align:center;font-size:14px;color:var(--brown);font-family:Helvetica,Arial,sans-serif;font-weight:bold;margin-top:12px;}
+
+  /* unlock / pro */
+  .pro{background:linear-gradient(135deg,#fdf6ea,#f6e3cd);border:2px solid #e3c99c;border-radius:var(--radius);padding:26px;margin-top:20px;text-align:center;}
+  .pro h3{color:var(--ink);font-size:22px;margin-bottom:8px;}
+  .pro p{color:#7d6849;margin-bottom:16px;}
+  .pro .price{font-size:30px;font-weight:bold;color:var(--tan);font-family:Helvetica,Arial,sans-serif;}
+  .pro .once{font-size:13px;color:var(--muted);}
   .key-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
-  #licenseKey{padding:11px 14px;border:2px solid #d8b98a;border-radius:10px;font-size:15px;min-width:240px;font-family:Helvetica,Arial,sans-serif;}
+  #licenseKey{padding:11px 14px;border:2px solid #d8b98a;border-radius:12px;font-size:15px;min-width:240px;font-family:Helvetica,Arial,sans-serif;}
   #unlockMsg{font-size:14px;margin-top:10px;font-weight:bold;}
-  #unlockMsg.ok{color:#6a8a3a;}
+  #unlockMsg.ok{color:var(--green);}
   #unlockMsg.err{color:#b04a3a;}
-  .restore-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start;}
-  @media(max-width:700px){.restore-grid{grid-template-columns:1fr;}}
-  .slider-row{margin-bottom:12px;}
-  .slider-row label{display:flex;justify-content:space-between;font-size:14px;font-weight:bold;color:#7d6a52;font-family:Helvetica,Arial,sans-serif;}
-  .slider-row label span{color:#b0703a;}
-  input[type=range]{width:100%;margin-top:4px;accent-color:#b0703a;}
-  .chk{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:bold;color:#7d6a52;font-family:Helvetica,Arial,sans-serif;margin-bottom:12px;}
-  .restore-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
-  .badge{display:inline-block;background:#fdf6ea;border:1px solid #e6d3b0;border-radius:20px;padding:4px 12px;font-size:13px;color:#8a6a3f;font-family:Helvetica,Arial,sans-serif;margin-top:10px;}
-  .alive-top{text-align:center;margin-bottom:14px;}
-  #aliveStatus{font-size:14px;color:#7d6a52;font-family:Helvetica,Arial,sans-serif;}
-  .faq p{margin-bottom:10px;background:#fff;border-radius:10px;padding:14px 18px;}
-  .faq b{color:#6e4f2a;}
-  .related{margin-top:36px;background:#fff;border-radius:14px;box-shadow:0 4px 14px rgba(120,90,50,.12);padding:24px;}
-  .related a{display:inline-block;background:#fdf6ea;color:#8a6a3f;border:1px solid #e6d3b0;border-radius:20px;padding:6px 14px;margin:4px 6px 0 0;text-decoration:none;font-size:14px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;}
+
+  /* ---------- how it works ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:14px 0 10px;}
+  @media(max-width:760px){.steps{grid-template-columns:1fr;}}
+  .step-card{background:#fff;border-radius:18px;box-shadow:0 6px 18px rgba(90,60,25,.08);padding:22px;border:1px solid rgba(176,112,58,.1);}
+  .step-card .n{width:32px;height:32px;border-radius:50%;background:var(--tan);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Helvetica,Arial,sans-serif;font-weight:bold;margin-bottom:12px;}
+  .step-card h3{color:var(--ink);font-size:18px;margin-bottom:6px;}
+  .step-card p{font-size:14px;color:var(--muted);}
+
+  /* ---------- privacy strip ---------- */
+  .privacy{background:linear-gradient(135deg,#4a3420,#6e4f2a);color:#f3e6cb;border-radius:var(--radius);padding:30px;margin:10px 0 36px;text-align:center;}
+  .privacy .shield{font-size:40px;display:block;margin-bottom:8px;}
+  .privacy h2{font-size:26px;margin-bottom:10px;}
+  .privacy p{color:#e6d5b4;max-width:620px;margin:0 auto;font-size:16px;}
+
+  /* ---------- sections ---------- */
+  h2.sec{color:var(--ink);font-size:30px;text-align:center;margin-bottom:8px;}
+  .sec-sub{text-align:center;color:var(--muted);margin-bottom:24px;font-size:16px;}
+  section.block{padding:20px 0 6px;}
+
+  /* ---------- faq / related ---------- */
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:10px 0 30px;}
+  @media(max-width:760px){.faq-grid{grid-template-columns:1fr;}}
+  .faq-item{background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 4px 12px rgba(90,60,25,.07);}
+  .faq-item b{color:var(--ink);}
+  .faq-item p{font-size:14px;color:var(--muted);margin-top:4px;}
+  .related{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:26px;margin:10px 0 30px;}
+  .related h3{color:var(--ink);margin-bottom:14px;font-size:20px;}
+  .related a{display:inline-block;background:var(--cream2);color:var(--brown);border:1px solid #e6d3b0;border-radius:999px;padding:7px 16px;margin:4px 6px 0 0;text-decoration:none;font-size:14px;font-weight:bold;font-family:Helvetica,Arial,sans-serif;}
   .related a:hover{background:#f5e6c8;}
-  footer{background:#e9d5b0;padding:22px 0;text-align:center;font-size:14px;color:#7d6a52;margin-top:30px;}
-  footer a{color:#6e4f2a;}
-  #status{font-size:14px;color:#7d6a52;margin-top:12px;font-family:Helvetica,Arial,sans-serif;}
-  @media(max-width:600px){.hero h1{font-size:27px;}.btn{display:block;margin:8px 0;text-align:center;}.eff{min-width:100%;}}
+
+  footer{background:linear-gradient(135deg,#e9d5b0,#f0e2c4);padding:26px 0;text-align:center;font-size:14px;color:var(--muted);margin-top:40px;}
+  footer a{color:var(--brown);font-weight:bold;text-decoration:none;}
+  #resetBtn{display:none;margin:0 auto 30px;width:100%;}
+  @media(max-width:600px){.hero h1{font-size:34px;}.btn{display:block;margin:8px 0;text-align:center;}}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap nav">
-    <div class="logo"><a href="index.html">OldPhoto Alive</a></div>
-    <div>
+    <div class="logo">OldPhoto<span class="dot"> Alive</span></div>
+    <div class="nav-links">
       <a class="navlink" href="#restore">Restore</a>
       <a class="navlink" href="#animate">Animate</a>
-      <a class="navlink" href="#alive">Alive</a>
-      <a class="btn" href="#alive">Unlock All – $9.99</a>
+      <a class="navlink" href="#how">How it works</a>
     </div>
   </div>
 </header>
 
 <div class="wrap">
+  <!-- ============ HERO with live demo ============ -->
   <div class="hero">
-    <h1>Bring an Old Photo Back to Life</h1>
-    <p>Restore it. Then make it move. Three tools, one photo, all in your browser — nothing uploaded, no account needed.</p>
+    <div>
+      <div class="eyebrow">🔒 100% in your browser · nothing uploaded · no signup</div>
+      <h1>Bring an <em>old photo</em> back to life</h1>
+      <p class="sub">Restore faded photos, then make them move — slow push-ins, gentle pans, soft fades. One photo, two tools, right here on your device.</p>
+      <div class="cta-row">
+        <a class="btn" href="#restore">🖼️ Restore a photo</a>
+        <a class="btn ghost" href="#animate">🎬 Animate a photo</a>
+      </div>
+      <div class="trust">
+        <span>No upload</span><span>No signup</span><span>Free to try</span>
+      </div>
+    </div>
+    <div class="demo-wrap">
+      <div class="demo-frame">
+        <canvas id="heroDemo" width="400" height="500"></canvas>
+      </div>
+      <p class="demo-caption"><b>Watch a photo come alive</b> — this demo moves in your browser.</p>
+    </div>
   </div>
 
-  <input type="file" id="fileInput" accept="image/*" style="display:none;">
-
-  <div id="workspace">
-
-    <!-- ① Restore (free) -->
-    <section class="iface" id="restore">
-      <h2><span class="num">1</span> Restore Photos <span class="tag free">FREE</span></h2>
-      <div class="drop" id="dropRestore">
-        <b>Upload a photo to restore</b>
-        <p>or drag it here · JPG / PNG · stays on your device</p>
-      </div>
-      <div class="restore-grid" id="restoreTools" style="display:none;">
-        <div style="text-align:center;">
-          <canvas id="restoreView" width="320" height="400"></canvas>
-          <p class="hint">Drag the divider to compare before / after</p>
-        </div>
-        <div>
-          <button class="btn" id="autoBtn" style="width:100%;margin-bottom:14px;">✨ Auto Fix</button>
-          <div class="slider-row"><label>Brightness <span id="vB">0</span></label><input type="range" id="sB" min="-60" max="60" value="0"></div>
-          <div class="slider-row"><label>Contrast <span id="vC">0</span></label><input type="range" id="sC" min="-60" max="80" value="0"></div>
-          <div class="slider-row"><label>Saturation <span id="vS">0</span></label><input type="range" id="sS" min="-80" max="80" value="0"></div>
-          <div class="slider-row"><label>Sharpen <span id="vSh">0</span></label><input type="range" id="sSh" min="0" max="100" value="0"></div>
-          <label class="chk"><input type="checkbox" id="denoise"> Reduce noise</label>
-          <div class="badge" id="grayBadge" style="display:none;">Black &amp; white photo detected</div>
-          <div class="restore-btns">
-            <button class="btn green" id="applyRestoreBtn">✓ Apply to animation</button>
-            <button class="btn ghost" id="exportRestorePng">Export PNG</button>
-            <button class="btn ghost" id="exportRestoreJpg">Export JPG</button>
-          </div>
-          <p class="note">The restored version feeds straight into Animate and Alive below.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ② Ken Burns animate (free) -->
-    <section class="iface" id="animate">
-      <h2><span class="num">2</span> Animate — Push-in &amp; Pan <span class="tag free">FREE</span></h2>
-      <div class="drop" id="dropAnimate">
-        <b>Upload a photo to animate</b>
-        <p>or drag it here · JPG / PNG · stays on your device</p>
-      </div>
-      <div id="animateTools" style="display:none;">
-      <div class="effects" id="effects">
-        <div class="eff active" data-eff="pushin">Push-in</div>
-        <div class="eff" data-eff="pushout">Pull-back</div>
-        <div class="eff" data-eff="panx">Pan across</div>
-        <div class="eff" data-eff="pany">Pan up</div>
-        <div class="eff" data-eff="fade">Fade in</div>
-      </div>
-      <div style="text-align:center;">
-        <canvas id="kbCanvas" width="480" height="640"></canvas>
-        <div class="controls">
-          <button class="btn green" id="exportKbBtn">Export GIF</button>
-        </div>
-        <p class="hint" id="kbStatus">Pick a motion and hit Export.</p>
-      </div>
-      </div>
-    </section>
-
-    <!-- ③ Alive face animation (paid) -->
-    <section class="iface" id="alive">
-      <h2><span class="num">3</span> Alive — Face Animation <span class="tag paid">$9.99 · ONE-TIME</span></h2>
-      <div class="drop" id="dropAlive">
-        <b>Upload a photo for Alive</b>
-        <p>or drag it here · JPG / PNG · stays on your device</p>
-      </div>
-      <div id="aliveTools" style="display:none;">
-      <div class="alive-top">
-        <div class="eff" id="aliveBtn" data-eff="alive">Alive ✨</div>
-        <p id="aliveStatus"></p>
-      </div>
-      <div style="text-align:center;">
-        <canvas id="aliveCanvas" width="480" height="640"></canvas>
-        <div class="controls">
-          <button class="btn green" id="exportAliveBtn">Export GIF</button>
-        </div>
-        <p class="hint" id="aliveHint">Try Alive once free — then unlock unlimited Alive + clean 720p export for a one-time $9.99.</p>
-      </div>
-      <div class="pro" id="unlock">
-        <h3>Unlock Unlimited Alive</h3>
-        <p>Unlimited Alive animations · clean 720p export · no watermark · no subscription, ever</p>
-        <div class="price">$9.99 <span class="once">one-time</span></div>
-        <div class="controls">
-          <a class="btn" id="payBtn" href="#unlock">Get Unlimited Alive</a>
-        </div>
-        <div class="key-form">
-          <input type="text" id="licenseKey" placeholder="Already bought? Paste your license key">
-          <button class="btn ghost" id="unlockBtn">Unlock</button>
-        </div>
-        <div id="unlockMsg"></div>
-      </div>
-      </div>
-    </section>
-
-    <button class="btn ghost" id="resetBtn" style="width:100%;">Start over — new photo</button>
+  <!-- ============ SHARED UPLOAD ============ -->
+  <div class="upload-zone">
+    <div class="drop" id="drop">
+      <div class="up">📷</div>
+      <b>Upload your photo — it feeds all two tools below</b>
+      <p>or drag it here · JPG / PNG · stays on your device</p>
+    </div>
+    <input type="file" id="fileInput" accept="image/*" style="display:none;">
   </div>
 
-  <section class="faq">
-    <h2>FAQ</h2>
-    <p><b>Is my photo uploaded anywhere?</b> No. Restoration and animation both run in your browser. Your photo never leaves your device.</p>
-    <p><b>What's free?</b> Photo restoration, and all 5 motion effects (push-in, pull-back, pan, pan up, fade) with a small watermark. Alive is free for one try; unlimited Alive + clean 720p is a one-time $9.99.</p>
-    <p><b>What does Restore do?</b> One-click Auto Fix brings back faded tones, removes colour casts, sharpens soft scans and reduces noise. Fine sliders are available too, and the result feeds into Animate and Alive.</p>
-    <p><b>How do I use Alive?</b> Upload a clear, face-forward photo (face at least a third of the frame). Once the face is detected the Alive button appears — click it to see blink, smile and breath.</p>
+  <input type="hidden" id="workspace">
+
+  <!-- ============ ① RESTORE ============ -->
+  <section class="iface" id="restore">
+    <div class="iface-head">
+      <div class="iface-icon r">🖼️</div>
+      <h2>Restore Photos</h2>
+      <span class="pill free">FREE</span>
+    </div>
+    <p class="desc">Bring back faded tones, remove colour casts, sharpen soft scans and clean up noise. Fine-tune to taste, then send the result into Animate.</p>
+    <div class="restore-grid">
+      <div style="text-align:center;">
+        <div class="preview-slot" id="restoreSlot">Your restored photo appears here</div>
+        <canvas id="restoreView" width="320" height="400" style="display:none;"></canvas>
+        <p class="hint" id="restoreHint">Drag the divider to compare before / after.</p>
+      </div>
+      <div class="restore-controls">
+        <button class="btn" id="autoBtn" style="width:100%;margin-bottom:14px;">✨ Auto Fix</button>
+        <div class="slider-row"><label>Brightness <span id="vB">0</span></label><input type="range" id="sB" min="-60" max="60" value="0"></div>
+        <div class="slider-row"><label>Contrast <span id="vC">0</span></label><input type="range" id="sC" min="-60" max="80" value="0"></div>
+        <div class="slider-row"><label>Saturation <span id="vS">0</span></label><input type="range" id="sS" min="-80" max="80" value="0"></div>
+        <div class="slider-row"><label>Sharpen <span id="vSh">0</span></label><input type="range" id="sSh" min="0" max="100" value="0"></div>
+        <label class="chk"><input type="checkbox" id="denoise"> Reduce noise</label>
+        <div class="badge" id="grayBadge" style="display:none;">Black &amp; white photo detected</div>
+        <div class="restore-btns">
+          <button class="btn green" id="applyRestoreBtn">✓ Apply to Animate</button>
+          <button class="btn ghost" id="exportRestorePng">Export PNG</button>
+          <button class="btn ghost" id="exportRestoreJpg">Export JPG</button>
+        </div>
+      </div>
+    </div>
   </section>
 
+  <!-- ============ ② ANIMATE (Ken Burns, free) ============ -->
+  <section class="iface" id="animate">
+    <div class="iface-head">
+      <div class="iface-icon k">🎬</div>
+      <h2>Animate — Push-in &amp; Pan</h2>
+      <span class="pill free">FREE</span>
+    </div>
+    <p class="desc">The classic documentary move: a slow push toward a face, a gentle drift across a scene, a soft fade. Pick a motion, export a GIF.</p>
+    <div class="effects" id="effects">
+      <div class="eff active" data-eff="pushin">Push-in</div>
+      <div class="eff" data-eff="pushout">Pull-back</div>
+      <div class="eff" data-eff="panx">Pan across</div>
+      <div class="eff" data-eff="pany">Pan up</div>
+      <div class="eff" data-eff="fade">Fade in</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="preview-slot" id="kbSlot">Your moving photo appears here</div>
+      <canvas class="anim" id="kbCanvas" width="480" height="640" style="display:none;"></canvas>
+      <div class="controls">
+        <button class="btn green" id="exportKbBtn">Export GIF</button>
+      </div>
+      <p class="hint" id="kbStatus">Pick a motion and hit Export.</p>
+    </div>
+  </section>
+
+  <button class="btn ghost" id="resetBtn">Start over — new photo</button>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="block" id="how">
+    <h2 class="sec">How it works</h2>
+    <p class="sec-sub">One photo, two tools. All in your browser.</p>
+    <div class="steps">
+      <div class="step-card">
+        <div class="n">1</div>
+        <h3>Upload</h3>
+        <p>Drag in a scan or a phone photo. It never leaves your device.</p>
+      </div>
+      <div class="step-card">
+        <div class="n">2</div>
+        <h3>Restore</h3>
+        <p>Auto Fix brings back faded tones, colour and sharpness — free.</p>
+      </div>
+      <div class="step-card">
+        <div class="n">3</div>
+        <h3>Animate</h3>
+        <p>Add slow motion, or gentle motion. Export a GIF.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRIVACY ============ -->
+  <div class="privacy">
+    <span class="shield">🛡️</span>
+    <h2>Your memories stay yours.</h2>
+    <p>Everything — restoration, face detection, animation, export — runs in your browser. Your photo never touches a server, never sits in someone's cloud, and never trains a model.</p>
+  </div>
+
+  <!-- ============ FAQ ============ -->
+  <section class="block">
+    <h2 class="sec">Questions, answered</h2>
+    <div class="faq-grid">
+      <div class="faq-item"><b>Is my photo uploaded anywhere?</b><p>No. Restoration and animation both run in your browser. Your photo never leaves your device.</p></div>
+      <div class="faq-item"><b>What's free?</b><p>Everything — restoration and all 5 motion effects are completely free. No signup, no watermark, no subscription.</p></div>
+      <div class="faq-item"><b>What does Restore do?</b><p>One-click Auto Fix brings back faded tones, removes colour casts, sharpens soft scans and reduces noise. The result feeds straight into Animate.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ RELATED ============ -->
   <div class="related">
-    <h2>Guides &amp; More</h2>
+    <h3>Guides &amp; more</h3>
     <a href="restore.html">Restore Photos (standalone)</a>
     <a href="seo/animate-old-photos.html">How to Animate Old Photos</a>
     <a href="seo/revive-old-photos.html">Revive Old Photos</a>
@@ -222,7 +314,7 @@
     <a href="seo/family-history-video.html">Family History Video</a>
     <a href="seo/memorial-video-maker.html">Memorial Video Maker</a>
     <a href="seo/old-photo-gif-maker.html">Old Photo GIF Maker</a>
-    <h2 style="margin-top:18px;">More Free Tools for Self-Publishers</h2>
+    <h3 style="margin-top:18px;">More free tools for self-publishers</h3>
     <a href="https://aiharryone.github.io/kdp-launch-kit/">KDP Launch Kit</a>
     <a href="https://aiharryone.github.io/kdp-launch-kit/royalty-calculator.html">Royalty Calculator</a>
     <a href="https://aiharryone.github.io/kdp-launch-kit/kdp-cover-calculator.html">Cover Calculator</a>
@@ -231,7 +323,7 @@
 </div>
 
 <footer>
-  Made for the memories that deserve to move. Questions? Ai_harryone@outlook.com · <a href="index.html">OldPhoto Alive</a> · <a href="restore.html">Restore Photos</a> · <a href="https://aiharryone.github.io/kdp-launch-kit/terms.html">Terms</a> · <a href="https://aiharryone.github.io/kdp-launch-kit/privacy.html">Privacy</a>
+  Made for the memories that deserve to move. Questions? <a href="mailto:Ai_harryone@outlook.com">Ai_harryone@outlook.com</a> · <a href="index.html">OldPhoto Alive</a> · <a href="restore.html">Restore Photos</a> · <a href="https://aiharryone.github.io/kdp-launch-kit/terms.html">Terms</a> · <a href="https://aiharryone.github.io/kdp-launch-kit/privacy.html">Privacy</a>
 </footer>
 
 <script src="vendor/omggif.js"></script>
@@ -239,49 +331,81 @@
 <script>
 (function(){
   // ---- Config ----
-  var PAYMENT_LINK = 'https://creem.io/product/prod_1R4Hz0sKVv8p5c5TgWl20H';  // Creem product link
-  var UNLOCK_API   = 'https://old-photo-unlock.aiharryone.workers.dev';  // Cloudflare Worker base URL
-  var FREE_EFFECTS = ['pushin','pushout','panx','pany','fade']; // all Ken Burns effects free
+  var PAYMENT_LINK = 'https://creem.io/product/prod_1R4Hz0sKVv8p5c5TgWl20H';
+  var UNLOCK_API   = 'https://old-photo-unlock.aiharryone.workers.dev';
   var ALIVE_FREE_TRIES_KEY = 'oldphoto_alive_tries';
   var ALIVE_FREE_TRIES = 1;
   var UNLOCKED_KEY = 'oldphoto_unlocked';
 
   // ---- State ----
-  var img = null;            // original image element
-  var srcImg = null;         // current source for animation (img or the restored canvas)
+  var img = null;
+  var srcImg = null;
   function currentSource(){ return srcImg || img; }
   var effect = 'pushin';
   var unlocked = false;
   try { unlocked = localStorage.getItem(UNLOCKED_KEY) === '1'; } catch(e){}
-  // ---- Face / Alive state ----
   var faceLandmarks = null;
   var faceMesh = null;
   var morph = null;
   var faceDetecting = false;
   var MP_READY = false;
+  var faceLib = null;        // real-face motion-style library (face-lib.json)
+  var matchedStyle = null;   // best-matching library entry for the current photo
+  var matchedParams = null;  // derived animation parameters from the matched style
 
   // ---- DOM ----
   var $file = document.getElementById('fileInput');
-  var $workspace = document.getElementById('workspace');
-  var $dropRestore = document.getElementById('dropRestore');
-  var $dropAnimate = document.getElementById('dropAnimate');
-  var $dropAlive = document.getElementById('dropAlive');
-  var $restoreTools = document.getElementById('restoreTools');
-  var $animateTools = document.getElementById('animateTools');
-  var $aliveTools = document.getElementById('aliveTools');
+  var $drop = document.getElementById('drop');
+  var $dropDone = function(done){
+    $drop.classList.toggle('done', done);
+    $drop.querySelector('b').textContent = done ? 'Photo ready ✓ — it feeds all two tools below' : 'Upload your photo — it feeds all two tools below';
+  };
   var $kbCanvas = document.getElementById('kbCanvas');
-  var $aliveCanvas = document.getElementById('aliveCanvas');
+  var $aliveCanvas = document.getElementById('aliveCanvas');   // Alive is offline — guarded
+  var $restoreView = document.getElementById('restoreView');
   var kbCtx = $kbCanvas.getContext('2d');
-  var aliveCtx = $aliveCanvas.getContext('2d');
+  var aliveCtx = $aliveCanvas ? $aliveCanvas.getContext('2d') : null;
+  var rvCtx = $restoreView.getContext('2d');
   var $kbStatus = document.getElementById('kbStatus');
   var $aliveStatus = document.getElementById('aliveStatus');
   var $aliveBtn = document.getElementById('aliveBtn');
-  var $aliveHint = document.getElementById('aliveHint');
+  var $grayBadge = document.getElementById('grayBadge');
+  var $restoreSlot = document.getElementById('restoreSlot');
+  var $kbSlot = document.getElementById('kbSlot');
+  var $aliveSlot = document.getElementById('aliveSlot');
   var $payBtn = document.getElementById('payBtn');
   var $license = document.getElementById('licenseKey');
   var $unlockBtn = document.getElementById('unlockBtn');
   var $unlockMsg = document.getElementById('unlockMsg');
+  var $resetBtn = document.getElementById('resetBtn');
 
+  // fill a preview slot: hide placeholder, show canvas
+  function showCanvas(cv, slot){ slot.classList.add('filled'); slot.style.display = 'none'; cv.style.display = 'block'; }
+
+  // ---- Hero demo: a sample photo that moves forever ----
+  (function(){
+    var demo = new Image();
+    demo.src = 'assets/demo.jpg';
+    demo.onload = function(){
+      var cv = document.getElementById('heroDemo');
+      if(!cv || !cv.getContext) return;
+      var ctx = cv.getContext('2d');
+      var W = cv.width, H = cv.height;
+      var t0 = performance.now();
+      function loop(now){
+        var t = ((now - t0) % 4000) / 4000;
+        var cover = Math.max(W/demo.width, H/demo.height);
+        var s = cover * (1 + 0.14 * t);
+        var sw = W/s, sh = H/s;
+        var sx = (demo.width - sw)/2, sy = (demo.height - sh)/2;
+        ctx.drawImage(demo, sx, sy, sw, sh, 0, 0, W, H);
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+    };
+  })();
+
+  // ---- helpers ----
   function aliveFreeUsed(){
     var n = 0;
     try { n = parseInt(localStorage.getItem(ALIVE_FREE_TRIES_KEY), 10) || 0; } catch(e){}
@@ -301,56 +425,57 @@
       var e = el.getAttribute('data-eff');
       el.classList.toggle('active', e === effect && effect !== 'alive');
     });
-    // Alive button state
-    var show = !!faceLandmarks;
-    $aliveBtn.style.display = show ? '' : 'none';
-    var locked = effectLocked('alive');
-    $aliveBtn.classList.toggle('locked', locked);
-    $aliveBtn.classList.toggle('active', effect === 'alive' && !locked);
-    if(show){
-      $aliveStatus.textContent = locked
-        ? (aliveFreeUsed() >= ALIVE_FREE_TRIES ? 'You\'ve used your free Alive trial — unlock for $9.99 to keep using it.' : 'One free Alive try left — then unlock for $9.99.')
-        : (unlocked ? 'Alive unlocked — unlimited, no watermark.' : 'Face detected ✓ — click Alive to use your one free trial.');
+    // Alive is offline — skip its UI entirely
+    if($aliveBtn && $aliveStatus){
+      var show = !!faceLandmarks;
+      $aliveBtn.style.display = show ? '' : 'none';
+      var locked = effectLocked('alive');
+      $aliveBtn.classList.toggle('locked', locked);
+      $aliveBtn.classList.toggle('active', effect === 'alive' && !locked);
+      if(show){
+        $aliveStatus.textContent = locked
+          ? (aliveFreeUsed() >= ALIVE_FREE_TRIES ? 'You\'ve used your free Alive trial — unlock for $9.99 to keep using it.' : 'One free Alive try left — then unlock for $9.99.')
+          : (unlocked ? 'Alive unlocked — unlimited, no watermark.' : 'Face detected ✓ — click Alive to use your one free trial.');
+      }
     }
     if(effect === 'alive' && effectLocked('alive')){ effect = 'pushin'; }
   }
 
-  // ---- Effect selection (free Ken Burns) ----
+  // ---- Effect selection (free) ----
   document.querySelectorAll('#effects .eff').forEach(function(el){
     el.addEventListener('click', function(){
       var e = el.getAttribute('data-eff');
+      if(!img){ $kbStatus.textContent = 'Upload a photo first (dropzone above).'; return; }
       effect = e;
       paintEffects();
       animate($kbCanvas, e);
     });
   });
 
-  // ---- Alive button (paid / free trial) ----
+  // ---- Alive button (offline; guarded) ----
+  if($aliveBtn){
   $aliveBtn.addEventListener('click', function(){
+    if(!img){ if($aliveStatus) $aliveStatus.textContent = 'Upload a photo first (dropzone above).'; return; }
     if(effectLocked('alive')){
-      if(aliveFreeUsed() >= ALIVE_FREE_TRIES){
-        $aliveStatus.textContent = 'You\'ve used your free Alive trial. Unlock unlimited Alive for $9.99 below.';
-      } else {
-        $aliveStatus.textContent = 'Pick Alive to use your one free trial — then unlock for unlimited.';
-      }
+      if($aliveStatus) $aliveStatus.textContent = aliveFreeUsed() >= ALIVE_FREE_TRIES
+        ? 'You\'ve used your free Alive trial. Unlock unlimited Alive for $9.99 below.'
+        : 'Pick Alive to use your one free trial — then unlock for unlimited.';
       return;
     }
     effect = 'alive';
     paintEffects();
     animate($aliveCanvas, 'alive');
   });
-
-  // ---- Upload (each interface has its own dropzone) ----
-  function bindDrop(el){
-    el.addEventListener('click', function(){ $file.click(); });
-    el.addEventListener('dragover', function(ev){ ev.preventDefault(); el.classList.add('dragover'); });
-    el.addEventListener('dragleave', function(){ el.classList.remove('dragover'); });
-    el.addEventListener('drop', function(ev){
-      ev.preventDefault(); el.classList.remove('dragover');
-      if(ev.dataTransfer.files && ev.dataTransfer.files[0]) loadFile(ev.dataTransfer.files[0]);
-    });
   }
-  [$dropRestore, $dropAnimate, $dropAlive].forEach(bindDrop);
+
+  // ---- Upload ----
+  $drop.addEventListener('click', function(){ $file.click(); });
+  $drop.addEventListener('dragover', function(ev){ ev.preventDefault(); $drop.classList.add('dragover'); });
+  $drop.addEventListener('dragleave', function(){ $drop.classList.remove('dragover'); });
+  $drop.addEventListener('drop', function(ev){
+    ev.preventDefault(); $drop.classList.remove('dragover');
+    if(ev.dataTransfer.files && ev.dataTransfer.files[0]) loadFile(ev.dataTransfer.files[0]);
+  });
   $file.addEventListener('change', function(){
     if($file.files && $file.files[0]) loadFile($file.files[0]);
   });
@@ -368,24 +493,34 @@
         $grayBadge.style.display = grayscale ? 'inline-block' : 'none';
         setupRestore();
         renderRestore();
-        [$dropRestore, $dropAnimate, $dropAlive].forEach(function(el){ el.style.display = 'none'; });
-        $restoreTools.style.display = ''; $animateTools.style.display = ''; $aliveTools.style.display = '';
+        // photo appears in both interfaces at once
+        showCanvas($restoreView, $restoreSlot);
+        showCanvas($kbCanvas, $kbSlot);
+        if($aliveCanvas && aliveCtx){ showCanvas($aliveCanvas, $aliveSlot); drawStill(aliveCtx, $aliveCanvas, im); }
+        $dropDone(true);
+        $resetBtn.style.display = 'block';
         resetRestoreControls();
         paintEffects();
         animate($kbCanvas, 'pushin');
-        detectFace(); // async: enables the Alive button
+        // Alive offline — no face detection / MediaPipe needed
       };
       im.src = ev.target.result;
     };
     reader.readAsDataURL(f);
   }
 
+  // draw a static cover-cropped photo onto a canvas
+  function drawStill(ctx, cv, src){
+    var W = cv.width, H = cv.height;
+    var cover = Math.max(W/src.width, H/src.height);
+    var sw = W/cover, sh = H/cover;
+    var sx = (src.width - sw)/2, sy = (src.height - sh)/2;
+    ctx.drawImage(src, sx, sy, sw, sh, 0, 0, W, H);
+  }
+
   // ---- Restore module ----
   var restoreSettings = { bright: 0, contrast: 0, sat: 0, sharpen: 0, denoise: false };
   var restoreWork = null, restoreDivider = 0.5, restoreDragging = false, grayscale = false;
-  var $restoreView = document.getElementById('restoreView');
-  var $grayBadge = document.getElementById('grayBadge');
-  var rvCtx = $restoreView.getContext('2d');
 
   function isGrayscale(im){
     var c = document.createElement('canvas');
@@ -415,7 +550,6 @@
   function processPixels(src, W, H, o){
     var n = W * H;
     var out = new Uint8ClampedArray(src);
-    // 1. gentle auto levels (centred stretch, capped gain)
     (function(){
       var hist = [new Float64Array(256), new Float64Array(256), new Float64Array(256)];
       for (var i = 0; i < n; i++){
@@ -446,7 +580,6 @@
         }
       }
     })();
-    // 2. white balance (soft gray-world) for colour photos
     if (!grayscale){
       var mr = 0, mg = 0, mb = 0;
       for (var i = 0; i < n; i++){ var j = i*4; mr += out[j]; mg += out[j+1]; mb += out[j+2]; }
@@ -462,7 +595,6 @@
         out[j+2] = out[j+2] * kb;
       }
     }
-    // 3. brightness / contrast / saturation
     var bright = o.bright * 2.55;
     var cf2 = (259 * (o.contrast * 2.55 + 255)) / (255 * (259 - o.contrast * 2.55));
     var sat = 1 + o.sat / 100;
@@ -480,7 +612,6 @@
       out[j+1] = g < 0 ? 0 : (g > 255 ? 255 : g);
       out[j+2] = b < 0 ? 0 : (b > 255 ? 255 : b);
     }
-    // 4. unsharp mask
     if (o.sharpen > 0){
       var amt = o.sharpen / 100 * 0.9;
       var base = out.slice();
@@ -499,7 +630,6 @@
         }
       }
     }
-    // 5. median denoise
     if (o.denoise){
       var base = out.slice();
       for (var y = 1; y < H - 1; y++){
@@ -554,6 +684,7 @@
     var el = document.getElementById(id);
     var lab = document.getElementById(vid);
     el.addEventListener('input', function(){
+      if(!img){ return; }
       restoreSettings[key] = parseInt(el.value, 10);
       lab.textContent = el.value;
       renderRestore();
@@ -564,11 +695,13 @@
   bindSlider('sS', 'sat', 'vS');
   bindSlider('sSh', 'sharpen', 'vSh');
   document.getElementById('denoise').addEventListener('change', function(){
+    if(!img) return;
     restoreSettings.denoise = this.checked;
     renderRestore();
   });
 
   document.getElementById('autoBtn').addEventListener('click', function(){
+    if(!img){ $kbStatus.textContent = 'Upload a photo first (dropzone above).'; return; }
     restoreSettings.bright = 3; restoreSettings.contrast = 16;
     restoreSettings.sat = grayscale ? 12 : 16; restoreSettings.sharpen = 30;
     restoreSettings.denoise = true;
@@ -590,16 +723,15 @@
   }
 
   document.getElementById('applyRestoreBtn').addEventListener('click', function(){
-    if(!img) return;
+    if(!img){ $kbStatus.textContent = 'Upload a photo first (dropzone above).'; return; }
     srcImg = fullRestore();
     $kbStatus.textContent = 'Restored version applied to Animate ✓';
-    // re-render the active animation preview with the restored source
     if(effect === 'alive'){ animate($aliveCanvas, 'alive'); }
     else { animate($kbCanvas, effect); }
   });
 
   function exportRestore(type){
-    if(!img) return;
+    if(!img){ $kbStatus.textContent = 'Upload a photo first (dropzone above).'; return; }
     var c = fullRestore();
     var mime = type === 'jpg' ? 'image/jpeg' : 'image/png';
     var a = document.createElement('a');
@@ -610,7 +742,7 @@
   document.getElementById('exportRestorePng').addEventListener('click', function(){ exportRestore('png'); });
   document.getElementById('exportRestoreJpg').addEventListener('click', function(){ exportRestore('jpg'); });
 
-  $restoreView.addEventListener('pointerdown', function(ev){ restoreDragging = true; moveDiv(ev); });
+  $restoreView.addEventListener('pointerdown', function(ev){ if(!img) return; restoreDragging = true; moveDiv(ev); });
   window.addEventListener('pointermove', function(ev){ if (restoreDragging) moveDiv(ev); });
   window.addEventListener('pointerup', function(){ restoreDragging = false; });
   function moveDiv(ev){
@@ -619,7 +751,56 @@
     renderRestore();
   }
 
-  // ---- Alive: load morph + MediaPipe, detect face ----
+  // ---- real-face style library: load + photo→style matching ----
+  fetch('face-lib.json').then(function(r){ return r.ok ? r.json() : null; }).then(function(j){
+    if (j && j.styles && j.styles.length) faceLib = j;
+  }).catch(function(){});
+  function faceSigFromL(L){
+    var cx = (L[33].x + L[362].x) / 2, cy = (L[33].y + L[362].y) / 2;
+    var eyeD = Math.max(1e-4, Math.hypot(L[33].x - L[362].x, L[33].y - L[362].y));
+    var pts = [];
+    for (var i = 0; i < 478; i++){ pts.push((L[i].x - cx) / eyeD, (L[i].y - cy) / eyeD); }
+    var minY = 1, maxY = 0;
+    for (var j = 0; j < 468; j++){ if (L[j].y < minY) minY = L[j].y; if (L[j].y > maxY) maxY = L[j].y; }
+    return { pts: pts, facePct: (maxY - minY) * 100 };
+  }
+  function matchFaceStyle(L){
+    if (!faceLib || !faceLib.styles.length) return null;
+    var sig = faceSigFromL(L);
+    var best = null, bestD = Infinity;
+    for (var s = 0; s < faceLib.styles.length; s++){
+      var sp = faceLib.styles[s].faceSig.pts;
+      if (!sp || sp.length !== sig.pts.length) continue;
+      var d = 0;
+      for (var i = 0; i < sig.pts.length; i++){ var dd = sig.pts[i] - sp[i]; d += dd * dd; }
+      d = Math.sqrt(d / sig.pts.length);
+      d += Math.abs(sig.facePct - faceLib.styles[s].faceSig.facePct) * 0.4; // head-size ratio matters
+      if (d < bestD){ bestD = d; best = faceLib.styles[s]; }
+    }
+    return best ? { style: best, dist: bestD } : null;
+  }
+  function applyMatchedStyle(m){
+    if (!m) return;
+    var mo = m.style.motion || {};
+    function cl(v, lo, hi){ return Math.min(hi, Math.max(lo, v)); }
+    // Library fine-muscle metrics → wide-range animation multipliers, so different
+    // real faces produce clearly different motion (high-motion vs calm styles).
+    matchedParams = {
+      smileAmp: cl((mo.mouthOpen || 0.1) * 6 + (mo.mouthSpread || 0.05) * 2, 0.6, 1.3),
+      squintAmp: cl((mo.eyeMotion || 0.03) * 28, 0.6, 1.3),   // periocular lid activity → smiling-squint strength
+      browAmp: cl((mo.browMotion || 0.03) * 24, 0.6, 1.3),
+      lipAmp: cl((mo.lipMotion || 0.04) * 18, 0.6, 1.3),      // perioral lip activity → mouth open/close
+      headAng: cl(mo.headSwayX * 0.0013, 0.02, 0.05),
+      headDrift: cl(mo.headSwayX * 0.0007, 0.01, 0.028),
+      headYScale: mo.headSwayY > 8 ? 1.2 : 0.8,
+      styleName: m.style.video,
+      dist: m.dist
+    };
+    matchedStyle = m.style;
+    dlog('matched style: ' + m.style.video + ' (dist ' + m.dist.toFixed(3) + ', facePct ' + m.style.faceSig.facePct + '%)');
+  }
+
+  // ---- Alive: face detection ----
   window.__detectLog = window.__detectLog || [];
   function dlog(m){ try{ window.__detectLog.push(m); }catch(e){} console.log('[detect]', m); }
   function detectFace(){
@@ -631,7 +812,6 @@
       loadMorph = import(new URL('./vendor/morph.js', window.location.href).href).then(function(m){ morph = m; });
     }
     loadMorph.then(function(){
-      dlog('morph loaded');
       return ensureMediaPipe();
     }).then(function(lm){
       dlog('mediapipe ready');
@@ -653,6 +833,8 @@
         window.__mesh = faceMesh;
         window.__morph = morph;
         dlog('face set, tris=' + (faceMesh.tris.length));
+        // match the photo's face against the real-face library and adopt that style
+        applyMatchedStyle(matchFaceStyle(faceLandmarks));
       }
     }).catch(function(e){ dlog('detect error: ' + (e && e.message)); })
     .finally(function(){
@@ -675,13 +857,20 @@
     }).then(function(lm){ MP_READY = lm; dlog('landmarker ready'); return lm; });
   }
 
-  document.getElementById('resetBtn').addEventListener('click', function(){
+  // ---- Reset ----
+  $resetBtn.addEventListener('click', function(){
     if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
     img = null; srcImg = null; faceLandmarks = null; faceMesh = null;
-    [$dropRestore, $dropAnimate, $dropAlive].forEach(function(el){ el.style.display = ''; });
-    $restoreTools.style.display = 'none'; $animateTools.style.display = 'none'; $aliveTools.style.display = 'none';
+    $dropDone(false);
+    $restoreSlot.style.display = ''; $kbSlot.style.display = '';
+    if($aliveSlot) $aliveSlot.style.display = '';
+    $restoreSlot.classList.remove('filled'); $kbSlot.classList.remove('filled');
+    if($aliveSlot) $aliveSlot.classList.remove('filled');
+    $restoreView.style.display = 'none'; $kbCanvas.style.display = 'none';
+    if($aliveCanvas) $aliveCanvas.style.display = 'none';
+    $resetBtn.style.display = 'none';
     $kbStatus.textContent = 'Pick a motion and hit Export.';
-    $aliveStatus.textContent = '';
+    if($aliveStatus) $aliveStatus.textContent = '';
   });
 
   // ---- Animation math ----
@@ -709,24 +898,45 @@
       var key = Math.round(t * 45);
       if(warpCacheKey === key) return warpCacheCanvas || src;
     }
-    var displaced = faceLandmarks;
-    if(morph.displaceBlink){
-      var blinkT = Math.max(0, Math.min(1, 0.5 + (0.28 - t) * 12));
-      displaced = morph.displaceBlink(displaced, blinkT);
-    }
-    if(morph.displaceSmile){
-      displaced = morph.displaceSmile(displaced, Math.max(0, Math.sin((t - 0.1) * Math.PI)));
-    }
+    // expression displacement — calibrated from 12 real face videos. One shared
+    // expression envelope drives the MOUTH and the EYES TOGETHER (Duchenne smile),
+    // with a quick natural blink on top.
+    var displaced = faceLandmarks.map(function(p){ return { x: p.x, y: p.y, z: p.z }; });
+    var fc = morph.faceCenter(faceLandmarks, 1, 1);
+    // ---- matched real-face style (from face-lib.json) drives everything ----
+    var mp_ = matchedParams || {};
+    // HEAD SIZE RATIO scales pixel-level muscle strength, but clamped so motion is
+    // always visible yet never distorts (max local displacement stays < ~15px).
+    var facePct = (fc.r * 2) * 100;                       // head height as % of frame
+    var faceScale = Math.min(1.35, Math.max(0.7, facePct / 30));
+    // one expression envelope → mouth + eyes + brows all move together (bounded)
+    function smooth(x, a, b){ if(x <= a) return 0; if(x >= b) return 1; var u=(x-a)/(b-a); return u*u*(3-2*u); }
+    var env = smooth(t, 0.12, 0.3) * (1 - smooth(t, 0.82, 0.98));
+    var smileT  = Math.min(1.15, env * faceScale * (mp_.smileAmp || 1));    // mouth corners/cheeks
+    var mouthT  = Math.min(1.15, env * faceScale * (mp_.lipAmp || 1));      // lips part (library lip activity)
+    var squintT = Math.min(1.25, smileT * (mp_.squintAmp || 1));            // eyes smile WITH the mouth
+    var browT   = Math.min(1.2, smileT * (mp_.browAmp || 1));               // brows
+    if(morph.displaceSmile){ displaced = morph.displaceSmile(displaced, smileT); }
+    if(morph.displaceMouth){ displaced = morph.displaceMouth(displaced, mouthT); }
+    if(morph.displaceSquint){ displaced = morph.displaceSquint(displaced, squintT); }
+    if(morph.displaceEyebrows){ displaced = morph.displaceEyebrows(displaced, browT); }
     if(morph.displaceBreathe){ displaced = morph.displaceBreathe(displaced, t); }
-    if(morph.displaceEyebrows){ displaced = morph.displaceEyebrows(displaced, t); }
-    if(morph.displaceHeadSway){ displaced = morph.displaceHeadSway(displaced, t); }
+    // NO blink — the eyes animate only WITH the smile (Duchenne squint + periocular
+    // muscle), so the eyes and mouth always move together and nothing ever jolts.
+    // ---- whole-head rigid motion (hair follows), from the matched style ----
     var MW = Math.min(targetW || 480, src.width, 720);
     var MH = Math.round(MW * src.height / src.width);
     var srcCanvas = document.createElement('canvas');
     srcCanvas.width = src.width; srcCanvas.height = src.height;
     srcCanvas.getContext('2d').drawImage(src, 0, 0);
+    var head = {
+      ang: (mp_.headAng || 0.025) * Math.sin(t * Math.PI * 2),
+      dx: (mp_.headDrift || 0.012) * MW * Math.sin(t * Math.PI * 2),
+      dy: 0.006 * (mp_.headYScale || 1) * MH * Math.sin(t * Math.PI * 2 + 0.5)
+    };
     try {
-      var out = morph.warpFaceToCanvas(srcCanvas, MW, MH, faceLandmarks, displaced, faceMesh.tris);
+      // feathered FACE-mesh warp (localized, no whole-image tearing) + rigid head motion
+      var out = morph.renderAlive(srcCanvas, MW, MH, faceLandmarks, displaced, faceMesh.tris, head);
       if(isPreview){ warpCacheKey = key; warpCacheCanvas = out; }
       return out;
     } catch(e){ return src; }
@@ -831,7 +1041,7 @@
 
   function exportGif(eff, btn, statusEl){
     var src = currentSource();
-    if(!src){ return; }
+    if(!src){ statusEl.textContent = 'Upload a photo first (dropzone above).'; return; }
     if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
     if(eff === 'alive' && !unlocked){
       var used = aliveFreeUsed();
@@ -894,43 +1104,33 @@
       paintEffects();
       statusEl.textContent = 'That was your free Alive trial! Unlock unlimited Alive for $9.99 below.';
     }
-    animate($kbCanvas, 'pushin'); // resume the free preview
+    animate($kbCanvas, 'pushin');
   }
 
   document.getElementById('exportKbBtn').addEventListener('click', function(){
-    if(!img){ $kbStatus.textContent = 'Upload a photo first.'; return; }
     exportGif(effect === 'alive' ? 'pushin' : effect, this, $kbStatus);
   });
-  document.getElementById('exportAliveBtn').addEventListener('click', function(){
-    if(!img){ $aliveStatus.textContent = 'Upload a photo first.'; return; }
-    if(effectLocked('alive')){
-      $aliveStatus.textContent = 'Alive needs a detected face and an available free trial — or unlock for $9.99.';
-      return;
-    }
-    exportGif('alive', this, $aliveStatus);
-  });
-
-  // ---- Payment / unlock ----
-  function setUnlocked(){
-    unlocked = true;
-    try{ localStorage.setItem(UNLOCKED_KEY, '1'); }catch(e){}
-    $unlockMsg.className = 'ok';
-    $unlockMsg.textContent = 'Unlocked ✅ Unlimited Alive and clean 720p export are yours.';
-    $aliveHint.textContent = 'Unlocked — unlimited Alive, clean 720p export, no watermark.';
-    paintEffects();
-  }
-
-  if(PAYMENT_LINK){
-    $payBtn.href = PAYMENT_LINK;
-  } else {
-    $payBtn.addEventListener('click', function(ev){
-      ev.preventDefault();
-      $unlockMsg.className = 'err';
-      $unlockMsg.textContent = 'Payment link is being prepared — check back shortly.';
+  var exportAliveBtn = document.getElementById('exportAliveBtn');
+  if(exportAliveBtn){
+    exportAliveBtn.addEventListener('click', function(){
+      if(!img){ if($aliveStatus) $aliveStatus.textContent = 'Upload a photo first (dropzone above).'; return; }
+      exportGif('alive', this, $aliveStatus);
     });
   }
 
-  $unlockBtn.addEventListener('click', function(){
+  // ---- Payment / unlock (Alive offline — guarded) ----
+  function setUnlocked(){
+    unlocked = true;
+    try{ localStorage.setItem(UNLOCKED_KEY, '1'); }catch(e){}
+    if($unlockMsg){ $unlockMsg.className = 'ok'; $unlockMsg.textContent = 'Unlocked ✅'; }
+    paintEffects();
+  }
+
+  if($payBtn && PAYMENT_LINK){
+    $payBtn.href = PAYMENT_LINK;
+  }
+
+  if($unlockBtn && $license && $unlockMsg){ $unlockBtn.addEventListener('click', function(){
     var key = $license.value.trim();
     if(!key){ $unlockMsg.className = 'err'; $unlockMsg.textContent = 'Paste your license key first.'; return; }
     if(!UNLOCK_API){
@@ -954,6 +1154,7 @@
       $unlockMsg.textContent = 'Could not reach the unlock service. Check your connection and try again.';
     });
   });
+  }
 
   paintEffects();
 })();
