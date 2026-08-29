@@ -315,7 +315,8 @@
       if(res && res.faceLandmarks && res.faceLandmarks.length){
         var face = res.faceLandmarks[0];
         // convert normalized coords (relative to c) to image coords (same ratio, so same norm)
-        faceLandmarks = face.map(function(p){ return { x: p.x, y: p.y }; });
+        // keep z too — a few displacement effects use depth for subtle parallax
+        faceLandmarks = face.map(function(p){ return { x: p.x, y: p.y, z: p.z }; });
         // build mesh once
         faceMesh = morph.buildFaceMesh(faceLandmarks);
         window.__landmarks = faceLandmarks;
@@ -387,11 +388,22 @@
       var key = Math.round(t * 45);
       if(warpCacheKey === key) return warpCacheCanvas || img;
     }
-    // compose displacement: blink(t) + smile(t) + breathe(t)
+    // compose displacement — timed like a real person's micro-expressions over one
+    // 3s cycle: one quick blink, a soft smile that eases in and out, breathing,
+    // a brow lift riding the smile, and a barely-there head sway.
     var displaced = faceLandmarks;
-    if(morph.displaceBlink){ displaced = morph.displaceBlink(displaced, (t * 2) % 1); }
-    if(morph.displaceSmile){ displaced = morph.displaceSmile(displaced, t); }
+    if(morph.displaceBlink){
+      // one natural blink per cycle (~0.25s), peaking near t≈0.28; eyes open otherwise
+      var blinkT = Math.max(0, Math.min(1, 0.5 + (0.28 - t) * 12));
+      displaced = morph.displaceBlink(displaced, blinkT);
+    }
+    if(morph.displaceSmile){
+      // soft smile: begins just after the blink, eases in and out across the cycle
+      displaced = morph.displaceSmile(displaced, Math.max(0, Math.sin((t - 0.1) * Math.PI)));
+    }
     if(morph.displaceBreathe){ displaced = morph.displaceBreathe(displaced, t); }
+    if(morph.displaceEyebrows){ displaced = morph.displaceEyebrows(displaced, t); }
+    if(morph.displaceHeadSway){ displaced = morph.displaceHeadSway(displaced, t); }
     // warp at working resolution (preview ~480w, export ~720w)
     var MW = Math.min(targetW || 480, img.width, 720);
     var MH = Math.round(MW * img.height / img.width);

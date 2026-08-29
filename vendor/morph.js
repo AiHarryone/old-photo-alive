@@ -53,14 +53,18 @@ function warpFaceToCanvas(srcCanvas, W, H, landmarks, displacedLandmarks, tris) 
   const out = document.createElement('canvas');
   out.width = W; out.height = H;
   const ctx = out.getContext('2d');
-  ctx.fillStyle = '#fff8f0';
-  ctx.fillRect(0, 0, W, H);
 
   // Draw source into a SEPARATE temp canvas so triangle warping can drawImage from
   // it without self-referencing `out` (would crash).
   const src = document.createElement('canvas');
   src.width = W; src.height = H;
   src.getContext('2d').drawImage(srcCanvas, 0, 0, W, H);
+
+  // Base the frame on the full source photo (NOT a cream fill). A cream background
+  // erases everything outside the face mesh — hair, neck, shoulders all turn blank,
+  // and any head movement shows cream gaps. Drawing the whole photo underneath and
+  // warping the face triangles over it keeps hair intact and makes gentle sway clean.
+  ctx.drawImage(src, 0, 0, W, H);
 
   function toPix(pt) { return { x: pt.x * W, y: pt.y * H }; }
   const srcPix = landmarks.map(toPix);
@@ -77,7 +81,7 @@ function warpFaceToCanvas(srcCanvas, W, H, landmarks, displacedLandmarks, tris) 
 
 // Blink: upper eyelids move down toward lower lids. Uses MediaPipe landmarks.
 function displaceBlink(landmarks, t) {
-  const out = landmarks.map(p => ({ x: p.x, y: p.y }));
+  const out = landmarks.map(p => ({ x: p.x, y: p.y, z: (p.z !== undefined ? p.z : 0) }));
   const amt = Math.sin(t * Math.PI); // 0 -> 1 -> 0
   // upper lids move down
   const upperL = [159, 145, 160, 158, 144, 153, 173, 157, 154, 33];
@@ -108,7 +112,7 @@ function displaceBlink(landmarks, t) {
 
 // Smile: mouth corners lift and spread slightly; lower lip lifts a touch.
 function displaceSmile(landmarks, t) {
-  const out = landmarks.map(p => ({ x: p.x, y: p.y }));
+  const out = landmarks.map(p => ({ x: p.x, y: p.y, z: (p.z !== undefined ? p.z : 0) }));
   const amt = Math.sin(t * Math.PI) * 0.7;
   const corners = [61, 291];
   const mid = landmarks[13];
@@ -125,7 +129,7 @@ function displaceSmile(landmarks, t) {
 
 // Breathe: subtle whole-head scale about face center + tiny y bob.
 function displaceBreathe(landmarks, t) {
-  const out = landmarks.map(p => ({ x: p.x, y: p.y }));
+  const out = landmarks.map(p => ({ x: p.x, y: p.y, z: (p.z !== undefined ? p.z : 0) }));
   const s = 1 + 0.004 * Math.sin(t * Math.PI * 2);
   let cx = 0, cy = 0;
   for (let i = 0; i < 468; i++) { cx += landmarks[i].x; cy += landmarks[i].y; }
@@ -133,6 +137,36 @@ function displaceBreathe(landmarks, t) {
   for (let i = 0; i < 468; i++) {
     out[i].x = cx + (landmarks[i].x - cx) * s;
     out[i].y = cy + (landmarks[i].y - cy) * s + 0.0015 * Math.sin(t * Math.PI * 2);
+  }
+  return out;
+}
+
+// Eyebrows: gentle brow lift that fades in with the expression. MediaPipe's 468-mesh
+// left-brow indices are [70,63,105,66,107,69,109,108,68,71]; right [336,296,334,293,300,285,295,282,283,276].
+function displaceEyebrows(landmarks, t) {
+  const out = landmarks.map(p => ({ x: p.x, y: p.y, z: (p.z !== undefined ? p.z : 0) }));
+  const amt = 0.0045 * Math.max(0, Math.sin((t - 0.06) * Math.PI));
+  if (amt < 0.0001) return out;
+  [70,63,105,66,107,69,109,108,68,71,336,296,334,293,300,285,295,282,283,276].forEach(i => {
+    if (out[i]) out[i].y -= amt;
+  });
+  return out;
+}
+
+// Head sway: a gentle, barely-there yaw about the face centre (a living person never
+// holds perfectly still). Kept to ~1.2° so it reads as a presence, never a turn or tilt.
+function displaceHeadSway(landmarks, t) {
+  const out = landmarks.map(p => ({ x: p.x, y: p.y, z: (p.z !== undefined ? p.z : 0) }));
+  const ang = 0.021 * Math.sin(t * Math.PI * 2);   // ±~1.2°
+  const drift = 0.003 * Math.sin(t * Math.PI * 2); // tiny horizontal sway
+  let cx = 0, cy = 0;
+  for (let i = 0; i < 468; i++) { cx += landmarks[i].x; cy += landmarks[i].y; }
+  cx /= 468; cy /= 468;
+  const c = Math.cos(ang), s = Math.sin(ang);
+  for (let i = 0; i < 468; i++) {
+    const dx = landmarks[i].x - cx, dy = landmarks[i].y - cy;
+    out[i].x = cx + dx * c - dy * s + drift;
+    out[i].y = cy + dx * s + dy * c;
   }
   return out;
 }
@@ -148,7 +182,7 @@ function hasFace(landmarks) {
 }
 
 // Export ESM + also expose on window for non-module use
-export { delaunayTriangulation, warpFaceToCanvas, displaceBlink, displaceSmile, displaceBreathe, buildFaceMesh, hasFace, drawWarpedTri };
+export { delaunayTriangulation, warpFaceToCanvas, displaceBlink, displaceSmile, displaceBreathe, displaceEyebrows, displaceHeadSway, buildFaceMesh, hasFace, drawWarpedTri };
 if (typeof window !== 'undefined') {
-  window.__morph = { delaunayTriangulation, warpFaceToCanvas, displaceBlink, displaceSmile, displaceBreathe, buildFaceMesh, hasFace, drawWarpedTri };
+  window.__morph = { delaunayTriangulation, warpFaceToCanvas, displaceBlink, displaceSmile, displaceBreathe, displaceEyebrows, displaceHeadSway, buildFaceMesh, hasFace, drawWarpedTri };
 }
