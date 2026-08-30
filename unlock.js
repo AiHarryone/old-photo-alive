@@ -5,6 +5,7 @@
   var UNLOCK_API = 'https://old-photo-unlock.aiharryone.workers.dev';
   var KEY_STORE = 'oldphoto_premium';
   var USES_PREFIX = 'oldphoto_uses_';
+  var LICENSE_STORE = 'oldphoto_license';
 
   function unlocked(){ try { return localStorage.getItem(KEY_STORE) === '1'; } catch(e){ return false; } }
   function used(tool){ try { return parseInt(localStorage.getItem(USES_PREFIX + tool), 10) || 0; } catch(e){ return 0; } }
@@ -55,6 +56,7 @@
         .then(function(res){
           if (res.j && (res.j.valid || res.j.ok)) {
             setUnlocked();
+            try { localStorage.setItem(LICENSE_STORE, JSON.stringify({ key: key, instanceId: res.j.instanceId || '' })); } catch(e){}
             msg.textContent = 'Unlocked ✅ Enjoy every tool!'; msg.className = 'msg ok';
             setTimeout(function(){ location.reload(); }, 800);
           } else {
@@ -74,6 +76,16 @@
     document.getElementById('opModal').classList.add('show');
     return false;
   }
+
+  // Reuse a stored license on load via /validate — never re-activate the same key.
+  (function(){
+    var lic; try { lic = JSON.parse(localStorage.getItem(LICENSE_STORE) || 'null'); } catch(e){ lic = null; }
+    if (!lic || !lic.key) return;
+    fetch(UNLOCK_API + '/validate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ key: lic.key, instanceId: lic.instanceId || '' }) })
+      .then(function(r){ return r.json().catch(function(){ return {}; }); })
+      .then(function(d){ if (d.ok){ setUnlocked(); } })
+      .catch(function(){});
+  })();
 
   window.OP = {
     unlocked: unlocked, used: used, markUsed: markUsed, gate: gate, show: function(){ inject(); document.getElementById('opModal').classList.add('show'); },
