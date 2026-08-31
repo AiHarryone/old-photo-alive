@@ -49,6 +49,8 @@ HEAD = '''<!DOCTYPE html>
   .hero h1{font-size:38px;line-height:1.15;letter-spacing:-.8px;margin-bottom:14px;font-weight:800;}
   .hero h1 span{color:var(--accent);}
   .hero p{font-size:18px;color:var(--muted);max-width:640px;margin:0 auto;}
+  .hero .answer{background:var(--card);border-left:4px solid var(--accent);border-radius:12px;padding:14px 18px;max-width:680px;margin:16px auto 0;text-align:left;font-size:15px;color:var(--ink);box-shadow:var(--shadow);}
+  .hero .answer b{color:var(--accent);}
   .hero .sub{font-size:14px;color:var(--muted);margin-top:12px;font-weight:600;}
   .hero .cta-row{margin-top:26px;}
   section{padding:28px 0;}
@@ -100,6 +102,7 @@ HEAD = '''<!DOCTYPE html>
     <div class="eyebrow">🔒 100% in your browser · nothing uploaded · no signup</div>
     <h1>{h1}</h1>
     <p>{hero_p}</p>
+    <p class="answer"><b>Short answer:</b> {tldr}</p>
     <p class="sub">{hero_sub}</p>
     <div class="cta-row">
       <a class="btn" href="{base}/index.html" style="font-size:17px;padding:14px 30px;">Try It Free — No Signup →</a>
@@ -123,6 +126,7 @@ HEAD = '''<!DOCTYPE html>
 
 <footer>
   <a href="{base}/index.html">PixelFix</a> · <a href="{base}/restore.html">Restore</a> · <a href="{base}/passport-photo.html">Passport</a> · <a href="{base}/compress-image.html">Compress</a> · <a href="{base}/remove-bg.html">Remove BG</a> · <a href="{base}/pdf-tools.html">PDF</a> · Ai_harryone@outlook.com
+  <p style="margin-top:8px;font-size:12px;opacity:.75;">Last updated: August 30, 2026</p>
 </footer>
 </body>
 </html>
@@ -369,15 +373,19 @@ def related_links(slug):
 
 def render(page):
     html = HEAD
+    ld = _ld_for(page)
+    extra = '{"@context":"https://schema.org","@type":"WebPage","name":"%s","dateModified":"2026-08-30T00:00:00Z","datePublished":"2026-08-30T00:00:00Z"}' % page['title'].replace('"', '\\"')
+    ld_block = ('[%s,%s]' % (ld, extra)) if ld else extra
     subs = {
         '{title}': page['title'],
         '{meta}': page['meta'],
         '{base}': BASE,
         '{slug}': page['slug'],
-        '{ldjson}': _ld_for(page),
+        '{ldjson}': ld_block,
         '{h1}': page['h1'],
         '{hero_p}': page['hero_p'],
         '{hero_sub}': page['hero_sub'],
+        '{tldr}': page['meta'],
         '{sections}': '\n\n'.join(page['sections']),
         '{cta_h2}': page['cta_h2'],
         '{cta_p}': page['cta_p'],

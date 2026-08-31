@@ -720,14 +720,18 @@ PAGES = [
 
 def render(page):
     html = HEAD
+    ld = _ld_for(page)
+    extra = '{"@context":"https://schema.org","@type":"WebPage","name":"%s","dateModified":"2026-08-30T00:00:00Z","datePublished":"2026-08-30T00:00:00Z"}' % page['title'].replace('"', '\\"')
+    ld_block = ('[%s,%s]' % (ld, extra)) if ld else extra
     subs = {
         '{title}': page['title'],
         '{meta}': page['meta'],
         '{slug}': page['slug'],
-        '{ldjson}': _ld_for(page),
+        '{ldjson}': ld_block,
         '{h1}': page['h1'],
         '{hero_p}': page.get('hero_p', ''),
         '{hero_sub}': page['hero_sub'],
+        '{tldr}': page['meta'],
         '{sections}': '\n\n'.join(page['sections']),
         '{cta_h2}': page['cta_h2'],
         '{cta_p}': page['cta_p'],
