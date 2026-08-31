@@ -1,0 +1,39 @@
+# PixelFix
+
+> Free browser-based photo tools: compress images, restore old photos, remove backgrounds, make passport photos, PDF tools, GIF maker, batch watermark, document scanner and photo animation — all 100% in your browser. Nothing is uploaded, no account, no signup. Compress is free; a one-time $9.99 unlocks every tool forever.
+
+## Tools
+
+- [Compress Images](https://aiharryone.github.io/pixelfix/compress-image.html): Shrink JPG/PNG/WebP in batch, resize, convert formats. Free.
+- [Restore Photos](https://aiharryone.github.io/pixelfix/restore.html): Fix faded, blurry and noisy old photos with auto-fix and manual sliders.
+- [Animate Photos](https://aiharryone.github.io/pixelfix/): Ken Burns push-in/pan/fade effect turned into an animated GIF.
+- [Passport Photo Maker](https://aiharryone.github.io/pixelfix/passport-photo.html): Generate official passport, visa and ID photos in correct sizes.
+- [Remove Background](https://aiharryone.github.io/pixelfix/remove-bg.html): Cut people out with feathered edges; replace the background.
+- [PDF Tools](https://aiharryone.github.io/pixelfix/pdf-tools.html): Images to PDF, merge PDFs, and PDF to JPG in your browser.
+- [GIF Maker](https://aiharryone.github.io/pixelfix/gif-maker.html): Turn any set of images into an animated, looping GIF.
+- [Watermark](https://aiharryone.github.io/pixelfix/watermark.html): Add text or logo watermarks to images in batch.
+- [Document Scanner](https://aiharryone.github.io/pixelfix/document-scanner.html): Straighten, crop and flatten photos of documents.
+
+## Popular Guides
+
+- [Restore Old Photos Free](https://aiharryone.github.io/pixelfix/seo/restore-old-photos-free.html): How to restore old photos free and in your browser.
+- [Make a GIF from Photos](https://aiharryone.github.io/pixelfix/seo/make-gif-from-photos.html): Turn photo slides into a looping GIF.
+- [Image to PDF Converter](https://aiharryone.github.io/pixelfix/seo/image-to-pdf-converter.html): Combine images into one PDF.
+- [Remove Background from Photo](https://aiharryone.github.io/pixelfix/seo/remove-background-from-photo.html): Cut a person out of a photo free.
+- [Make Passport Photo at Home](https://aiharryone.github.io/pixelfix/seo/make-passport-photo-at-home.html): Take a compliant passport photo yourself.
+- [Compress JPG to 100KB](https://aiharryone.github.io/pixelfix/seo/compress-jpg-to-100kb.html): Shrink a JPG under 100KB free.
+- [Ken Burns Effect Generator](https://aiharryone.github.io/pixelfix/seo/ken-burns-effect-generator.html): Add the classic photo-slideshow motion.
+- [Animate Old Photos](https://aiharryone.github.io/pixelfix/seo/animate-old-photos.html): Make old photos move as a Ken Burns video or GIF.
+- [PDF to JPG](https://aiharryone.github.io/pixelfix/seo/pdf-to-jpg.html): Convert a PDF page into a JPG image.
+- [Add Watermark to Photos](https://aiharryone.github.io/pixelfix/seo/add-watermark-to-photos.html): Watermark many images at once.
+
+## Pricing
+
+- Compress Images: completely free.
+- All other tools: one free try each.
+- $9.99 one-time (no subscription): unlock all tools forever, watermark-free.
+
+## Resources
+
+- [Sitemap](https://aiharryone.github.io/pixelfix/sitemap.xml)
+- [Robots.txt](https://aiharryone.github.io/pixelfix/robots.txt)

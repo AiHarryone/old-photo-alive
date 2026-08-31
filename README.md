@@ -1,5 +1,9 @@
 # PixelFix — 9 Free Browser Tools for Photos
 
+![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-2ea44f)
+![Privacy](https://img.shields.io/badge/nothing%20uploaded-100%25%20browser-4f46e5)
+![Pricing](https://img.shields.io/badge/free%20trial%20%E2%86%92%20%249.99%20one--time-059669)
+
 **One site, nine free image tools — all running 100% in your browser. Nothing uploaded, no account, no signup.**
 
 Live at: **https://aiharryone.github.io/pixelfix/**
@@ -26,6 +30,28 @@ Live at: **https://aiharryone.github.io/pixelfix/**
 - **No signup, no account, no server** — open a page and it works.
 - **Free to try** — Compress Images is completely free; every other tool gives one free try.
 - **Lifetime unlock** — one $9.99 payment, all tools, forever.
+
+## ❓ FAQ
+
+<details>
+<summary><b>Are my photos uploaded to a server?</b></summary>
+No. Everything — compression, background removal, PDF conversion, GIF encoding, watermarking, scanning, restore — runs 100% in your browser. Your photos never leave your device.
+</details>
+
+<details>
+<summary><b>Which tools are free?</b></summary>
+Compress Images is completely free. The other eight tools each give you one free try; a one-time $9.99 unlocks all tools forever — no subscription.
+</details>
+
+<details>
+<summary><b>Do I need an account?</b></summary>
+No signup, no account, no email. Open a page and it works.
+</details>
+
+<details>
+<summary><b>Can I use the results commercially?</b></summary>
+Yes — anything you create is yours to use, sell or share.
+</details>
 
 ## 🛠 Tech
 
