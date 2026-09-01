@@ -19,6 +19,7 @@ W = 'watermark.html'
 S = 'document-scanner.html'
 E = 'restore.html'
 A = 'index.html'
+H = 'heic-to-jpg.html'
 
 def tpage(slug, title, meta, h1, hero, tool, tool_name, sections, faq, cta_h2, cta_p):
     """Build a per-tool landing page dict."""
@@ -716,12 +717,84 @@ PAGES = [
      ('Do I need an account?','No.')],
     'Make an Animated PFP Now.',
     'Free to try — nothing uploaded.'),
+
+  tpage('heic-to-jpg-online.html',
+    'HEIC to JPG Online — Free Batch Converter (No Upload)',
+    'Convert HEIC to JPG online free in your browser: batch convert iPhone photos, pick quality, download as ZIP. Nothing uploaded, 100 photos free.',
+    'HEIC to JPG Online',
+    'Batch-convert iPhone HEIC photos to JPG right in your browser — nothing uploaded.',
+    H, 'HEIC to JPG Converter',
+    [sec('Why Convert HEIC to JPG', '<ul><li><b>Compatibility</b> — JPG opens anywhere; HEIC only works on Apple devices.</li><li><b>Universal acceptance</b> — every upload form, printer and app reads JPG.</li><li><b>Batch-ready</b> — convert a whole folder at once, not one photo at a time.</li></ul>'),
+     sec('How It Works', '<ol class="steps"><li>Drop in your HEIC files (batch is supported).</li><li>Pick JPEG quality (85% is the sweet spot).</li><li>Convert — every photo is decoded locally in your browser.</li><li>Download individually or everything as one ZIP.</li></ol>')],
+    [('Is it really free?','Yes — the first 100 photos are free. Unlimited is a one-time $9.99 that unlocks the whole PixelFix suite.'),
+     ('Can I convert many at once?','Yes — select hundreds of HEIC files and convert them in one batch.'),
+     ('Are my photos uploaded?','No — everything is decoded in your browser with WebAssembly. Nothing leaves your device.'),
+     ('Why can I not open HEIC files?','HEIC is Apple\'s default photo format; most non-Apple software and websites can\'t read it. Converting to JPG fixes that.')],
+    'Convert HEIC to JPG Online Now.',
+    '100 photos free — nothing uploaded.'),
+  tpage('convert-heic-to-jpg.html',
+    'Convert HEIC to JPG (Free, Batch, in Your Browser)',
+    'Convert HEIC to JPG free: batch convert hundreds of iPhone photos in your browser, choose quality, download as ZIP. No upload, 100 photos free.',
+    'Convert HEIC to JPG',
+    'A free browser tool that converts HEIC photos to JPG — hundreds at once, all local.',
+    H, 'HEIC to JPG Converter',
+    [sec('Two Good Reasons to Convert', '<ul><li><b>Email &amp; uploads</b> — many sites reject .heic outright.</li><li><b>Printing &amp; Windows</b> — JPG is the format printers and Windows expect.</li></ul>'),
+     sec('What You Get', '<ul><li>Batch select — a whole album or folder at once.</li><li>JPEG quality control from 50–95%.</li><li>Download each photo or one combined ZIP.</li><li>100% local: no account, no upload, no watermarks on your own files.</li></ul>')],
+    [('Does it work on any device?','Yes — any browser on any device; decoding runs locally.'),
+     ('What about privacy?','Your photos never leave your device — there is nothing to store.'),
+     ('How much is the unlimited upgrade?','A one-time $9.99 for unlimited conversions plus the whole PixelFix suite.'),
+     ('Do I need to install anything?','No — it runs entirely in your browser.')],
+    'Convert Your HEIC Photos Now.',
+    'Free to try — 100 photos free.'),
+  tpage('heic-to-jpg-iphone.html',
+    'Convert iPhone HEIC to JPG — Free, No App Needed',
+    'Convert iPhone HEIC photos to JPG for free: no app, no upload. Batch convert from iCloud or Files in your browser and download as a ZIP.',
+    'Convert iPhone HEIC to JPG',
+    'iPhone photos are HEIC; make them JPG without installing an app or uploading anything.',
+    H, 'HEIC to JPG Converter',
+    [sec('Why iPhones Save HEIC', '<p>Since iOS 11, iPhones save photos as HEIC — about half the file size of JPG. It is efficient storage, but it breaks compatibility with websites, Windows and printers.</p>'),
+     sec('How to Convert from Your iPhone', '<ol class="steps"><li>Send the HEIC files to your computer, or open them from iCloud / Files.</li><li>Drop them into the converter — batch is supported.</li><li>Download the JPGs individually or as a ZIP.</li></ol><p>Everything runs locally, so your photos stay on your own devices.</p>')],
+    [('Do I need an app?','No — it runs in your browser on any device.'),
+     ('Can I convert from iCloud?','Yes — download from iCloud first, then drop the HEIC files in.'),
+     ('Will quality suffer?','No — you choose JPEG quality; 85% looks identical to the original for photos.'),
+     ('Is it really free?','Yes — the first 100 photos are free; unlimited is one-time $9.99.')],
+    'Convert iPhone HEIC Now.',
+    'Free — nothing uploaded.'),
+  tpage('heic-to-jpg-batch.html',
+    'Batch Convert HEIC to JPG — Hundreds at Once (Free)',
+    'Batch convert HEIC to JPG: select hundreds of iPhone photos at once, convert locally in your browser, download all as one ZIP. Free.',
+    'Batch Convert HEIC to JPG',
+    'The single-file converters are everywhere. Batch is the feature that actually saves your afternoon.',
+    H, 'HEIC to JPG Converter',
+    [sec('Why Batch Matters', '<p>A phone backup can hold hundreds of HEIC files. Converting them one at a time is a losing game. With batch you:</p><ul><li>Select your whole folder or album at once.</li><li>Convert everything in one pass with a progress bar.</li><li>Download one ZIP instead of hundreds of files.</li></ul>'),
+     sec('How It Works', '<ol class="steps"><li>Drop in all your HEIC files (hundreds is fine).</li><li>Pick JPEG quality.</li><li>Convert — decoded locally, in your browser.</li><li>Download everything as a single ZIP.</li></ol>')],
+    [('Is there a file count limit?','100 photos free per browser; then a one-time $9.99 unlock for unlimited.'),
+     ('Does batch work on large folders?','Yes — select hundreds of files; conversion runs locally so there are no upload size limits.'),
+     ('Are my photos uploaded?','No — everything stays on your device.'),
+     ('Can I adjust quality?','Yes — a quality slider from 50–95%.')],
+    'Batch Convert HEIC Now.',
+    '100 photos free.'),
+  tpage('how-to-convert-heic-to-jpg.html',
+    'How to Convert HEIC to JPG in 3 Steps (Free)',
+    'How to convert HEIC files to JPG: pick your photos, choose quality, download. A free 3-step guide that works in your browser — nothing uploaded.',
+    'How to Convert HEIC to JPG',
+    'Three steps, no software, no upload — here is the fastest way to make your HEIC photos into JPG.',
+    H, 'HEIC to JPG Converter',
+    [sec('Step 1 — Get Your HEIC Files', '<p>Locate the HEIC photos — on your phone, in iCloud, or in a folder from a backup. They are the photos that refuse to open everywhere else.</p>'),
+     sec('Step 2 — Drop and Convert', '<ol class="steps"><li>Drop the HEIC files into the converter.</li><li>Set JPEG quality (85% recommended).</li><li>Hit convert — decoding happens locally in your browser.</li></ol>'),
+     sec('Step 3 — Download', '<p>Save each JPG, or grab everything at once as a ZIP. Done — your photos now open anywhere.</p>')],
+    [('Why do my photos keep saving as HEIC?','Your iPhone uses HEIC by default to save space. You can convert them to JPG anytime with this tool.'),
+     ('Is it really free?','Yes — 100 photos free; unlimited is a one-time $9.99.'),
+     ('Do I need to install software?','No — it runs entirely in your browser.'),
+     ('Is my data safe?','Your photos never leave your device.')],
+    'Convert Your First HEIC Now.',
+    'Free — 100 photos, nothing uploaded.'),
 ]
 
 def render(page):
     html = HEAD
     ld = _ld_for(page)
-    extra = '{"@context":"https://schema.org","@type":"WebPage","name":"%s","dateModified":"2026-08-30T00:00:00Z","datePublished":"2026-08-30T00:00:00Z"}' % page['title'].replace('"', '\\"')
+    extra = '{"@context":"https://schema.org","@type":"WebPage","name":"%s","dateModified":"2026-09-01T00:00:00Z","datePublished":"2026-09-01T00:00:00Z"}' % page['title'].replace('"', '\\"')
     ld_block = ('[%s,%s]' % (ld, extra)) if ld else extra
     subs = {
         '{title}': page['title'],
