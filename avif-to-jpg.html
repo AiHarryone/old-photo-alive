@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="favicon.png">
+<meta name="msvalidate.01" content="E62785F51D89A3BD3AFBB2BC2BB07BF9">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVIF to JPG Converter – Batch Convert in Your Browser (Free)</title>
+<meta property="og:title" content="AVIF to JPG Converter – Batch, Free, No Upload">
+<meta property="og:description" content="Convert AVIF photos to JPG in your browser for free: batch convert at once, nothing uploaded, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aiharryone.github.io/pixelfix/avif-to-jpg.html">
+<meta name="description" content="Convert AVIF to JPG online free in your browser: batch convert photos, pick JPEG quality, download individually or as a ZIP. Nothing uploaded, 100 files free.">
+<link rel="canonical" href="https://aiharryone.github.io/pixelfix/avif-to-jpg.html">
+<style>
+  :root{--cream:#f6f8fb;--cream2:#ffffff;--ink:#111827;--brown:#111827;--tan:#4f46e5;--tan-d:#4338ca;--muted:#6b7280;--green:#059669;--green-bg:#ecfdf5;--paid-bg:#fffbeb;--shadow:0 10px 30px rgba(17,24,39,.08);--radius:16px;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--cream);color:#111827;line-height:1.6;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 22px;}
+  header{background:#fff;padding:16px 0;position:sticky;top:0;z-index:50;border-bottom:1px solid #e5e7eb;box-shadow:0 2px 10px rgba(17,24,39,.05);}
+  nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .logo{font-weight:bold;font-size:21px;color:var(--brown);}
+  .nav-links{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .nav-links a{color:var(--muted);font-weight:600;text-decoration:none;font-size:14px;}
+  .nav-links a:hover{color:var(--tan);}
+  .btn{display:inline-block;background:linear-gradient(135deg,#4f46e5,#2563eb);color:#fff;text-decoration:none;padding:12px 24px;border-radius:999px;font-weight:700;transition:.15s;border:none;cursor:pointer;font-size:15px;box-shadow:0 4px 14px rgba(79,70,229,.3);font-family:inherit;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn.green{background:linear-gradient(135deg,#059669,#10b981);box-shadow:0 4px 14px rgba(5,150,105,.3);}
+  .btn.small{padding:8px 14px;font-size:13px;border-radius:10px;box-shadow:none;}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+  .hero{text-align:center;padding:40px 0 12px;}
+  .hero h1{font-size:36px;color:var(--ink);margin-bottom:10px;}
+  .hero p{font-size:17px;color:var(--muted);max-width:660px;margin:0 auto;}
+  .drop{background:linear-gradient(135deg,var(--cream2),#eef2ff);border:2.5px dashed #c7d2fe;border-radius:20px;padding:36px 24px;text-align:center;cursor:pointer;transition:.2s;margin:18px 0;}
+  .drop:hover{border-color:var(--tan);background:#f5f7ff;}
+  .drop b{color:var(--brown);font-size:18px;display:block;margin-top:6px;}
+  .drop p{color:var(--muted);font-size:14px;margin-top:6px;}
+  .controls{background:#fff;border-radius:16px;padding:18px 20px;box-shadow:var(--shadow);display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-bottom:18px;}
+  .ctl label{font-size:13px;font-weight:bold;color:var(--muted);display:block;margin-bottom:4px;}
+  .ctl input[type=range]{width:180px;}
+  .free-badge{background:var(--green-bg);color:var(--green);font-weight:700;font-size:14px;padding:10px 16px;border-radius:12px;}
+  #progress{display:none;margin-bottom:18px;}
+  .prog-bar{background:#e5e7eb;border-radius:999px;height:10px;overflow:hidden;}
+  .prog-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#4f46e5,#2563eb);transition:width .2s;}
+  #results{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;}
+  .card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);}
+  .card img{width:100%;height:150px;object-fit:cover;display:block;background:#f3f4f6;}
+  .card .meta{padding:10px 12px;font-size:12px;color:var(--muted);}
+  .card .meta b{display:block;color:var(--ink);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .card .row{display:flex;gap:8px;padding:0 12px 12px;}
+  .more{background:#fff;border-radius:16px;padding:22px;box-shadow:var(--shadow);margin-top:26px;}
+  .more h3{color:var(--ink);font-size:17px;margin-bottom:12px;}
+  .more .links{display:flex;flex-wrap:wrap;gap:10px;}
+  .more .links a{background:var(--cream);border:1px solid #e5e7eb;border-radius:12px;padding:10px 16px;font-size:14px;font-weight:600;color:var(--tan);text-decoration:none;}
+  .more .links a:hover{background:#f5f7ff;}
+  .faq{background:#fff;border-radius:16px;padding:24px;box-shadow:var(--shadow);margin-top:20px;}
+  .faq h3{color:var(--ink);font-size:17px;margin-bottom:12px;}
+  .faq p{margin-bottom:12px;font-size:15px;}
+  .faq p b{color:var(--ink);}
+  .note{margin-top:14px;font-size:13px;color:var(--muted);}
+  footer{background:#111827;color:#9ca3af;padding:26px 0;text-align:center;font-size:13px;margin-top:44px;}
+  footer a{color:#a5b4fc;text-decoration:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">PixelFix</div>
+    <div class="nav-links">
+      <a href="https://aiharryone.github.io/pixelfix/">All tools</a>
+      <a href="https://aiharryone.github.io/pixelfix/compress-image.html">Compress</a>
+      <a href="https://aiharryone.github.io/pixelfix/remove-bg.html">Remove BG</a>
+      <a href="https://aiharryone.github.io/pixelfix/watermark.html">Watermark</a>
+      <a href="https://aiharryone.github.io/pixelfix/passport-photo.html">Passport</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>AVIF to JPG Converter</h1>
+    <p>Batch-convert AVIF photos to JPG right in your browser. Nothing uploads, no signup, no software. <b>100 files free</b>, then unlock unlimited for a one-time fee.</p>
+  </div>
+
+  <div class="drop" id="drop">
+    <div style="font-size:40px;">📷</div>
+    <b>Drop AVIF files here or click to choose</b>
+    <p>Batch supported — drop many files at once (Chrome, Edge, Firefox and Safari all decode AVIF locally)</p>
+  </div>
+  <input type="file" id="file" accept=".avif,image/avif" multiple hidden>
+
+  <div class="controls">
+    <div class="ctl">
+      <label>JPEG quality</label>
+      <input type="range" id="quality" min="50" max="95" value="85">
+      <span id="qval" style="font-size:13px;color:var(--muted);margin-left:6px;">85%</span>
+    </div>
+    <div class="free-badge" id="freebadge">0 / 100 photos used this session</div>
+    <button class="btn green" id="go" disabled>Convert to JPG</button>
+  </div>
+
+  <div id="progress">
+    <div class="prog-bar"><i id="progfill"></i></div>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px;" id="progtext"></p>
+  </div>
+
+  <div id="results"></div>
+
+  <div class="more">
+    <h3>More free image tools</h3>
+    <div class="links">
+      <a href="https://aiharryone.github.io/pixelfix/compress-image.html">Compress Images</a>
+      <a href="https://aiharryone.github.io/pixelfix/remove-bg.html">Remove Background</a>
+      <a href="https://aiharryone.github.io/pixelfix/watermark.html">Batch Watermark</a>
+      <a href="https://aiharryone.github.io/pixelfix/passport-photo.html">Passport Photo</a>
+      <a href="https://aiharryone.github.io/pixelfix/gif-maker.html">GIF Maker</a>
+      <a href="https://aiharryone.github.io/pixelfix/pdf-tools.html">PDF Tools</a>
+    </div>
+  </div>
+
+  <div class="faq">
+    <h3>AVIF to JPG — common questions</h3>
+    <p><b>What is AVIF?</b> AVIF is the modern image format built on the AV1 codec. Browsers open it, but many websites, upload forms, printers and older apps do not — which is why you convert to JPG.</p>
+    <p><b>Is this really free?</b> Yes — the first <b>100 photos are free forever</b>. After that, unlimited conversion is a one-time $9.99 unlock for the whole PixelFix suite.</p>
+    <p><b>Can I convert many at once?</b> Yes — drop several AVIF files and convert them all in one batch, then download as a ZIP.</p>
+    <p><b>Are my photos uploaded?</b> No. AVIF is decoded natively by your browser — nothing is uploaded, your photos never leave your device.</p>
+  </div>
+  <p class="note">AVIF is decoded natively by your browser — no plugins, no WebAssembly download, no uploads.</p>
+</div>
+
+<footer>
+  <div class="wrap">
+    <a href="https://aiharryone.github.io/pixelfix/">PixelFix</a> · AVIF to JPG Converter · <a href="https://aiharryone.github.io/pixelfix/compress-image.html">More tools</a>
+    <p style="margin-top:8px;font-size:12px;opacity:.75;">Free in your browser · No signup · Nothing uploaded · Updated 2026</p>
+  </div>
+</footer>
+
+<script src="unlock.js"></script>
+<script src="vendor/avif/jszip.min.js"></script>
+<script>
+(function(){
+  var drop = document.getElementById('drop');
+  var file = document.getElementById('file');
+  var go = document.getElementById('go');
+  var q = document.getElementById('quality');
+  var qval = document.getElementById('qval');
+  var results = document.getElementById('results');
+  var prog = document.getElementById('progress');
+  var progfill = document.getElementById('progfill');
+  var progtext = document.getElementById('progtext');
+  var files = [];
+
+  // ---- 100 张免费 + $9.99 解锁（unlock.js 全局 OP）----
+  function countUsed(){ try{ return parseInt(localStorage.getItem('avif_converted')||'0',10); }catch(e){ return 0; } }
+  function addUsed(n){ try{ localStorage.setItem('avif_converted', String(countUsed()+n)); }catch(e){} }
+  function unlocked(){ return window.OP && OP.unlocked && OP.unlocked(); }
+  function remaining(){ return Math.max(0, 100 - countUsed()); }
+  function refreshBadge(){ document.getElementById('freebadge').textContent = '0 / 100 photos used this session'; }
+  function updateBadge(){
+    var used = countUsed();
+    document.getElementById('freebadge').textContent = used + ' / 100 photos used' + (unlocked() ? ' (unlocked ✓)' : '');
+  }
+  function gate(n){
+    // 返回 true=允许转换
+    if (unlocked()) return true;
+    if (countUsed() + n <= 100) return true;
+    if (window.OP) OP.show();
+    return false;
+  }
+
+  q.oninput = function(){ qval.textContent = q.value + '%'; };
+
+  drop.onclick = function(){ file.click(); };
+  drop.ondragover = function(e){ e.preventDefault(); drop.style.borderColor='#4f46e5'; };
+  drop.ondragleave = function(){ drop.style.borderColor='#c7d2fe'; };
+  drop.ondrop = function(e){ e.preventDefault(); drop.style.borderColor='#c7d2fe'; if (e.dataTransfer.files.length) setFiles(e.dataTransfer.files); };
+  file.onchange = function(){ if (file.files.length) setFiles(file.files); };
+
+  function setFiles(list){
+    files = [].slice.call(list).filter(function(f){
+      return /\.avif$/i.test(f.name) || (f.type||'').indexOf('avif')>=0;
+    });
+    if (!files.length){ alert('No AVIF files found.'); return; }
+    go.disabled = false;
+    drop.querySelector('b').textContent = files.length + ' AVIF file(s) selected — click Convert';
+    results.innerHTML = '';
+    updateBadge();
+  }
+
+  // ---- 解码核心（浏览器原生 AVIF 解码, 本地, 无依赖）----
+  async function convertOne(blob, mime, quality){
+    var bmp = await createImageBitmap(blob);
+    var canvas = document.createElement('canvas');
+    canvas.width = bmp.width; canvas.height = bmp.height;
+    canvas.getContext('2d').drawImage(bmp, 0, 0);
+    if (bmp.close) bmp.close();
+    var out = await new Promise(function(res){ canvas.toBlob(res, mime, quality); });
+    return [{ blob: out, w: canvas.width, h: canvas.height }];
+  }
+
+  go.onclick = async function(){
+    var quality = parseInt(q.value,10)/100;
+    if (!gate(files.length)){
+      alert('You used your 100 free files. Unlock unlimited AVIF conversion for $9.99 — one time, all PixelFix tools.');
+      return;
+    }
+    go.disabled = true;
+    prog.style.display = 'block';
+    results.innerHTML = '';
+    var done = 0, failed = 0;
+    var zip = new JSZip();
+    for (var i=0;i<files.length;i++){
+      var f = files[i];
+      try{
+        var outs = await convertOne(f, 'image/jpeg', quality);
+        for (var j=0;j<outs.length;j++){
+          var o = outs[j];
+          var url = URL.createObjectURL(o.blob);
+          var base = f.name.replace(/\.avif$/i,'') + (outs.length>1 ? '_'+(j+1) : '');
+          var card = document.createElement('div');
+          card.className = 'card';
+          var im = document.createElement('img');
+          im.src = url;
+          var meta = document.createElement('div');
+          meta.className = 'meta';
+          meta.innerHTML = '<b>'+base+'.jpg</b>'+Math.round(o.blob.size/1024)+' KB · '+o.w+'×'+o.h;
+          var row = document.createElement('div');
+          row.className = 'row';
+          var a = document.createElement('a');
+          a.href = url; a.download = base+'.jpg'; a.className = 'btn small'; a.textContent = 'Download';
+          row.appendChild(a);
+          card.appendChild(im); card.appendChild(meta); card.appendChild(row);
+          results.appendChild(card);
+          zip.file(base+'.jpg', o.blob);
+          done++;
+        }
+      }catch(e){ failed++; }
+      progfill.style.width = Math.round((i+1)/files.length*100)+'%';
+      progtext.textContent = 'Converting ' + (i+1) + ' / ' + files.length + (failed? ' ('+failed+' failed)':'') + ' — all local, nothing uploaded';
+    }
+    addUsed(done);
+    updateBadge();
+
+    // 下载全部 ZIP
+    var dlAll = document.createElement('button');
+    dlAll.className = 'btn'; dlAll.style.marginTop='18px';
+    dlAll.textContent = 'Download all as ZIP ('+done+' files)';
+    dlAll.onclick = async function(){
+      var blob = await zip.generateAsync({ type: 'blob' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'avif-to-jpg.zip';
+      a.click();
+    };
+    results.appendChild(dlAll);
+
+    progfill.style.width = '100%';
+    progtext.textContent = 'Done — '+done+' converted, '+failed+' failed. All processed in your browser.';
+    go.disabled = false;
+    if (failed) alert(failed + ' file(s) could not be converted.');
+  };
+
+  updateBadge();
+})();
+</script>
+</body>
+</html>
