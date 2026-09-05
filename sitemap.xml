@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://aiharryone.github.io/pixelfix/</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://aiharryone.github.io/pixelfix/avif-to-jpg.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/compress-image.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/document-scanner.html</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://aiharryone.github.io/pixelfix/exif-remover.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/gif-maker.html</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://aiharryone.github.io/pixelfix/heic-to-jpg.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/passport-photo.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/pdf-tools.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/remove-bg.html</loc><lastmod>2026-08-30</lastmod></url>
@@ -12,19 +15,27 @@
   <url><loc>https://aiharryone.github.io/pixelfix/seo/add-watermark-to-photos.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/animate-old-photos.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/animate-photo-online-free.html</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://aiharryone.github.io/pixelfix/seo/avif-to-jpg-online.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/change-passport-photo-background.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/combine-images-into-pdf.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/compress-image-size-online.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/compress-jpg-to-100kb.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/compress-pdf-online.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/compress-png-online.html</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://aiharryone.github.io/pixelfix/seo/convert-avif-to-jpg.html</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://aiharryone.github.io/pixelfix/seo/convert-heic-to-jpg.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/cut-out-image-online.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/discord-avatar-gif-maker.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/enhance-old-photos.html</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://aiharryone.github.io/pixelfix/seo/exif-metadata-remover.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/family-history-video.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/fix-blurry-photos.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/gif-maker-online.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/gif-profile-picture-maker.html</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://aiharryone.github.io/pixelfix/seo/heic-to-jpg-batch.html</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://aiharryone.github.io/pixelfix/seo/heic-to-jpg-iphone.html</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://aiharryone.github.io/pixelfix/seo/heic-to-jpg-online.html</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://aiharryone.github.io/pixelfix/seo/how-to-convert-heic-to-jpg.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/image-to-pdf-converter.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/jpg-to-webp-converter.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/ken-burns-effect-generator.html</loc><lastmod>2026-08-30</lastmod></url>
@@ -41,24 +52,13 @@
   <url><loc>https://aiharryone.github.io/pixelfix/seo/passport-photo-size-guide.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/pdf-to-jpg.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/remove-background-from-photo.html</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://aiharryone.github.io/pixelfix/seo/remove-exif-data.html</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://aiharryone.github.io/pixelfix/seo/remove-gps-location-from-photo.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/repair-scratched-photos.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/resize-image-online.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/restore-old-photos-free.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/revive-old-photos.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/scan-document-to-pdf.html</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://aiharryone.github.io/pixelfix/seo/strip-metadata-from-photo.html</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://aiharryone.github.io/pixelfix/seo/visa-photo-maker.html</loc><lastmod>2026-08-30</lastmod></url>
-  <url><loc>https://aiharryone.github.io/pixelfix/heic-to-jpg.html</loc><lastmod>2026-09-01</lastmod></url>
-  <url><loc>https://aiharryone.github.io/pixelfix/seo/heic-to-jpg-online.html</loc><lastmod>2026-09-01</lastmod></url>
-  <url><loc>https://aiharryone.github.io/pixelfix/seo/convert-heic-to-jpg.html</loc><lastmod>2026-09-01</lastmod></url>
-  <url><loc>https://aiharryone.github.io/pixelfix/seo/heic-to-jpg-iphone.html</loc><lastmod>2026-09-01</lastmod></url>
-  <url><loc>https://aiharryone.github.io/pixelfix/seo/heic-to-jpg-batch.html</loc><lastmod>2026-09-01</lastmod></url>
-  <url><loc>https://aiharryone.github.io/pixelfix/seo/how-to-convert-heic-to-jpg.html</loc><lastmod>2026-09-01</lastmod></url>
-  <url><loc>https://aiharryone.github.io/pixelfix/exif-remover.html</loc><lastmod>2026-09-02</lastmod></url>
-  <url><loc>https://aiharryone.github.io/pixelfix/seo/remove-exif-data.html</loc><lastmod>2026-09-02</lastmod></url>
-  <url><loc>https://aiharryone.github.io/pixelfix/seo/remove-gps-location-from-photo.html</loc><lastmod>2026-09-02</lastmod></url>
-  <url><loc>https://aiharryone.github.io/pixelfix/seo/strip-metadata-from-photo.html</loc><lastmod>2026-09-02</lastmod></url>
-  <url><loc>https://aiharryone.github.io/pixelfix/seo/exif-metadata-remover.html</loc><lastmod>2026-09-02</lastmod></url>
-  <url><loc>https://aiharryone.github.io/pixelfix/avif-to-jpg.html</loc><lastmod>2026-09-02</lastmod></url>
-  <url><loc>https://aiharryone.github.io/pixelfix/seo/convert-avif-to-jpg.html</loc><lastmod>2026-09-02</lastmod></url>
-  <url><loc>https://aiharryone.github.io/pixelfix/seo/avif-to-jpg-online.html</loc><lastmod>2026-09-02</lastmod></url>
 </urlset>

@@ -75,6 +75,8 @@ Yes — anything you create is yours to use, sell or share.
 
 ## 💡 Also built by the same person
 
+- 🎃 [TrendSnap](https://aiharryone.github.io/trendsnap/) — free Halloween Invitation Maker with 20 hand-drawn templates, in your browser, nothing uploaded
+
 - [KDP Launch Kit](https://aiharryone.github.io/kdp-launch-kit/) — free calculators and generators for Amazon KDP self-publishers
 - [Certificate Maker](https://aiharryone.github.io/certificate-maker/) — online certificate generator
 
